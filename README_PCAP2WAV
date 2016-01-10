@@ -1,0 +1,12 @@
+pcap2wav is a Xplico customization with a web interface developed to easly use the tool.
+
+Installation steps:
+- compile Xplico: see INSTALL
+- launch the script pcap2wav_tgz.sh
+- from / and with root user untar pcap2wav.tgz : 
+  cd /; sudo tar xzvf pcap2wav.tgz
+- configure Apache for the web root dir: /opt/pcap2wav/www
+- launch the script /opt/pcap2wav/pcap2wavd.sh :
+  sudo /opt/pcap2wav/pcap2wavd.sh
+- visit the webpage of pcap2wav
+

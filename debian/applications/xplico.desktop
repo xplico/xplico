@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Xplico
+Exec=exo-open --launch WebBrowser http://localhost:9876
+Icon=video-display
+Terminal=false
+Categories=System;Monitor;

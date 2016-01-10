@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=xplico restart
+GenericName=xplico Service
+Comment=service xplico restart
+TryExec=/etc/init.d/xplico
+Exec=sh -c "sudo service xplico restart; bash"
+Icon=utilities-terminal
+Terminal=true
+Categories=System;Monitor;

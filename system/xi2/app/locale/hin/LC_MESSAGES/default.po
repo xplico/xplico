@@ -1,0 +1,1924 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright 2011 iSerm s.a.s <info@iserm.com>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2011-09-24 09:14+0200\n"
+"PO-Revision-Date: 2011-08-24 17:40+0200\n"
+"Last-Translator: iSerm <info@iserm.com>\n"
+"Language-Team:  iSerm <info@iserm.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: /controllers/admins_controller.php:80
+msgid "all groups"
+msgstr "सभी समूहों"
+
+#: /controllers/admins_controller.php:95
+msgid "Username must be between 6 and 40 characters."
+msgstr "उपयोगकर्ता नाम 6 और 40 वर्णों के बीच होना चाहिए."
+
+#: /controllers/admins_controller.php:111
+msgid "User already exists."
+msgstr "उपयोगकर्ता पहले से मौजूद है."
+
+#: /controllers/admins_controller.php:123
+msgid "User added"
+msgstr "उपयोगकर्ता जोडी गयी"
+
+#: /controllers/admins_controller.php:148
+msgid "Group already exists."
+msgstr "समूह पहले से ही मौजूद है."
+
+#: /controllers/admins_controller.php:153
+msgid "New Group activated"
+msgstr "नई समूह सक्रिय"
+
+#: /controllers/admins_controller.php:157
+msgid "There was a problem creating the new group"
+msgstr "वहाँ एक नया समूह बनाने में समस्या थी"
+
+#: /controllers/admins_controller.php:176
+msgid "The user does not exist!"
+msgstr "उपयोगकर्ता मौजूद नहीं करता है!"
+
+#: /controllers/admins_controller.php:181
+msgid "User deleted!"
+msgstr "उपयोगकर्ता नष्ट कर दिया!"
+
+#: /controllers/admins_controller.php:196
+msgid "The group does not exist!"
+msgstr "समूह मौजूद नहीं करता है!"
+
+#: /controllers/admins_controller.php:205
+msgid "Group deleted!"
+msgstr "समूह हटाया!"
+
+#: /controllers/admins_controller.php:208
+msgid "Before delete this group you must delete all Cases of the group"
+msgstr "इससे पहले इस समूह को हटा आप समूह के सभी मामले को हटाना होगा"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "min"
+msgstr "मिनट"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "hours"
+msgstr "घंटे"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "days"
+msgstr "दिन"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "weeks"
+msgstr "सप्ताह"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "months"
+msgstr "महीने"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "years"
+msgstr "साल"
+
+#: /controllers/dns_messages_controller.php:318
+msgid "DNS response"
+msgstr "डीएनएस प्रतिक्रिया"
+
+#: /controllers/dns_messages_controller.php:352;388
+msgid "Host Popularity"
+msgstr "होस्ट दर्शनों"
+
+#: /controllers/dns_messages_controller.php:422
+msgid "DNS Response"
+msgstr "डीएनएस रिस्पांस"
+
+#: /controllers/emails_controller.php:126;222 /views/emails/index.ctp:53;77
+msgid "Unknown"
+msgstr "अज्ञात"
+
+#: /controllers/emails_controller.php:132;207
+msgid "Invalid Email"
+msgstr "अमान्य ईमेल"
+
+#: /controllers/emails_controller.php:136
+msgid "The Email has been saved."
+msgstr "ईमेल को सहेज लिया गया है."
+
+#: /controllers/pols_controller.php:75;86;122
+#: /controllers/sols_controller.php:92;105;416
+#: /controllers/users_controller.php:85;97
+#: /controllers/components/xplico.php:52
+msgid "Case"
+msgstr "मामला"
+
+#: /controllers/pols_controller.php:76;87;123
+#: /controllers/sols_controller.php:93;106;417
+#: /controllers/users_controller.php:86;98
+#: /controllers/components/xplico.php:53;120 /views/admins/groups.ctp:20
+msgid "Cases"
+msgstr "मामले"
+
+#: /controllers/pols_controller.php:88;124 /views/pols/add.ctp:5
+msgid "New Case"
+msgstr "नई प्रकरण"
+
+#: /controllers/pols_controller.php:99
+msgid "Invalid id for Case."
+msgstr "प्रकरण के लिए अमान्य आईडी है."
+
+#: /controllers/pols_controller.php:117 /controllers/sols_controller.php:411
+msgid "Administrators can not create new Cases or new Sessions!"
+msgstr "व्यवस्थापकों के नए मामलों या नए सत्र नहीं बना सकते हैं!"
+
+#: /controllers/pols_controller.php:140
+msgid "The Case has been created"
+msgstr "प्रकरण बनाया गया है"
+
+#: /controllers/pols_controller.php:143 /controllers/sols_controller.php:444
+msgid "Please correct errors below."
+msgstr "त्रुटियों को सही कृपया नीचे."
+
+#: /controllers/pols_controller.php:150
+msgid "Invalid id for Case"
+msgstr "प्रकरण के लिए अमान्य आईडी"
+
+#: /controllers/pols_controller.php:157
+msgid "Admin can not delete the cases"
+msgstr "व्यवस्थापक मामलों को हटा नहीं सकते"
+
+#: /controllers/pols_controller.php:160
+msgid "Invalid id for the Case"
+msgstr "प्रकरण के लिए अमान्य आईडी"
+
+#: /controllers/pols_controller.php:180
+msgid "Case deleted"
+msgstr "प्रकरण हटाए गए"
+
+#: /controllers/sols_controller.php:94;107;418
+#: /controllers/users_controller.php:87 /controllers/components/xplico.php:54
+msgid "Sessions"
+msgstr "सत्र"
+
+#: /controllers/sols_controller.php:108
+msgid "New Session"
+msgstr "नयासत्र"
+
+#: /controllers/sols_controller.php:121
+msgid "Invalid id for Session."
+msgstr "सत्र के लिए अमान्य आईडी है."
+
+#: /controllers/sols_controller.php:428
+msgid "Before add a new session stop the live acquisition!"
+msgstr "इससे पहले कि कोई नया सत्र जोड़ने रहते अधिग्रहण रोक!"
+
+#: /controllers/sols_controller.php:440
+msgid "The Session has been created"
+msgstr "सत्र बनाया गया है"
+
+#: /controllers/sols_controller.php:451;457
+msgid "Invalid id for Session"
+msgstr "सत्र के लिए अमान्य आईडी"
+
+#: /controllers/sols_controller.php:470
+msgid "Session deleted"
+msgstr "हटाए गए सत्र"
+
+#: /controllers/sols_controller.php:482
+msgid "Size limit exceeded. See rules."
+msgstr "आकार सीमा पार हो गई. नियमों देखें."
+
+#: /controllers/sols_controller.php:493
+msgid "File uploaded, wait start decoding..."
+msgstr "फ़ाइल अपलोड, decoding शुरू प्रतीक्षा करें ..."
+
+#: /controllers/sols_controller.php:497
+msgid "Upload failed, please check"
+msgstr "अपलोड विफल, जाँच कृपया"
+
+#: /controllers/sols_controller.php:497
+msgid "this"
+msgstr "यह"
+
+#: /controllers/sols_controller.php:524
+msgid "Live capture started."
+msgstr "लाइव कब्जा शुरू."
+
+#: /controllers/sols_controller.php:527
+msgid "Select an Interface!"
+msgstr "एक इंटरफ़ेस का चयन करें!"
+
+#: /controllers/sols_controller.php:532
+msgid "Start Failed"
+msgstr "विफल प्रारंभ"
+
+#: /controllers/sols_controller.php:554
+msgid "Live capture stoped."
+msgstr "लाइव कब्जा stoped."
+
+#: /controllers/users_controller.php:128
+msgid "This user already exists."
+msgstr "इस उपयोगकर्ता पहले से मौजूद है."
+
+#: /controllers/users_controller.php:132 /models/user.php:100
+msgid "Please, a valid email!"
+msgstr "कृपया एक मान्य ईमेल!"
+
+#: /controllers/users_controller.php:150;202
+msgid "To complete registration wait the email"
+msgstr "पूरा पंजीकरण ईमेल इंतजार"
+
+#: /controllers/users_controller.php:153
+msgid "Registration Completed"
+msgstr "पंजीकरण पूर्ण"
+
+#: /controllers/users_controller.php:160
+msgid "There was a problem saving this information"
+msgstr "वहाँ एक समस्या इस जानकारी को बचाने"
+
+#: /controllers/users_controller.php:167
+msgid "Check the errors below."
+msgstr "नीचे त्रुटियों की जाँच करें."
+
+#: /controllers/users_controller.php:181
+msgid "Registration Completed."
+msgstr "पंजीकरण पूर्ण."
+
+#: /controllers/users_controller.php:214
+msgid ""
+"Error, /opt/xplico/xi/app/tmp/cache path is not writable, please fix "
+"permissions and reload"
+msgstr ""
+"त्रुटि, / / ​​ऑप्ट xplico ग्यारहवीं / / अनुप्रयोग / tmp / कैश पथ लिखने योग्य नहीं है, "
+"अनुमतियाँ ठीक करें और पुनः लोड"
+
+#: /controllers/users_controller.php:227
+msgid ""
+"Xplico is not running!<br/><br/>\n"
+"		For starting Xplico, please choose <u>one</u> of these options <u>as "
+"root</u>: <br /><br />\n"
+"		a) If you are using the Ubuntu/Debian package, run: \"/etc/init.d/xplico "
+"start\" <br />\n"
+"		b) Run: \"/opt/xplico/script/sqlite_demo.sh\" <br />"
+msgstr ""
+"Xplico नहीं चल रहा है! <br/><br/> Xplico शुरू करने के लिए <u>एक रूट के रूप में</u> इन "
+"विकल्पों में से चयन करें: <br /><br /> \"शुरू / etc / init.d / xplico\": एक) तुम पैकेज "
+"Ubuntu / Debian, रन का उपयोग कर रहे हैं यदि <br /> ख) चलाएँ: / opt / xplico / / "
+"स्क्रिप्ट sqlite_demo.sh \" <br />"
+
+#: /controllers/users_controller.php:261
+msgid "Invalid login!"
+msgstr "लॉगिन अमान्य!"
+
+#: /controllers/users_controller.php:291
+msgid "New password activated!"
+msgstr "नया पासवर्ड सक्रिय!"
+
+#: /controllers/users_controller.php:295
+msgid "You can not change the password"
+msgstr "आप पासवर्ड नहीं बदल सकते हैं"
+
+#: /controllers/users_controller.php:299
+msgid "New password error"
+msgstr "नया पासवर्ड त्रुटि"
+
+#: /controllers/users_controller.php:303
+msgid "Password wrong"
+msgstr "गलत पासवर्ड"
+
+#: /controllers/webs_controller.php:65
+msgid ""
+"For a complete view of html page set your browser to use Proxy, and point it "
+"to Web server."
+msgstr ""
+"Html पृष्ठ का एक पूरा दृश्य के लिए अपने ब्राउज़र सेट प्रॉक्सी का उपयोग, और यह वेब सर्वर को "
+"इंगित."
+
+#: /controllers/webs_controller.php:68
+msgid "This version can be inaccurate in displaying Web pages."
+msgstr "इस संस्करण में वेब पेजों को प्रदर्शित करने में गलत हो सकता है."
+
+#: /controllers/components/xplico.php:55
+msgid "Session"
+msgstr "अधिवेशन"
+
+#: /controllers/components/xplico.php:58
+msgid "Graphs"
+msgstr "रेखांकन"
+
+#: /controllers/components/xplico.php:59
+msgid "Dns"
+msgstr "Dns"
+
+#: /controllers/components/xplico.php:60
+msgid "Arp"
+msgstr "Arp"
+
+#: /controllers/components/xplico.php:61
+msgid "Icmpv6"
+msgstr "Icmpv6"
+
+#: /controllers/components/xplico.php:62
+msgid "GeoMap"
+msgstr "Geomap"
+
+#: /controllers/components/xplico.php:65
+msgid "Web"
+msgstr "वेब"
+
+#: /controllers/components/xplico.php:66 /views/feeds/index.ctp:25
+msgid "Site"
+msgstr "साइट"
+
+#: /controllers/components/xplico.php:67
+msgid "Feed"
+msgstr "चारा"
+
+#: /controllers/components/xplico.php:68 /views/sols/view.ctp:134;149
+msgid "Images"
+msgstr "छवियाँ"
+
+#: /controllers/components/xplico.php:71
+msgid "Mail"
+msgstr "डाक"
+
+#: /controllers/components/xplico.php:72 /views/admins/uadd.ctp:12
+#: /views/admins/users.ctp:12 /views/users/register.ctp:9
+#: /views/users/resend_reg.ctp:12
+msgid "Email"
+msgstr "ईमेल"
+
+#: /controllers/components/xplico.php:73
+msgid "Webmail"
+msgstr "वेबमेल"
+
+#: /controllers/components/xplico.php:76
+msgid "Voip"
+msgstr "वीओआईपी"
+
+#: /controllers/components/xplico.php:77
+msgid "Sip"
+msgstr "घूंट"
+
+#: /controllers/components/xplico.php:78
+msgid "Rtp"
+msgstr "RTP"
+
+#: /controllers/components/xplico.php:81
+msgid "Share"
+msgstr "शेयर"
+
+#: /controllers/components/xplico.php:82
+msgid "HttpFile"
+msgstr "HttpFile"
+
+#: /controllers/components/xplico.php:83
+msgid "Ftp"
+msgstr "FTP"
+
+#: /controllers/components/xplico.php:84
+msgid "Tftp"
+msgstr "Tftp"
+
+#: /controllers/components/xplico.php:85
+msgid "Printer"
+msgstr "मुद्रक"
+
+#: /controllers/components/xplico.php:86
+msgid "Mms"
+msgstr "एमएमएस"
+
+#: /controllers/components/xplico.php:89 /views/layouts/fbchat.ctp:7
+#: /views/msn_chats/index.ctp:25
+msgid "Chat"
+msgstr "बातचीत"
+
+#: /controllers/components/xplico.php:90
+msgid "Nntp"
+msgstr "NNTP"
+
+#: /controllers/components/xplico.php:91
+msgid "Facebook"
+msgstr "फेसबुक"
+
+#: /controllers/components/xplico.php:92
+#: /views/configurations/dissectors.ctp:139
+msgid "MSN"
+msgstr "MSN"
+
+#: /controllers/components/xplico.php:93
+#: /views/configurations/dissectors.ctp:99
+msgid "IRC"
+msgstr "आईआरसी"
+
+#: /controllers/components/xplico.php:94
+#: /views/configurations/dissectors.ctp:141
+msgid "Paltalk"
+msgstr "Paltalk"
+
+#: /controllers/components/xplico.php:95
+msgid "Paltalk Exp"
+msgstr "Paltalk ऍक्स्प"
+
+#: /controllers/components/xplico.php:98
+msgid "Shell"
+msgstr "शंख"
+
+#: /controllers/components/xplico.php:99 /views/sols/view.ctp:276
+msgid "Telnet"
+msgstr "टेलनेट"
+
+#: /controllers/components/xplico.php:102 /views/sols/view.ctp:294
+msgid "Undecoded"
+msgstr "Undecoded"
+
+#: /controllers/components/xplico.php:103
+msgid "TCP-UDP"
+msgstr "टीसीपी UDP"
+
+#: /controllers/components/xplico.php:113
+msgid "Menu"
+msgstr "मेन्यू"
+
+#: /controllers/components/xplico.php:114
+msgid "Config"
+msgstr "कॉन्फिग"
+
+#: /controllers/components/xplico.php:115 /views/configurations/index.ctp:88
+msgid "Dissectors"
+msgstr "Dissectors"
+
+#: /controllers/components/xplico.php:116 /views/admins/groups.ctp:6
+#: /views/sols/view.ctp:246
+msgid "Groups"
+msgstr "समूह"
+
+#: /controllers/components/xplico.php:117 /views/admins/groups.ctp:19
+#: /views/fbuchats/index.ctp:16 /views/sols/view.ctp:201
+msgid "Users"
+msgstr "उपयोगकर्ता"
+
+#: /controllers/components/xplico.php:118
+msgid "New group"
+msgstr "नया समूह"
+
+#: /controllers/components/xplico.php:119
+msgid "New user"
+msgstr "नया यूजर"
+
+#: /controllers/components/xplico.php:229;280
+msgid "Not installed"
+msgstr "स्थापित नहीं"
+
+#: /controllers/components/xplico.php:305
+msgid "Error connecting to Internet"
+msgstr "इंटरनेट से कनेक्ट करने में त्रुटि"
+
+#: /controllers/components/xplico.php:313
+msgid "There is a new version of Xplico: "
+msgstr "Xplico का एक नया संस्करण है:"
+
+#: /controllers/components/xplico.php:316
+msgid "There is not a new version of Xplico"
+msgstr "Xplico का एक नया संस्करण नहीं है"
+
+#: /models/group.php:61
+msgid "Max name size is 16"
+msgstr "मैक्स नाम आकार 16 है"
+
+#: /models/group.php:65 /models/user.php:57;67;77;89
+msgid "Only Alpha Numeric chars!"
+msgstr "केवल अल्फा संख्यात्मक वर्ण!"
+
+#: /models/group.php:69
+msgid "The name must be more that 4 chars"
+msgstr "नाम अधिक है कि 4 वर्ण होना चाहिए"
+
+#: /models/user.php:53
+msgid "Max user name size is 16"
+msgstr "अधिकतम उपयोगकर्ता नाम का आकार 16 है"
+
+#: /models/user.php:61
+msgid "The username must be more that 4 chars"
+msgstr "उपयोक्तानाम अधिक है कि 4 वर्ण होना चाहिए"
+
+#: /models/user.php:71
+msgid "The password must be more that 6 chars"
+msgstr "पासवर्ड अधिक है कि 6 वर्ण होना चाहिए"
+
+#: /models/user.php:82
+msgid "The First name must be more that 2 chars"
+msgstr "प्रथम नाम अधिक है कि 2 वर्ण होना चाहिए"
+
+#: /models/user.php:94
+msgid "The Last name must be more that 2 chars"
+msgstr "अंतिम नाम अधिक है कि 2 वर्ण होना चाहिए"
+
+#: /plugins/datasources/models/datasources/array_source.php:83
+msgid "No records found in model."
+msgstr "कोई रिकॉर्ड मॉडल में पाया."
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:129
+msgid "Transport error - could not open socket"
+msgstr "परिवहन त्रुटि - गर्तिका नहीं खोल सकता"
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:132
+msgid "Transport error - HTTP status code was not 200"
+msgstr "परिवहन त्रुटि - HTTP स्थिति कोड 200 नहीं था"
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:175
+msgid "Parse error. Not well formed"
+msgstr "पार्स त्रुटि. गठन ठीक नहीं"
+
+#: /views/admins/gadd.ctp:7
+msgid "Please fill out the form below to add a new Group"
+msgstr "नीचे दिए फॉर्म को एक नया समूह जोड़ने भरें"
+
+#: /views/admins/gadd.ctp:10 /views/ftps/view.ctp:41 /views/pols/index.ctp:10
+#: /views/pols/view.ctp:9 /views/sols/index.ctp:11 /views/tftps/view.ctp:38
+msgid "Name"
+msgstr "नाम"
+
+#: /views/admins/gadd.ctp:11 /views/admins/uadd.ctp:18
+msgid "Confim"
+msgstr "Confim"
+
+#: /views/admins/groups.ctp:9 /views/admins/uadd.ctp:16
+msgid "Group"
+msgstr "समूह"
+
+#: /views/admins/groups.ctp:10 /views/admins/users.ctp:15
+#: /views/pols/index.ctp:13 /views/sols/index.ctp:15
+msgid "Actions"
+msgstr "क्रियाएँ"
+
+#: /views/admins/groups.ctp:21 /views/admins/users.ctp:29
+#: /views/pols/index.ctp:27 /views/pols/view.ctp:33 /views/sols/index.ctp:28
+msgid "Delete"
+msgstr "हटाना"
+
+#: /views/admins/groups.ctp:21
+msgid "Are you sure you want to delete group"
+msgstr "क्या आप सुनिश्चित करें कि आप समूह को हटाना चाहते हैं"
+
+#: /views/admins/uadd.ctp:7
+msgid "Please fill out the form below to add a new User"
+msgstr "कृपया नीचे दिए फॉर्म भरने के लिए एक नया उपयोगकर्ता जोड़ने"
+
+#: /views/admins/uadd.ctp:10
+msgid "User name"
+msgstr "उपयोगकर्ता नाम"
+
+#: /views/admins/uadd.ctp:11 /views/admins/users.ctp:30
+#: /views/users/login.ctp:45 /views/users/register.ctp:11
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: /views/admins/uadd.ctp:13 /views/admins/users.ctp:10
+#: /views/users/register.ctp:14
+msgid "First Name"
+msgstr "नाम"
+
+#: /views/admins/uadd.ctp:14 /views/admins/users.ctp:11
+#: /views/users/register.ctp:15
+msgid "Last Name"
+msgstr "अंतिम नाम"
+
+#: /views/admins/users.ctp:6
+msgid "Users of"
+msgstr "के उपयोगकर्ता"
+
+#: /views/admins/users.ctp:9 /views/fbuchats/chats.ctp:23
+#: /views/ftps/index.ctp:21
+msgid "User"
+msgstr "उपयोगकर्ता"
+
+#: /views/admins/users.ctp:13
+msgid "Last Login"
+msgstr "अंतिम लॉगिन"
+
+#: /views/admins/users.ctp:14
+msgid "Count"
+msgstr "गणना"
+
+#: /views/admins/users.ctp:29
+msgid "Are you sure you want to delete the user"
+msgstr "क्या आप सुनिश्चित करें कि आप उपयोगकर्ता को हटाना चाहते हैं"
+
+#: /views/admins/users.ctp:40 /views/arps/index.ctp:53
+#: /views/dns_messages/index.ctp:61 /views/emails/index.ctp:89
+#: /views/fbuchats/chats.ctp:58 /views/fbuchats/index.ctp:27
+#: /views/feeds/index.ctp:37 /views/feeds/view.ctp:42 /views/ftps/index.ctp:48
+#: /views/ftps/view.ctp:61 /views/httpfiles/index.ctp:53
+#: /views/icmpv6s/index.ctp:53 /views/ircs/index.ctp:43
+#: /views/ircs/view.ctp:50 /views/mms/index.ctp:52
+#: /views/msn_chats/index.ctp:57 /views/nntp_groups/alist.ctp:47
+#: /views/nntp_groups/index.ctp:34 /views/paltalk_exps/index.ctp:50
+#: /views/paltalk_rooms/index.ctp:58 /views/pjls/index.ctp:44
+#: /views/rtps/index.ctp:59 /views/sips/index.ctp:59
+#: /views/telnets/index.ctp:43 /views/tftps/index.ctp:43
+#: /views/tftps/view.ctp:56 /views/unknows/index.ctp:66
+#: /views/webmails/index.ctp:57 /views/webs/images.ctp:77
+#: /views/webs/index.ctp:106
+msgid "Previous"
+msgstr "पिछला"
+
+#: /views/admins/users.ctp:42 /views/arps/index.ctp:55
+#: /views/dns_messages/index.ctp:63 /views/emails/index.ctp:91
+#: /views/fbuchats/chats.ctp:60 /views/fbuchats/index.ctp:29
+#: /views/feeds/index.ctp:39 /views/feeds/view.ctp:44 /views/ftps/index.ctp:50
+#: /views/ftps/view.ctp:63 /views/httpfiles/index.ctp:55
+#: /views/icmpv6s/index.ctp:55 /views/ircs/index.ctp:45
+#: /views/ircs/view.ctp:52 /views/mms/index.ctp:54
+#: /views/msn_chats/index.ctp:59 /views/nntp_groups/alist.ctp:49
+#: /views/nntp_groups/index.ctp:36 /views/paltalk_exps/index.ctp:52
+#: /views/paltalk_rooms/index.ctp:60 /views/pjls/index.ctp:46
+#: /views/rtps/index.ctp:61 /views/sips/index.ctp:61
+#: /views/telnets/index.ctp:45 /views/tftps/index.ctp:45
+#: /views/tftps/view.ctp:58 /views/unknows/index.ctp:68
+#: /views/webmails/index.ctp:59 /views/webs/images.ctp:79
+#: /views/webs/index.ctp:108
+msgid "Next"
+msgstr "अगला"
+
+#: /views/arps/index.ctp:17 /views/dns_messages/index.ctp:22
+#: /views/fbuchats/chats.ctp:15 /views/fbuchats/index.ctp:8
+#: /views/feeds/index.ctp:16 /views/ftps/index.ctp:12
+#: /views/httpfiles/index.ctp:17 /views/icmpv6s/index.ctp:17
+#: /views/ircs/index.ctp:12 /views/mms/index.ctp:16
+#: /views/msn_chats/index.ctp:16 /views/nntp_groups/alist.ctp:8
+#: /views/nntp_groups/index.ctp:16 /views/paltalk_exps/index.ctp:16
+#: /views/paltalk_rooms/index.ctp:16 /views/rtps/index.ctp:16
+#: /views/sips/index.ctp:16 /views/tftps/index.ctp:10
+#: /views/webs/images.ctp:17 /views/webs/index.ctp:45
+msgid "Search:"
+msgstr "खोज:"
+
+#: /views/arps/index.ctp:18 /views/dns_messages/index.ctp:23
+#: /views/emails/index.ctp:14 /views/fbuchats/chats.ctp:16
+#: /views/fbuchats/index.ctp:9 /views/feeds/index.ctp:17
+#: /views/ftps/index.ctp:13 /views/httpfiles/index.ctp:18
+#: /views/icmpv6s/index.ctp:18 /views/ircs/index.ctp:13
+#: /views/mms/index.ctp:17 /views/msn_chats/index.ctp:17
+#: /views/nntp_groups/alist.ctp:9 /views/nntp_groups/index.ctp:17
+#: /views/paltalk_exps/index.ctp:17 /views/paltalk_rooms/index.ctp:17
+#: /views/rtps/index.ctp:17 /views/sips/index.ctp:17
+#: /views/telnets/index.ctp:12 /views/tftps/index.ctp:11
+#: /views/unknows/index.ctp:18 /views/users/resend_reg.ctp:13
+#: /views/webmails/index.ctp:12 /views/webs/images.ctp:18
+#: /views/webs/index.ctp:46
+msgid "Go"
+msgstr "जाना"
+
+#: /views/arps/index.ctp:26 /views/dns_messages/index.ctp:31
+#: /views/emails/index.ctp:24 /views/fbuchats/chats.ctp:22
+#: /views/feeds/view.ctp:15 /views/ftps/index.ctp:19 /views/ftps/view.ctp:40
+#: /views/httpfiles/index.ctp:24 /views/icmpv6s/index.ctp:26
+#: /views/ircs/index.ctp:19 /views/ircs/view.ctp:33 /views/mms/index.ctp:23
+#: /views/msn_chats/index.ctp:23 /views/nntp_groups/alist.ctp:14
+#: /views/paltalk_exps/index.ctp:23 /views/paltalk_rooms/index.ctp:23
+#: /views/pjls/index.ctp:17 /views/rtps/index.ctp:23 /views/sips/index.ctp:23
+#: /views/telnets/index.ctp:18 /views/tftps/index.ctp:16
+#: /views/tftps/view.ctp:37 /views/unknows/index.ctp:24
+#: /views/webmails/index.ctp:18 /views/webs/index.ctp:51
+msgid "Date"
+msgstr "तिथि"
+
+#: /views/arps/index.ctp:27 /views/icmpv6s/index.ctp:27
+msgid "MAC"
+msgstr "मैक"
+
+#: /views/arps/index.ctp:28 /views/configurations/dissectors.ctp:43
+#: /views/dns_messages/index.ctp:34 /views/icmpv6s/index.ctp:28
+msgid "IP"
+msgstr "आईपी"
+
+#: /views/arps/index.ctp:29 /views/dns_messages/index.ctp:35
+#: /views/fbuchats/chats.ctp:27 /views/feeds/view.ctp:18
+#: /views/httpfiles/index.ctp:28 /views/icmpv6s/index.ctp:29
+#: /views/layouts/default.ctp:36 /views/msn_chats/index.ctp:27
+#: /views/paltalk_exps/index.ctp:26 /views/paltalk_rooms/index.ctp:27
+#: /views/pjls/index.ctp:20 /views/rtps/index.ctp:27 /views/sips/index.ctp:27
+#: /views/unknows/index.ctp:30 /views/webs/index.ctp:56
+msgid "Info"
+msgstr "जानकारी"
+
+#: /views/arps/index.ctp:37;45 /views/dns_messages/index.ctp:44;53
+#: /views/emails/view.ctp:59 /views/fbuchats/chats.ctp:42;51
+#: /views/feeds/view.ctp:27;34 /views/ftps/view.ctp:34;53
+#: /views/httpfiles/index.ctp:38;46 /views/icmpv6s/index.ctp:37;45
+#: /views/ircs/view.ctp:43 /views/mms/index.ctp:36;44
+#: /views/msn_chats/index.ctp:41;49 /views/nntp_groups/view.ctp:40
+#: /views/paltalk_exps/index.ctp:35;42 /views/paltalk_rooms/index.ctp:42;50
+#: /views/pjls/index.ctp:29;36 /views/rtps/index.ctp:43;51
+#: /views/rtps/view.ctp:47 /views/sips/index.ctp:43;51 /views/sips/view.ctp:50
+#: /views/telnets/view.ctp:32 /views/tftps/view.ctp:26;49
+#: /views/unknows/index.ctp:45;59 /views/webmails/view.ctp:43
+#: /views/webs/index.ctp:76;97
+msgid "info.xml"
+msgstr "info.xml"
+
+#: /views/configurations/dissectors.ctp:19;21
+msgid "Dissector"
+msgstr "चीड़फाड़ करनेवाला"
+
+#: /views/configurations/dissectors.ctp:20;22 /views/sols/index.ctp:14
+#: /views/sols/view.ctp:51
+msgid "Status"
+msgstr "स्थिति"
+
+#: /views/configurations/dissectors.ctp:25
+msgid "Pcap"
+msgstr "Pcap"
+
+#: /views/configurations/dissectors.ctp:27
+msgid "Xplico Case"
+msgstr "Xplico प्रकरण"
+
+#: /views/configurations/dissectors.ctp:31
+msgid "Ethernet"
+msgstr "ईथरनेट"
+
+#: /views/configurations/dissectors.ctp:33
+msgid "PPPoE"
+msgstr "PPPoE"
+
+#: /views/configurations/dissectors.ctp:37
+msgid "PPP"
+msgstr "पीपीपी"
+
+#: /views/configurations/dissectors.ctp:39
+msgid "RADIOTAP"
+msgstr "RADIOTAP"
+
+#: /views/configurations/dissectors.ctp:45
+msgid "IPv6"
+msgstr "IPv6 के"
+
+#: /views/configurations/dissectors.ctp:49
+msgid "TCP"
+msgstr "टीसीपी"
+
+#: /views/configurations/dissectors.ctp:51
+msgid "UDP"
+msgstr "UDP"
+
+#: /views/configurations/dissectors.ctp:55 /views/sols/view.ctp:126;177
+msgid "HTTP"
+msgstr "HTTP"
+
+#: /views/configurations/dissectors.ctp:57
+msgid "POP"
+msgstr "पॉप"
+
+#: /views/configurations/dissectors.ctp:61
+msgid "IMAP"
+msgstr "IMAP"
+
+#: /views/configurations/dissectors.ctp:63
+msgid "SMTP"
+msgstr "एसएमटीपी"
+
+#: /views/configurations/dissectors.ctp:67
+msgid "HTTP file transfer"
+msgstr "HTTP फ़ाइल स्थानांतरण"
+
+#: /views/configurations/dissectors.ctp:69 /views/sols/view.ctp:285
+msgid "SIP"
+msgstr "घूंट"
+
+#: /views/configurations/dissectors.ctp:73
+msgid "RTP"
+msgstr "RTP"
+
+#: /views/configurations/dissectors.ctp:75
+msgid "RTCP"
+msgstr "RTCP"
+
+#: /views/configurations/dissectors.ctp:79
+msgid "SDP"
+msgstr "SDP"
+
+#: /views/configurations/dissectors.ctp:81
+msgid "L2TP"
+msgstr "L2TP"
+
+#: /views/configurations/dissectors.ctp:85
+msgid "VLAN"
+msgstr "VLAN"
+
+#: /views/configurations/dissectors.ctp:87
+msgid "FTP"
+msgstr "एफ़टीपी"
+
+#: /views/configurations/dissectors.ctp:91
+msgid "DNS"
+msgstr "डीएनएस"
+
+#: /views/configurations/dissectors.ctp:93
+msgid "ICMP"
+msgstr "ICMP"
+
+#: /views/configurations/dissectors.ctp:97 /views/sols/view.ctp:244
+msgid "NNTP"
+msgstr "NNTP"
+
+#: /views/configurations/dissectors.ctp:103
+msgid "IPP"
+msgstr "आईपीपी"
+
+#: /views/configurations/dissectors.ctp:105
+msgid "PJL"
+msgstr "PJL"
+
+#: /views/configurations/dissectors.ctp:109 /views/sols/view.ctp:141
+msgid "MMS"
+msgstr "एमएमएस"
+
+#: /views/configurations/dissectors.ctp:111
+msgid "SLL"
+msgstr "SLL"
+
+#: /views/configurations/dissectors.ctp:115
+msgid "TFTP"
+msgstr "TFTP"
+
+#: /views/configurations/dissectors.ctp:117
+msgid "IEEE80211"
+msgstr "IEEE80211"
+
+#: /views/configurations/dissectors.ctp:121
+msgid "LLC"
+msgstr "LLC"
+
+#: /views/configurations/dissectors.ctp:123
+msgid "Facebook Web chat"
+msgstr "फेसबुक वेब चैट"
+
+#: /views/configurations/dissectors.ctp:127
+msgid "TELNET"
+msgstr "TELNET"
+
+#: /views/configurations/dissectors.ctp:129
+msgid "Web mail"
+msgstr "वेब मेल"
+
+#: /views/configurations/dissectors.ctp:133
+msgid "ARP"
+msgstr "ARP"
+
+#: /views/configurations/dissectors.ctp:135
+msgid "Paltalk Express"
+msgstr "Paltalk एक्सप्रेस"
+
+#: /views/configurations/dissectors.ctp:144
+msgid "TCP L7p"
+msgstr "टीसीपी L7p"
+
+#: /views/configurations/dissectors.ctp:146
+msgid "UDP L7p"
+msgstr "UDP L7p"
+
+#: /views/configurations/index.ctp:9
+msgid "Xplico Control pane"
+msgstr "Xplico नियंत्रण फलक"
+
+#: /views/configurations/index.ctp:14
+msgid "Checksum validation"
+msgstr "Checksum सत्यापन"
+
+#: /views/configurations/index.ctp:15
+msgid ""
+"Option to enable/disable checksum analysis. Without checksum verification "
+"more information will be decoded, but it is not legally reliable, as those "
+"packets may have been sent by any other host."
+msgstr ""
+"Checksum विश्लेषण करने के लिए सक्षम / अक्षम विकल्प. चेकसम सत्यापन के बिना अधिक जानकारी "
+"के डीकोड किया जाएगा, लेकिन यह कानूनी रूप से विश्वसनीय नहीं है, उन के पैकेट के रूप में किसी "
+"अन्य मेजबान द्वारा भेजा गया हो सकता है."
+
+#: /views/configurations/index.ctp:21
+msgid "Validating checksums:"
+msgstr "मान्य checksums:"
+
+#: /views/configurations/index.ctp:21
+msgid "OFF"
+msgstr "रवाना"
+
+#: /views/configurations/index.ctp:26
+msgid "Validating checksum:"
+msgstr "Checksum मान्य:"
+
+#: /views/configurations/index.ctp:26
+msgid "ON"
+msgstr "पर"
+
+#: /views/configurations/index.ctp:34
+msgid "Activate validation"
+msgstr "सत्यापन सक्रिय करें"
+
+#: /views/configurations/index.ctp:36
+msgid "Deactivate validation"
+msgstr "सत्यापन निष्क्रिय"
+
+#: /views/configurations/index.ctp:43
+msgid "Geo position"
+msgstr "भू स्थिति"
+
+#: /views/configurations/index.ctp:44
+msgid "Change the source GPS position of the generated connections"
+msgstr "उत्पन्न कनेक्शन के स्रोत जीपीएस स्थिति बदलें"
+
+#: /views/configurations/index.ctp:49
+msgid "Long"
+msgstr "लंबे समय तक"
+
+#: /views/configurations/index.ctp:50
+msgid "Lat"
+msgstr "अक्षां"
+
+#: /views/configurations/index.ctp:51 /views/dns_messages/graph.ctp:28
+msgid "Change"
+msgstr "परिवर्तन"
+
+#: /views/configurations/index.ctp:58;64;69
+msgid "Data wrapper"
+msgstr "डेटा रेपर"
+
+#: /views/configurations/index.ctp:59
+msgid ""
+"Option for creating an index of decoded info at /opt/xplico/lastdata.txt to "
+"use it with thertiary applicacions."
+msgstr ""
+"/ Opt / / xplico lastdata.txt में डीकोड जानकारी के एक सूचकांक बनाने के लिए यह "
+"thertiary applicacions के साथ प्रयोग करने के लिए विकल्प."
+
+#: /views/configurations/index.ctp:64
+msgid "not activated"
+msgstr "सक्रिय नहीं"
+
+#: /views/configurations/index.ctp:69
+msgid "activated"
+msgstr "सक्रिय"
+
+#: /views/configurations/index.ctp:77
+msgid "Activate wrapper"
+msgstr "आवरण सक्रिय"
+
+#: /views/configurations/index.ctp:79
+msgid "Deactivate wrapper"
+msgstr "आवरण निष्क्रिय"
+
+#: /views/configurations/index.ctp:89
+msgid "Enable and disable each dissector"
+msgstr "सक्षम और अक्षम प्रत्येक चीड़फाड़ करनेवाला"
+
+#: /views/configurations/index.ctp:90
+msgid "Dissectors Manager"
+msgstr "Dissectors प्रबंधक"
+
+#: /views/configurations/index.ctp:98
+msgid "Xplico's status"
+msgstr "Xplico स्थिति"
+
+#: /views/configurations/index.ctp:103
+msgid "Xplico system is not running"
+msgstr "Xplico प्रणाली नहीं चल रहा है"
+
+#: /views/configurations/index.ctp:108
+msgid "Xplico system is running"
+msgstr "Xplico प्रणाली चल रहा है"
+
+#: /views/configurations/index.ctp:116
+msgid "Storage"
+msgstr "भंडारण"
+
+#: /views/configurations/index.ctp:117
+msgid "Storage data base"
+msgstr "संग्रहण डेटा बेस"
+
+#: /views/configurations/index.ctp:126
+msgid "Max PCAP size"
+msgstr "अधिकतम PCAP आकार"
+
+#: /views/configurations/index.ctp:127
+msgid "Current max accepted size of PCAPs: "
+msgstr "वर्तमान अधिकतम PCAPs के आकार स्वीकार किए जाते हैं:"
+
+#: /views/configurations/index.ctp:133
+msgid "To change this maximum size, check"
+msgstr "इस अधिकतम आकार बदलने की जांच,"
+
+#: /views/configurations/index.ctp:140
+msgid "Xplico update"
+msgstr "Xplico अद्यतन"
+
+#: /views/configurations/index.ctp:141
+msgid "Xplico will check if there is a newer version"
+msgstr "Xplico अगर वहाँ एक नया संस्करण है की जाँच करेगा"
+
+#: /views/configurations/index.ctp:146
+msgid "Check new versions"
+msgstr "नए संस्करणों की जाँच करें"
+
+#: /views/configurations/index.ctp:153
+msgid "Software versions"
+msgstr "सॉफ्टवेयर संस्करणों"
+
+#: /views/configurations/index.ctp:158
+msgid "Xplico version"
+msgstr "Xplico संस्करण"
+
+#: /views/configurations/index.ctp:162
+msgid "Dema version"
+msgstr "Dema संस्करण"
+
+#: /views/configurations/index.ctp:166
+msgid "Sqlite version"
+msgstr "SQLite संस्करण"
+
+#: /views/configurations/index.ctp:171
+msgid "Cakephp version"
+msgstr "CakePHP संस्करण"
+
+#: /views/configurations/index.ctp:175
+msgid "Apache version"
+msgstr "अपाचे संस्करण"
+
+#: /views/configurations/index.ctp:179
+msgid "PHP version"
+msgstr "PHP संस्करण"
+
+#: /views/configurations/index.ctp:184
+msgid "Tshark version"
+msgstr "Tshark संस्करण"
+
+#: /views/configurations/index.ctp:188
+msgid "tcpdump version"
+msgstr "tcpdump संस्करण"
+
+#: /views/configurations/index.ctp:192
+msgid "Videosnarf version"
+msgstr "Videosnarf संस्करण"
+
+#: /views/configurations/index.ctp:197
+msgid "Lame version"
+msgstr "लंगड़ा संस्करण"
+
+#: /views/configurations/index.ctp:201
+msgid "GNU/Linux version"
+msgstr "GNU / Linux संस्करण"
+
+#: /views/configurations/index.ctp:205
+msgid "Kernel version"
+msgstr "कर्नेल संस्करण"
+
+#: /views/configurations/index.ctp:210
+msgid "Libpcap version"
+msgstr "Libpcap संस्करण"
+
+#: /views/configurations/index.ctp:214
+msgid "Xplico Alerts"
+msgstr "Xplico अलर्ट"
+
+#: /views/configurations/index.ctp:218
+msgid "Sox version"
+msgstr "Sox के संस्करण"
+
+#: /views/configurations/index.ctp:223
+msgid "Recode version"
+msgstr "Recode संस्करण"
+
+#: /views/configurations/index.ctp:227
+msgid "Python plugin"
+msgstr "अजगर प्लगइन"
+
+#: /views/configurations/index.ctp:231
+msgid "GhostPDL version"
+msgstr "GhostPDL संस्करण"
+
+#: /views/configurations/index.ctp:236
+msgid "GeoIP version"
+msgstr "GeoIP संस्करण"
+
+#: /views/dns_messages/index.ctp:16
+msgid "DNS Statistics"
+msgstr "डीएनएस सांख्यिकी"
+
+#: /views/dns_messages/index.ctp:32 /views/telnets/index.ctp:19
+msgid "Host"
+msgstr "होस्ट"
+
+#: /views/dns_messages/index.ctp:33
+msgid "CName"
+msgstr "CNAME"
+
+#: /views/emails/index.ctp:11 /views/telnets/index.ctp:11
+#: /views/unknows/index.ctp:17 /views/webmails/index.ctp:11
+msgid "Search"
+msgstr "खोज"
+
+#: /views/emails/index.ctp:12 /views/emails/view.ctp:25
+msgid "Choose relevance"
+msgstr "प्रासंगिकता चुनें"
+
+#: /views/emails/index.ctp:12 /views/emails/view.ctp:25
+msgid "None"
+msgstr "कोई नहीं"
+
+#: /views/emails/index.ctp:25 /views/nntp_groups/alist.ctp:15
+#: /views/webmails/index.ctp:19
+msgid "Subject"
+msgstr "विषय"
+
+#: /views/emails/index.ctp:26 /views/nntp_groups/alist.ctp:16
+#: /views/webmails/index.ctp:20
+msgid "Sender"
+msgstr "प्रेषक"
+
+#: /views/emails/index.ctp:27 /views/webmails/index.ctp:21
+msgid "Receivers"
+msgstr "रिसीवर"
+
+#: /views/emails/index.ctp:28 /views/fbuchats/chats.ctp:26
+#: /views/feeds/view.ctp:17 /views/ftps/view.ctp:42
+#: /views/httpfiles/index.ctp:26 /views/inputs/index.ctp:12
+#: /views/mms/view.ctp:41 /views/nntp_groups/alist.ctp:17
+#: /views/telnets/index.ctp:21 /views/tftps/view.ctp:39
+#: /views/webmails/index.ctp:23 /views/webs/index.ctp:54
+msgid "Size"
+msgstr "आकार"
+
+#: /views/emails/index.ctp:29
+msgid "Relevance"
+msgstr "प्रासंगिकता"
+
+#: /views/emails/view.ctp:13
+msgid "Email to"
+msgstr "करने के लिए ईमेल"
+
+#: /views/emails/view.ctp:20 /views/nntp_groups/view.ctp:19
+#: /views/webmails/view.ctp:20
+msgid "Subject:"
+msgstr "विषय:"
+
+#: /views/emails/view.ctp:22
+msgid "Relevance:"
+msgstr "प्रासंगिकता:"
+
+#: /views/emails/view.ctp:29 /views/nntp_groups/view.ctp:23
+#: /views/webmails/view.ctp:24
+msgid "Sender:"
+msgstr "प्रेषक:"
+
+#: /views/emails/view.ctp:31
+msgid "Comments"
+msgstr "टिप्पणियाँ"
+
+#: /views/emails/view.ctp:34
+msgid "Save"
+msgstr "बचाना"
+
+#: /views/emails/view.ctp:38 /views/nntp_groups/view.ctp:27
+#: /views/webmails/view.ctp:28
+msgid "Recipient:"
+msgstr "प्राप्तकर्ता:"
+
+#: /views/emails/view.ctp:42 /views/nntp_groups/view.ctp:31
+#: /views/rtps/view.ctp:23 /views/sips/view.ctp:23 /views/webmails/view.ctp:33
+msgid "Date:"
+msgstr "दिनांक:"
+
+#: /views/emails/view.ctp:46 /views/ftps/view.ctp:21
+#: /views/telnets/view.ctp:23
+msgid "Username:"
+msgstr "प्रयोक्ता नाम:"
+
+#: /views/emails/view.ctp:50 /views/ftps/view.ctp:25
+#: /views/telnets/view.ctp:27
+msgid "Password:"
+msgstr "पासवर्ड:"
+
+#: /views/emails/view.ctp:54 /views/nntp_groups/view.ctp:35
+#: /views/webmails/view.ctp:38
+msgid "EML file:"
+msgstr "EML फ़ाइल:"
+
+#: /views/emails/view.ctp:58 /views/ftps/view.ctp:33 /views/ircs/view.ctp:26
+#: /views/mms/view.ctp:32 /views/nntp_groups/view.ctp:39
+#: /views/rtps/view.ctp:46 /views/sips/view.ctp:49 /views/telnets/view.ctp:31
+#: /views/tftps/view.ctp:25 /views/webmails/view.ctp:42
+msgid "Info:"
+msgstr "जानकारी:"
+
+#: /views/emails/view.ctp:82
+msgid "Attached"
+msgstr "संलग्न"
+
+#: /views/fbuchats/chats.ctp:24
+msgid "Friend"
+msgstr "मित्र"
+
+#: /views/fbuchats/chats.ctp:25
+msgid "Duration [hh:mm:ss]"
+msgstr "अवध्ि [hh: mm: ss]"
+
+#: /views/feeds/index.ctp:24 /views/nntp_groups/index.ctp:23
+msgid "Title"
+msgstr "शीर्षक"
+
+#: /views/feeds/view.ctp:16 /views/ftps/index.ctp:20 /views/ircs/index.ctp:20
+#: /views/pjls/index.ctp:18 /views/tftps/index.ctp:17 /views/webs/index.ctp:52
+msgid "Url"
+msgstr "यूआरएल"
+
+#: /views/ftps/index.ctp:22 /views/tftps/index.ctp:18
+#: /views/webs/method.ctp:21;22;29;34
+msgid "Download"
+msgstr "डाउनलोड"
+
+#: /views/ftps/index.ctp:23 /views/sols/view.ctp:84 /views/tftps/index.ctp:19
+msgid "Upload"
+msgstr "अपलोड"
+
+#: /views/ftps/view.ctp:17 /views/ircs/view.ctp:18 /views/tftps/view.ctp:17
+msgid "Url:"
+msgstr "Url:"
+
+#: /views/ftps/view.ctp:29 /views/ircs/view.ctp:22 /views/sips/view.ctp:46
+#: /views/tftps/view.ctp:21
+msgid "Commands:"
+msgstr "आदेश:"
+
+#: /views/ftps/view.ctp:43 /views/tftps/view.ctp:40
+msgid "Dir"
+msgstr "डिर"
+
+#: /views/httpfiles/index.ctp:25
+msgid "Filename"
+msgstr "फ़ाइलनाम"
+
+#: /views/httpfiles/index.ctp:27
+msgid "Complete"
+msgstr "पूरा"
+
+#: /views/inputs/geomap.ctp:13
+msgid "Geographical and temporal representation"
+msgstr "भौगोलिक और अस्थायी प्रतिनिधित्व"
+
+#: /views/inputs/geomap.ctp:16
+msgid "Pcap file"
+msgstr "Pcap फ़ाइल"
+
+#: /views/inputs/geomap.ctp:17
+msgid "GeoMap file"
+msgstr "Geomap फ़ाइल"
+
+#: /views/inputs/index.ctp:7
+msgid "Input files list"
+msgstr "इनपुट फाइलें सूची"
+
+#: /views/inputs/index.ctp:10 /views/mms/view.ctp:40
+msgid "File name"
+msgstr "फ़ाइल का नाम"
+
+#: /views/inputs/index.ctp:11
+msgid "MD5 & SHA1"
+msgstr "MD5 और SHA1"
+
+#: /views/ircs/index.ctp:21 /views/sols/view.ctp:214
+msgid "Channels"
+msgstr "चैनल"
+
+#: /views/ircs/view.ctp:34
+msgid "Channel"
+msgstr "चैनल"
+
+#: /views/ircs/view.ctp:35 /views/msn_chats/index.ctp:24
+#: /views/paltalk_exps/index.ctp:24 /views/paltalk_rooms/index.ctp:24
+msgid "End"
+msgstr "अंत"
+
+#: /views/layouts/cookies.ctp:7
+msgid "Cookie hijacking"
+msgstr "अपहरण कुकी"
+
+#: /views/layouts/default.ctp:36
+msgid "About"
+msgstr "के बारे में"
+
+#: /views/layouts/default.ctp:36;85
+msgid "Wiki"
+msgstr "विकी"
+
+#: /views/layouts/default.ctp:36;84
+msgid "Forum"
+msgstr "फोरम"
+
+#: /views/layouts/default.ctp:36;87;91 /views/layouts/licenses.ctp:7
+msgid "Licenses"
+msgstr "लाइसेंस"
+
+#: /views/layouts/default.ctp:63 /views/sols/view.ctp:111
+msgid "Interface"
+msgstr "इंटरफ़ेस"
+
+#: /views/layouts/default.ctp:65
+msgid "User:"
+msgstr "उपयोगकर्ता:"
+
+#: /views/layouts/default.ctp:81
+msgid "Admin"
+msgstr "व्यवस्थापक"
+
+#: /views/layouts/default.ctp:83
+msgid "Help"
+msgstr "मदद"
+
+#: /views/layouts/default.ctp:86 /views/users/cpassword.ctp:6
+msgid "Change password"
+msgstr "पासवर्ड बदलें"
+
+#: /views/layouts/default.ctp:88
+msgid "Logout"
+msgstr "लॉगआउट"
+
+#: /views/layouts/default.ctp:90 /views/users/login.ctp:46
+msgid "Login"
+msgstr "लॉग इन"
+
+#: /views/layouts/default.ctp:92
+msgid "Register"
+msgstr "रजिस्टर"
+
+#: /views/layouts/rdf.ctp:15;19
+msgid "RDF reader"
+msgstr "RDF रीडर"
+
+#: /views/layouts/rdf.ctp:20
+msgid "based on Common RSS Reader by"
+msgstr "आम आरएसएस रीडर के आधार पर द्वारा"
+
+#: /views/layouts/voip.ctp:7
+msgid "VoIP"
+msgstr "वीओआईपी"
+
+#: /views/mms/index.ctp:24 /views/rtps/index.ctp:24 /views/sips/index.ctp:24
+msgid "From"
+msgstr "से"
+
+#: /views/mms/index.ctp:25 /views/rtps/index.ctp:25 /views/sips/index.ctp:25
+msgid "To"
+msgstr "से"
+
+#: /views/mms/index.ctp:26 /views/sols/view.ctp:145
+msgid "Contents"
+msgstr "सामग्री"
+
+#: /views/mms/view.ctp:16 /views/rtps/view.ctp:27 /views/sips/view.ctp:27
+msgid "From:"
+msgstr "से:"
+
+#: /views/mms/view.ctp:20 /views/rtps/view.ctp:31 /views/sips/view.ctp:31
+msgid "To:"
+msgstr "करने के लिए:"
+
+#: /views/mms/view.ctp:24
+msgid "Cc:"
+msgstr "प्रतिलिपि:"
+
+#: /views/mms/view.ctp:28
+msgid "Bcc:"
+msgstr "गुप्त प्रतिलिपि:"
+
+#: /views/mms/view.ctp:39
+msgid "Content Type"
+msgstr "सामग्री प्रकार"
+
+#: /views/msn_chats/index.ctp:26 /views/paltalk_rooms/index.ctp:26
+#: /views/rtps/index.ctp:26 /views/sips/index.ctp:26
+msgid "Duration"
+msgstr "अवधि"
+
+#: /views/nntp_groups/view.ctp:13
+msgid "Article from"
+msgstr "से अनुच्छेद"
+
+#: /views/paltalk_exps/index.ctp:25
+msgid "User-Nick name"
+msgstr "उपयोगकर्ता - निक नाम"
+
+#: /views/paltalk_rooms/index.ctp:25
+msgid "Room name"
+msgstr "कक्ष नाम"
+
+#: /views/pjls/index.ctp:13
+msgid "List printed file"
+msgstr "सूची मुद्रित फ़ाइल"
+
+#: /views/pjls/index.ctp:19
+msgid "Data Size"
+msgstr "डेटा आकार"
+
+#: /views/pols/add.ctp:11
+msgid "DATA ACQUISITION"
+msgstr "डाटा अधिग्रहण"
+
+#: /views/pols/add.ctp:12
+msgid "Uploading PCAP capture file/s"
+msgstr "अपलोड हो रहा है PCAP कब्जा फाइल /"
+
+#: /views/pols/add.ctp:12
+msgid "Live acquisition"
+msgstr "लाइव अधिग्रहण"
+
+#: /views/pols/add.ctp:15
+msgid "Case name"
+msgstr "प्रकरण नाम"
+
+#: /views/pols/add.ctp:16
+msgid "External reference"
+msgstr "बाहरी संदर्भ"
+
+#: /views/pols/add.ctp:18 /views/sols/add.ctp:12
+msgid "Create"
+msgstr "बनाएँ"
+
+#: /views/pols/index.ctp:6
+msgid "Cases List"
+msgstr "मामले सूची"
+
+#: /views/pols/index.ctp:11 /views/pols/view.ctp:11
+msgid "External Reference"
+msgstr "बाहरी संदर्भ"
+
+#: /views/pols/index.ctp:12
+msgid "Type"
+msgstr "टाइप"
+
+#: /views/pols/index.ctp:21 /views/sols/view.ctp:96
+msgid "Live"
+msgstr "जीना"
+
+#: /views/pols/index.ctp:23
+msgid "Files"
+msgstr "फ़ाइलें"
+
+#: /views/pols/view.ctp:6
+msgid "View Case"
+msgstr "प्रकरण देखें"
+
+#: /views/pols/view.ctp:17
+msgid "Related Sols"
+msgstr "संबंधित SOLs"
+
+#: /views/pols/view.ctp:32 /views/webs/method.ctp:21;22;29;34
+msgid "View"
+msgstr "देखें"
+
+#: /views/rtps/view.ctp:28;32 /views/sips/view.ctp:28;32
+msgid "play"
+msgstr "खेल"
+
+#: /views/rtps/view.ctp:35 /views/sips/view.ctp:35
+msgid "Duration:"
+msgstr "अवध्ि:"
+
+#: /views/sols/add.ctp:6
+msgid "New listening session"
+msgstr "नए सुन सत्र"
+
+#: /views/sols/add.ctp:10
+msgid "Session name"
+msgstr "सत्र के नाम"
+
+#: /views/sols/index.ctp:7
+msgid "List of listening sessions of case:"
+msgstr "मामले की सुन सत्र की सूची:"
+
+#: /views/sols/index.ctp:12
+msgid "Start Time"
+msgstr "प्रारंभ समय"
+
+#: /views/sols/index.ctp:13
+msgid "End Time"
+msgstr "समाप्ति समय"
+
+#: /views/sols/view.ctp:38
+msgid "Session Data"
+msgstr "सत्र डाटा"
+
+#: /views/sols/view.ctp:41
+msgid "E.T."
+msgstr "ईटी"
+
+#: /views/sols/view.ctp:45
+msgid "Case and Session name"
+msgstr "नाम और सत्र प्रकरण"
+
+#: /views/sols/view.ctp:47
+msgid "Cap. Start Time"
+msgstr "कैप. प्रारंभ समय"
+
+#: /views/sols/view.ctp:49
+msgid "Cap. End Time"
+msgstr "कैप. समाप्ति समय"
+
+#: /views/sols/view.ctp:53
+msgid "Hosts"
+msgstr "होस्ट"
+
+#: /views/sols/view.ctp:61
+msgid "View all hosts"
+msgstr "सभी मेजबानों देखें"
+
+#: /views/sols/view.ctp:63
+msgid "Filter"
+msgstr "फ़िल्टर"
+
+#: /views/sols/view.ctp:74
+msgid "Pcap set"
+msgstr "Pcap सेट"
+
+#: /views/sols/view.ctp:77
+msgid "SFTP uploading"
+msgstr "SFTP अपलोड करने"
+
+#: /views/sols/view.ctp:77
+msgid "big pcap files"
+msgstr "बड़ा pcap फ़ाइलें"
+
+#: /views/sols/view.ctp:79
+msgid "Add new pcap file"
+msgstr "नई pcap फ़ाइल जोड़ें"
+
+#: /views/sols/view.ctp:82
+msgid "Sols"
+msgstr "SOLS"
+
+#: /views/sols/view.ctp:83
+msgid "File"
+msgstr "फ़ाइल"
+
+#: /views/sols/view.ctp:87
+msgid "Not possible to add new pcap files."
+msgstr "नए pcap फ़ाइलें जोड़ने संभव नहीं है."
+
+#: /views/sols/view.ctp:91;304 /views/users/about.ctp:23
+msgid "Rules"
+msgstr "नियम"
+
+#: /views/sols/view.ctp:93
+msgid "List"
+msgstr "सूची"
+
+#: /views/sols/view.ctp:93
+msgid "of all pcap files"
+msgstr "सभी pcap फ़ाइलों की"
+
+#: /views/sols/view.ctp:101
+msgid "Listening at interface"
+msgstr "इंटरफेस पर सुन"
+
+#: /views/sols/view.ctp:114
+msgid "Start"
+msgstr "प्रारंभ"
+
+#: /views/sols/view.ctp:128
+msgid "Post"
+msgstr "पद"
+
+#: /views/sols/view.ctp:130
+msgid "Get"
+msgstr "जाओ"
+
+#: /views/sols/view.ctp:132;147;235 /views/webs/index.ctp:44
+msgid "Video"
+msgstr "वीडियो"
+
+#: /views/sols/view.ctp:143;260
+msgid "Number"
+msgstr "संख्या"
+
+#: /views/sols/view.ctp:156
+msgid "Emails"
+msgstr "ईमेल"
+
+#: /views/sols/view.ctp:158;188
+msgid "Received"
+msgstr "प्राप्त"
+
+#: /views/sols/view.ctp:160;190
+msgid "Sent"
+msgstr "भेजे गए"
+
+#: /views/sols/view.ctp:162
+msgid "Unreaded"
+msgstr "Unreaded"
+
+#: /views/sols/view.ctp:169
+msgid "FTP - TFTP - HTTP file"
+msgstr "एफ़टीपी - TFTP - फ़ाइल HTTP"
+
+#: /views/sols/view.ctp:171;278
+msgid "Connections"
+msgstr "कनेक्शन"
+
+#: /views/sols/view.ctp:173
+msgid "Downloaded"
+msgstr "Downloaded"
+
+#: /views/sols/view.ctp:175
+msgid "Uploaded"
+msgstr "अपलोड"
+
+#: /views/sols/view.ctp:184
+msgid "Web Mail"
+msgstr "वेब मेल"
+
+#: /views/sols/view.ctp:186
+msgid "Total"
+msgstr "कुल"
+
+#: /views/sols/view.ctp:199
+msgid "Facebook Chat / Paltalk"
+msgstr "फेसबुक चैट / Paltalk"
+
+#: /views/sols/view.ctp:203
+msgid "Chats"
+msgstr "चैट"
+
+#: /views/sols/view.ctp:210
+msgid "IRC/Paltalk Exp/Msn"
+msgstr "आईआरसी / Paltalk ऍक्स्प / MSN"
+
+#: /views/sols/view.ctp:212
+msgid "Server"
+msgstr "सर्वर"
+
+#: /views/sols/view.ctp:222
+msgid "Dns - Arp - Icmpv6"
+msgstr "Dns - Arp - Icmpv6"
+
+#: /views/sols/view.ctp:224
+msgid "DNS res"
+msgstr "डीएनएस रेस"
+
+#: /views/sols/view.ctp:226
+msgid "ARP/ICMPv6"
+msgstr "ARP/ICMPv6"
+
+#: /views/sols/view.ctp:233
+msgid "RTP/VoIP"
+msgstr "/ RTP वीओआईपी"
+
+#: /views/sols/view.ctp:237 /views/webs/index.ctp:44
+msgid "Audio"
+msgstr "ऑडियो"
+
+#: /views/sols/view.ctp:248
+msgid "Articles"
+msgstr "लेख"
+
+#: /views/sols/view.ctp:258
+msgid "Feed (RSS & Atom)"
+msgstr "फ़ीड (आरएसएस और एटम)"
+
+#: /views/sols/view.ctp:267
+msgid "Printed files"
+msgstr "मुद्रित फ़ाइलें"
+
+#: /views/sols/view.ctp:269
+msgid "Pdf"
+msgstr "Pdf"
+
+#: /views/sols/view.ctp:287
+msgid "Calls"
+msgstr "कॉल"
+
+#: /views/sols/view.ctp:296
+msgid "Text flows"
+msgstr "पाठ प्रवाह"
+
+#: /views/sols/view.ctp:306 /views/users/about.ctp:25
+msgid "All data will be deleted at"
+msgstr "सभी डेटा को हटा दिया जाएगा"
+
+#: /views/sols/view.ctp:307 /views/users/about.ctp:26
+msgid "Max pcap file size"
+msgstr "मैक्स pcap फ़ाइल आकार"
+
+#: /views/sols/view.ctp:307 /views/users/about.ctp:26
+msgid ""
+" Larger files will be rejected. There is no limit on how many packets the "
+"capture file contains."
+msgstr ""
+"बड़ी फ़ाइलों को खारिज कर दिया जाएगा. कितने पैकेट कब्जा फ़ाइल पर कोई सीमा नहीं है."
+
+#: /views/sols/view.ctp:308 /views/users/about.ctp:27
+msgid "Total pcap size limit"
+msgstr "कुल pcap आकार की सीमा"
+
+#: /views/sols/view.ctp:309 /views/users/about.ctp:28
+msgid ""
+"While the decoded data are not shared, we make no claims that your data is "
+"not viewable by other users. For now, if you want to protect sensitive data "
+"in your capture files, don't use the free XplicoDemo service."
+msgstr ""
+"जबकि डीकोड डेटा साझा नहीं कर रहे हैं, हम कोई दावा है कि आपके डेटा अन्य उपयोगकर्ताओं "
+"द्वारा नहीं देखा जा सकता है बनाते हैं. अभी के लिए, यदि आप अपना कब्जा फ़ाइलों में संवेदनशील "
+"डेटा की रक्षा करना चाहते हैं, मुफ्त XplicoDemo सेवा का उपयोग नहीं करते हैं."
+
+#: /views/sols/view.ctp:310 /views/users/about.ctp:29
+msgid ""
+"We recommend using Firefox 3.x, Safari 4.x or greater, or Google Chrome."
+msgstr "हम फ़ायरफ़ॉक्स 3.x, 4.x सफारी या अधिक, या गूगल क्रोम का उपयोग करने की सलाह देते हैं."
+
+#: /views/sols/view.ctp:312 /views/users/cpassword.ctp:16
+msgid "Ok"
+msgstr "ठीक"
+
+#: /views/telnets/index.ctp:20 /views/users/login.ctp:44
+#: /views/users/register.ctp:10
+msgid "Username"
+msgstr "प्रयोक्ता नाम"
+
+#: /views/telnets/view.ctp:13
+msgid "Telnet to"
+msgstr "के लिए Telnet"
+
+#: /views/telnets/view.ctp:20
+msgid "Host:"
+msgstr "मेजबान:"
+
+#: /views/tftps/view.ctp:22
+msgid "cmd.txt"
+msgstr "cmd.txt"
+
+#: /views/tftps/view.ctp:29
+msgid "PCAP:"
+msgstr "PCAP:"
+
+#: /views/unknows/index.ctp:25
+msgid "Destination"
+msgstr "गंतव्य"
+
+#: /views/unknows/index.ctp:26
+msgid "Port"
+msgstr "बंदरगाह"
+
+#: /views/unknows/index.ctp:27
+msgid "Protocol"
+msgstr "प्रोटोकॉल"
+
+#: /views/unknows/index.ctp:28
+msgid "Duration [s]"
+msgstr "अवध्ि [एस]"
+
+#: /views/unknows/index.ctp:29
+msgid "Size [byte]"
+msgstr "साइज [बाइट]"
+
+#: /views/users/cpassword.ctp:10
+msgid "Old password"
+msgstr "पुराना पासवर्ड"
+
+#: /views/users/cpassword.ctp:12
+msgid "New password"
+msgstr "नया पासवर्ड"
+
+#: /views/users/cpassword.ctp:14
+msgid "Repeat new password"
+msgstr "नया पासवर्ड दोहराएँ"
+
+#: /views/users/login.ctp:41
+msgid "Please login"
+msgstr "लॉगिन करें"
+
+#: /views/users/login.ctp:50
+msgid "Last Change"
+msgstr "अंतिम बदलें"
+
+#: /views/users/login.ctp:55
+msgid "Create an account"
+msgstr "एक खाता बनाएँ"
+
+#: /views/users/register.ctp:6
+msgid "Please fill out the form below to register an account."
+msgstr "कृपया नीचे दिए फॉर्म को भरने के लिए एक खाते रजिस्टर."
+
+#: /views/users/register.ctp:15
+msgid "Last Name is required"
+msgstr "अंतिम नाम की आवश्यकता है"
+
+#: /views/users/register.ctp:17
+msgid "Confirm"
+msgstr "पुष्टि करें"
+
+#: /views/users/resend_reg.ctp:5
+msgid "This is a demo!"
+msgstr "यह एक डेमो है!"
+
+#: /views/users/resend_reg.ctp:6
+msgid "Please fill out the form below to resubmit email account."
+msgstr "ईमेल खाते को पुनः भेजने के लिये नीचे दिए फॉर्म को भरें."
+
+#: /views/users/resend_reg.ctp:12
+msgid "email is invalid"
+msgstr "ईमेल अमान्य है"
+
+#: /views/webmails/index.ctp:22
+msgid "Service"
+msgstr "सेवा"
+
+#: /views/webmails/view.ctp:13
+msgid "Webmail to"
+msgstr "के लिए वेबमेल"
+
+#: /views/webmails/view.ctp:39
+msgid "email.eml"
+msgstr "email.eml"
+
+#: /views/webs/hijacking.ctp:5
+msgid "Cookie hijacking domain:"
+msgstr "कुकी अपहरण डोमेन:"
+
+#: /views/webs/hijacking.ctp:12
+msgid "Now you can disable proxy and go to the url:"
+msgstr "अब आप प्रॉक्सी अक्षम और url करने के लिए जा सकते हैं:"
+
+#: /views/webs/images.ctp:51;57;63;69 /views/webs/index.ctp:44
+msgid "Image"
+msgstr "छवि"
+
+#: /views/webs/images.ctp:51;63 /views/webs/method.ctp:21;22;29;34
+msgid "or"
+msgstr "या"
+
+#: /views/webs/images.ctp:51;57;63;69
+msgid "Page"
+msgstr "पेज"
+
+#: /views/webs/images.ctp:57;69
+msgid " or"
+msgstr "या"
+
+#: /views/webs/index.ctp:43
+msgid "Web URLs:"
+msgstr "वेब यूआरएल:"
+
+#: /views/webs/index.ctp:44
+msgid "Html"
+msgstr "Html"
+
+#: /views/webs/index.ctp:44
+msgid "Flash"
+msgstr "फ़्लैश"
+
+#: /views/webs/index.ctp:44
+msgid "JSON"
+msgstr "JSON"
+
+#: /views/webs/index.ctp:44
+msgid "All"
+msgstr "सब"
+
+#: /views/webs/index.ctp:55
+msgid "Method"
+msgstr "विधि"
+
+#: /views/webs/method.ctp:6
+msgid "URL:"
+msgstr "यूआरएल:"
+
+#: /views/webs/method.ctp:11
+msgid "HTTP Request"
+msgstr "HTTP अनुरोध"
+
+#: /views/webs/method.ctp:12
+msgid "HTTP Responce"
+msgstr "HTTP प्रतिक्रिया"
+
+#: /views/webs/method.ctp:21;22
+msgid "Header: Click to"
+msgstr "हैडर: के लिए क्लिक करें"
+
+#: /views/webs/method.ctp:27;32
+msgid "Body: None"
+msgstr "शारीरिक: कोई नहीं"
+
+#: /views/webs/method.ctp:29;34
+msgid "Body: Click to"
+msgstr "शरीर: के लिए क्लिक करें"
+
+#: /webroot/test.php:88
+msgid "Debug setting does not allow access to this url."
+msgstr "डीबग सेटिंग इस url का उपयोग करने की अनुमति नहीं है."
+
+

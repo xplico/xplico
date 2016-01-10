@@ -1,0 +1,6 @@
+opt/xplico/bin/xplico usr/bin/xplico
+opt/xplico/bin/mfbc usr/bin/mfbc
+opt/xplico/bin/mfile usr/bin/mfile
+opt/xplico/bin/mpaltalk usr/bin/mpaltalk
+opt/xplico/bin/mwmail usr/bin/mwmail
+opt/xplico/bin/trigcap usr/bin/trigcap

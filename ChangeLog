@@ -1,0 +1,160 @@
+xplico 1.1.2
+  * IPv4 defragmentation
+  * CapAnalysis dissectors and dispatcher
+
+xplico 1.1.1
+  * Whatsapp OS and Phone number
+  * Added MGCP dissector
+  * IMAP bug fixed
+
+xplico 1.1.0
+  * Performance improved
+  * nDPI updated
+  * IRC bug fixed
+  * HTTP bug fixed
+  * VoIP (SIP, RTP) bug fixed
+  * FTP bug fixed
+  * changed the FaceBook DB tables
+  * Null/Loopback dissector
+  * Cisco HDLC dissector
+  * Libero.it and RossoAlice webmail decoding
+  * Yahoo messenger (web and mobile)
+  * Dig using file signatures (unknown flows)
+
+xplico 1.0.1
+  * nDPI integration
+  * performance improved
+  * FTP dissector improved
+  * Added the prism dissector
+  * CLI execution bug fixed
+  * PCAP-over-IP SSL encryption
+  * IRC dissector improvements
+  * File reconstruction from Fragmented Payloads improved
+  * FaceBook Chat updated
+  * FaceBook Message (partial)
+  * HTTP without initial packets (packets lost)
+  * RTP dissector improved
+  * PCAP2WAV, RTP2WAV interface added
+
+xplico 1.0.0
+  * SQLite dispatcher performance improved
+  * added the PPI dissector
+  * added the syslog dissector
+  * added "Bogus IP length" correction with checksum verification disabled
+  * new Facebook Chat dissector for the new Facebook chat protocol
+  * SIP dissector improved
+  * IMAP dissector improved and bugs fixed
+  * DNS dissector PIPI improved
+  * Yahoo Webmail bugs fixed
+  * Live/Hotmail WebMail Spanish version
+  * GeoMap improved
+  * PCap-over-IP
+
+xplico 0.7.1
+  * RTP bug fixed
+  * dispatcher core functionality bug fixed
+  * mfile manipulator bug fixed
+  * XI bugs fixed
+  * added DB migration tool
+	
+xplico 0.7.0
+  * upgraded XI to Cakephp 1.3
+  * added the ICMPv6 dissector
+  * Ethernet dissector improved (necessary for ICMPv6)
+  * deadlock fixed
+  * fixed the communication bug from xplico and manipulators
+  * SDP dissector bug fixes
+  * SIP and TCP dissectors improved
+  * WebMail manipulator and all python3 scripts improved (ready to new webmail entry... see pol ;) )
+  * added pcap file name on CLI report screen
+  * capture modules log improved
+  * new GeoIP version: 1.4.8
+  * added IPv6 Hop-by-Hop Options
+  * Xplico and all Manipulators with dual stack (IPv4, IPv6)
+  * XI language localization
+  * DNS bugfix
+  * added the  MDNS dissector
+  * added AOL WebMail
+  * added Yahoo! WebMail
+  * added Yahoo! Mail for Andorid Mobile
+  * added Gmail
+
+xplico 0.6.3
+  * xplico 32/64bit version
+  * new decoding manager (DeMa) version 0.3.1
+  * mfile manipulator (HTTP file transfer) bug fixes
+  * WebMail scripts improved
+  * HTTP dissector improved
+  * XI: upgraded javascript libraries
+  
+xplico 0.6.2
+  * l7-patterns for all flows/protocols not decoded by xplico
+  * Xplico Interface (XI) improved
+  * python3 porting of many script
+  * realtime capture module improved
+  * facebook chat realtime view
+  * UTC/localtime bug fixes
+  * l2tp dissector bug fixes
+  * cli and lite dispatchers bug fixes
+  * telnet dissector bug fixes
+	
+xplico 0.6.1
+  * Paltalk dissector
+  * MSN basic dissector (beta)
+  * XI bugfix
+  * XI: Cookie hijacking
+  * XI: XSS fixed
+  * XI: Imges and Webs pages improved
+
+xplico 0.6.0
+  * XI configuration pages
+  * XI administator pages
+  * XI multi-user
+  * IRC dissector
+  * ARP/RAP dissector
+  * radiotap dissector
+  * latitude, longitude selectable from XI
+  * CLI decoding directory (xdecode) selectable
+  * Telent dissector with PIPI
+  * Paltalk Express dissector and aggregator (basic version)
+  * sftp/scp pcap files upload
+
+xplico 0.5.8
+  * RTP, FTP, Telnet, SIP  dissector improvement
+  * RTP bug fix
+  * XI XSS fixed
+  * CakePHP 1.2.7
+  * new tool to manage pcap named trigcap
+  * videosnarf 0.63
+
+xplico 0.5.7
+  * RTCP dissector
+  * RTP dissector improvement
+  * SIP dissector improvement
+	
+xplico 0.5.6
+  * Pass from UTC capture time to local time
+  * HTTP file reconstruction
+  * garbage dissectors with text search
+  * RTP dissector with audio decoding (by videosnarf)
+  * SIP dissector with audio decoding (by videosnarf)
+	
+xplico 0.5.5
+  * migrating to SQLite3
+  * telnet dissector
+  * web mail dissector (AOL, YAHOO!, Live, AOL)
+  * web mail manipulator (YAHOO!, Live, AOL): mail without attach
+  * LLC dissector improving
+  * XI improving
+  * script to check for new release
+	
+xplico 0.5.4
+  * Facebook chat
+  * CakePHP 1.2.x
+
+xplico 0.5.3
+  * Xplico DEFT Edition
+
+xplico 0.5.2
+  * Ubuntu first release.
+

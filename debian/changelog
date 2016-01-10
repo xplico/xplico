@@ -1,0 +1,202 @@
+xplico (1.1.2) stable; urgency=low
+  * IPv4 defragmentation
+  * CapAnalysis dissectors and dispatcher
+ -- Gianluca Costa <g.costa@xplico.org>  Sun, 27 Dec 2016 12:00:00 +0200
+
+xplico (1.1.1) stable; urgency=low
+  * Whatsapp OS and Phone number
+  * Added MGCP dissector
+  * IMAP bug fixed
+ -- Gianluca Costa <g.costa@xplico.org>  Sun, 1 Nov 2015 15:12:00 +0200
+
+xplico (1.1.0) stable; urgency=low
+  * Performance improved
+  * nDPI updated
+  * IRC bug fixed
+  * HTTP bug fixed
+  * VoIP (SIP, RTP) bug fixed
+  * FTP bug fixed
+  * changed the FaceBook DB tables
+  * Null/Loopback dissector
+  * Cisco HDLC dissector
+  * Libero.it and RossoAlice webmail decoding
+  * Yahoo messenger (web and mobile)
+  * Dig using file signatures (unknown flows)
+
+ -- Gianluca Costa <g.costa@xplico.org>  Mon, 23 Dec 2013 14:22:00 +0200
+
+xplico (1.0.1) stable; urgency=low
+  * nDPI integration
+  * performance improved
+  * FTP dissector improved
+  * Added the prism dissector
+  * CLI execution bug fixed
+  * PCAP-over-IP SSL encryption
+  * IRC dissector improvements
+  * File reconstruction from Fragmented Payloads improved
+  * FaceBook Chat updated
+  * FaceBook Message (partial)
+  * HTTP without initial packets (packets lost)
+  * RTP dissector improved
+  * PCAP2WAV, RTP2WAV interface added
+
+ -- Gianluca Costa <g.costa@xplico.org>  Sun, 16 Sep 2012 17:57:23 +0200
+
+	
+xplico (1.0.0) stable; urgency=low
+  * added the PPI dissector
+  * added the syslog dissector
+  * added "Bogus IP length" correction with checksum verification disabled
+  * new Facebook Chat dissector for the new Facebook chat protocol
+  * SIP dissector improved
+  * IMAP dissector improved and bugs fixed
+  * DNS dissector PIPI improved
+  * Yahoo Webmail bugs fixed
+  * Live/Hotmail WebMail Spanish version
+  * GeoMap improved
+  * PCap-over-IP
+
+ -- Gianluca Costa <g.costa@xplico.org>  Sun, 12 Feb 2012 10:57:23 +0200
+
+
+xplico (0.7.1) stable; urgency=low
+  * RTP bug fixed
+  * dispatcher core functionality bug fixed
+  * mfile manipulator bug fixed
+  * XI bugs fixed
+  * added DB migration tool
+
+ -- Gianluca Costa <g.costa@xplico.org>  Sat, 3 Oct 2011 10:57:23 +0200
+	
+
+xplico (0.7.0) stable; urgency=low
+  * upgraded XI to Cakephp 1.3
+  * added the ICMPv6 dissector
+  * Ethernet dissector improved (necessary for ICMPv6)
+  * deadlock fixed
+  * fixed the communication bug from xplico and manipulators
+  * SDP dissector bug fixes
+  * SIP and TCP dissectors improved
+  * WebMail manipulator and all python3 scripts improved (ready to new webmail entry... see pol ;) )
+  * added pcap file name on CLI report screen
+  * capture modules log improved
+  * new GeoIP version: 1.4.8
+  * added IPv6 Hop-by-Hop Options
+  * Xplico and all Manipulators with dual stack (IPv4, IPv6)
+  * XI language localization
+  * DNS bugfix
+  * added the  MDNS dissector
+  * added AOL WebMail
+  * added Yahoo! WebMail
+  * added Yahoo! Mail for Andorid Mobile
+  * added Gmail
+
+ -- Gianluca Costa <g.costa@xplico.org>  Sun, 30 Oct 2011 10:57:23 +0200
+
+
+xplico (0.6.3) stable; urgency=low
+  * xplico 32/64bit version
+  * new decoding manager (DeMa) version 0.3.1
+  * mfile manipulator (HTTP file transfare) bug fixes
+  * WebMail scripts improved
+  * HTTP dissector improved
+  * upgraded the XI javascript libraries
+
+ -- Gianluca Costa <g.costa@xplico.org>  Wed, 1 Jun 2011 10:57:23 +0200
+
+xplico (0.6.2) stable; urgency=low
+  * l7-patterns for all flows/protocols not decoded by xplico
+  * Xplico Interface (XI) improved
+  * python3 porting of many script
+  * realtime capture module improved
+  * facebook chat realtime view
+  * UTC/localtime bug fixes
+  * l2tp dissector bug fixes
+  * cli and lite dispatchers bug fixes
+  * telnet dissector bug fixes
+	
+ -- Gianluca Costa <g.costa@xplico.org>  Sat, 30 Apr 2011 11:36:50 +0200
+
+xplico (0.6.1) stable; urgency=low
+  * Paltalk dissector
+  * MSN basic dissector (beta)
+  * XI bugfix
+  * XI: Cookie hijacking
+  * XI: XSS fixed
+  * XI: Imges and Webs pages improved
+
+ -- Gianluca Costa <g.costa@xplico.org>  Sat, 20 Nov 2010 07:28:40 +0200
+
+xplico (0.6.0) stable; urgency=low
+  * XI configuration pages
+  * XI administator pages
+  * XI multi-user
+  * IRC dissector
+  * ARP/RAP dissector
+  * radiotap dissector
+  * latitude, longitude selectable from XI
+  * CLI decoding directory (xdecode) selectable
+  * Telent dissector with PIPI
+  * Paltalk Express dissector and aggregator (basic version)
+  * sftp/scp pcap files upload
+
+ -- Gianluca Costa <g.costa@xplico.org>  Sun, 3 Oct 2010 13:28:40 +0200
+
+
+xplico (0.5.8) stable; urgency=low
+  * RTP, FTP, Telnet, SIP  dissector improvement
+  * RTP bug fix
+  * XI XSS fixed
+  * CakePHP 1.2.7
+  * new tool to manage pcap named trigcap
+  * videosnarf 0.63
+
+ -- Gianluca Costa <g.costa@xplico.org>  Mon, 28 Jun 2010 08:16:24 +0200
+	
+
+xplico (0.5.7) stable; urgency=low
+  * RTCP dissector
+  * RTP dissector improvement
+  * SIP dissector improvement
+	
+ -- Gianluca Costa <g.costa@xplico.org>  Fri, 30 Apr 2010 20:22:24 +0200
+
+xplico (0.5.6) stable; urgency=low
+  * Pass from UTC capture time to local time
+  * HTTP file reconstruction
+  * garbage dissectors with text search
+  * RTP dissector with audio decoding (by videosnarf)
+  * SIP dissector with audio decoding (by videosnarf)
+	
+ -- Gianluca Costa <g.costa@xplico.org>  Mon, 19 Apr 2010 21:29:44 +0200
+
+xplico (0.5.5) stable; urgency=low
+  * migrating to SQLite3
+  * telnet dissector
+  * web mail dissector (AOL, YAHOO!, Live, AOL)
+  * web mail manipulator (YAHOO!, Live, AOL): mail without attach
+  * LLC dissector improving
+  * XI improving
+  * script to check for new release
+
+ -- Gianluca Costa <g.costa@xplico.org>  Sun, 21 Feb 2010 20:13:11 +0200
+
+xplico (0.5.4) stable; urgency=low
+
+  * Facebook chat
+  * CakePHP 1.2.x
+
+ -- Gianluca Costa <g.costa@xplico.org>  Tue, 22 Dec 2009 19:56:41 +0200
+
+xplico (0.5.3) stable; urgency=low
+
+  * Xplico DEFT Edition
+
+ -- Gianluca Costa <g.costa@xplico.org>  Wed, 27 Oct 2009 20:41:56 +0200
+
+
+xplico (0.5.2) stable; urgency=low
+
+  * Ubuntu first release.
+
+ -- Gianluca Costa <g.costa@xplico.org>  Wed, 05 Aug 2009 20:41:56 +0200

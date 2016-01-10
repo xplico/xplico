@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=xplico stop
+GenericName=Xplico Service
+Comment=service xplico stop
+TryExec=/etc/init.d/xplico
+Exec=sh -c "sudo service xplico stop; echo; bash"
+Icon=utilities-terminal
+Terminal=true
+Categories=System;Monitor;

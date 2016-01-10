@@ -1,0 +1,17 @@
+Source: xplico
+Section: net
+Priority: optional
+Maintainer: Gianluca Costa <g.costa@xplico.org>
+Build-Depends: debhelper (>= 7.0.50~), libpcap-dev, libsqlite3-dev, libx11-dev, libxt-dev, libxext-dev, libnet1-dev, sqlite3, vim-common, libssl-dev
+Standards-Version: 3.9.1
+Homepage: http://www.xplico.org
+
+Package: xplico
+Architecture: any
+Depends:  ${shlibs:Depends}, tshark, python3.4-minimal, python3-httplib2, python3-psycopg2, apache2, php5-common, libapache2-mod-php5, php5-sqlite, php5-cli, recode, sox, lame, binfmt-support, sqlite3, openssl, php5-json
+Description: Network Forensic Analysis Tool (NFAT)
+ The goal of Xplico is extract from an internet traffic
+ capture the applications data contained. For example,
+ from a pcap file Xplico extracts each email (POP, IMAP,
+ and SMTP protocols), all HTTP contents, each VoIP call (SIP, MGCP, H323),
+ FTP, TFTP, and so on. Xplico is not a network protocol analyzer.

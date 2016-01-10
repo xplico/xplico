@@ -1,0 +1,10 @@
+This is the Xplico implementation for cli.
+All data are stored in xdecode dir.
+For every source IP there is a directory: xdeconde/[IP], inside this dir for every protocol there is a directory:
+
+xdeconde/[IP]/mail
+xdeconde/[IP]/mail/in
+xdeconde/[IP]/mail/out
+xdeconde/[IP]/http/[server_name]/
+xdeconde/[IP]/http/[server_name]/post
+...

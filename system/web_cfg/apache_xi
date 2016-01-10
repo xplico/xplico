@@ -1,0 +1,21 @@
+Listen 9876
+
+<VirtualHost *:9876>
+	ServerAdmin info@xplico.org
+
+	DocumentRoot /opt/xplico/xi
+	<Directory "/opt/xplico/xi">
+		AllowOverride All
+		Require local
+		Satisfy Any
+	</Directory>
+
+	ErrorLog /var/log/apache2/xplico_error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog /var/log/apache2/xplico_access.log combined
+
+</VirtualHost>

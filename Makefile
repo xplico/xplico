@@ -1,0 +1,277 @@
+# Makefile
+#
+# $Id: $
+#
+# Xplico - Internet Traffic Decoder
+# By Gianluca Costa <g.costa@xplico.org>
+# Copyright 2007-2014 Gianluca Costa & Andrea de Franceschi. Web: www.xplico.org
+#
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+
+# root directory
+ROOT_DIR = $(shell pwd)
+
+ifndef DEFAULT_DIR
+DEFAULT_DIR = /opt/xplico
+endif
+ifdef DESTDIR
+INSTALL_DIR = $(DESTDIR)/$(DEFAULT_DIR)
+else
+INSTALL_DIR = $(DEFAULT_DIR)
+endif
+
+# sub directory
+SUBDIRS = capt_dissectors common dissectors dispatch manipulators system
+
+# xplico library
+XPL_LIB = $(ROOT_DIR)/common/libxplico_core.a $(ROOT_DIR)/capt_dissectors/libxplico_capt.a $(ROOT_DIR)/dispatch/libxplico_dispatch.a $(ROOT_DIR)/dissectors/libxplico_dissector.a
+
+# src file
+SRC = xplico.c report.c
+
+# compilation
+INCLUDE_DIR = -I$(ROOT_DIR)/include -I$(ROOT_DIR)/common/include -I$(ROOT_DIR)/dissectors/include -I$(ROOT_DIR)/capt_dissectors/include -I$(ROOT_DIR)/dispatch/include
+LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto
+CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -fPIC -D_FILE_OFFSET_BITS=64
+MODULE_PATH = modules
+
+# pedantic statistics
+CFLAGS += -DXPL_PEDANTIC_STATISTICS=1
+
+# optmimization
+ifdef O3
+CFLAGS += -O3
+ ifndef CHECKOFF
+ CHECKOFF = 1
+ endif
+else
+#CFLAGS += -g -ggdb -dr
+CFLAGS += -g -ggdb -O0
+endif
+
+# performance
+ifdef GPROF
+CFLAGS += -pg
+endif
+
+# table of flows sorted
+ifndef FTBL_NOSORT
+CFLAGS += -DFTBL_SORT=1
+endif
+
+# enable check code
+ifndef CHECKOFF
+CFLAGS += -DXPL_CHECK_CODE=1
+endif
+
+# architeture type
+ifdef CROSS_COMPILE
+CC = $(CROSS_COMPILE)gcc
+STRIP = $(CROSS_COMPILE)strip
+else
+STRIP = strip
+CFLAGS += -DXPL_X86=1
+endif
+
+# timeout connection in realtime acq
+ifdef RT_TO
+CFLAGS += -DXPL_REALTIME=1
+endif
+
+# GeoIP library source code
+GEOIP_V = $(ROOT_DIR)/third-party/GeoIP-1.6.5
+GEOIP_LIB = $(GEOIP_V)/libGeoIP/.libs/libGeoIP.a
+XPL_LIB += $(GEOIP_LIB)
+CFLAGS += -DGEOIP_LIBRARY=1
+INCLUDE_DIR += -I$(GEOIP_V)/libGeoIP/
+
+# JSON
+JSON_PATH = $(ROOT_DIR)/third-party/json-c
+
+# main cflags
+MCFLAGS = $(CFLAGS) -DLOG_COMPONENT=-1
+
+
+# To make it visible
+export CC CCPP ROOT_DIR CFLAGS LDFLAGS INCLUDE_DIR INSTALL_DIR GEOIP_LIB
+
+all: thirdparty subdir xplico mdl check_version
+
+help:
+	@echo "Flags:"
+	@echo "    VER=<string>      --> string is the release name, otherwise the date is the name"
+	@echo "    GPROF=1           --> enable gprof compilation"
+	@echo "    FTBL_NOSORT=1     --> disable sort in flows manager"
+	@echo "    O3=1              --> enable optimization"
+	@echo " "
+	@echo "Comands:"
+	@echo "    help    --> this help"
+	@echo "    reset   --> delete default tmp data"
+	@echo "    clean   --> clean"
+	@echo "    tgz     --> project snapshot"
+	@echo "    install --> install in $(INSTALL_DIR)"
+	@echo "    check_version --> check version"
+	@echo " "
+
+# version name
+ifndef VER
+VER = $(shell date +%Y_%m_%d)
+endif
+
+thirdparty:
+ifneq ($(wildcard $(JSON_PATH)/Makefile), $(JSON_PATH)/Makefile)
+	cd $(JSON_PATH); ./autogen.sh; ./configure
+endif
+	$(MAKE) -C $(JSON_PATH)
+ifneq ($(wildcard $(GEOIP_V)/Makefile), $(GEOIP_V)/Makefile)
+	cd $(GEOIP_V); ./configure
+endif
+	$(MAKE) -C $(GEOIP_V)
+
+xplico: $(SRC:.c=.o) $(XPL_LIB)
+	$(CC) $(MCFLAGS) -o $@ $(SRC:.c=.o) $(XPL_LIB) $(LDFLAGS)
+	mkdir -p tmp
+	mkdir -p xdecode
+
+
+subdir:
+	@for dir in $(SUBDIRS) ; \
+	   do $(MAKE) -C $$dir || exit 1; \
+	 done
+
+
+mdl:
+	mkdir -p $(MODULE_PATH)
+	cp -a dissectors/*/*.so $(MODULE_PATH)
+	cp -a capt_dissectors/*/*.so $(MODULE_PATH)
+	cp -a dispatch/*/*.so $(MODULE_PATH)
+
+
+clean: reset
+	@for dir in $(SUBDIRS) ; do $(MAKE) -C $$dir clean; done
+	rm -f xplico *.o *~ *.log .depend val.* *.expand
+	rm -rf $(MODULE_PATH)
+ifeq ($(wildcard $(JSON_PATH)/Makefile), $(JSON_PATH)/Makefile)
+	$(MAKE) -C $(JSON_PATH) mostlyclean
+	$(MAKE) -C $(JSON_PATH) clean
+	-$(MAKE) -C $(JSON_PATH) maintainer-clean
+	rm -f $(JSON_PATH)/Makefile
+	rm -rf $(JSON_PATH)/.deps
+	rm -rf $(JSON_PATH)/tests/.deps
+endif
+ifeq ($(wildcard $(GEOIP_V)/Makefile), $(GEOIP_V)/Makefile)
+	$(MAKE) -C $(GEOIP_V) clean distclean
+endif
+	rm -rf debian/xplico*
+	rm -f webmail/*/*~
+	rm -f */*~
+	rm -f */*/*~
+	rm -f *.tgz
+
+
+installcp: all 
+	rm -rf $(INSTALL_DIR)/*
+	mkdir -p $(INSTALL_DIR)
+	chmod 777 $(INSTALL_DIR)
+	mkdir -p $(INSTALL_DIR)/bin
+	mkdir -p $(INSTALL_DIR)/bin/modules
+	mkdir -p $(INSTALL_DIR)/script
+	mkdir -p $(INSTALL_DIR)/script/db
+	mkdir -p $(INSTALL_DIR)/cfg
+	mkdir -p $(INSTALL_DIR)/log
+	cp -a xplico $(INSTALL_DIR)/bin
+#	strip -s $(INSTALL_DIR)/bin/xplico
+	cp -a $(MODULE_PATH)/* $(INSTALL_DIR)/bin/modules
+#	strip -s  $(INSTALL_DIR)/bin/modules/*.so
+	cp -a LICENSE COPYING* $(INSTALL_DIR)/
+	cp -a config/xplico_install_*.cfg $(INSTALL_DIR)/cfg
+	cp -a config/xplico_cli_fix.cfg $(INSTALL_DIR)/cfg/xplico_cli.cfg
+	cp -a config/xplico_cli_fix_nc.cfg $(INSTALL_DIR)/cfg/xplico_cli_nc.cfg
+	cp -a config/mfbc_install_*.cfg $(INSTALL_DIR)/cfg
+	cp -a config/mfbc_cli_fix.cfg $(INSTALL_DIR)/cfg/mfbc_cli.cfg
+	cp -a config/mwmail_install_*.cfg $(INSTALL_DIR)/cfg
+	cp -a config/mwmail_cli_fix.cfg $(INSTALL_DIR)/cfg/mwmail_cli.cfg
+	cp -a config/mfile_install_*.cfg $(INSTALL_DIR)/cfg
+	cp -a config/mfile_cli_fix.cfg $(INSTALL_DIR)/cfg/mfile_cli.cfg
+	cp -a config/mpaltalk_install_*.cfg $(INSTALL_DIR)/cfg
+	cp -a config/mpaltalk_cli_fix.cfg $(INSTALL_DIR)/cfg/mpaltalk_cli.cfg
+	cp -a config/mwebymsg_install_*.cfg $(INSTALL_DIR)/cfg
+	cp -a config/mwebymsg_cli_fix.cfg $(INSTALL_DIR)/cfg/webymsg_cli.cfg
+	cp -a config/tcp_grb_dig.cfg $(INSTALL_DIR)/cfg/tcp_grb_dig.cfg
+ifeq ($(wildcard GeoLiteCity.dat), GeoLiteCity.dat)
+	cp -a GeoLiteCity.dat $(INSTALL_DIR)/GeoLiteCity.dat
+endif
+ifeq ($(wildcard GeoLiteCityv6.dat), GeoLiteCityv6.dat)
+	cp -a GeoLiteCityv6.dat $(INSTALL_DIR)/GeoLiteCityv6.dat
+endif
+ifeq ($(wildcard pcl6), pcl6)
+	cp -a pcl6 $(INSTALL_DIR)/bin
+endif
+ifeq ($(wildcard videosnarf), videosnarf)
+	cp -a videosnarf $(INSTALL_DIR)/bin
+endif
+# manipulators
+	$(MAKE) -C manipulators install
+	$(MAKE) -C system install
+
+
+# install and permission
+ifndef DESTDIR
+install: installcp
+	chmod 777 $(INSTALL_DIR)
+	chmod 777 $(INSTALL_DIR)/cfg
+	chmod a+w $(INSTALL_DIR)/cfg/*
+	chmod -R 777 $(INSTALL_DIR)/xi/app/tmp
+else
+install: installcp
+	chmod 777 $(INSTALL_DIR)
+	chmod 777 $(INSTALL_DIR)/cfg
+	chmod a+w $(INSTALL_DIR)/cfg/*
+	chmod -R 777 $(INSTALL_DIR)/xi/app/tmp
+	mkdir -p $(DESTDIR)/etc/apache2/sites-available/
+	mkdir -p $(DESTDIR)/etc/apache2/sites-enabled/
+	cp $(INSTALL_DIR)/cfg/apache_xi $(DESTDIR)/etc/apache2/sites-available/xplico
+endif
+
+
+.PHONY: check_version
+check_version:
+	@./check_version.sh none
+
+
+.PHONY: reset
+reset:
+	rm -rf tmp/*
+	rm -rf xdecode
+
+
+tgz: clean
+	cd ..; tar cvzf xplico-$(VER).tgz --exclude cscope.files --exclude cscope.out --exclude CVS --exclude .svn --exclude release --exclude .svn xplico*/
+	mkdir -p release
+	mv ../xplico-$(VER).tgz release
+	rm -f release/*.gpg
+
+
+%.o: %.c
+	$(CC) $(MCFLAGS) -c -o $@ $< 
+
+
+.depend: $(SRC)
+	$(CC) -M $(MCFLAGS) $(SRC) > $@
+
+
+sinclude .depend
