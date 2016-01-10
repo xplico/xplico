@@ -2,15 +2,9 @@
 
 Xplico is a Network Forensic Analisys Tool NFAT, for Unix and Unix-like operating systems.  It uses libpcap, a packet capture and filtering library.
 
+The official home of Xplico is: http://www.xplico.org
 
-The official home of Xplico is
-
-    http://www.xplico.org
-
-The latest distribution can be found in the subdirectory
-
-    http://www.xplico.org/download
-
+The latest distribution can be found in the subdirectory: http://www.xplico.org/download
 
 # Installation
 
