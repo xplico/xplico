@@ -158,7 +158,7 @@ static void PcapDissector(u_char *user, const struct pcap_pkthdr *h, const u_cha
             if (tgl == 0)
                 ReportSplash();
         }
-        tm = time(NULL) + 5;
+        tm = time(NULL) + 2;
     }
 }
 
@@ -221,7 +221,7 @@ static void PcapDissectorTsec(u_char *user, const struct pcap_pkthdr *h, const u
                 ;
             ReportSplash();
         }
-        tm = time(NULL) + 5;
+        tm = time(NULL) + 2;
     }
 }
 
@@ -285,7 +285,7 @@ static int SnoopDissector(FILE *fp, struct cap_ref *ref)
                     ;
                 ReportSplash();
             }
-            tm = time(NULL) + 5;
+            tm = time(NULL) + 2;
         }
     }
 
