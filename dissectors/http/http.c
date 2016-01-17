@@ -43,6 +43,7 @@
 #include "http.h"
 #include "http_com.h"
 #include "pei.h"
+#include "fileformat.h"
 
 #define HTTP_TMP_DIR    "http"
 
@@ -684,7 +685,7 @@ static bool HttpClientPkt(http_priv *priv, packet *pkt)
         else {
             priv->dir = HTTP_CLT_DIR_REVERS;
             ret = TRUE;
-            LogPrintf(LV_WARNING, "Acqusition file/probe has an error!");
+            LogPrintf(LV_WARNING, "Acquisition file/probe has an error!");
             if (pkt != NULL)
                 ProtStackFrmDisp(pkt->stk, TRUE);
         }
@@ -2107,6 +2108,9 @@ static packet* HttpMsgDissector(packet *pkt)
     pei_component *cmpn;
     char tmp[32];
     packet *pkt_cp;
+    const char *bnd;
+    multipart_f *mpfile;
+    multipart_f *nxt;
 
     ppei = NULL;
 
@@ -2120,6 +2124,39 @@ static packet* HttpMsgDissector(packet *pkt)
     }
 #endif
 
+    /* file extraction */
+    bnd = HttpMsgBodyBoundary(msg, TRUE);
+    if (msg->mtd == HTTP_MT_POST && bnd != NULL) {
+        mpfile = FFormatMultipart(msg->req_body_file, bnd);
+        //FFormatMultipartPrint(mpfile);
+        nxt = mpfile;
+        while (nxt) {
+            if (nxt->file_path != NULL) {
+                /* pei */
+                PeiNew(&ppei, prot_id);
+                PeiCapTime(ppei, pkt->cap_sec);
+                PeiMarker(ppei, pkt->serial);
+                PeiStackFlow(ppei, pkt->stk);
+                /*   url */
+                PeiNewComponent(&cmpn, pei_url_id);
+                PeiCompCapTime(cmpn, msg->start_cap);
+                PeiCompCapEndTime(cmpn, msg->end_cap);
+                PeiCompAddStingBuff(cmpn, msg->uri);
+                PeiAddComponent(ppei, cmpn);
+                /*  file */
+                PeiNewComponent(&cmpn, pei_file_id);
+                PeiCompCapTime(cmpn, msg->start_cap);
+                PeiCompCapEndTime(cmpn, msg->end_cap);
+                PeiCompAddFile(cmpn, nxt->file_name, nxt->file_path, 0);
+                PeiAddComponent(ppei, cmpn);
+
+                /* insert pei */
+                PeiIns(ppei);
+            }
+            nxt = nxt->nxt;
+        }
+        FFormatMultipartFree(mpfile);
+    }
     /* pei */
     PeiNew(&ppei, prot_id);
     PeiCapTime(ppei, pkt->cap_sec);
