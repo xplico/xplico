@@ -632,7 +632,7 @@ int DissecRegist(const char *file_cfg)
     memset(&peic, 0, sizeof(pei_cmpt));
     
     /* protocol name */
-    ProtName("Domain Name Service", "dns");
+    ProtName("Domain Name Service", "dns-ca");
     
     /* dep: udp */
     dep.name = "udp";
@@ -761,7 +761,7 @@ int DissectInit(void)
     udp_id = ProtId("udp");
     udp_port_dst_id = ProtAttrId(udp_id, "udp.dstport");
     udp_port_src_id = ProtAttrId(udp_id, "udp.srcport");
-    dns_id = ProtId("dns");
+    dns_id = ProtId("dns-ca");
 
     /* pei id */
     pei_ip_src_id = ProtPeiComptId(dns_id, "ip.src");
