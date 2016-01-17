@@ -56,6 +56,8 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2012, http://www.xplico.or
 </head>
 
 <body>
+<img id="devel_image" style="position: fixed; top: 0pt; right: 0pt; border: 0pt none; z-index: 100;" src="<?php echo $html->url("/img/devel.png") ?>" alt="">
+<!-- #content: holds all except site footer - causes footer to stick to bottom -->
 <div id="page">
   <!-- #header: holds the logo and top links -->
   <div id="header">

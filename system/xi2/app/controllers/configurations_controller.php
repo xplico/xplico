@@ -841,6 +841,17 @@ class ConfigurationsController extends AppController
                             }
                         }
                         break;
+
+                    case 'mpls':
+                        if (strstr($line, 'dis_mpls.')) {
+                            if (strstr($line, '#MODULE') == FALSE) {
+                                $line = '#'.$line;
+                            }
+                            else {
+                                $line = str_replace('#', '', $line);
+                            }
+                        }
+                        break;
                     }
                     fwrite($fh, $line);
                 }
@@ -898,7 +909,8 @@ class ConfigurationsController extends AppController
             'chdlc' => 'Off',
             'webymsg' => 'Off',
             'mgcp' => 'Off',
-            'whatsapp' => 'Off'
+            'whatsapp' => 'Off',
+            'mpls' => 'Off'
             );
         $cfg = file('/opt/xplico/cfg/xplico_install_lite.cfg');
         foreach ($cfg as $line) {
@@ -1053,6 +1065,9 @@ class ConfigurationsController extends AppController
                     }
                     else if (strstr($line, 'dis_wa.')) {
                         $dissectors['whatsapp'] = 'On';
+                    }
+                    else if (strstr($line, 'dis_mpls.')) {
+                        $dissectors['mgcp'] = 'On';
                     }
                 }
             }
