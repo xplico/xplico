@@ -919,6 +919,7 @@ static int TcpRst(int flow_id, order *ord, packet *pkt, unsigned long seq, unsig
 }
 
 
+#if TCP_SOFT_ACK
 static int TcpOneVers(int flow_id, order *ord, bool src)
 {
     if (src == TRUE) {
@@ -941,6 +942,7 @@ static int TcpOneVers(int flow_id, order *ord, bool src)
 
     return 0;
 }
+#endif
 
 
 static void TcpSubDissector(int flow_id, packet *pkt)
