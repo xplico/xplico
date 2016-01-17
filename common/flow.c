@@ -41,8 +41,7 @@
 
 
 /** define */
-#define FW_TBL_ELEMENT_DELTA   100000
-#define FW_TBL_FFREE_LIM        40000
+#define FW_TBL_ELEMENT_DELTA   10000
 
 /* avoid deadlock: new code */
 #define XP_NEW_CLOSE              1
@@ -139,7 +138,8 @@ static int FlowTblExtend(void)
 {
     unsigned long i, len;
     flow *newft, *tmp;
-
+    freel *ftmp;
+    
     len = tbl_dim + FW_TBL_ELEMENT_DELTA;
 
     /* lock all mutex */
@@ -164,6 +164,11 @@ static int FlowTblExtend(void)
             xfree(newft);
             return -1;
         }
+        ftmp = xmalloc(sizeof(freel));
+        ftmp->id = i;
+        ftmp->nxt = ffree;
+        ffree = ftmp;
+        ffree_num++;
     }
     tmp = flow_tbl;
     flow_tbl = newft;
@@ -206,6 +211,8 @@ int FlowInit(void)
     tbl_dim = 0;
     flow_num = 0;
     gbl_time = ULONG_MAX; /* no time */
+    ffree = NULL;
+    ffree_num = 0;
 
     /* base flows tbl */
     if (FlowTblExtend() == -1) {
@@ -215,8 +222,6 @@ int FlowInit(void)
     pthread_mutex_init(&flow_mux, NULL);
     ptrd_lock = 0;
     nesting = 0;
-    ffree = NULL;
-    ffree_num = 0;
     
     return 0;
 }
@@ -244,29 +249,25 @@ int FlowCreate(pstack_f *stk)
     FlowTblLock();
 
     if (ffree == NULL) {
-        /* search free location */
-        for (i=0; i!=tbl_dim; i++) {
-            if (flow_tbl[i].stack == NULL) {
-                break;
-            }
+        /* search free location */        
+        if (flow_num != tbl_dim) {
+            LogPrintf(LV_OOPS, "Flow counter error %i != %i !", flow_num, tbl_dim);
+            exit(-1);
         }
-        if (i == tbl_dim) {
-            ret = FlowTblExtend();
-            if (ret == -1) {
-                LogPrintf(LV_ERROR, "Unable to extend flows data table");
-                FlowTblUnlock();
+        LogPrintf(LV_ERROR, "flv: %i", tbl_dim);
+        ret = FlowTblExtend();
+        if (ret == -1) {
+            LogPrintf(LV_ERROR, "Unable to extend flows data table");
+            FlowTblUnlock();
     
-                return -1;
-            }
+            return -1;
         }
     }
-    else {
-        i = ffree->id;
-        ftmp = ffree;
-        ffree = ffree->nxt;
-        xfree(ftmp);
-        ffree_num--;
-    }
+    i = ffree->id;
+    ftmp = ffree;
+    ffree = ffree->nxt;
+    xfree(ftmp);
+    ffree_num--;
     
 #ifdef XPL_CHECK_CODE
     if (flow_tbl[i].fpkt != NULL || flow_tbl[i].pkt_num != 0) {
@@ -536,13 +537,13 @@ int FlowDelete(int flow_id)
 
     /* reset flow cel */
     FlowElemInit(flow_tbl+flow_id, TRUE);
-    if (ffree_num != FW_TBL_FFREE_LIM) {
-        ftmp = xmalloc(sizeof(freel));
-        ftmp->id = flow_id;
-        ftmp->nxt = ffree;
-        ffree = ftmp;
-        ffree_num++;
-    }
+    
+    ftmp = xmalloc(sizeof(freel));
+    ftmp->id = flow_id;
+    ftmp->nxt = ffree;
+    ffree = ftmp;
+    ffree_num++;
+    
     flow_num--;
 
     FlowTblUnlock();
@@ -660,7 +661,7 @@ packet *FlowGetPkt(int flow_id)
     if (flow_tbl[flow_id].grp_fuse == TRUE && flow_tbl[flow_id].grp_id != -1) {
         fuse = TRUE;
         if (GrpWaitPkt(flow_tbl[flow_id].grp_id, flow_tbl[flow_id].gref) == 0) {
-            /* there is a packet but isnt' of this flow */
+            /* there is a packet but isn't of this flow */
             return NULL;
         }
     }
