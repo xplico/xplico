@@ -1,0 +1,5 @@
+*.[oa]
+*~
+release/
+tmp/
+doc/
