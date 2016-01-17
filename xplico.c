@@ -199,12 +199,13 @@ static void SetLimits(void)
 int main(int argc, char *argv[])
 {
     bool graph, capt, help, info, log, cfg_f, version;
-    int c;
+    int c, i;
     char config_file[512];
     char module_name[128];
     char info_prot[64];
     struct timeval start_t, end_t;
     time_t end_to;
+    struct timespec to;
     extern char *optarg;
     extern int optind, optopt;
 
@@ -217,7 +218,6 @@ int main(int argc, char *argv[])
     cfg_f = FALSE;
     version = FALSE;
 
-    gettimeofday(&start_t, NULL);
     module_name[0] = '\0';
     strcpy(config_file, XP_DEFAULT_CFG); /* default */
     while (capt == FALSE && (c = getopt(argc, argv, "vc:hi:glsm:")) != -1) {
@@ -423,6 +423,7 @@ int main(int argc, char *argv[])
     ReportInit();
 
     /* start */
+    gettimeofday(&start_t, NULL);
     if (CapMain(argc, argv) == -1) {
         Usage(argv[0], capt, module_name);
         return -1;
@@ -434,6 +435,9 @@ int main(int argc, char *argv[])
 
     /* wait completitions */
     end_to = time(NULL) + XP_END_TO;
+    to.tv_nsec = 50000000;
+    to.tv_sec = 0;
+    i = 0;
     while (FthreadRunning() != 0) {
         if (end_to < time(NULL)) {
             LogPrintf(LV_INFO, "Thread runnning: %d", FthreadRunning());
@@ -444,9 +448,13 @@ int main(int argc, char *argv[])
             printf("\n---- EXIT for infinte loop, see log ----\n\n");
             exit(-1);
         }
-        ReportSplash();
-        sleep(1);
+        i++;
+        if (i%20 == 0) {
+            ReportSplash();
+        }
+        nanosleep(&to, NULL);
     }
+    gettimeofday(&end_t, NULL);
 
     /* check number of flow still open */
     if (FlowNumber() != 0) {
