@@ -1,0 +1,17 @@
+--
+-- Tabella dei file di input (pcap)
+--
+CREATE TABLE IF NOT EXISTS inputs (
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  sol_id INTEGER NOT NULL,
+  pol_id INTEGER NOT NULL,
+  start_time TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+  end_time TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+  data_size INTEGER,
+  filename VARCHAR( 255 ),
+  md5 VARCHAR( 255 ),
+  sha1 VARCHAR( 255 ),
+  PRIMARY KEY (id),
+  FOREIGN KEY (pol_id) REFERENCES pols(id) ON DELETE CASCADE,
+  FOREIGN KEY (sol_id) REFERENCES sols(id) ON DELETE CASCADE
+) TYPE = MYISAM ;

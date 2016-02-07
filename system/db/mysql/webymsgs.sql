@@ -1,0 +1,24 @@
+--
+-- Webmsn chat
+--
+CREATE TABLE IF NOT EXISTS webymsgs (
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  sol_id INTEGER NOT NULL,
+  pol_id INTEGER NOT NULL,
+  source_id INTEGER NOT NULL,
+  capture_date TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+  decoding_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  viewed_date TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+  data_size INTEGER,
+  first_visualization_user_id INTEGER NOT NULL DEFAULT 0,
+  flow_info VARCHAR( 255 ) NOT NULL COMMENT 'Xml file of flow',
+  important BOOL DEFAULT '0',
+  username VARCHAR( 40 ),
+  friend VARCHAR( 1024 ),
+  chat VARCHAR( 1024 ),
+  duration INTEGER DEFAULT 0,
+  PRIMARY KEY (id),
+  FOREIGN KEY (pol_id) REFERENCES pols(id) ON DELETE CASCADE,
+  FOREIGN KEY (sol_id) REFERENCES sols(id) ON DELETE CASCADE,
+  FOREIGN KEY (source_id) REFERENCES sources(id) ON DELETE CASCADE
+) TYPE = MYISAM;

@@ -1,0 +1,24 @@
+--
+-- Tabella degli mms
+--
+CREATE TABLE IF NOT EXISTS mms (
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  sol_id INTEGER NOT NULL,
+  pol_id INTEGER NOT NULL,
+  source_id INTEGER NOT NULL,
+  capture_date TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+  decoding_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  viewed_date TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
+  first_visualization_user_id INTEGER NOT NULL DEFAULT 0,
+  flow_info VARCHAR( 255 ) NOT NULL,
+  url VARCHAR( 4096 ) DEFAULT ' ',
+  from_num VARCHAR( 80 ) DEFAULT ' ',
+  to_num VARCHAR( 80 ) DEFAULT ' ',
+  cc_num VARCHAR( 80 ) DEFAULT ' ',
+  bcc_num VARCHAR( 80 ) DEFAULT ' ',
+  contents INTEGER DEFAULT 0,
+  PRIMARY KEY (id),
+  FOREIGN KEY (pol_id) REFERENCES pols(id) ON DELETE CASCADE,
+  FOREIGN KEY (sol_id) REFERENCES sols(id) ON DELETE CASCADE,
+  FOREIGN KEY (source_id) REFERENCES sources(id) ON DELETE CASCADE
+) TYPE = MYISAM ;

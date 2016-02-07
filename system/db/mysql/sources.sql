@@ -1,0 +1,13 @@
+--
+-- Tabel of source (IP o name)
+--
+CREATE TABLE IF NOT EXISTS sources (
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  sol_id INTEGER NOT NULL,
+  pol_id INTEGER NOT NULL,
+  ip VARCHAR( 255 ) NOT NULL,
+  name VARCHAR( 255 ) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (pol_id) REFERENCES pols(id) ON DELETE CASCADE,
+  FOREIGN KEY (sol_id) REFERENCES sols(id) ON DELETE CASCADE
+) TYPE = MYISAM ;
