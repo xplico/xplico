@@ -28,7 +28,7 @@ App::import('Core', 'String');
  *
  * @package       cake
  * @subpackage    cake.cake.libs.controller.components
- * @link http://book.cakephp.org/view/1283/Email
+ * @link http://book.cakephp.org/1.3/en/The-Manual/Core-Components/Email.html
  *
  */
 class EmailComponent extends Object{
@@ -248,7 +248,7 @@ class EmailComponent extends Object{
  *
  * @var array
  * @access public
- * @link http://book.cakephp.org/view/1290/Sending-A-Message-Using-SMTP
+ * @link http://book.cakephp.org/1.3/en/The-Manual/Core-Components/Email.html#sending-a-message-using-smtp
  */
 	var $smtpOptions = array();
 
@@ -419,7 +419,7 @@ class EmailComponent extends Object{
  * Reset all EmailComponent internal variables to be able to send out a new email.
  *
  * @access public
- * @link http://book.cakephp.org/view/1285/Sending-Multiple-Emails-in-a-loop
+ * @link http://book.cakephp.org/1.3/en/The-Manual/Core-Components/Email.html#sending-multiple-emails-in-a-loop
  */
 	function reset() {
 		$this->template = null;
@@ -617,7 +617,6 @@ class EmailComponent extends Object{
 		}
 
 		if (!empty($this->attachments)) {
-			$headers['MIME-Version'] = '1.0';
 			$headers['Content-Type'] = 'multipart/mixed; boundary="' . $this->__boundary . '"';
 		} elseif ($this->sendAs === 'text') {
 			$headers['Content-Type'] = 'text/plain; charset=' . $this->charset;
@@ -626,7 +625,8 @@ class EmailComponent extends Object{
 		} elseif ($this->sendAs === 'both') {
 			$headers['Content-Type'] = 'multipart/alternative; boundary="alt-' . $this->__boundary . '"';
 		}
-
+		
+		$headers['MIME-Version'] = '1.0';
 		$headers['Content-Transfer-Encoding'] = '7bit';
 
         $this->header($headers);
