@@ -24,7 +24,7 @@
 
 
 # sub directory
-SUBDIRS = none cli lite pcap2wav capostgres
+SUBDIRS = none cli lite pcap2wav capostgres ximysql
 
 # log dispatcer flags
 CFLAGS += -DLOG_COMPONENT=-3
