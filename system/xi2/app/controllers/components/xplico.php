@@ -155,9 +155,9 @@ class XplicoComponent extends Object
 
 
     function startStopXplico($futureStatus){
-	system("/usr/bin/sudo /usr/bin/killall -9 /opt/xplico/bin/dema > /dev/null 2>&1 &"); 
+	system("sudo killall -9 /opt/xplico/bin/dema > /dev/null 2>&1 &"); 
 	if ($futureStatus == 1) {
-            system ("/usr/bin/sudo /opt/xplico/script/sqlite_demo.sh > /dev/null 2>&1 &");
+            system ("sudo /opt/xplico/script/sqlite_demo.sh > /dev/null 2>&1 &");
         }
         sleep (1);      //Necessary, calling the OS needs some time...	
 	return $this->checkXplicoStatus();
@@ -165,7 +165,7 @@ class XplicoComponent extends Object
 
     //Yes, i know, this execs on php will send me to Hell.
     function getDemaVersion() {
-        return exec('/opt/xplico/bin/dema -v  |  /usr/bin/cut -b 6,7,8,9,10');
+        return exec('/opt/xplico/bin/dema -v  |  cut -b 6,7,8,9,10');
     }
 
     function getXplicoVersion() {
@@ -173,46 +173,43 @@ class XplicoComponent extends Object
     }
 
     function getSqliteVersion() {
-        return exec('/usr/bin/sqlite3 -version');
+        return exec('sqlite3 -version | cut -c 1-6');
     }
 
     function getCakephpVersion() {
         return Configure::version();
     }
     function getApacheVersion() {
-        $ver = exec('/usr/sbin/apache2 -v | grep version | cut -b 24,25,26,27,28,29,30');
-        if (empty($ver))
-            $ver = exec('httpd2 -v | grep version | cut -b 24,25,26,27,28,29,30');
-	return $ver;
+		return apache_get_version();
     }
 
     function getPHPVersion() {
-        $ver = exec('/usr/bin/php -v | grep PHP | grep built | cut -b 5,6,7,8,9 ');
+        $ver = exec('php -v | grep PHP | grep built | cut -b 5,6,7,8,9 ');
         if (empty($ver))
             $ver = exec('php -v | grep PHP | grep built | cut -b 5,6,7,8,9 ');
 	return $ver;
     }
 
     function gettcpdumpVersion() {
-        return exec('/usr/sbin/tcpdump -V 2> /tmp/output.tcpdump.txt ; /bin/cat /tmp/output.tcpdump.txt  | /bin/grep tcpdump | /bin/grep version | /usr/bin/cut -b 17,18,19,20,21 ; /bin/rm output.tcpdump.txt ');
+        return exec('tcpdump -V 2> /tmp/output.tcpdump.txt ; cat /tmp/output.tcpdump.txt  | grep tcpdump | grep version | cut -b 17,18,19,20,21 ; rm output.tcpdump.txt ');
     }
     
     function getTsharkVersion() {
-        return exec('/usr/bin/tshark -v | grep TShark |  cut -b 8,9,10,11,12');
+        return exec('tshark -v | grep TShark |  cut -c 8-13');
     }
 
     function getlameVersion() {
-        $ver = exec('/usr/bin/lame -V 2> /tmp/output.lame.txt ; /bin/cat /tmp/output.lame.txt  | /bin/grep version | /usr/bin/cut -b 21,22,23,24,25,26,27 ; /bin/rm output.lame.txt ');
+        $ver = exec('lame -V 2> /tmp/output.lame.txt ; cat /tmp/output.lame.txt  | grep version | cut -b 21,22,23,24,25,26,27 ; rm output.lame.txt ');
         if (empty($ver))
-            $ver = exec('lame -V 2> /tmp/output.lame.txt ; /bin/cat /tmp/output.lame.txt  | /bin/grep version | /usr/bin/cut -b 21,22,23,24,25,26,27 ; /bin/rm output.lame.txt ');
+            $ver = exec('lame -V 2> /tmp/output.lame.txt ; cat /tmp/output.lame.txt  | grep version | cut -b 21,22,23,24,25,26,27 ; rm output.lame.txt ');
         return $ver;
     }
 
     function getGNULinuxVersion() {
-	    $GNU_L_V=exec('/usr/bin/lsb_release -i | cut -b 17,18,19,20,21,21,22,23,24,25,26');
+	    $GNU_L_V=exec('lsb_release -i | cut -b 17,18,19,20,21,21,22,23,24,25,26');
         if (!empty($GNU_L_V)) {
-            $GNU_L_V=$GNU_L_V.exec('/usr/bin/lsb_release -r | cut -b 9,10,11,12,13,14,15,16,17');
-            $GNU_L_V=$GNU_L_V.exec('/usr/bin/lsb_release -c | cut -b 10,11,12,13,14,15,16,17');
+            $GNU_L_V=$GNU_L_V.exec('lsb_release -r | cut -b 9,10,11,12,13,14,15,16,17');
+            $GNU_L_V=$GNU_L_V.exec('lsb_release -c | cut -b 10,11,12,13,14,15,16,17');
         }
         else {
             $GNU_L_V=exec('uname -r');
@@ -221,29 +218,29 @@ class XplicoComponent extends Object
     }
     
     function getKernelVersion() {
-	return exec('/bin/cat /proc/version | /usr/bin/cut -b 15,16,17,18,19,20,21,22,23');	}
+	return exec('uname -r | cut -c 1-6');	}
 
     function getLibPCAPVersion() {
-	return exec ('/usr/sbin/tcpdump -V 2> /tmp/output.libpcap.txt ; /bin/cat /tmp/output.libpcap.txt  | /bin/grep libpcap | /bin/grep version | /usr/bin/cut -b 17,18,19,20,21 ; /bin/rm output.libpcap.txt ');   	}
+	return exec ('tcpdump -V 2> /tmp/output.libpcap.txt ; cat /tmp/output.libpcap.txt  | grep libpcap | grep version | cut -b 17,18,19,20,21 ; rm output.libpcap.txt ');   	}
 
     function getxplicoAlertsVersion() {
 	if (file_exists('/opt/xplico/bin/xplicoAlerts')) {
-		//return exec ('/usr/sbin/tcpdump -V 2> /tmp/output.libpcap.txt ; /bin/cat /tmp/output.libpcap.txt  | /bin/grep libpcap | /bin/grep version | /usr/bin/cut -b 17,18,19,20,21 ; /bin/rm output.libpcap.txt ');   	
+		//return exec ('tcpdump -V 2> /tmp/output.libpcap.txt ; cat /tmp/output.libpcap.txt  | grep libpcap | grep version | cut -b 17,18,19,20,21 ; rm output.libpcap.txt ');   	
 		}
 	else
 		{return __("Not installed", true);} 
 	}
 
     function getRecodeVersion() {
-        return exec ('/usr/bin/recode --version  |  grep "recode" | cut -b 13,14,15,16 ');
+        return exec ('recode --version  |  grep "recode" | cut -b 13,14,15,16 ');
     }
 
     function getPythonVersion() {
-        return exec ('/usr/bin/python3 --version 2> /tmp/output.python.version.txt ; /bin/cat /tmp/output.python.version.txt | /usr/bin/cut -b 8,9,10,11,12,13; /bin/rm /tmp/output.python.version.txt;');
+        return exec ('python3 --version 2> /tmp/output.python.version.txt ; cat /tmp/output.python.version.txt | cut -b 8,9,10,11,12,13; rm /tmp/output.python.version.txt;');
     }
 
     function getSoxVersion() {
-        return exec ('/usr/bin/sox --version  | cut -b 20,21,22,23,24,25,26,27');
+        return exec ('sox --version  | cut --c 16-21');
     }
 
     function getVideosnarfVersion() {
@@ -279,7 +276,7 @@ class XplicoComponent extends Object
     }
     
     function GhostPDLVersion() {
-        if (file_exists('/opt/xplico/bin/pcl6')) {
+       if (file_exists('/opt/xplico/bin/pcl6')) {
             return exec ('/opt/xplico/bin/pcl6 2> /tmp/versionGhost  ; cat /tmp/versionGhost | grep Version | cut -b 10,11,12,13; rm /tmp/versionGhost'); }
        else {
            return __("Not installed", true); }  //Suggestion: put here a link of a 'how-to install it'
@@ -291,7 +288,12 @@ class XplicoComponent extends Object
     
     function getmaxSizePCAP() {
         //Max size able to upload at Apache. Look for parameters post_max_size and upload_max_filesize, and choose the minimun one.
-        $apacheConfigData = parse_ini_file("/etc/php5/apache2/php.ini");
+        if (file_exists('/etc/php5/apache2/php.ini')) {
+	        $apacheConfigData = parse_ini_file("/etc/php5/apache2/php.ini");
+		}
+		else {
+			$apacheConfigData = parse_ini_file("/etc/php/php.ini");
+		}
         return (min(intval($apacheConfigData[      'post_max_size']), intval($apacheConfigData['upload_max_filesize'])));	
     }
 
