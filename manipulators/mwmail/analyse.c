@@ -74,6 +74,7 @@ static unsigned int gmail_m;
 static unsigned int hotmail_m;
 static unsigned int yandroid_m;
 static unsigned int libero_m;
+static unsigned int rediff_m;
 static unsigned int alice_m;
 
 
@@ -1745,12 +1746,128 @@ static pei *WMLiberoMobi(const pei *ppei)
 }
 
 
+static pei *WMRediff(const pei *ppei)
+{
+    char *url, *rqh, *rsh, *rqb, *rsb, *dir;
+    pei_component *cmpn;
+    const pstack_f *frame;
+    ftval val;
+    char new_path[WMAIL_STR_DIM];
+    char resp[WMAIL_STR_DIM];
+    char cmd[WMAIL_STR_DIM*2];
+    int ret, i;
+    pei *new_pei;
+    struct stat finfo;
+
+    resp[0] = '\0';
+
+    /* encoding */
+    frame = ProtStackSearchProt(ppei->stack, http_id);
+    if (frame) {
+        ProtGetAttr(frame, http_encoding_id, &val);
+    }
+    url = rqh = rsh = rqb = rsb = dir = NULL;
+    cmpn = ppei->components;
+    while (cmpn != NULL) {
+        if (cmpn->eid == pei_url_id) {
+            url = cmpn->strbuf;
+            url = url;
+        }
+        else if (cmpn->eid == pei_dir_id) {
+            dir = cmpn->strbuf;
+        }
+        else if (cmpn->eid == pei_req_header_id) {
+            rqh = cmpn->file_path;
+        }
+        else if (cmpn->eid == pei_req_body_id) {
+            rqb = cmpn->file_path;
+        }
+        else if (cmpn->eid == pei_res_header_id) {
+            rsh = cmpn->file_path;
+        }
+        else if (cmpn->eid == pei_res_body_id) {
+            rsb = cmpn->file_path;
+        }
+        
+        cmpn = cmpn->next;
+    }
+    
+    /* sent or received */
+    if (rqb != NULL && rsb != NULL) {
+        sprintf(resp, "%s/rediff_%lu_%p_%i", ProtTmpDir(), time(NULL), rsb, inc++);
+        if (val.str[0] != '\0') {
+            /* compressed */
+            sprintf(new_path, "%s.dec", rsb);
+            FFormatUncompress(val.str, rsb, new_path);
+            remove(rsb);
+            if (*dir == 'r') {
+                sprintf(cmd, "./wbm_rediff.pyc %s %s", new_path, resp);
+            }
+            else {
+                sprintf(cmd, "./wbm_rediff.pyc -s %s %s %s", rqb, new_path, resp);
+            }
+        }
+        else {
+            /* not compressed */
+            if (*dir == 'r') {
+                sprintf(cmd, "./wbm_rediff.pyc %s %s", rsb, resp);
+            }
+            else {
+                sprintf(cmd, "./wbm_rediff.pyc -s %s %s %s", rqb, rsb, resp);
+            }
+        }
+        LogPrintf(LV_DEBUG, "%s", cmd);
+        /* extract all information:
+           from, to, cc, bcc, subject, email */
+        ret = system(cmd);
+        if (ret == -1) {
+            LogPrintfPei(LV_WARNING, ppei, "Rediff python (wbm_rediff.pyc) system error: %s", rsb);
+        }
+        else if (WEXITSTATUS(ret) != 0) {
+            LogPrintfPei(LV_WARNING, ppei, "Rediff python (wbm_rediff.pyc) error: %s", rsb);
+        }
+    }
+
+    if (resp[0] != '\0') {
+        /* mail decoded */
+        i = 0;
+        do {
+            sprintf(new_path, "%s_%d", resp, i);
+            if (stat(new_path, &finfo) == 0) {
+                new_pei = WMail2Pei(new_path, ppei, dir);
+                if (new_pei != NULL) {
+                    /* service type */
+                    PeiNewComponent(&cmpn, pei_serv_id);
+                    PeiCompCapTime(cmpn, ppei->time_cap);
+                    PeiCompAddStingBuff(cmpn, "Rediff");
+                    PeiAddComponent(new_pei, cmpn);
+                    //PeiPrint(new_pei);
+                    PeiIns(new_pei);
+                    rediff_m++;
+                }
+                else {
+                    LogPrintfPei(LV_ERROR, ppei, "Rediff python Decoding failed");
+                }
+                i++;
+            }
+            else {
+                /* end */
+                i = 0;
+            }
+        } while (i);
+    }
+
+    FTFree(&val, FT_STRING);
+    return NULL;
+}
+
+
 int AnalyseInit(void)
 {    
     /* initialize */
     inc = 0;
     yahoo_m = aol_m = hotmail_m = yandroid_m = gmail_m = 0;
-    libero_m = alice_m = 0;
+    libero_m = rediff_m = alice_m = 0;
     libero = NULL;
     alice = NULL;
     
@@ -1844,6 +1961,9 @@ int AnalysePei(pei *ppei)
             else if (strcmp(cmpn->strbuf, WMAIL_SERVICE_LIBERO) == 0) {
                 type = WMS_LIBERO;
             }
+            if (strcmp(cmpn->strbuf, WMAIL_SERVICE_REDIFF) == 0) {
+                type = WMS_REDIFF;
+            }
             break;
         }
     }
@@ -1916,6 +2036,12 @@ int AnalysePei(pei *ppei)
         libero_m++;
         break;
 
+    case WMS_REDIFF:
+        npei = WMRediff(ppei);
+
+        PeiDestroy(ppei);
+        break;
+
     case WMS_NONE:
         LogPrintfPei(LV_WARNING, ppei,"Web mail unknown: %s", unck);
     }
@@ -1939,6 +2065,7 @@ int AnalyseEnd(void)
     LogPrintf(LV_STATUS, "   Yahoo! Android: %d", yandroid_m);
     LogPrintf(LV_STATUS, "   Libero: %d", libero_m);
     LogPrintf(LV_STATUS, "   Alice: %d", alice_m);
+    LogPrintf(LV_STATUS, "   Rediff: %d", rediff_m);
     LogPrintf(LV_STATUS, "-------------------------");
     
     return 0;

@@ -34,6 +34,7 @@ XPL_LIB = $(ROOT_DIR)/common/libxplico_core.a $(ROOT_DIR)/dispatch/libxplico_dis
 # src files
 SRC = mmain.c mpei.c analyse.c
 PYSRC = wbm_aol.py wbm_live.py wbm_yahoo.py
+PYSRC += wbm_libero.py wbm_yahoo_android.py wbm_rediff.py wbm_aol_v2.py wbm_gmail.py wbm_yahoo_v2.py wbm_rossoalice.py
 
 # obj files
 OBJ = $(SRC:.c=.o)
@@ -89,6 +90,8 @@ clean:
 	rm -f $(ROOT_DIR)/wbm_*.pyc $(ROOT_DIR)/wbm_*.py
 	rm -f modules config tmp xdecode
 	rm -rf __pycache__
+	rm wbm_*.pyc
+	
 
 install:
 	cp $(MANIPULA_NAME) $(INSTALL_DIR)/bin
