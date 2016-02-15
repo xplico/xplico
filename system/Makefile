@@ -24,7 +24,7 @@
 
 
 # sub directory
-SUBDIRS = dema trigcap
+SUBDIRS = dema trigcap script
 
 
 
@@ -62,9 +62,9 @@ install:
 	cp db/sqlite3/*.sh $(INSTALL_DIR)/script/db/sqlite
 	cp db/sqlite3/*.py $(INSTALL_DIR)/script/db/sqlite
 	cp db/sqlite3/*.sql $(INSTALL_DIR)/script/db/sqlite
-#	cp db/mysql/*.sh $(INSTALL_DIR)/script/db/mysql
+	cp db/mysql/*.sh $(INSTALL_DIR)/script/db/mysql
 #	cp db/mysql/*.py $(INSTALL_DIR)/script/db/mysql
-#	cp db/mysql/*.sql $(INSTALL_DIR)/script/db/mysql
+	cp db/mysql/*.sql $(INSTALL_DIR)/script/db/mysql
 	@for dir in $(SUBDIRS) ; do $(MAKE) -C $$dir install || exit 1; done
 	cd $(INSTALL_DIR)/script/db/sqlite; ./create_xplico_db.sh $(INSTALL_DIR)
 	cp -a xi2 $(INSTALL_DIR)/xi
