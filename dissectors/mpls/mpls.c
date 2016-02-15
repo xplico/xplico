@@ -1,5 +1,5 @@
 /* mpls.c
- * mpls dissector
+ * Multi Protocol Label Switching (mpls) dissector
  *
  * Xplico - Internet Traffic Decoder
  * By Gianluca Costa <g.costa@xplico.org>
@@ -72,7 +72,7 @@ static packet* MplsDissector(packet *pkt)
     unsigned char first_nibble;
     unsigned int label;
 
-    if (pkt->len < sizeof(mpls_hd)) {
+    if (pkt->len < rt_len) {
         LogPrintf(LV_WARNING, "Mpls size error");
         //ProtStackFrmDisp(pkt->stk, TRUE);
         PktFree(pkt);
@@ -157,9 +157,16 @@ int DissecRegist(const char *file_cfg)
     dep.val.uint16 = PPP_MPLS_MULTI;
     ProtDep(&dep);
     
-    /* ipv6 dependence */
+    /* ip dependence */
     dep.name = "ip";
     dep.attr = "ip.proto";
+    dep.type = FT_UINT8;
+    dep.val.uint8 = IP_PROTO_MPLS_IN_IP;
+    ProtDep(&dep);
+    
+    /* dep: IPv6 */
+    dep.name = "ipv6";
+    dep.attr = "ipv6.nxt";
     dep.type = FT_UINT8;
     dep.val.uint8 = IP_PROTO_MPLS_IN_IP;
     ProtDep(&dep);

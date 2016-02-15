@@ -23,11 +23,9 @@
 
 # dissector name
 DIS_NAME = dis_mpls
-DIS_NAME_NOCHECK = $(DIS_NAME)_nocheck
 
 # dissector library (.so)
 DIS_SO = $(DIS_NAME).so
-DIS_SO_NC = $(DIS_NAME_NOCHECK).so
 
 # sub directory
 SUBDIRS = 
@@ -58,9 +56,6 @@ clean:
 
 .depend: $(SRC)
 	$(CC) -M $(CFLAGS) $(SRC) > $@
-
-ip_nc.o: ip.o
-	$(CC) $(CFLAGS) -DXPL_DIS_IP_CHECKSUM=1 -c -o $@ ip.c
 
 
 include ../Makefilelog
