@@ -515,6 +515,13 @@ int DissecRegist(const char *file_cfg)
     dep.val.uint16 = ETHERTYPE_IP;
     ProtDep(&dep);
 
+    /* GRE dependence */
+    dep.name = "gre";
+    dep.attr = "gre.proto";
+    dep.type = FT_UINT16;
+    dep.val.uint16 = ETHERTYPE_IP;
+    ProtDep(&dep);
+
     /* chdlc dependence */
     dep.name = "chdlc";
     dep.attr = "chdlc.protocol";
@@ -562,9 +569,9 @@ int DissectInit(void)
 {
     memset(ipfrag_hsh, 0, sizeof(ipfrag_hsh));
     pthread_mutex_init(&ip_frg_mux, NULL);
+    iphdr_len = sizeof(struct iphdr);
 
     prot_id = ProtId("ip");
-    iphdr_len = sizeof(struct iphdr);
     ipv6_id = ProtId("ipv6");
     
     return 0;

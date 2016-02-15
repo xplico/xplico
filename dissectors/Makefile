@@ -28,7 +28,7 @@ SUBDIRS =  pcapf eth ip ipv6 tcp tcp_grbg udp udp_grbg http pop imap smtp
 SUBDIRS += ppp pol sdp ftp dns icmp ipp pjl mms sll tftp vlan l2tp pppoe nntp
 SUBDIRS += ieee80211 llc fbwchat telnet webmail httpfd rtp sip rtcp irc msn paltalk
 SUBDIRS += arp paltalk_express radiotap icmpv6 ppi syslog prism null chdlc webymsg
-SUBDIRS += wa mgcp dns_ca tcp_ca udp_ca ipsec ipsec_ca mpls gtp
+SUBDIRS += wa mgcp dns_ca tcp_ca udp_ca ipsec ipsec_ca mpls gtp gre
 
 # src file
 SRC = in_cksum.c http.c sdp.c link.c
