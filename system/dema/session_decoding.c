@@ -700,6 +700,7 @@ int SeDeStart(dbconf *db_c, char *main_dir, int pol, int session, task *pid, boo
     unsigned short port;
     struct stat app_info;
     struct stat sbuf;
+    char bpf_file[DM_FILENAME_PATH];
     FILE *fxcfg;
     struct stat cfg_stat;
 
@@ -761,7 +762,10 @@ int SeDeStart(dbconf *db_c, char *main_dir, int pol, int session, task *pid, boo
             ptsk = fork();
             if (ptsk == 0) {
                 /* create config file */
-                sprintf(config_file, "%s/cfg/%s", main_dir, manip[i].cfg);
+                sprintf(config_file, DM_CFG_DIR"/%s", main_dir, pol, manip[i].cfg);
+                if (stat(config_file, &cfg_stat) != 0) {
+                    sprintf(config_file, "%s/cfg/%s", main_dir, manip[i].cfg);
+                }
                 sprintf(work_dir, DM_TMP_DIR, main_dir, pol);
                 sprintf(cmd, "cp -a %s %s", config_file, work_dir);
                 system(cmd);
@@ -769,6 +773,13 @@ int SeDeStart(dbconf *db_c, char *main_dir, int pol, int session, task *pid, boo
                 fxcfg = fopen(config_file, "a");
                 fprintf(fxcfg, "LOG_DIR_PATH="DM_LOG_DIR"\n", main_dir, pol);
                 fprintf(fxcfg, "TMP_DIR_PATH="DM_TMP_DIR"/%s\n", main_dir, pol, manip[i].bin);
+                /* DB connection params */
+                if (db_c->type != DB_SQLITE) {
+                    fprintf(fxcfg, CFG_PAR_DB_HOST"=%s\n", db_c->host);
+                    fprintf(fxcfg, CFG_PAR_DB_NAME"=%s\n", db_c->name);
+                    fprintf(fxcfg, CFG_PAR_DB_USER"=%s\n", db_c->user);
+                    fprintf(fxcfg, CFG_PAR_DB_PASSWORD"=%s\n", db_c->password);
+                }
                 fclose(fxcfg);
 
                 /* manipulator process */
@@ -789,8 +800,14 @@ int SeDeStart(dbconf *db_c, char *main_dir, int pol, int session, task *pid, boo
     ptsk = fork();
     if (ptsk == 0) {
         sleep(3); /* wait manipulators... to improve */
+        /* BPF Filter path */
+        sprintf(bpf_file, DM_BPF_FILE_FILTER, main_dir, pol);
+
         /* create config file */
-        sprintf(config_file, "%s/cfg/%s", main_dir, xpl_cfg);
+        sprintf(config_file, DM_CFG_DIR"/%s", main_dir, pol, xpl_cfg);
+        if (stat(config_file, &cfg_stat) != 0) {
+            sprintf(config_file, "%s/cfg/%s", main_dir, xpl_cfg);
+        }
         sprintf(work_dir, DM_TMP_DIR, main_dir, pol);
         sprintf(cmd, "cp -a %s %s", config_file, work_dir);
         system(cmd);
@@ -814,12 +831,29 @@ int SeDeStart(dbconf *db_c, char *main_dir, int pol, int session, task *pid, boo
         sprintf(cmd, "echo SESSION_ID=%i >> "DM_DECOD_DIR"/%s", session,
                 main_dir, pol, session, POL_INIT_SESSION_FILE);
         system(cmd);
+        /* DB connection params */
+        if (db_c->type != DB_SQLITE) {
+            sprintf(cmd, "echo "CFG_PAR_DB_HOST"=%s >> %s", db_c->host, config_file);
+            system(cmd);
+            sprintf(cmd, "echo "CFG_PAR_DB_NAME"=%s >> %s", db_c->name, config_file);
+            system(cmd);
+            sprintf(cmd, "echo "CFG_PAR_DB_USER"=%s >> %s", db_c->user, config_file);
+            system(cmd);
+            sprintf(cmd, "echo "CFG_PAR_DB_PASSWORD"=%s >> %s", db_c->password, config_file);
+            system(cmd);
+        }
 
         /* xplico process */
         sprintf(app_path, "%s/bin/xplico", main_dir);
         sprintf(work_dir, DM_DECOD_DIR, main_dir, pol, session);
         if (rt == FALSE) {
-            execlp(app_path, "xplico", "-c", config_file, "-m", "pol", "-d", work_dir, NULL);
+            if (stat(bpf_file, &sbuf) == 0) {
+                execlp(app_path, "xplico", "-c", config_file, "-m", "pol", "-d", work_dir,
+                       "-F", bpf_file, NULL);
+            }
+            else {
+                execlp(app_path, "xplico", "-c", config_file, "-m", "pol", "-d", work_dir, NULL);
+            }
         }
         else {
             if (filter != NULL && filter[0] != '\0') {
