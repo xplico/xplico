@@ -938,7 +938,7 @@ int DispInit(const char *cfg_file)
 int DispEnd()
 {
     PGresult *res;
-    unsigned long tot;
+    unsigned long tot, avg;
     
     if (group) {
         group = FALSE;
@@ -948,7 +948,11 @@ int DispEnd()
     }
     DBClose();
     tot = commit + commit_0pei + commit_id;
-    printf("Query: %lu, Commit: %lu[%lu - %lu - %lu], Average: %lu, IP query: %lu, IP search: %lu\n", qins, tot, commit, commit_0pei, commit_id, qins/tot, qdbins, qdbsearch);
+    avg = 0;
+    if (tot > 0) {
+        avg = qins/tot;
+    }
+    printf("Query: %lu, Commit: %lu[%lu - %lu - %lu], Average: %lu, IP query: %lu, IP search: %lu\n", qins, tot, commit, commit_0pei, commit_id, avg, qdbins, qdbsearch);
     
     return 0;
 }
