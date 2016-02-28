@@ -521,6 +521,19 @@ static int DemaLoop(dbconf *db_c, char *root, time_t twpcap)
                                 /* change status in to db */
                                 DBIntDecEnd(pd_tbl[i].pol_id, pd_tbl[i].sol_id);
 
+                                /* if there is a pcap then there is a fault.
+                                   We suppose that the last file (the first in the dir)
+                                   can do to crash Xplico */
+                                if (filename != NULL) {
+                                    LogPrintf(LV_ERROR, "Xplico or a Manipulator is dead! See file: %s in the fault dir\n", filename);
+                                    /* move file in fault dir */
+                                    sprintf(dir, DM_DECOD_DIR, root, pd_tbl[i].pol_id, pd_tbl[i].sol_id);
+                                    sprintf(path_src, "%s/%s", dir, filename);
+                                    sprintf(dir, DM_FAULT_DIR, root, pd_tbl[i].pol_id, pd_tbl[i].sol_id);
+                                    sprintf(path_dst, "%s/%s", dir, filename);
+                                    rename(path_src, path_dst);
+                                }
+
                                 /* update Lucene Index */
                                 lpid = fork();
                                 if (lpid != -1) {
@@ -710,6 +723,62 @@ static int ReadConfigFile(char *path, dbconf *db_c, char *root_dir, time_t *twpc
                     }
                 }
             }
+            param = strstr(buffer, CFG_PAR_DB_HOST);
+            if (param != NULL) {
+                if (db_c->host[0] != '\0') {
+                    LogPrintf(LV_ERROR, "Config param error: param '%s' defined two times", CFG_PAR_DB_HOST);
+                    return -1;
+                }
+                res = sscanf(param, CFG_PAR_DB_HOST"=%s %s", db_c->host, bufcpy);
+                if (res > 0) {
+                    if (res == 2 && !CfgParIsComment(bufcpy)) {
+                        LogPrintf(LV_ERROR, "Config param error in line %d. Unknow param: %s", nl, bufcpy);
+                        return -1;
+                    }
+                }
+            }
+            param = strstr(buffer, CFG_PAR_DB_NAME);
+            if (param != NULL) {
+                if (db_c->name[0] != '\0') {
+                    LogPrintf(LV_ERROR, "Config param error: param '%s' defined two times", CFG_PAR_DB_NAME);
+                    return -1;
+                }
+                res = sscanf(param, CFG_PAR_DB_NAME"=%s %s", db_c->name, bufcpy);
+                if (res > 0) {
+                    if (res == 2 && !CfgParIsComment(bufcpy)) {
+                        LogPrintf(LV_ERROR, "Config param error in line %d. Unknow param: %s", nl, bufcpy);
+                        return -1;
+                    }
+                }
+            }
+            param = strstr(buffer, CFG_PAR_DB_USER);
+            if (param != NULL) {
+                if (db_c->user[0] != '\0') {
+                    LogPrintf(LV_ERROR, "Config param error: param '%s' defined two times", CFG_PAR_DB_USER);
+                    return -1;
+                }
+                res = sscanf(param, CFG_PAR_DB_USER"=%s %s", db_c->user, bufcpy);
+                if (res > 0) {
+                    if (res == 2 && !CfgParIsComment(bufcpy)) {
+                        LogPrintf(LV_ERROR, "Config param error in line %d. Unknow param: %s", nl, bufcpy);
+                        return -1;
+                    }
+                }
+            }
+            param = strstr(buffer, CFG_PAR_DB_PASSWORD);
+            if (param != NULL) {
+                if (db_c->password[0] != '\0') {
+                    LogPrintf(LV_ERROR, "Config param error: param '%s' defined two times", CFG_PAR_DB_PASSWORD);
+                    return -1;
+                }
+                res = sscanf(param, CFG_PAR_DB_PASSWORD"=%s %s", db_c->password, bufcpy);
+                if (res > 0) {
+                    if (res == 2 && !CfgParIsComment(bufcpy)) {
+                        LogPrintf(LV_ERROR, "Config param error in line %d. Unknow param: %s", nl, bufcpy);
+                        return -1;
+                    }
+                }
+            }
         }
     }
     fclose(fp);
@@ -735,8 +804,13 @@ static int ReadConfigFile(char *path, dbconf *db_c, char *root_dir, time_t *twpc
 
     switch (db_c->type) {
     case DB_MYSQL:
-        printf("For DEMA with MySQL DB contact: xplico@evolka.it");
-        return -1;
+        if (db_c->name[0] == '\0' ||
+            db_c->user[0] == '\0' ||
+            db_c->password[0] == '\0' ||
+            db_c->host[0] == '\0') {
+            LogPrintf(LV_ERROR, "Config file error. DB MySQL requires: %s, %s, %s and %s\n", CFG_PAR_DB_HOST, CFG_PAR_DB_NAME, CFG_PAR_DB_USER, CFG_PAR_DB_PASSWORD);
+            return -1;
+        }
         break;
 
     case DB_SQLITE:
@@ -747,8 +821,13 @@ static int ReadConfigFile(char *path, dbconf *db_c, char *root_dir, time_t *twpc
         break;
 
     case DB_POSTGRESQL:
-        printf("For DEMA with POSTGRES DB contact: xplico@evolka.it");
-        return -1;
+        if (db_c->name[0] == '\0' ||
+            db_c->user[0] == '\0' ||
+            db_c->password[0] == '\0' ||
+            db_c->host[0] == '\0') {
+            LogPrintf(LV_ERROR, "Config file error. DB Postgresql requires: %s, %s, %s and %s\n", CFG_PAR_DB_HOST, CFG_PAR_DB_NAME, CFG_PAR_DB_USER, CFG_PAR_DB_PASSWORD);
+            return -1;
+        }
         break;
     }
 
@@ -820,9 +899,6 @@ int main(int argc, char *argv[])
             return 0;
             break;
 
-        case 'i':
-            break;
-
         case '?':
             printf("Error: unrecognized option: -%c\n", optopt);
             Usage(argv[0]);
@@ -844,9 +920,13 @@ int main(int argc, char *argv[])
     else if (config_file[0] == '\0') {
         if (strcmp(db_type, DB_T_MYSQL) == 0) {
             db_c.type = DB_MYSQL;
+            /* default config file */
+            sprintf(config_file, DM_DEFAULT_CFG, root_dir);
         }
         else if (strcmp(db_type, DB_T_POSTGRES) == 0) {
             db_c.type = DB_POSTGRESQL;
+            /* default config file */
+            sprintf(config_file, DM_DEFAULT_CFG, root_dir);
         }
         else {
             Usage(argv[0]);

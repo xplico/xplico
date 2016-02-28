@@ -42,10 +42,8 @@ INCLUDE_DIR = -I$(ROOT_DIR)/include
 LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lpcap
 CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -g -ggdb -fPIC -D_FILE_OFFSET_BITS=64
 
-ifdef MYSQL
 LDFLAGS += -L/usr/lib/mysql -L/usr/lib64/mysql -lmysqlclient_r
 CFLAGS *= -DMYSQLXON=1
-endif
 
 # performance
 ifdef GPROF
@@ -54,6 +52,10 @@ endif
 
 # sqlite version
 LDFLAGS += -lsqlite3 -lssl -lcrypto
+
+# poatgresql version
+LDFLAGS += -lpq
+
 
 # To make it visible
 export CC CCPP ROOT_DIR CFLAGS LDFLAGS INCLUDE_DIR INSTALL_DIR
@@ -98,7 +100,7 @@ install: all
 	mkdir -p $(INSTALL_DIR)/bin
 	cp -a dema $(INSTALL_DIR)/bin
 #	strip -s $(INSTALL_DIR)/bin/dema
-	cp dema.cfg $(INSTALL_DIR)/cfg
+	cp dema*.cfg $(INSTALL_DIR)/cfg
 
 .PHONY: reset
 reset:

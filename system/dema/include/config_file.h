@@ -41,6 +41,10 @@
 /* DB params */
 #define CFG_PAR_DB_TYPE            "DB_TYPE"
 #define CFG_PAR_DB_FILE_NAME       "DB_FILENAME"
+#define CFG_PAR_DB_HOST            "DB_HOST"
+#define CFG_PAR_DB_NAME            "DB_NAME"
+#define CFG_PAR_DB_USER            "DB_USER"
+#define CFG_PAR_DB_PASSWORD        "DB_PASSWORD"
 
 /* generic params */
 #define CFG_PAR_LOG_NAME           "LOG_NAME"
