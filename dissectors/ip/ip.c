@@ -536,14 +536,11 @@ int DissecRegist(const char *file_cfg)
     dep.val.uint8 = GTP_MSG_TPDU;
     ProtDep(&dep);
     
-    /* udp dependence */
+    /* null dependence */
     dep.name = "null";
     dep.attr = "null.family";
     dep.type = FT_UINT32;
     dep.val.uint32 = BSD_AF_INET;
-    ProtDep(&dep);
-    
-    dep.attr = "udp.dstport";
     ProtDep(&dep);
     
 #if 0

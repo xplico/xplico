@@ -154,7 +154,7 @@ static int FlowTblExtend(void)
     memcpy(newft, flow_tbl, sizeof(flow)*(tbl_dim));
     
     /* initialize new elements */
-    for (i=tbl_dim; i<len; i++) {
+    for (i=len; i!=tbl_dim; i--) {
         memset(&newft[i], 0, sizeof(flow));
         if (FlowElemInit(&(newft[i]), FALSE) != 0) {
             /* unlock all mutex */
