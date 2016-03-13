@@ -130,6 +130,7 @@ struct _imap_msg {
     imap_conv *psrv_data;          /* server data */
     bool srv_data;                 /* data from server */
     bool complete;                 /* message complete */
+    bool compress;                 /* flow compressed */
     time_t capt_start;             /* start time of message */
     time_t capt_end;               /* end time of message */
     imap_msg *nxt;                 /* next messagge (cmd + repl) */

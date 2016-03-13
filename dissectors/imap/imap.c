@@ -593,7 +593,7 @@ static int ImapCmd(imap_msg *msg, packet *pkt)
     const char *end, *eol;
     char *lineend;
     int dim;
-    bool new;
+    bool newcmd;
 
     if (pkt != NULL) {
         msg->cmd = xrealloc(msg->cmd, msg->cmd_size + pkt->len + 1);
@@ -604,7 +604,7 @@ static int ImapCmd(imap_msg *msg, packet *pkt)
     
     /* seach line and command */
     do {
-        new = FALSE;
+        newcmd = FALSE;
         end = msg->cmd + msg->cmd_size;
         lineend = (char *)find_line_end(msg->cmd, end, &eol);
         if (*eol == '\r' || *eol == '\n') {
@@ -623,7 +623,7 @@ static int ImapCmd(imap_msg *msg, packet *pkt)
                     msg->cmd_size = lineend - msg->cmd;
                     msg->nxt->cmd[dim] = '\0';
                     msg->nxt->cmd_size = dim;
-                    new = TRUE;
+                    newcmd = TRUE;
                     msg = msg->nxt;
                 }
             }
@@ -645,7 +645,7 @@ static int ImapCmd(imap_msg *msg, packet *pkt)
                 }
             }
         }
-    } while (new);
+    } while (newcmd);
 
     return 0;
 }
@@ -1074,6 +1074,10 @@ static int ImapEmail(int flow_id, imap_con *priv)
     /* first tcp packet */
     pkt = FlowGetPkt(flow_id);
     do {
+        if (srv_msg->compress == TRUE) {
+            LogPrintf(LV_WARNING, "Compression is not supported");
+            break;
+        }
         //ProtStackFrmDisp(pkt->stk, TRUE);
         if (pkt != NULL && pkt->len != 0) {
             /* check if there are packet lost */
@@ -1129,6 +1133,9 @@ static int ImapEmail(int flow_id, imap_con *priv)
                 if (ret == 0) {
                     /* check pipeline cmd */
                     while (srv_msg->complete == TRUE) {
+                        if (srv_msg->cmdt == IMAP_CMD_COMPRESS) {
+                            srv_msg->compress = TRUE;
+                        }
                         srv_msg->capt_end = pkt->cap_sec;
                         /* pei components insert */
                         if (ppei == NULL) {
@@ -1165,6 +1172,15 @@ static int ImapEmail(int flow_id, imap_con *priv)
             }
             if (ret == -1)
                 break;
+        }
+        else if (pkt != NULL && pkt->len == 0) {
+            /* check if there are packet lost */
+            ProtGetAttr(pkt->stk, lost_id, &lost);
+            if (lost.uint8 == TRUE) {
+                LogPrintf(LV_WARNING, "Packet lost");
+                ret = -1;
+                break;
+            }
         }
         serial = pkt->serial;
         PktFree(pkt);
