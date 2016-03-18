@@ -48,7 +48,7 @@
 #include "png.h"
 
 /* nDPI library */
-#include "ndpi_main.h"
+#include <libndpi/ndpi_main.h>
 
 
 #define CA_CHECK_LOST     0           /* check lost data */
