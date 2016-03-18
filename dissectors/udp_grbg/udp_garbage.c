@@ -47,8 +47,9 @@
 #include "pcap_gfile.h"
 
 /* nDPI library */
-#include "ndpi_main.h"
-#include "ndpi_api.h"
+#include <libndpi/ndpi_main.h>
+#include <libndpi/ndpi_api.h>
+#include <libndpi/ndpi_typedefs.h>
 
 #define GRB_FILE           0  /* to put (or not) data in to a file */
 #define UDP_GRB_TMP_DIR    "udp_grb"
