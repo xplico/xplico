@@ -44,8 +44,8 @@ XPL_LIB = $(ROOT_DIR)/common/libxplico_core.a $(ROOT_DIR)/capt_dissectors/libxpl
 SRC = xplico.c report.c
 
 # compilation
-INCLUDE_DIR = -I$(ROOT_DIR)/include -I$(ROOT_DIR)/common/include -I$(ROOT_DIR)/dissectors/include -I$(ROOT_DIR)/capt_dissectors/include -I$(ROOT_DIR)/dispatch/include
-LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto
+INCLUDE_DIR = -I$(ROOT_DIR)/include -I$(ROOT_DIR)/common/include -I$(ROOT_DIR)/dissectors/include -I$(ROOT_DIR)/capt_dissectors/include -I$(ROOT_DIR)/dispatch/include $(shell pkg-config --cflags libndpi)
+LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto -lndpi
 CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -fPIC -D_FILE_OFFSET_BITS=64 -O2
 MODULE_PATH = modules
 
@@ -99,7 +99,6 @@ ifeq ($(wildcard $(GEOIP_LIB)), $(GEOIP_LIB))
 XPL_LIB += $(GEOIP_LIB)
 CFLAGS += -DGEOIP_LIBRARY=1
 INCLUDE_DIR += `pkg-config --cflags geoip`
-INCLUDE_DIR += `pkg-config --cflags libndpi`
 else
 CFLAGS += -DGEOIP_LIBRARY=0
 endif
