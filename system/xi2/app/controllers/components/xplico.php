@@ -244,7 +244,10 @@ class XplicoComponent extends Object
     }
 
     function getVideosnarfVersion() {
-        return exec ('/opt/xplico/bin/videosnarf | grep Starting | cut -b 20,21,22,23,24,25,26,27');
+	if (file_exists('/usr/bin/videosnarf')) {
+        	return exec ('videosnarf | grep Starting | cut -b 20,21,22,23,24,25,26,27'); }
+        else {
+	        return __("Not installed", true); }  //Suggestion: put here a link of a 'how-to install it'
     }
 
     function isChecksumValidationActivated() {
@@ -276,8 +279,8 @@ class XplicoComponent extends Object
     }
     
     function GhostPDLVersion() {
-       if (file_exists('/opt/xplico/bin/pcl6')) {
-            return exec ('/opt/xplico/bin/pcl6 2> /tmp/versionGhost  ; cat /tmp/versionGhost | grep Version | cut -b 10,11,12,13; rm /tmp/versionGhost'); }
+       if (file_exists('/usr/bin/pcl6')) {
+            return exec ('/usr/bin/pcl6 2> /tmp/versionGhost  ; cat /tmp/versionGhost | grep Version | cut -b 10,11,12,13; rm /tmp/versionGhost'); }
        else {
            return __("Not installed", true); }  //Suggestion: put here a link of a 'how-to install it'
     }
