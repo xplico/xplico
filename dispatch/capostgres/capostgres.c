@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <fcntl.h>
-#include <postgresql/internal/libpq-int.h>
+#include <libpq-fe.h>
 
 
 #include "proto.h"

@@ -30,7 +30,7 @@
 #include <mysql/mysql.h>
 #endif
 #include <sqlite3.h>
-#include <postgresql/internal/libpq-int.h>
+#include <libpq-fe.h>
 
 #include "dbinterface.h"
 #include "log.h"
