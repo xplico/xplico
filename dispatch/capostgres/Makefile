@@ -21,6 +21,7 @@ SUBDIRS =
 SRC = capostgres.c
 
 # compilation
+CFLAGS += $(shell pkg-config --cflags libpq)
 LDFLAGS += -lpq
 
 # To make it visible
