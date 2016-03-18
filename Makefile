@@ -99,6 +99,7 @@ ifeq ($(wildcard $(GEOIP_LIB)), $(GEOIP_LIB))
 XPL_LIB += $(GEOIP_LIB)
 CFLAGS += -DGEOIP_LIBRARY=1
 INCLUDE_DIR += `pkg-config --cflags geoip`
+INCLUDE_DIR += `pkg-config --cflags libndpi`
 else
 CFLAGS += -DGEOIP_LIBRARY=0
 endif
