@@ -191,7 +191,7 @@ class XplicoComponent extends Object
     }
 
     function gettcpdumpVersion() {
-        return exec('tcpdump -V 2> /tmp/output.tcpdump.txt ; cat /tmp/output.tcpdump.txt  | grep tcpdump | grep version | cut -b 17,18,19,20,21 ; rm output.tcpdump.txt ');
+        return exec('tcpdump -V 2>&1 | grep tcpdump | grep version | cut -b 17,18,19,20,21');
     }
     
     function getTsharkVersion() {
@@ -199,9 +199,9 @@ class XplicoComponent extends Object
     }
 
     function getlameVersion() {
-        $ver = exec('lame -V 2> /tmp/output.lame.txt ; cat /tmp/output.lame.txt  | grep version | cut -b 21,22,23,24,25,26,27 ; rm output.lame.txt ');
+        $ver = exec('lame -V 2>&1 | grep version | cut -b 21,22,23,24,25,26,27');
         if (empty($ver))
-            $ver = exec('lame -V 2> /tmp/output.lame.txt ; cat /tmp/output.lame.txt  | grep version | cut -b 21,22,23,24,25,26,27 ; rm output.lame.txt ');
+            $ver = exec('lame -V 2>&1 | grep version | cut -b 21,22,23,24,25,26,27');
         return $ver;
     }
 
@@ -221,7 +221,7 @@ class XplicoComponent extends Object
 	return exec('uname -r | cut -c 1-6');	}
 
     function getLibPCAPVersion() {
-	return exec ('tcpdump -V 2> /tmp/output.libpcap.txt ; cat /tmp/output.libpcap.txt  | grep libpcap | grep version | cut -b 17,18,19,20,21 ; rm output.libpcap.txt ');   	}
+	return exec ('tcpdump -V 2>&1  | grep libpcap | grep version | cut -b 17,18,19,20,21');   	}
 
     function getxplicoAlertsVersion() {
 	if (file_exists('/opt/xplico/bin/xplicoAlerts')) {
@@ -280,13 +280,13 @@ class XplicoComponent extends Object
     
     function GhostPDLVersion() {
        if (file_exists('/usr/bin/pcl6')) {
-            return exec ('/usr/bin/pcl6 2> /tmp/versionGhost  ; cat /tmp/versionGhost | grep Version | cut -b 10,11,12,13; rm /tmp/versionGhost'); }
+            return exec ('pcl6 2>&1 | grep Version | cut -b 10,11,12,13'); }
        else {
            return __("Not installed", true); }  //Suggestion: put here a link of a 'how-to install it'
     }
     
     function GeoIPVersion() {
-        return '1.4.8';
+        return exec('pkg-config --modversion geoip');
     }
     
     function getmaxSizePCAP() {
