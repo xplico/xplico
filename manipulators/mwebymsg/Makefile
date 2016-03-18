@@ -29,7 +29,7 @@ SUBDIRS =
 MANIPULA_NAME = mwebymsg
 
 # xplico library
-XPL_LIB = $(ROOT_DIR)/common/libxplico_core.a $(ROOT_DIR)/dispatch/libxplico_dispatch.a $(ROOT_DIR)/dissectors/libxplico_dissector.a $(ROOT_DIR)/third-party/json-c/.libs/libjson-c.a
+XPL_LIB = $(ROOT_DIR)/common/libxplico_core.a $(ROOT_DIR)/dispatch/libxplico_dispatch.a $(ROOT_DIR)/dissectors/libxplico_dissector.a
 
 # src files
 SRC = mmain.c mpei.c analyse.c
@@ -41,10 +41,10 @@ OBJ = $(SRC:.c=.o)
 DEP = ../core/mmain.c mpei.c analyse.c
 
 # compilation
-LDFLAGS =  -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto
+LDFLAGS =  -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto $(shell pkg-config --libs json-c)
 
 # cflags
-CFLAGS += -I./include -I$(ROOT_DIR)/third-party/json-c/
+CFLAGS += -I./include $(shell pkg-config --cflags json-c)
 
 # verify GeoIP library source code
 ifeq ($(wildcard $(GEOIP_LIB)), $(GEOIP_LIB))
