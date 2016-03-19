@@ -54,7 +54,8 @@ endif
 LDFLAGS += -lsqlite3 -lssl -lcrypto
 
 # postgresql version
-LDFLAGS += -lpq
+CFLAGS += $(shell pkg-config --cflags libpq)
+LDFLAGS += $(shell pkg-config --libs libpq)
 
 
 # To make it visible
