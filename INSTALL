@@ -25,47 +25,62 @@ Installation
         http://sox.sourceforge.net/
         http://lame.sourceforge.net/
 
-5. Compile nDPI library. From the SAME directory where you unpack xplico:
-     svn co https://svn.ntop.org/svn/ntop/trunk/nDPI
-     cd nDPI
-     ./configure
-     make
+5. Install nDPI library.
+    git clone https://github.com/ntop/nDPI.git
+    cd nDPI
+    ./configure
+    make
+    make install
 
-6. Run 'make' in the Xplico distribution directory. Hopefully, you won't run into any problems.
+6. Install GeoIP library.
+    download source code: https://github.com/maxmind/geoip-api-c/releases/download/v1.6.9/GeoIP-1.6.9.tar.gz
+    cd GeoIP-1.6.9
+    ./configure
+    make
+    make install
 
-7. After running 'make', you will see xplico binary and modules directory.
+7. Install json-c.
+    git clone https://github.com/json-c/json-c.git
+    ./autogen.sh
+    ./configure
+    make
+    make install
 
-8. If you wish to decode network printer job, make sure you have Ghostpcl. The latest "official" 
+8. Run 'make' in the Xplico distribution directory. Hopefully, you won't run into any problems.
+
+9. After running 'make', you will see xplico binary and modules directory.
+
+10. If you wish to decode network printer job, make sure you have Ghostpcl. The latest "official" 
    version can be found at
 
         http://www.ghostscript.com/awki/Ghostpcl .
 
    Copy "pcl6" in Xplico home directory (in the same directory of xplico binary).
 
-9. If you wish to decode RTP, SIP, MEGACO, H323, MGCP... VoIP audio codec, make sure you have videosnarf-0.62 compiled and patched with videosnarf_xplico.patch ( http://projects.xplico.org/patch/videosnarf_xplico.patch.gz ).
+11. If you wish to decode RTP, SIP, MEGACO, H323, MGCP... VoIP audio codec, make sure you have videosnarf-0.62 compiled and patched with videosnarf_xplico.patch ( http://projects.xplico.org/patch/videosnarf_xplico.patch.gz ).
 
    Copy "videosnarf" in Xplico home directory (in the same directory of xplico binary).
    
-10. Run './xplico' and make sure that everything are working. You must have root privileges in order to capture live data.
+12. Run './xplico' and make sure that everything are working. You must have root privileges in order to capture live data.
 
-11. At this point you have Xplico in console mode, see README for use it.
+13. At this point you have Xplico in console mode, see README for use it.
 
-12. If you use Xplico GUI it requires Apache, PHP and Perl. If you use Xplico in console mode
+14. If you use Xplico GUI it requires Apache, PHP and Perl. If you use Xplico in console mode
    it isn't necesary this software, and you can skeep this point and others.
 
-13. Run 'make install'. Change the permisions of /opt/xplico, /opt/xplico/cfg and /opt/xplico/xi directories to permit that Apache user (PHP program) can create a subdirectory inside /opt/xplico
+15. Run 'make install'. Change the permisions of /opt/xplico, /opt/xplico/cfg and /opt/xplico/xi directories to permit that Apache user (PHP program) can create a subdirectory inside /opt/xplico
     Also change the permisions of all files in /opt/xplico/cfg to read and write by Apache.
 
-14. With root permission run:
+16. With root permission run:
     /opt/xplico/script/sqlite_demo.sh
 
-15. To configure Apache you can use the (example) configuration file: /opt/xplico/cfg/apache_xi
+17. To configure Apache you can use the (example) configuration file: /opt/xplico/cfg/apache_xi
 
-16. Enable proxy in Firefox. The proxy IP is the IP of machine where you have installed Xplico and port is 80 (Apache port).
+18. Enable proxy in Firefox. The proxy IP is the IP of machine where you have installed Xplico and port is 80 (Apache port).
 
-17. The url to view Xplico Interface is: http://IP
+19. The url to view Xplico Interface is: http://IP
     If you use the machine name and not IP it is possible that you don't enter in Web Interface
 
-18. And now: Enjoy.
+20. And now: Enjoy.
 
 If you have trouble with the build or installation process, you can contact us.
