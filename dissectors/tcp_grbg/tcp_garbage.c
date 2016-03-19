@@ -1051,7 +1051,7 @@ const int TcpGrbCfg(const char *cfg)
         return -1;
     }
 
-    j = 0;
+    j = ks = 0;
     dig_tbl = xmalloc(sizeof(dig_file));
     memset(dig_tbl, 0, sizeof(dig_file));
     while (fgets(buffer, TCP_CFG_LINE_MAX_SIZE, fp) != NULL) {
