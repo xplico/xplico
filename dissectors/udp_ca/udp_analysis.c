@@ -46,8 +46,8 @@
 #include "geoiploc.h"
 
 /* nDPI library */
-#include "ndpi_main.h"
-#include "ndpi_api.h"
+#include <libndpi/ndpi_main.h>
+#include <libndpi/ndpi_api.h>
 
 #define UDP_CA_TMP_DIR    "udp_ca"
 #define NDPI_TICK_RES      1000        /* Hz */

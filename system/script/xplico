@@ -19,7 +19,7 @@ NAME="Xplico"
 DAEMON=/opt/xplico/bin/dema
 #APPLICATION=/opt/xplico/bin/dema
 PIDFILE=/var/run/dema.pid
-APACHEPIDFILE=/var/run/apache2.pid
+APACHEPIDFILE=/var/run/httpd/httpd.pid
 DESC=""
 RUN_DAEMON=yes
 PRIORITY=1 #(0..20)
@@ -62,7 +62,7 @@ is_running()
 
 is_apache2_running() 
 {
-	PIDS=`pidof apache2` || true  # Array of Apache forks.
+	PIDS=`pidof httpd` || true  # Array of Apache forks.
 
 	[ -e $APACHEPIDFILE ] && PIDS2=`cat $APACHEPIDFILE` #Last Apache2 pid known.
 	# if there is a pid we need to verify that belongs to apache2 

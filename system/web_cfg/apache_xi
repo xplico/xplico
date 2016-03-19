@@ -1,21 +1,29 @@
+NameVirtualHost *:9876
 Listen 9876
 
 <VirtualHost *:9876>
-	ServerAdmin info@xplico.org
-
 	DocumentRoot /opt/xplico/xi
 	<Directory "/opt/xplico/xi">
+		Options All
 		AllowOverride All
-		Require local
-		Satisfy Any
+		Order allow,deny
+		allow from all
+                php_admin_value open_basedir "/opt/xplico/xi:/tmp:/opt/xplico:/var/run/"
 	</Directory>
 
-	ErrorLog /var/log/apache2/xplico_error.log
+	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+	<Directory "/usr/lib/cgi-bin">
+		AllowOverride All
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Require local
+	</Directory>
+
+	ErrorLog /var/log/httpd/xplico_error.log
 
 	# Possible values include: debug, info, notice, warn, error, crit,
 	# alert, emerg.
-	LogLevel warn
+	LogLevel debug
 
-	CustomLog /var/log/apache2/xplico_access.log combined
+	CustomLog /var/log/httpd/xplico_access.log combined
 
 </VirtualHost>

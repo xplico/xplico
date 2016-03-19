@@ -43,7 +43,7 @@ LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lpcap
 CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -g -ggdb -fPIC -D_FILE_OFFSET_BITS=64
 
 LDFLAGS += -L/usr/lib/mysql -L/usr/lib64/mysql -lmysqlclient_r
-CFLAGS *= -DMYSQLXON=1
+CFLAGS += -DMYSQLXON=1
 
 # performance
 ifdef GPROF
@@ -53,7 +53,7 @@ endif
 # sqlite version
 LDFLAGS += -lsqlite3 -lssl -lcrypto
 
-# poatgresql version
+# postgresql version
 LDFLAGS += -lpq
 
 

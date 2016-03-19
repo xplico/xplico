@@ -44,9 +44,9 @@ XPL_LIB = $(ROOT_DIR)/common/libxplico_core.a $(ROOT_DIR)/capt_dissectors/libxpl
 SRC = xplico.c report.c
 
 # compilation
-INCLUDE_DIR = -I$(ROOT_DIR)/include -I$(ROOT_DIR)/common/include -I$(ROOT_DIR)/dissectors/include -I$(ROOT_DIR)/capt_dissectors/include -I$(ROOT_DIR)/dispatch/include
-LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto
-CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -fPIC -D_FILE_OFFSET_BITS=64
+INCLUDE_DIR = -I$(ROOT_DIR)/include -I$(ROOT_DIR)/common/include -I$(ROOT_DIR)/dissectors/include -I$(ROOT_DIR)/capt_dissectors/include -I$(ROOT_DIR)/dispatch/include $(shell pkg-config --cflags libndpi)
+LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto -lndpi
+CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -fPIC -D_FILE_OFFSET_BITS=64 -O2
 MODULE_PATH = modules
 
 # pedantic statistics
@@ -92,15 +92,16 @@ ifdef RT_TO
 CFLAGS += -DXPL_REALTIME=1
 endif
 
-# GeoIP library source code
-GEOIP_V = $(ROOT_DIR)/third-party/GeoIP-1.6.5
-GEOIP_LIB = $(GEOIP_V)/libGeoIP/.libs/libGeoIP.a
+# verify GeoIP library source code
+
+GEOIP_LIB = `pkg-config --libs geoip`
+ifeq ($(wildcard $(GEOIP_LIB)), $(GEOIP_LIB))
 XPL_LIB += $(GEOIP_LIB)
 CFLAGS += -DGEOIP_LIBRARY=1
-INCLUDE_DIR += -I$(GEOIP_V)/libGeoIP/
-
-# JSON
-JSON_PATH = $(ROOT_DIR)/third-party/json-c
+INCLUDE_DIR += `pkg-config --cflags geoip`
+else
+CFLAGS += -DGEOIP_LIBRARY=0
+endif
 
 # main cflags
 MCFLAGS = $(CFLAGS) -DLOG_COMPONENT=-1
@@ -109,7 +110,7 @@ MCFLAGS = $(CFLAGS) -DLOG_COMPONENT=-1
 # To make it visible
 export CC CCPP ROOT_DIR CFLAGS LDFLAGS INCLUDE_DIR INSTALL_DIR GEOIP_LIB
 
-all: thirdparty subdir xplico mdl check_version
+all: subdir xplico mdl check_version
 
 help:
 	@echo "Flags:"
@@ -132,15 +133,6 @@ ifndef VER
 VER = $(shell date +%Y_%m_%d)
 endif
 
-thirdparty:
-ifneq ($(wildcard $(JSON_PATH)/Makefile), $(JSON_PATH)/Makefile)
-	cd $(JSON_PATH); ./autogen.sh; ./configure
-endif
-	$(MAKE) -C $(JSON_PATH)
-ifneq ($(wildcard $(GEOIP_V)/Makefile), $(GEOIP_V)/Makefile)
-	cd $(GEOIP_V); ./configure
-endif
-	$(MAKE) -C $(GEOIP_V)
 
 xplico: $(SRC:.c=.o) $(XPL_LIB)
 	$(CC) $(MCFLAGS) -o $@ $(SRC:.c=.o) $(XPL_LIB) $(LDFLAGS)
@@ -165,17 +157,6 @@ clean: reset
 	@for dir in $(SUBDIRS) ; do $(MAKE) -C $$dir clean; done
 	rm -f xplico *.o *~ *.log .depend val.* *.expand
 	rm -rf $(MODULE_PATH)
-ifeq ($(wildcard $(JSON_PATH)/Makefile), $(JSON_PATH)/Makefile)
-	$(MAKE) -C $(JSON_PATH) mostlyclean
-	$(MAKE) -C $(JSON_PATH) clean
-	-$(MAKE) -C $(JSON_PATH) maintainer-clean
-	rm -f $(JSON_PATH)/Makefile
-	rm -rf $(JSON_PATH)/.deps
-	rm -rf $(JSON_PATH)/tests/.deps
-endif
-ifeq ($(wildcard $(GEOIP_V)/Makefile), $(GEOIP_V)/Makefile)
-	$(MAKE) -C $(GEOIP_V) clean distclean
-endif
 	rm -rf debian/xplico*
 	rm -f webmail/*/*~
 	rm -f */*~
@@ -212,17 +193,9 @@ installcp: all
 	cp -a config/mwebymsg_install_*.cfg $(INSTALL_DIR)/cfg
 	cp -a config/mwebymsg_cli_fix.cfg $(INSTALL_DIR)/cfg/webymsg_cli.cfg
 	cp -a config/tcp_grb_dig.cfg $(INSTALL_DIR)/cfg/tcp_grb_dig.cfg
-ifeq ($(wildcard GeoLiteCity.dat), GeoLiteCity.dat)
-	cp -a GeoLiteCity.dat $(INSTALL_DIR)/GeoLiteCity.dat
-endif
-ifeq ($(wildcard GeoLiteCityv6.dat), GeoLiteCityv6.dat)
-	cp -a GeoLiteCityv6.dat $(INSTALL_DIR)/GeoLiteCityv6.dat
-endif
+
 ifeq ($(wildcard pcl6), pcl6)
 	cp -a pcl6 $(INSTALL_DIR)/bin
-endif
-ifeq ($(wildcard videosnarf), videosnarf)
-	cp -a videosnarf $(INSTALL_DIR)/bin
 endif
 # manipulators
 	$(MAKE) -C manipulators install
@@ -242,9 +215,12 @@ install: installcp
 	chmod 777 $(INSTALL_DIR)/cfg
 	chmod a+w $(INSTALL_DIR)/cfg/*
 	chmod -R 777 $(INSTALL_DIR)/xi/app/tmp
-	mkdir -p $(DESTDIR)/etc/apache2/sites-available/
-	mkdir -p $(DESTDIR)/etc/apache2/sites-enabled/
-	cp $(INSTALL_DIR)/cfg/apache_xi $(DESTDIR)/etc/apache2/sites-available/xplico
+	mkdir -p $(DESTDIR)/etc/httpd/conf/extra
+	cp $(INSTALL_DIR)/cfg/apache_xi $(DESTDIR)/etc/httpd/conf/extra/httpd-xplico.conf
+	mkdir -p $(DESTDIR)/opt/xplico/xi/app/tmp/cache
+	chmod -R 777 $(DESTDIR)/opt/xplico/xi/app/tmp/cache
+	mkdir -p $(DESTDIR)/usr/lib/systemd/system
+	cp xplico.service $(DESTDIR)/usr/lib/systemd/system/
 endif
 
 

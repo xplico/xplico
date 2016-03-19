@@ -31,6 +31,8 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <unistd.h>
+#include <json-c/json.h>
+#include <json-c/json_object_private.h>
 
 #include "log.h"
 #include "analyse.h"
@@ -39,8 +41,6 @@
 #include "pei.h"
 #include "fileformat.h"
 #include "genfun.h"
-#include "json.h"
-#include "json_object_private.h"
 
 
 static volatile wymsg_chat * volatile wymsg_list;
