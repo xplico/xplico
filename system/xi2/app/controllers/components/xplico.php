@@ -195,7 +195,7 @@ class XplicoComponent extends Object
     }
     
     function getTsharkVersion() {
-        return exec('tshark -v | grep TShark |  cut -c 8-13');
+        return exec('tshark -v | grep TShark |  cut -c 20-26');
     }
 
     function getlameVersion() {
