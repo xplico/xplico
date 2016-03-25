@@ -549,6 +549,7 @@ class SolsController extends AppController {
                 $this->Session->write('interfaceInUse', $interface[$this->data['Interface']['Type']]); 
 
                 $start_file = '/opt/xplico/pol_'.$pol.'/realtime_start';
+		mkdir('/opt/xplico/pol_'.$pol.'/', 0777);
                 $fp = fopen($start_file, 'w');
                 fwrite($fp, $interface[$this->data['Interface']['Type']]."\n");
                 fwrite($fp, 'not ((host '.$_SERVER['SERVER_ADDR'].') && (tcp port '.$_SERVER['SERVER_PORT']."))\n");
