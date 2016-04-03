@@ -154,8 +154,8 @@ static int FlowTblExtend(void)
     memcpy(newft, flow_tbl, sizeof(flow)*(tbl_dim));
     
     /* initialize new elements */
-    for (i=len; i!=tbl_dim; i--) {
-        memset(&newft[i], 0, sizeof(flow));
+    for (i=tbl_dim; i!=len; i++) {
+        memset(&(newft[i]), 0, sizeof(flow));
         if (FlowElemInit(&(newft[i]), FALSE) != 0) {
             /* unlock all mutex */
             for (i=0; i!=tbl_dim; i++) {
@@ -254,7 +254,6 @@ int FlowCreate(pstack_f *stk)
             LogPrintf(LV_OOPS, "Flow counter error %i != %i !", flow_num, tbl_dim);
             exit(-1);
         }
-        LogPrintf(LV_ERROR, "flv: %i", tbl_dim);
         ret = FlowTblExtend();
         if (ret == -1) {
             LogPrintf(LV_ERROR, "Unable to extend flows data table");
