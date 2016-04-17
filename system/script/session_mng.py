@@ -33,7 +33,7 @@ import psycopg2
 
 from httplib2 import Http
 
-ver = "1.3"
+ver = "1.4"
 install_path = "/opt/xplico/"
 
 # copyright and license
@@ -44,9 +44,9 @@ def xcopyright(argv):
         name = argv[0]
     
     print(name+" version "+ver+"""
-
-Copyright (c) 2011-2013 Gianluca Costa & Andrea de Franceschi. GNU GPL.
+Copyright (c) 2011-2016 Gianluca Costa & Andrea de Franceschi. GNU GPL.
 """)
+
 
 # usage manual
 def usage(argv):
@@ -55,7 +55,7 @@ def usage(argv):
     else :
         name = argv[0]
     
-    print("""Usage: """+name+""" [-b 1|2] [-s] [-h] [-m <main_dir>] {-d <pol> <sol> | -l <pol> <sol> | -a <pol> <session_name> | -n <case_name> <session_name> [<group_name>]}
+    print("""Usage: """+name+""" [-b 1|2] [-s] [-h] [-m <main_dir>] {-d <pol> <sol> | -a <pol> <session_name> | -n <case_name> <session_name> [<group_name>] | -r <pol> [<sol>] }
    <pol>: case ID
    <sol>: session ID
    <session_name>: session name
@@ -68,8 +68,8 @@ def usage(argv):
    -h: this help
    -s: silent
    -m: change main dir repository
-   -b: database: 1 for SQLite, 2 for PostgreSQL
-
+   -b: database: 1 for SQLite, 2 for PostgreSQL and 3 for MySQL
+   -r: remove case with ID <pol> or remove session with ID <sol> inside the case <pol>
    
    For every protocol there is a subdirectory in the session  directory (/opt/xplico/pol_YY/sol_XX), you can add new directory for your modules, by editing the file /opt/xplico/cfg/sol_subdir.cfg, this give you the possibility to use Lucene-Solr even with your data.
 """)
@@ -128,7 +128,7 @@ def Create(pol, sol):
 
 if __name__ == '__main__':
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "sdlhanm:b:p:u:x:")
+        opts, args = getopt.getopt(sys.argv[1:], "sdlhanm:b:p:u:x:r")
     except getopt.GetoptError:
         usage(sys.argv)
         sys.exit(2)
@@ -189,6 +189,10 @@ if __name__ == '__main__':
         # db name
         if o == "-x":
             dbname = a;
+        # remove case or session
+        if o == "-r":
+            remove_case_session = True
+            alim_b = 1
     
     if not silent:
         xcopyright(sys.argv)
@@ -196,6 +200,42 @@ if __name__ == '__main__':
     # check args
     if len(args) != alim_a+offset and len(args) != alim_b+offset:
         usage(sys.argv)
+        sys.exit(2)
+        
+    if remove_case_session:
+        if len(args) == 2: # remove session
+            pol = args[offset]
+            sol = args[offset+1]
+            sess_path = install_path+"/pol_"+pol+"/sol_"+sol
+            if os.path.isdir(sess_path):
+                if database == 1: # SQLite
+                    conn = sqlite3.connect(install_path+'/xplico.db')
+                    c = conn.cursor()
+                    c.execute("update sols set rm = 1 where id="+sol+";")
+                    conn.commit()
+                    c.close()
+                if database == 2: # PostgreSQL
+                    conn_string = "host='localhost' dbname='"+str(dbname)+"' user='"+str(dbuser)+"' password='"+str(dbpassword)+"'"
+                    conn = psycopg2.connect(conn_string)
+                    c = conn.cursor()
+                    c.execute("update sols set rm = 1 where id="+sol+";")
+                    conn.commit()
+                    c.close()
+                sess_rm = install_path+"/pol_"+pol+"/sol_rm"
+                os.rename(sess_path, sess_rm)
+                print("The session will be removed soon.")
+            else:
+                print("Session doesn't exist!")
+        else: # remove case
+            pol = args[offset]
+            pol_path = install_path+"/pol_"+pol
+            if os.path.isdir(pol_path):
+                pol_rm = install_path+"/pol_"+pol+"/delete"
+                open(pol_rm, 'a').close()
+                print("The case will be removed soon.")
+            else:
+                print("Case doesn't exist!")
+            
         sys.exit(2)
         
     if dissdir: # make dirs

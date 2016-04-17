@@ -383,6 +383,8 @@ static int DemaLoop(dbconf *db_c, char *root, time_t twpcap)
                     /* delete files of SOL */
                     sprintf(cmd, "rm -rf "DM_POL_DIR"/"DM_DELETE_SESSION, root, pd_tbl[i].pol_id);
                     system(cmd);
+                    /* delete sol records in DB */
+                    DBIntDeleteSol(pd_tbl[i].pol_id, -1);
                 }
             }
         }
