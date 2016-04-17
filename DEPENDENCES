@@ -3,4 +3,6 @@ pcap
 sqlite2 (disp: lite)
 mysql (disp: system)
 libresolv (diss: dns)
-
+ndpi 1.7
+postgresql
+json-c
