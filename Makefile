@@ -44,7 +44,7 @@ XPL_LIB = $(ROOT_DIR)/common/libxplico_core.a $(ROOT_DIR)/capt_dissectors/libxpl
 SRC = xplico.c report.c
 
 # compilation
-INCLUDE_DIR = -I$(ROOT_DIR)/include -I$(ROOT_DIR)/common/include -I$(ROOT_DIR)/dissectors/include -I$(ROOT_DIR)/capt_dissectors/include -I$(ROOT_DIR)/dispatch/include $(shell pkg-config --cflags libndpi)
+INCLUDE_DIR = -I$(ROOT_DIR)/include -I$(ROOT_DIR)/common/include -I$(ROOT_DIR)/dissectors/include -I$(ROOT_DIR)/capt_dissectors/include -I$(ROOT_DIR)/dispatch/include
 LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto
 CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -fPIC -D_FILE_OFFSET_BITS=64 -O2
 MODULE_PATH = modules
@@ -102,12 +102,16 @@ CFLAGS += -DGEOIP_LIBRARY=1
 INCLUDE_DIR += $(shell pkg-config --cflags geoip)
 endif
 
+# nDPI local version (from source code)
+ifdef LOCAL_NDPI
+$(shell ln -s $(ROOT_DIR)/../nDPI/src/include $(ROOT_DIR)/../nDPI/src/include/libndpi)
+endif
+
 # main cflags
 MCFLAGS = $(CFLAGS) -DLOG_COMPONENT=-1
 
-
 # To make it visible
-export CC CCPP ROOT_DIR CFLAGS LDFLAGS INCLUDE_DIR INSTALL_DIR GEOIP_LIB
+export CC CCPP ROOT_DIR CFLAGS LDFLAGS INCLUDE_DIR INSTALL_DIR GEOIP_LIB LOCAL_NDPI
 
 all: subdir xplico mdl check_version
 
@@ -117,6 +121,7 @@ help:
 	@echo "    GPROF=1           --> enable gprof compilation"
 	@echo "    FTBL_NOSORT=1     --> disable sort in flows manager"
 	@echo "    DISABLE_GEOIP=1   --> disable GeoIP library"
+	@echo "    LOCAL_NDPI=1      --> use local nDPI, linked statically"
 	@echo "    O3=1              --> enable optimization"
 	@echo " "
 	@echo "Comands:"

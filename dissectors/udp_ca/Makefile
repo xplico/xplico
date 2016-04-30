@@ -36,10 +36,18 @@ SUBDIRS =
 SRC = dis_log.c udp_analysis.c
 
 # C flags specific to the dissector
+ifdef LOCAL_NDPI
+CFLAGS += -I$(ROOT_DIR)/../nDPI/src/include -I$(ROOT_DIR)/../nDPI/src/lib
+else
 CFLAGS += $(shell pkg-config --cflags libndpi)
+endif
 
 # library specific to the dissector
+ifdef LOCAL_NDPI
+LDFLAGS = $(ROOT_DIR)/../nDPI/src/lib/.libs/libndpi.a
+else
 LDFLAGS = $(shell pkg-config --libs libndpi)
+endif
 
 # To make it visible
 export CC CCPP ROOT_DIR CFLAGS LDFLAGS INCLUDE_DIR
