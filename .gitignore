@@ -4,4 +4,7 @@ release/
 tmp/
 doc/
 debian/files
+*.so
+.depend
+*.pyc
 
