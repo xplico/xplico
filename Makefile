@@ -93,14 +93,13 @@ CFLAGS += -DXPL_REALTIME=1
 endif
 
 # verify GeoIP library source code
-
-GEOIP_LIB = `pkg-config --libs geoip`
-ifeq ($(wildcard $(GEOIP_LIB)), $(GEOIP_LIB))
-XPL_LIB += $(GEOIP_LIB)
-CFLAGS += -DGEOIP_LIBRARY=1
-INCLUDE_DIR += `pkg-config --cflags geoip`
-else
+ifdef DISABLE_GEOIP
 CFLAGS += -DGEOIP_LIBRARY=0
+else
+GEOIP_LIB = $(shell pkg-config --libs geoip)
+LDFLAGS += $(GEOIP_LIB)
+CFLAGS += -DGEOIP_LIBRARY=1
+INCLUDE_DIR += $(shell pkg-config --cflags geoip)
 endif
 
 # main cflags
@@ -117,6 +116,7 @@ help:
 	@echo "    VER=<string>      --> string is the release name, otherwise the date is the name"
 	@echo "    GPROF=1           --> enable gprof compilation"
 	@echo "    FTBL_NOSORT=1     --> disable sort in flows manager"
+	@echo "    DISABLE_GEOIP=1   --> disable GeoIP library"
 	@echo "    O3=1              --> enable optimization"
 	@echo " "
 	@echo "Comands:"

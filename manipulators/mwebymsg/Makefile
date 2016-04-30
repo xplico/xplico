@@ -47,9 +47,7 @@ LDFLAGS =  -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto $(shell pkg-config --
 CFLAGS += -I./include $(shell pkg-config --cflags json-c)
 
 # verify GeoIP library source code
-ifeq ($(wildcard $(GEOIP_LIB)), $(GEOIP_LIB))
-XPL_LIB += $(GEOIP_LIB)
-endif
+LDFLAGS += $(GEOIP_LIB)
 
 # main cflags
 MCFLAGS = $(CFLAGS) -DLOG_COMPONENT=-1
