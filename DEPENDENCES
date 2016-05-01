@@ -1,6 +1,6 @@
 Library
 pcap
-sqlite2 (disp: lite)
+sqlite3 (disp: lite)
 mysql (disp: system)
 libresolv (diss: dns)
 ndpi 1.7
