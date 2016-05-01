@@ -37,7 +37,8 @@ SUBDIRS =
 SRC = ximysql.c
 
 # compilation
-LDFLAGS += -L/usr/lib/mysql -lmysqlclient_r
+CFLAGS += $(shell pkg-config --cflags mysqlclient)
+LDFLAGS += $(shell pkg-config --libs mysqlclient)
 
 # To make it visible
 export CC CCPP ROOT_DIR CFLAGS LDFLAGS INCLUDE_DIR

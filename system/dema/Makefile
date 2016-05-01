@@ -41,8 +41,9 @@ SRC = dema.c session_decoding.c dbinterface.c captime.c log.c
 INCLUDE_DIR = -I$(ROOT_DIR)/include
 LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lpcap
 CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -g -ggdb -fPIC -D_FILE_OFFSET_BITS=64
+CFLAGS += $(shell pkg-config --cflags mysqlclient)
 
-LDFLAGS += -L/usr/lib/mysql -L/usr/lib64/mysql -lmysqlclient_r
+LDFLAGS += $(shell pkg-config --libs mysqlclient)
 CFLAGS += -DMYSQLXON=1
 
 # performance
