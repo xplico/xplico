@@ -15,15 +15,22 @@ case "$1" in
         fi
     
         chown -R www-data:www-data /opt/xplico
-        
-        sed -i 's/post_max_size.*/post_max_size = 280M/g' /etc/php5/apache2/php.ini
-        sed -i 's/upload_max_filesize.*/upload_max_filesize = 280M/g' /etc/php5/apache2/php.ini
-        if [ -f /etc/apache2/sites-available/xplico ]; then
-            rm -f /etc/apache2/sites-enabled/098-xplico.conf
-            ln -s /etc/apache2/sites-available/xplico /etc/apache2/sites-enabled/098-xplico.conf
+        if [ -f /etc/php5/apache2/php.ini ]; then
+            sed -i 's/post_max_size.*/post_max_size = 500M/g' /etc/php5/apache2/php.ini
+            sed -i 's/upload_max_filesize.*/upload_max_filesize = 500M/g' /etc/php5/apache2/php.ini
+            a2enmod php5
+        fi
+        if [ -f /etc/php/7.0/apache2/php.ini ]; then
+            sed -i 's/post_max_size.*/post_max_size = 500M/g' /etc/php/7.0/apache2/php.ini
+            sed -i 's/upload_max_filesize.*/upload_max_filesize = 500M/g' /etc/php/7.0/apache2/php.ini
+            a2enmod php7.0
         fi
 
-        a2enmod php5
+        if [ -f /etc/apache2/sites-available/httpd-xplico.conf ]; then
+            rm -f /etc/apache2/sites-enabled/098-xplico.conf
+            ln -s /etc/apache2/sites-available/httpd-xplico.conf /etc/apache2/sites-enabled/098-xplico.conf
+        fi
+
         a2enmod rewrite
         
         apache2ctl restart
