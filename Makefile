@@ -198,9 +198,17 @@ installcp: all
 	cp -a config/mwebymsg_install_*.cfg $(INSTALL_DIR)/cfg
 	cp -a config/mwebymsg_cli_fix.cfg $(INSTALL_DIR)/cfg/webymsg_cli.cfg
 	cp -a config/tcp_grb_dig.cfg $(INSTALL_DIR)/cfg/tcp_grb_dig.cfg
-
+ifeq ($(wildcard GeoLiteCity.dat), GeoLiteCity.dat)
+	cp -a GeoLiteCity.dat $(INSTALL_DIR)/GeoLiteCity.dat
+endif
+ifeq ($(wildcard GeoLiteCityv6.dat), GeoLiteCityv6.dat)
+	cp -a GeoLiteCityv6.dat $(INSTALL_DIR)/GeoLiteCityv6.dat
+endif
 ifeq ($(wildcard pcl6), pcl6)
 	cp -a pcl6 $(INSTALL_DIR)/bin
+endif
+ifeq ($(wildcard videosnarf), videosnarf)
+	cp -a videosnarf $(INSTALL_DIR)/bin
 endif
 # manipulators
 	$(MAKE) -C manipulators install
@@ -221,6 +229,8 @@ install: installcp
 	chmod a+w $(INSTALL_DIR)/cfg/*
 	chmod -R 777 $(INSTALL_DIR)/xi/app/tmp
 	mkdir -p $(DESTDIR)/etc/httpd/conf/extra
+	mkdir -p $(DESTDIR)/etc/apache2/sites-available/
+	mkdir -p $(DESTDIR)/etc/apache2/sites-enabled/
 	cp $(INSTALL_DIR)/cfg/apache_xi $(DESTDIR)/etc/httpd/conf/extra/httpd-xplico.conf
 	cp $(INSTALL_DIR)/cfg/apache_xi $(DESTDIR)/etc/apache2/sites-available/httpd-xplico.conf
 	mkdir -p $(DESTDIR)/opt/xplico/xi/app/tmp/cache
