@@ -102,11 +102,6 @@ CFLAGS += -DGEOIP_LIBRARY=1
 INCLUDE_DIR += $(shell pkg-config --cflags geoip)
 endif
 
-# nDPI local version (from source code)
-ifdef LOCAL_NDPI
-$(shell ln -s $(ROOT_DIR)/../nDPI/src/include $(ROOT_DIR)/../nDPI/src/include/libndpi)
-endif
-
 # main cflags
 MCFLAGS = $(CFLAGS) -DLOG_COMPONENT=-1
 
