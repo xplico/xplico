@@ -362,7 +362,7 @@ int DispatchInit(const char *file_cfg)
     sprintf(module_path, "%s/%s", module_dir, module_name);
 
     /* open module */
-    handle = dlopen(module_path, RTLD_NOW);
+    handle = dlopen(module_path, RTLD_LAZY);
     if (handle == NULL) {
         printf("Can't load dispatch module %s\n", dlerror());
         return -1;

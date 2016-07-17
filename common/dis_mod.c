@@ -432,7 +432,7 @@ int DisModLoad(char *file_cfg)
 #endif
         prot_tbl[i].rl_nesting = 0;
         prot_tbl[i].nesting = 0;
-        prot_tbl[i].handle = dlopen(mod_list[i].path, RTLD_NOW);
+        prot_tbl[i].handle = dlopen(mod_list[i].path, RTLD_LAZY);
         /* open module */
         if (prot_tbl[i].handle == NULL) {
             LogPrintf(LV_ERROR, "Can't load module %s",  dlerror());
