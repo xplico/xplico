@@ -46,7 +46,7 @@ SRC = xplico.c report.c
 # compilation
 INCLUDE_DIR = -I$(ROOT_DIR)/include -I$(ROOT_DIR)/common/include -I$(ROOT_DIR)/dissectors/include -I$(ROOT_DIR)/capt_dissectors/include -I$(ROOT_DIR)/dispatch/include
 LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto
-CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -fPIC -D_FILE_OFFSET_BITS=64 -O2
+CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -fPIC -D_FILE_OFFSET_BITS=64 -O2 -U_FORTIFY_SOURCE
 MODULE_PATH = modules
 
 # pedantic statistics
