@@ -166,20 +166,20 @@ static void TcpOrdPrint(order *ord)
 
 static struct seq* TcpSeq(packet *pkt, unsigned long seq, unsigned long nxt_seq)
 {
-    struct seq *new;
+    struct seq *newp;
 
-    new = DMemMalloc(sizeof(struct seq));
-    if (new == NULL)
+    newp = DMemMalloc(sizeof(struct seq));
+    if (newp == NULL)
         return NULL;
 
-    new->pkt = pkt;
-    new->seq = seq;
-    new->nxt_seq = nxt_seq;
-    new->next = NULL;
-    new->cng = FALSE;
-    new->ack = FALSE;
+    newp->pkt = pkt;
+    newp->seq = seq;
+    newp->nxt_seq = nxt_seq;
+    newp->next = NULL;
+    newp->cng = FALSE;
+    newp->ack = FALSE;
 
-    return new;
+    return newp;
 }
 
 
@@ -327,10 +327,12 @@ static int TcpFlush(int flow_id, order *ord, bool mono)
                     hole->stk = ProtCopyFrame(ord->src->pkt->stk, TRUE);
                     val.uint8 = TRUE;
                     ProtInsAttr(hole->stk, lost_id, &val);
-                    if (ord->seq_s != 0)
+                    if (ord->seq_s != 0) {
                         hole->len = ord->src->seq - ord->seq_s;
-                    else
+                    }
+                    else {
                         hole->len = 0;
+                    }
                     hole->data = NULL;
                     hole->cap_sec = ord->src->pkt->cap_sec;
                     hole->cap_usec = ord->src->pkt->cap_usec;
@@ -360,10 +362,12 @@ static int TcpFlush(int flow_id, order *ord, bool mono)
                     hole->stk = ProtCopyFrame(ord->dst->pkt->stk, TRUE);
                     val.uint8 = TRUE;
                     ProtInsAttr(hole->stk, lost_id, &val);
-                    if (ord->seq_d != 0)
+                    if (ord->seq_d != 0) {
                         hole->len = ord->dst->seq - ord->seq_d;
-                    else
+                    }
+                    else {
                         hole->len = 0;
+                    }
                     hole->data = NULL;
                     hole->cap_sec = ord->dst->pkt->cap_sec;
                     hole->cap_usec = ord->dst->pkt->cap_usec;
@@ -400,7 +404,7 @@ static int TcpFlush(int flow_id, order *ord, bool mono)
 
 static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, unsigned long nxt_seq, bool src)
 {
-    struct seq **queue, *chk, *pre, **last_sq, *last_rv, *new, *tmp;
+    struct seq **queue, *chk, *pre, **last_sq, *last_rv, *newp, *tmp;
     unsigned long nseq, cnt;
     long delta;
     bool same, cng;
@@ -457,20 +461,20 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                 pkt->len -= delta;
                 seq = nseq;
             }
-            new = TcpSeq(pkt, seq, nxt_seq);
-            *queue = new;
+            newp = TcpSeq(pkt, seq, nxt_seq);
+            *queue = newp;
             /* last */
-            *last_sq = new;
+            *last_sq = newp;
             if (same == FALSE && last_rv != NULL) {
                 last_rv->cng = TRUE;
             }
             ord->lins_src = src;
-            *last_sq = new;
+            *last_sq = newp;
         }
 
         return 0;
     }
-    if (pre == chk) {
+    if (pre == chk) { // fist packet in queue
         cnt = TcpContSeq(chk);
         if (chk->seq == nseq || chk->seq <= seq) {
             if (cnt >= nxt_seq) {
@@ -494,9 +498,9 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                 seq = pre->nxt_seq;
                 pkt->data += delta;
                 pkt->len -= delta;
-                new = TcpSeq(pkt, seq, nxt_seq);
-                new->next = chk;
-                pre->next = new;
+                newp = TcpSeq(pkt, seq, nxt_seq);
+                newp->next = chk;
+                pre->next = newp;
                 if (chk == NULL) {
                     if (same == FALSE && last_rv != NULL)
                         last_rv->cng = TRUE;
@@ -524,9 +528,9 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                     nxt_seq = chk->seq;
                     pkt->len -= delta;
                 }
-                new = TcpSeq(pkt, seq, nxt_seq);
-                new->next = chk;
-                pre->next = new;
+                newp = TcpSeq(pkt, seq, nxt_seq);
+                newp->next = chk;
+                pre->next = newp;
             }
         }
         else {
@@ -538,17 +542,17 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                 pkt->len -= delta;
             }
             if (nxt_seq <= chk->seq) {
-                new = TcpSeq(pkt, seq, nxt_seq);
-                new->next = chk;
-                *queue = new;
+                newp = TcpSeq(pkt, seq, nxt_seq);
+                newp->next = chk;
+                *queue = newp;
             }
             else {
                 if (cnt >= nxt_seq) {
                     delta = nxt_seq - chk->seq;
                     pkt->len -= delta;
-                    new = TcpSeq(pkt, seq, nxt_seq-delta);
-                    new->next = pre;
-                    *queue = new;
+                    newp = TcpSeq(pkt, seq, nxt_seq-delta);
+                    newp->next = pre;
+                    *queue = newp;
                 }
                 else {
                     cng = FALSE;
@@ -562,11 +566,11 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                         ord->num--;
                     }
                     if (chk == NULL) {
-                        new = TcpSeq(pkt, seq, nxt_seq);
-                        new->cng = cng;
-                        *queue = new;
+                        newp = TcpSeq(pkt, seq, nxt_seq);
+                        newp->cng = cng;
+                        *queue = newp;
                         /* last */
-                        *last_sq = new;
+                        *last_sq = newp;
                     }
                     else {
                         if (nxt_seq > chk->seq) {
@@ -574,10 +578,10 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                             pkt->len -= delta;
                             nxt_seq -= delta;
                         }
-                        new = TcpSeq(pkt, seq, nxt_seq);
-                        new->cng = cng;
-                        new->next = chk;
-                        *queue = new;
+                        newp = TcpSeq(pkt, seq, nxt_seq);
+                        newp->cng = cng;
+                        newp->next = chk;
+                        *queue = newp;
                     }
                 }
             }
@@ -606,9 +610,9 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                 seq = pre->nxt_seq;
                 pkt->data += delta;
                 pkt->len -= delta;
-                new = TcpSeq(pkt, seq, nxt_seq);
-                new->next = chk;
-                pre->next = new;
+                newp = TcpSeq(pkt, seq, nxt_seq);
+                newp->next = chk;
+                pre->next = newp;
             }
             else {
                 cng = FALSE;
@@ -630,9 +634,9 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                     nxt_seq = chk->seq;
                     pkt->len -= delta;
                 }
-                new = TcpSeq(pkt, seq, nxt_seq);
-                new->next = chk;
-                pre->next = new;
+                newp = TcpSeq(pkt, seq, nxt_seq);
+                newp->next = chk;
+                pre->next = newp;
             }
             if (same == FALSE && last_rv != NULL)
                 last_rv->cng = TRUE;
@@ -648,17 +652,17 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                 pkt->len -= delta;
             }
             if (nxt_seq <= chk->seq) {
-                new = TcpSeq(pkt, seq, nxt_seq);
-                new->next = chk;
-                pre->next = new;
+                newp = TcpSeq(pkt, seq, nxt_seq);
+                newp->next = chk;
+                pre->next = newp;
             }
             else {
                 if (cnt >= nxt_seq) {
                     delta = nxt_seq - chk->seq;
                     pkt->len -= delta;
-                    new = TcpSeq(pkt, seq, nxt_seq-delta);
-                    new->next = chk;
-                    pre->next = new;
+                    newp = TcpSeq(pkt, seq, nxt_seq-delta);
+                    newp->next = chk;
+                    pre->next = newp;
                 }
                 else {
                     cng = FALSE;
@@ -672,11 +676,11 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                         ord->num--;
                     }
                     if (chk == NULL) {
-                        new = TcpSeq(pkt, seq, nxt_seq);
-                        new->cng = cng;
-                        pre->next = new;
+                        newp = TcpSeq(pkt, seq, nxt_seq);
+                        newp->cng = cng;
+                        pre->next = newp;
                         /* last */
-                        *last_sq = new;
+                        *last_sq = newp;
                     }
                     else {
                         if (nxt_seq > chk->seq) {
@@ -684,10 +688,10 @@ static int TcpOrder(int flow_id, order *ord, packet *pkt, unsigned long seq, uns
                             pkt->len -= delta;
                             nxt_seq -= delta;
                         }
-                        new = TcpSeq(pkt, seq, nxt_seq);
-                        new->cng = cng;
-                        new->next = chk;
-                        pre->next = new;
+                        newp = TcpSeq(pkt, seq, nxt_seq);
+                        newp->cng = cng;
+                        newp->next = chk;
+                        pre->next = newp;
                     }
                 }
             }
@@ -741,10 +745,12 @@ static bool TcpAck(int flow_id, order *ord, unsigned long ack_seq, bool src)
                     hole->stk = ProtCopyFrame(chk->pkt->stk, TRUE);
                     val.uint8 = TRUE;
                     ProtInsAttr(hole->stk, lost_id, &val);
-                    if (nxt_seq != 0)
+                    if (nxt_seq != 0) {
                         hole->len = chk->seq - nxt_seq;
-                    else
+                    }
+                    else {
                         hole->len = 0;
+                    }
                     hole->data = NULL;
                     hole->cap_sec = chk->pkt->cap_sec;
                     hole->cap_usec = chk->pkt->cap_usec;
@@ -771,10 +777,12 @@ static bool TcpAck(int flow_id, order *ord, unsigned long ack_seq, bool src)
                 hole->stk = ProtCopyFrame(tmp->pkt->stk, TRUE);
                 val.uint8 = TRUE;
                 ProtInsAttr(hole->stk, lost_id, &val);
-                if (nxt_seq != 0)
+                if (nxt_seq != 0) {
                     hole->len = ack_seq - nxt_seq;
-                else
+                }
+                else {
                     hole->len = 0;
+                }
                 hole->data = NULL;
                 hole->cap_sec = tmp->pkt->cap_sec;
                 hole->cap_usec = tmp->pkt->cap_usec;
@@ -903,7 +911,8 @@ static int TcpFin(int flow_id, order *ord, packet *pkt, unsigned long seq, unsig
         ord->fin_s = seq;
     else
         ord->fin_d = seq;
-    nxt_seq++;
+    if (pkt->len == 0)
+        nxt_seq++;
     TcpOrder(flow_id, ord, pkt, seq, nxt_seq, src);
 
     return 0;

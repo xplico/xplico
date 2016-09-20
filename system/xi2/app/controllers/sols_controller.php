@@ -143,7 +143,10 @@ class SolsController extends AppController {
                 }
                 else {
                     $interface = array();
-                    $foca = popen('ifconfig | grep flags | awk -F: \'{print $1;}\'', 'r');
+                    $foca = popen('ifconfig -a | grep "Link encap" | cut -b -9', 'r');
+                    if ($foca) {
+                        $foca = popen('ifconfig | grep flags | awk -F: \'{print $1;}\'', 'r');
+                    }
                     if ($foca) {
                         while (!feof($foca)) {
                             $buffer = trim(fgets($foca, 200));
