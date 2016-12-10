@@ -98,24 +98,6 @@ static unsigned int ndpi_proto_size;
 static long limit_pkts;
 
 
-static void *nDPImalloc(unsigned long size)
-{
-    return malloc(size);
-}
-
-
-static void nDPIfree(void *freeable)
-{
-    free(freeable);
-}
-
-
-static void nDPIPrintf(u_int32_t protocol, void *id_struct, ndpi_log_level_t log_level, const char *format, ...)
-{
-    return;
-}
-
-
 static ndpi_protocol nDPIPacket(packet *pkt, struct ndpi_flow_struct *l7flow, struct ndpi_id_struct *l7src, struct ndpi_id_struct *l7dst, bool ipv4)
 {
     void *data;
@@ -1268,7 +1250,7 @@ int DissectInit(void)
 
     /* ndpi */
     pthread_mutex_init(&ndpi_mux, NULL);
-    ndpi = ndpi_init_detection_module(NDPI_TICK_RES, nDPImalloc, nDPIfree, nDPIPrintf);
+    ndpi = ndpi_init_detection_module();
     if (ndpi == NULL) {
         LogPrintf(LV_ERROR, "nDPi initializzation failed");
 
