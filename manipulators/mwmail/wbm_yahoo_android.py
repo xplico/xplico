@@ -207,7 +207,7 @@ def decode_json_msg(msg_raw):
 # decode mail received
 def mail_received(msgfile, out_file):
     fp = open(msgfile)
-    jformat = fp.read();
+    jformat = fp.read()
     fp.close()
     # json decoding
     tmp = json.loads(jformat)
@@ -288,10 +288,10 @@ def decode_sent_msg(msg_raw, idmsg):
 
 def mail_sent(msgfile, id_file, out_file):
     fp = open(msgfile)
-    rformat = fp.read();
+    rformat = fp.read()
     fp.close()
     fp = open(id_file)
-    jidmsg = fp.read();
+    jidmsg = fp.read()
     fp.close()
     
     param = urllib.parse.unquote(rformat)

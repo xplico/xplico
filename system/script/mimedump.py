@@ -20,7 +20,6 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 
-
 import os
 import sys
 import email
@@ -150,7 +149,7 @@ Copyright (c) 2007-2011 Gianluca Costa & Andrea de Franceschi. License GNU GPL.
         # email message can't be used to overwrite important files
         filename = part.get_filename()
         if filename:
-            filename = filename.replace('/', '');
+            filename = filename.replace('/', '')
             filename = 'part-%03d%s' % (counter, filename)
             print(filename)
             counter += 1

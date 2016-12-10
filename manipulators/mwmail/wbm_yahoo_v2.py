@@ -239,7 +239,7 @@ def JConverSent(raw):
 # decode mail received
 def mail_received(msgfile, out_file):
     fp = open(msgfile)
-    jformat = fp.read();
+    jformat = fp.read()
     fp.close()
     # json decoding
     jformat = JConver(jformat)
@@ -320,10 +320,10 @@ def CheckSent(req):
 
 def mail_sent(msgfile, confirm, out_file):
     fp = open(msgfile)
-    rformat = fp.read();
+    rformat = fp.read()
     fp.close()
     fp = open(confirm)
-    jidmsg = fp.read();
+    jidmsg = fp.read()
     fp.close()
     # verifica se e' un draft o meno
     jidmsg = JConverSent(jidmsg)

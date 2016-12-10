@@ -168,7 +168,7 @@ def JConver(raw):
 def parse_header_message(toaddress, msgfile_header):
     msg = {} # message
     fp = open(msgfile_header)
-    jformat = fp.read();
+    jformat = fp.read()
     fp.close()
     # json decoding
     jformat = JConver(jformat)
@@ -192,7 +192,7 @@ def parse_header_message(toaddress, msgfile_header):
 def parse_body_message(msg, msgfile_body):
     parts = [] # parts
     fp = open(msgfile_body, 'rb')
-    eformat = fp.read().decode("ascii", 'ignore');
+    eformat = fp.read().decode("ascii", 'ignore')
     fp.close()
     prt = {}
     prt['txt'] = ''
@@ -216,7 +216,7 @@ def alice_received(email_address, msgfile_header, msgfile_body, out_file):
 def parse_sent_message(email_address, msgfile):
     msg = {} # message
     fp = open(msgfile, 'rb')
-    eformat = fp.read().decode("ascii", 'ignore');
+    eformat = fp.read().decode("ascii", 'ignore')
     fp.close()
     tmp = urllib.parse.parse_qs(urllib.parse.urlparse(eformat).path)
     # subject

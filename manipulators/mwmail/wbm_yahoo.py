@@ -112,7 +112,7 @@ def tag_attr(data, tag):
         all_attr = data[start:end]
         attr = all_attr.split(" ")
         for at in attr:
-            sub = at.split('=');
+            sub = at.split('=')
             attrib[sub[0]] = sub[1]
     return attrib
 
@@ -233,7 +233,7 @@ def yahoo_sent(msgfile, out_file):
     mcc = [] # emails address for cc
     # read file
     fp = open(msgfile)
-    eformat = fp.read();
+    eformat = fp.read()
     fp.close()
     # find extract main data
     data = data_tag(eformat, 'message')
@@ -280,7 +280,7 @@ def yahoo_sent(msgfile, out_file):
     html = data_tag(simplebody, 'html')
     
     # to string
-    tos = "";
+    tos = ""
     for elem in mto:
         if tos != "":
             tos += ","
@@ -292,7 +292,7 @@ def yahoo_sent(msgfile, out_file):
             froms += ";"
         froms = froms + elem[0] + " <" + elem[1] + ">"
     # cc string
-    ccs = "";
+    ccs = ""
     for elem in mcc:
         if ccs != "":
             ccs += ","
@@ -435,7 +435,7 @@ def parse_rec_message(message):
                     prt['txt'] = data_tag(part, 'text')
             if attrib['filename'] != '""':
                 prt['filename'] = attrib['filename']
-            parts.append(prt);
+            parts.append(prt)
             tmp = next_tag(message, 'part', i)
             i += 1
         else:
@@ -443,7 +443,7 @@ def parse_rec_message(message):
 
     ## compose message
     # to string
-    tos = "";
+    tos = ""
     for elem in mto:
         if tos != "":
             tos += ","
@@ -458,7 +458,7 @@ def parse_rec_message(message):
         froms = froms + elem[0] + " <" + elem[1] + ">"
     msg['from'] = froms
     # cc string
-    ccs = "";
+    ccs = ""
     for elem in mcc:
         if ccs != "":
             ccs += ","
@@ -480,7 +480,7 @@ def parse_rec_message(message):
 def yahoo_received(msgfile, out_file):
     # read file
     fp = open(msgfile)
-    eformat = fp.read();
+    eformat = fp.read()
     fp.close()
     tmp = eformat
     i = 0

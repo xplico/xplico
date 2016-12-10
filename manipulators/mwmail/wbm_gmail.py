@@ -249,7 +249,7 @@ def JConverSent(raw):
 # decode mail received
 def mail_received(msgfile, out_file):
     fp = open(msgfile, encoding='utf-8')
-    jformat = fp.read();
+    jformat = fp.read()
     fp.close()
     # json decoding
     jformat = JConver(jformat)
@@ -338,13 +338,13 @@ def EmailExtra(header):
 
 def mail_sent(header, msgfile, confirm, out_file):
     fp = open(header)
-    header = fp.read();
+    header = fp.read()
     fp.close()
     fp = open(msgfile)
-    rformat = fp.read();
+    rformat = fp.read()
     fp.close()
     fp = open(confirm)
-    jidmsg = fp.read();
+    jidmsg = fp.read()
     fp.close()
     # estrazione email
     email = EmailExtra(header)

@@ -271,7 +271,7 @@ def aol_sent(msgfile, out_file):
     msg['from'] = froms
     
     # cc string
-    ccs = "";
+    ccs = ""
     for elem in mcc:
         if ccs != "":
             ccs += ","
@@ -428,7 +428,7 @@ def parse_rec_message(message):
     msg['from'] = froms
     
     # cc string
-    ccs = "";
+    ccs = ""
     for elem in mcc:
         if ccs != "":
             ccs += ","

@@ -88,9 +88,9 @@ if __name__ == '__main__':
     
     try:
         c.execute("UPDATE users SET password=\""+password+"\" WHERE username=\""+username+"\"")
-        print("Ok");
+        print("Ok")
     except:
-        print("Error");
+        print("Error")
     conn.commit()
     c.close() 
         

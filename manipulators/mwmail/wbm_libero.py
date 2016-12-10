@@ -20,8 +20,6 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 
-
-
 import string
 import sys
 import os
@@ -181,7 +179,7 @@ def delete_tags(data):
 def parse_header_message(msgfile_header):
     msg = {} # message
     fp = open(msgfile_header)
-    eformat = fp.read();
+    eformat = fp.read()
     fp.close()
     tmp = eformat
     # subject
@@ -239,7 +237,7 @@ def parse_header_message(msgfile_header):
 def parse_body_message(msg, msgfile_body):
     parts = [] # parts
     fp = open(msgfile_body)
-    eformat = fp.read();
+    eformat = fp.read()
     fp.close()
     tmp = eformat
     # body message
@@ -266,7 +264,7 @@ def mobile_libero(msgfile):
     msg = {} # message
     parts = [] # parts
     fp = open(msgfile)
-    eformat = fp.read();
+    eformat = fp.read()
     fp.close()
     tmp = eformat
     # subject
