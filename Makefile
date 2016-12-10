@@ -118,6 +118,7 @@ all: subdir xplico mdl check_version
 help:
 	@echo "Flags:"
 	@echo "    VER=<string>      --> string is the release name, otherwise the date is the name"
+	@echo "    LOCAL_NDPI=1      --> will be used local nDPI (not installed), from ../nDPI"
 	@echo "    GPROF=1           --> enable gprof compilation"
 	@echo "    FTBL_NOSORT=1     --> disable sort in flows manager"
 	@echo "    DISABLE_GEOIP=1   --> disable GeoIP library"
