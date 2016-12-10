@@ -142,7 +142,9 @@ if __name__ == '__main__':
     dbpassword = 123456
     dbuser = "xplico"
     dbname = "xplico"
-    database = 1; # SQLite by default
+    database = 1 # SQLite by default
+    remove_case_session = False
+    
     # options
     for o, a in opts:
         # dir
@@ -182,13 +184,13 @@ if __name__ == '__main__':
                 sys.exit(2)
         # password
         if o == "-p":
-            dbpassword = a;
+            dbpassword = a
         # user
         if o == "-u":
-            dbuser = a;
+            dbuser = a
         # db name
         if o == "-x":
-            dbname = a;
+            dbname = a
         # remove case or session
         if o == "-r":
             remove_case_session = True
@@ -289,7 +291,7 @@ if __name__ == '__main__':
             
     #new case
     if new_case:
-        ntry = 5;
+        ntry = 5
         if database == 1: # SQLite
             pol_name = args[offset]
             sol_name = args[offset+1]
@@ -321,7 +323,7 @@ if __name__ == '__main__':
                     c.execute("insert into pols (group_id, name) values ("+gpr_id+", \""+pol_name+"\")")
                     break
                 except:
-                    print("There are problems with the SQLite: I can't insert the new case");
+                    print("There are problems with the SQLite: I can't insert the new case")
                     time.sleep(1)
                     ntry -= 1
                     if (ntry == 0):
@@ -333,7 +335,7 @@ if __name__ == '__main__':
                     c.execute("insert into sols (pol_id, name) values ("+pol+", \""+sol_name+"\")")
                     break
                 except:
-                    print("There are problems with the SQLite: I can't insert the new session");
+                    print("There are problems with the SQLite: I can't insert the new session")
                     time.sleep(1)
                     ntry -= 1
                     if (ntry == 0):
@@ -378,7 +380,7 @@ if __name__ == '__main__':
                     c.execute("INSERT INTO pols (group_id, name) VALUES ("+gpr_id+", '"+pol_name+"') RETURNING id")
                     break
                 except:
-                    print("There are problems with the PostgreSQL server: I can't insert the new case");
+                    print("There are problems with the PostgreSQL server: I can't insert the new case")
                     time.sleep(1)
                     ntry -= 1
                     if (ntry == 0):
@@ -390,7 +392,7 @@ if __name__ == '__main__':
                     c.execute("INSERT INTO sols (pol_id, name) VALUES ("+pol+", '"+sol_name+"') RETURNING id")
                     break
                 except:
-                    print("There are problems with the PostgreSQL server: I can't insert the new session");
+                    print("There are problems with the PostgreSQL server: I can't insert the new session")
                     time.sleep(1)
                     ntry -= 1
                     if (ntry == 0):
