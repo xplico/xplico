@@ -109,7 +109,7 @@ int CapInit(const char *file_cfg, const char *cap)
     sprintf(module_path, "%s/cap_%s.so", module_dir, cap);
 
     /* open module */
-    handle = dlopen(module_path, RTLD_NOW);
+    handle = dlopen(module_path, RTLD_LAZY);
     if (handle == NULL) {
         printf("Can't load capture module %s\n", dlerror());
         return -1;
