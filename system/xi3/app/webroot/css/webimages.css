@@ -1,0 +1,15 @@
+
+
+img.webimgs {
+  max-width: 100px;
+  max-height: 90px;
+  border: 1px solid black;
+}
+
+td.webimgs { 
+  vertical-align: bottom;
+  text-align: center;
+  width: 25%;
+  font-size: 11px;
+  color: #008000;
+}

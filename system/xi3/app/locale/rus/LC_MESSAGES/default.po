@@ -1,0 +1,1926 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright 2011 iSerm s.a.s <info@iserm.com>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2011-09-24 09:14+0200\n"
+"PO-Revision-Date: 2011-08-24 17:40+0200\n"
+"Last-Translator: iSerm <info@iserm.com>\n"
+"Language-Team:  iSerm <info@iserm.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: /controllers/admins_controller.php:80
+msgid "all groups"
+msgstr "все группы"
+
+#: /controllers/admins_controller.php:95
+msgid "Username must be between 6 and 40 characters."
+msgstr "Имя пользователя должно быть от 6 до 40 символов."
+
+#: /controllers/admins_controller.php:111
+msgid "User already exists."
+msgstr "Пользователь уже существует."
+
+#: /controllers/admins_controller.php:123
+msgid "User added"
+msgstr "Пользователь добавил"
+
+#: /controllers/admins_controller.php:148
+msgid "Group already exists."
+msgstr "Группа уже существует."
+
+#: /controllers/admins_controller.php:153
+msgid "New Group activated"
+msgstr "Новая группа активирована"
+
+#: /controllers/admins_controller.php:157
+msgid "There was a problem creating the new group"
+msgstr "Существовал проблемы при создании новой группы"
+
+#: /controllers/admins_controller.php:176
+msgid "The user does not exist!"
+msgstr "Пользователь не существует!"
+
+#: /controllers/admins_controller.php:181
+msgid "User deleted!"
+msgstr "Пользователь удален!"
+
+#: /controllers/admins_controller.php:196
+msgid "The group does not exist!"
+msgstr "Группа не существует!"
+
+#: /controllers/admins_controller.php:205
+msgid "Group deleted!"
+msgstr "Группа удален!"
+
+#: /controllers/admins_controller.php:208
+msgid "Before delete this group you must delete all Cases of the group"
+msgstr "Прежде чем удалить эту группу необходимо удалить все случаи группу"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "min"
+msgstr "мин"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "hours"
+msgstr "часов"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "days"
+msgstr "дней"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "weeks"
+msgstr "недель"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "months"
+msgstr "месяцев"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "years"
+msgstr "лет"
+
+#: /controllers/dns_messages_controller.php:318
+msgid "DNS response"
+msgstr "DNS-ответ"
+
+#: /controllers/dns_messages_controller.php:352;388
+msgid "Host Popularity"
+msgstr "Хост Популярность"
+
+#: /controllers/dns_messages_controller.php:422
+msgid "DNS Response"
+msgstr "DNS-ответов"
+
+#: /controllers/emails_controller.php:126;222 /views/emails/index.ctp:53;77
+msgid "Unknown"
+msgstr "Неизвестный"
+
+#: /controllers/emails_controller.php:132;207
+msgid "Invalid Email"
+msgstr "Недопустимые Email"
+
+#: /controllers/emails_controller.php:136
+msgid "The Email has been saved."
+msgstr "Электронная почта была спасена."
+
+#: /controllers/pols_controller.php:75;86;122
+#: /controllers/sols_controller.php:92;105;416
+#: /controllers/users_controller.php:85;97
+#: /controllers/components/xplico.php:52
+msgid "Case"
+msgstr "Случай"
+
+#: /controllers/pols_controller.php:76;87;123
+#: /controllers/sols_controller.php:93;106;417
+#: /controllers/users_controller.php:86;98
+#: /controllers/components/xplico.php:53;120 /views/admins/groups.ctp:20
+msgid "Cases"
+msgstr "Случаи"
+
+#: /controllers/pols_controller.php:88;124 /views/pols/add.ctp:5
+msgid "New Case"
+msgstr "New Дело"
+
+#: /controllers/pols_controller.php:99
+msgid "Invalid id for Case."
+msgstr "Неверный номер для случая."
+
+#: /controllers/pols_controller.php:117 /controllers/sols_controller.php:411
+msgid "Administrators can not create new Cases or new Sessions!"
+msgstr "Администраторы не могут создавать новые случаи или новые сеансы!"
+
+#: /controllers/pols_controller.php:140
+msgid "The Case has been created"
+msgstr "Дело было создано"
+
+#: /controllers/pols_controller.php:143 /controllers/sols_controller.php:444
+msgid "Please correct errors below."
+msgstr "Пожалуйста, исправьте ошибки ниже."
+
+#: /controllers/pols_controller.php:150
+msgid "Invalid id for Case"
+msgstr "Неверный номер для случая"
+
+#: /controllers/pols_controller.php:157
+msgid "Admin can not delete the cases"
+msgstr "Администратор не можете удалять случаях"
+
+#: /controllers/pols_controller.php:160
+msgid "Invalid id for the Case"
+msgstr "Неверный номер для дела"
+
+#: /controllers/pols_controller.php:180
+msgid "Case deleted"
+msgstr "Дело удален"
+
+#: /controllers/sols_controller.php:94;107;418
+#: /controllers/users_controller.php:87 /controllers/components/xplico.php:54
+msgid "Sessions"
+msgstr "Сессии"
+
+#: /controllers/sols_controller.php:108
+msgid "New Session"
+msgstr "Новый сеанс"
+
+#: /controllers/sols_controller.php:121
+msgid "Invalid id for Session."
+msgstr "Недопустимый идентификатор сессии."
+
+#: /controllers/sols_controller.php:428
+msgid "Before add a new session stop the live acquisition!"
+msgstr "Прежде чем добавить новую сессию остановить жить приобретением!"
+
+#: /controllers/sols_controller.php:440
+msgid "The Session has been created"
+msgstr "Сессия была создана"
+
+#: /controllers/sols_controller.php:451;457
+msgid "Invalid id for Session"
+msgstr "Недопустимый идентификатор сессии"
+
+#: /controllers/sols_controller.php:470
+msgid "Session deleted"
+msgstr "Сессия удален"
+
+#: /controllers/sols_controller.php:482
+msgid "Size limit exceeded. See rules."
+msgstr "Максимальный размер превышен. Смотрите правила."
+
+#: /controllers/sols_controller.php:493
+msgid "File uploaded, wait start decoding..."
+msgstr "Файл загружен, ждать начала декодирования ..."
+
+#: /controllers/sols_controller.php:497
+msgid "Upload failed, please check"
+msgstr "Сбой при загрузке, проверьте"
+
+#: /controllers/sols_controller.php:497
+msgid "this"
+msgstr "это"
+
+#: /controllers/sols_controller.php:524
+msgid "Live capture started."
+msgstr "Живая захват начался."
+
+#: /controllers/sols_controller.php:527
+msgid "Select an Interface!"
+msgstr "Выберите интерфейс!"
+
+#: /controllers/sols_controller.php:532
+msgid "Start Failed"
+msgstr "Не удалось запустить"
+
+#: /controllers/sols_controller.php:554
+msgid "Live capture stoped."
+msgstr "Живая захвата купируются."
+
+#: /controllers/users_controller.php:128
+msgid "This user already exists."
+msgstr "Этот пользователь уже существует."
+
+#: /controllers/users_controller.php:132 /models/user.php:100
+msgid "Please, a valid email!"
+msgstr "Пожалуйста, действительный адрес электронной почты!"
+
+#: /controllers/users_controller.php:150;202
+msgid "To complete registration wait the email"
+msgstr "Для завершения регистрации ждать электронной почте"
+
+#: /controllers/users_controller.php:153
+msgid "Registration Completed"
+msgstr "Регистрация завершена"
+
+#: /controllers/users_controller.php:160
+msgid "There was a problem saving this information"
+msgstr "Существовал проблемой сохранения этой информации"
+
+#: /controllers/users_controller.php:167
+msgid "Check the errors below."
+msgstr "Проверьте ошибки ниже."
+
+#: /controllers/users_controller.php:181
+msgid "Registration Completed."
+msgstr "Регистрация завершена."
+
+#: /controllers/users_controller.php:214
+msgid ""
+"Error, /opt/xplico/xi/app/tmp/cache path is not writable, please fix "
+"permissions and reload"
+msgstr ""
+"Ошибка, / опция / xplico / х / приложение / TMP / кэш путь не для записи, "
+"пожалуйста, исправить разрешения и перезагрузка"
+
+#: /controllers/users_controller.php:227
+msgid ""
+"Xplico is not running!<br/><br/>\n"
+"		For starting Xplico, please choose <u>one</u> of these options <u>as "
+"root</u>: <br /><br />\n"
+"		a) If you are using the Ubuntu/Debian package, run: \"/etc/init.d/xplico "
+"start\" <br />\n"
+"		b) Run: \"/opt/xplico/script/sqlite_demo.sh\" <br />"
+msgstr ""
+"Xplico не работает! <br/><br/> Для запуска Xplico, пожалуйста, выбрать "
+"<u>один</u> из этих вариантов, <u>как корень:</u> <br /><br /> а) Если вы "
+"используете Ubuntu / Debian пакет, выполните команду: \"/ и т.д. / init.d / "
+"xplico старт\" <br /> б) Выполнить: \"/ опция / xplico / сценарий / "
+"sqlite_demo.sh\" <br />"
+
+#: /controllers/users_controller.php:261
+msgid "Invalid login!"
+msgstr "Недопустимые Войти!"
+
+#: /controllers/users_controller.php:291
+msgid "New password activated!"
+msgstr "Новый пароль активирован!"
+
+#: /controllers/users_controller.php:295
+msgid "You can not change the password"
+msgstr "Вы не можете изменить пароль"
+
+#: /controllers/users_controller.php:299
+msgid "New password error"
+msgstr "Новая ошибка пароля"
+
+#: /controllers/users_controller.php:303
+msgid "Password wrong"
+msgstr "Пароль неверный"
+
+#: /controllers/webs_controller.php:65
+msgid ""
+"For a complete view of html page set your browser to use Proxy, and point it "
+"to Web server."
+msgstr ""
+"Для полного представления о странице HTML настроить браузер на использование "
+"прокси, и направьте его на веб-сервере."
+
+#: /controllers/webs_controller.php:68
+msgid "This version can be inaccurate in displaying Web pages."
+msgstr "Эта версия может быть неточной при отображении веб-страниц."
+
+#: /controllers/components/xplico.php:55
+msgid "Session"
+msgstr "Сессия"
+
+#: /controllers/components/xplico.php:58
+msgid "Graphs"
+msgstr "Графики"
+
+#: /controllers/components/xplico.php:59
+msgid "Dns"
+msgstr "Dns"
+
+#: /controllers/components/xplico.php:60
+msgid "Arp"
+msgstr "Arp"
+
+#: /controllers/components/xplico.php:61
+msgid "Icmpv6"
+msgstr "ICMPv6"
+
+#: /controllers/components/xplico.php:62
+msgid "GeoMap"
+msgstr "GeoMap"
+
+#: /controllers/components/xplico.php:65
+msgid "Web"
+msgstr "Сеть"
+
+#: /controllers/components/xplico.php:66 /views/feeds/index.ctp:25
+msgid "Site"
+msgstr "Сайт"
+
+#: /controllers/components/xplico.php:67
+msgid "Feed"
+msgstr "Кормить"
+
+#: /controllers/components/xplico.php:68 /views/sols/view.ctp:134;149
+msgid "Images"
+msgstr "Изображения"
+
+#: /controllers/components/xplico.php:71
+msgid "Mail"
+msgstr "Почта"
+
+#: /controllers/components/xplico.php:72 /views/admins/uadd.ctp:12
+#: /views/admins/users.ctp:12 /views/users/register.ctp:9
+#: /views/users/resend_reg.ctp:12
+msgid "Email"
+msgstr "Email"
+
+#: /controllers/components/xplico.php:73
+msgid "Webmail"
+msgstr "Webmail"
+
+#: /controllers/components/xplico.php:76
+msgid "Voip"
+msgstr "Voip"
+
+#: /controllers/components/xplico.php:77
+msgid "Sip"
+msgstr "Потягивать"
+
+#: /controllers/components/xplico.php:78
+msgid "Rtp"
+msgstr "RTP"
+
+#: /controllers/components/xplico.php:81
+msgid "Share"
+msgstr "Доля"
+
+#: /controllers/components/xplico.php:82
+msgid "HttpFile"
+msgstr "HttpFile"
+
+#: /controllers/components/xplico.php:83
+msgid "Ftp"
+msgstr "Ftp"
+
+#: /controllers/components/xplico.php:84
+msgid "Tftp"
+msgstr "Tftp"
+
+#: /controllers/components/xplico.php:85
+msgid "Printer"
+msgstr "Принтер"
+
+#: /controllers/components/xplico.php:86
+msgid "Mms"
+msgstr "Mms"
+
+#: /controllers/components/xplico.php:89 /views/layouts/fbchat.ctp:7
+#: /views/msn_chats/index.ctp:25
+msgid "Chat"
+msgstr "Чат"
+
+#: /controllers/components/xplico.php:90
+msgid "Nntp"
+msgstr "NNTP"
+
+#: /controllers/components/xplico.php:91
+msgid "Facebook"
+msgstr "Facebook"
+
+#: /controllers/components/xplico.php:92
+#: /views/configurations/dissectors.ctp:139
+msgid "MSN"
+msgstr "MSN"
+
+#: /controllers/components/xplico.php:93
+#: /views/configurations/dissectors.ctp:99
+msgid "IRC"
+msgstr "IRC"
+
+#: /controllers/components/xplico.php:94
+#: /views/configurations/dissectors.ctp:141
+msgid "Paltalk"
+msgstr "Paltalk"
+
+#: /controllers/components/xplico.php:95
+msgid "Paltalk Exp"
+msgstr "Paltalk опыта"
+
+#: /controllers/components/xplico.php:98
+msgid "Shell"
+msgstr "Оболочка"
+
+#: /controllers/components/xplico.php:99 /views/sols/view.ctp:276
+msgid "Telnet"
+msgstr "Telnet"
+
+#: /controllers/components/xplico.php:102 /views/sols/view.ctp:294
+msgid "Undecoded"
+msgstr "Undecoded"
+
+#: /controllers/components/xplico.php:103
+msgid "TCP-UDP"
+msgstr "TCP-UDP"
+
+#: /controllers/components/xplico.php:113
+msgid "Menu"
+msgstr "Меню"
+
+#: /controllers/components/xplico.php:114
+msgid "Config"
+msgstr "Конфиг"
+
+#: /controllers/components/xplico.php:115 /views/configurations/index.ctp:88
+msgid "Dissectors"
+msgstr "Диссекторы"
+
+#: /controllers/components/xplico.php:116 /views/admins/groups.ctp:6
+#: /views/sols/view.ctp:246
+msgid "Groups"
+msgstr "Группы"
+
+#: /controllers/components/xplico.php:117 /views/admins/groups.ctp:19
+#: /views/fbuchats/index.ctp:16 /views/sols/view.ctp:201
+msgid "Users"
+msgstr "Пользователи"
+
+#: /controllers/components/xplico.php:118
+msgid "New group"
+msgstr "Новая группа"
+
+#: /controllers/components/xplico.php:119
+msgid "New user"
+msgstr "Новый пользователь"
+
+#: /controllers/components/xplico.php:229;280
+msgid "Not installed"
+msgstr "Не установлено"
+
+#: /controllers/components/xplico.php:305
+msgid "Error connecting to Internet"
+msgstr "Ошибка при подключении к Интернету"
+
+#: /controllers/components/xplico.php:313
+msgid "There is a new version of Xplico: "
+msgstr "Существует новая версия Xplico:"
+
+#: /controllers/components/xplico.php:316
+msgid "There is not a new version of Xplico"
+msgstr "Существует не новая версия Xplico"
+
+#: /models/group.php:61
+msgid "Max name size is 16"
+msgstr "Макс имя размер 16"
+
+#: /models/group.php:65 /models/user.php:57;67;77;89
+msgid "Only Alpha Numeric chars!"
+msgstr "Только буквенно-цифровой символов!"
+
+#: /models/group.php:69
+msgid "The name must be more that 4 chars"
+msgstr "Имя должно быть более 4 символов"
+
+#: /models/user.php:53
+msgid "Max user name size is 16"
+msgstr "Макс имя пользователя, размер 16"
+
+#: /models/user.php:61
+msgid "The username must be more that 4 chars"
+msgstr "Имя пользователя должно быть более 4 символов"
+
+#: /models/user.php:71
+msgid "The password must be more that 6 chars"
+msgstr "Пароль должен быть более 6 символов"
+
+#: /models/user.php:82
+msgid "The First name must be more that 2 chars"
+msgstr "Имя должно быть более 2 символов"
+
+#: /models/user.php:94
+msgid "The Last name must be more that 2 chars"
+msgstr "Последнее имя должно быть более 2 символов"
+
+#: /plugins/datasources/models/datasources/array_source.php:83
+msgid "No records found in model."
+msgstr "Записи не найдены в модели."
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:129
+msgid "Transport error - could not open socket"
+msgstr "Транспорт ошибку - не смог открыть сокет"
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:132
+msgid "Transport error - HTTP status code was not 200"
+msgstr "Транспорт ошибка - HTTP код статуса было не 200"
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:175
+msgid "Parse error. Not well formed"
+msgstr "Ошибка разбора. Не хорошо сформированные"
+
+#: /views/admins/gadd.ctp:7
+msgid "Please fill out the form below to add a new Group"
+msgstr "Пожалуйста, заполните форму ниже, чтобы добавить новую группу"
+
+#: /views/admins/gadd.ctp:10 /views/ftps/view.ctp:41 /views/pols/index.ctp:10
+#: /views/pols/view.ctp:9 /views/sols/index.ctp:11 /views/tftps/view.ctp:38
+msgid "Name"
+msgstr "Имя"
+
+#: /views/admins/gadd.ctp:11 /views/admins/uadd.ctp:18
+msgid "Confim"
+msgstr "Confim"
+
+#: /views/admins/groups.ctp:9 /views/admins/uadd.ctp:16
+msgid "Group"
+msgstr "Группа"
+
+#: /views/admins/groups.ctp:10 /views/admins/users.ctp:15
+#: /views/pols/index.ctp:13 /views/sols/index.ctp:15
+msgid "Actions"
+msgstr "Действия"
+
+#: /views/admins/groups.ctp:21 /views/admins/users.ctp:29
+#: /views/pols/index.ctp:27 /views/pols/view.ctp:33 /views/sols/index.ctp:28
+msgid "Delete"
+msgstr "Удалять"
+
+#: /views/admins/groups.ctp:21
+msgid "Are you sure you want to delete group"
+msgstr "Вы уверены, что хотите удалить группу"
+
+#: /views/admins/uadd.ctp:7
+msgid "Please fill out the form below to add a new User"
+msgstr "Пожалуйста, заполните форму ниже, чтобы добавить нового пользователя"
+
+#: /views/admins/uadd.ctp:10
+msgid "User name"
+msgstr "Имя пользователя"
+
+#: /views/admins/uadd.ctp:11 /views/admins/users.ctp:30
+#: /views/users/login.ctp:45 /views/users/register.ctp:11
+msgid "Password"
+msgstr "Пароль"
+
+#: /views/admins/uadd.ctp:13 /views/admins/users.ctp:10
+#: /views/users/register.ctp:14
+msgid "First Name"
+msgstr "Имя"
+
+#: /views/admins/uadd.ctp:14 /views/admins/users.ctp:11
+#: /views/users/register.ctp:15
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: /views/admins/users.ctp:6
+msgid "Users of"
+msgstr "Пользователи"
+
+#: /views/admins/users.ctp:9 /views/fbuchats/chats.ctp:23
+#: /views/ftps/index.ctp:21
+msgid "User"
+msgstr "Пользователь"
+
+#: /views/admins/users.ctp:13
+msgid "Last Login"
+msgstr "Последнее Войти"
+
+#: /views/admins/users.ctp:14
+msgid "Count"
+msgstr "Подсчет"
+
+#: /views/admins/users.ctp:29
+msgid "Are you sure you want to delete the user"
+msgstr "Вы уверены, что хотите удалить пользователя"
+
+#: /views/admins/users.ctp:40 /views/arps/index.ctp:53
+#: /views/dns_messages/index.ctp:61 /views/emails/index.ctp:89
+#: /views/fbuchats/chats.ctp:58 /views/fbuchats/index.ctp:27
+#: /views/feeds/index.ctp:37 /views/feeds/view.ctp:42 /views/ftps/index.ctp:48
+#: /views/ftps/view.ctp:61 /views/httpfiles/index.ctp:53
+#: /views/icmpv6s/index.ctp:53 /views/ircs/index.ctp:43
+#: /views/ircs/view.ctp:50 /views/mms/index.ctp:52
+#: /views/msn_chats/index.ctp:57 /views/nntp_groups/alist.ctp:47
+#: /views/nntp_groups/index.ctp:34 /views/paltalk_exps/index.ctp:50
+#: /views/paltalk_rooms/index.ctp:58 /views/pjls/index.ctp:44
+#: /views/rtps/index.ctp:59 /views/sips/index.ctp:59
+#: /views/telnets/index.ctp:43 /views/tftps/index.ctp:43
+#: /views/tftps/view.ctp:56 /views/unknows/index.ctp:66
+#: /views/webmails/index.ctp:57 /views/webs/images.ctp:77
+#: /views/webs/index.ctp:106
+msgid "Previous"
+msgstr "Предыдущий"
+
+#: /views/admins/users.ctp:42 /views/arps/index.ctp:55
+#: /views/dns_messages/index.ctp:63 /views/emails/index.ctp:91
+#: /views/fbuchats/chats.ctp:60 /views/fbuchats/index.ctp:29
+#: /views/feeds/index.ctp:39 /views/feeds/view.ctp:44 /views/ftps/index.ctp:50
+#: /views/ftps/view.ctp:63 /views/httpfiles/index.ctp:55
+#: /views/icmpv6s/index.ctp:55 /views/ircs/index.ctp:45
+#: /views/ircs/view.ctp:52 /views/mms/index.ctp:54
+#: /views/msn_chats/index.ctp:59 /views/nntp_groups/alist.ctp:49
+#: /views/nntp_groups/index.ctp:36 /views/paltalk_exps/index.ctp:52
+#: /views/paltalk_rooms/index.ctp:60 /views/pjls/index.ctp:46
+#: /views/rtps/index.ctp:61 /views/sips/index.ctp:61
+#: /views/telnets/index.ctp:45 /views/tftps/index.ctp:45
+#: /views/tftps/view.ctp:58 /views/unknows/index.ctp:68
+#: /views/webmails/index.ctp:59 /views/webs/images.ctp:79
+#: /views/webs/index.ctp:108
+msgid "Next"
+msgstr "Следующий"
+
+#: /views/arps/index.ctp:17 /views/dns_messages/index.ctp:22
+#: /views/fbuchats/chats.ctp:15 /views/fbuchats/index.ctp:8
+#: /views/feeds/index.ctp:16 /views/ftps/index.ctp:12
+#: /views/httpfiles/index.ctp:17 /views/icmpv6s/index.ctp:17
+#: /views/ircs/index.ctp:12 /views/mms/index.ctp:16
+#: /views/msn_chats/index.ctp:16 /views/nntp_groups/alist.ctp:8
+#: /views/nntp_groups/index.ctp:16 /views/paltalk_exps/index.ctp:16
+#: /views/paltalk_rooms/index.ctp:16 /views/rtps/index.ctp:16
+#: /views/sips/index.ctp:16 /views/tftps/index.ctp:10
+#: /views/webs/images.ctp:17 /views/webs/index.ctp:45
+msgid "Search:"
+msgstr "Поиск по сайту:"
+
+#: /views/arps/index.ctp:18 /views/dns_messages/index.ctp:23
+#: /views/emails/index.ctp:14 /views/fbuchats/chats.ctp:16
+#: /views/fbuchats/index.ctp:9 /views/feeds/index.ctp:17
+#: /views/ftps/index.ctp:13 /views/httpfiles/index.ctp:18
+#: /views/icmpv6s/index.ctp:18 /views/ircs/index.ctp:13
+#: /views/mms/index.ctp:17 /views/msn_chats/index.ctp:17
+#: /views/nntp_groups/alist.ctp:9 /views/nntp_groups/index.ctp:17
+#: /views/paltalk_exps/index.ctp:17 /views/paltalk_rooms/index.ctp:17
+#: /views/rtps/index.ctp:17 /views/sips/index.ctp:17
+#: /views/telnets/index.ctp:12 /views/tftps/index.ctp:11
+#: /views/unknows/index.ctp:18 /views/users/resend_reg.ctp:13
+#: /views/webmails/index.ctp:12 /views/webs/images.ctp:18
+#: /views/webs/index.ctp:46
+msgid "Go"
+msgstr "Идти"
+
+#: /views/arps/index.ctp:26 /views/dns_messages/index.ctp:31
+#: /views/emails/index.ctp:24 /views/fbuchats/chats.ctp:22
+#: /views/feeds/view.ctp:15 /views/ftps/index.ctp:19 /views/ftps/view.ctp:40
+#: /views/httpfiles/index.ctp:24 /views/icmpv6s/index.ctp:26
+#: /views/ircs/index.ctp:19 /views/ircs/view.ctp:33 /views/mms/index.ctp:23
+#: /views/msn_chats/index.ctp:23 /views/nntp_groups/alist.ctp:14
+#: /views/paltalk_exps/index.ctp:23 /views/paltalk_rooms/index.ctp:23
+#: /views/pjls/index.ctp:17 /views/rtps/index.ctp:23 /views/sips/index.ctp:23
+#: /views/telnets/index.ctp:18 /views/tftps/index.ctp:16
+#: /views/tftps/view.ctp:37 /views/unknows/index.ctp:24
+#: /views/webmails/index.ctp:18 /views/webs/index.ctp:51
+msgid "Date"
+msgstr "Дата"
+
+#: /views/arps/index.ctp:27 /views/icmpv6s/index.ctp:27
+msgid "MAC"
+msgstr "MAC"
+
+#: /views/arps/index.ctp:28 /views/configurations/dissectors.ctp:43
+#: /views/dns_messages/index.ctp:34 /views/icmpv6s/index.ctp:28
+msgid "IP"
+msgstr "IP"
+
+#: /views/arps/index.ctp:29 /views/dns_messages/index.ctp:35
+#: /views/fbuchats/chats.ctp:27 /views/feeds/view.ctp:18
+#: /views/httpfiles/index.ctp:28 /views/icmpv6s/index.ctp:29
+#: /views/layouts/default.ctp:36 /views/msn_chats/index.ctp:27
+#: /views/paltalk_exps/index.ctp:26 /views/paltalk_rooms/index.ctp:27
+#: /views/pjls/index.ctp:20 /views/rtps/index.ctp:27 /views/sips/index.ctp:27
+#: /views/unknows/index.ctp:30 /views/webs/index.ctp:56
+msgid "Info"
+msgstr "Информация"
+
+#: /views/arps/index.ctp:37;45 /views/dns_messages/index.ctp:44;53
+#: /views/emails/view.ctp:59 /views/fbuchats/chats.ctp:42;51
+#: /views/feeds/view.ctp:27;34 /views/ftps/view.ctp:34;53
+#: /views/httpfiles/index.ctp:38;46 /views/icmpv6s/index.ctp:37;45
+#: /views/ircs/view.ctp:43 /views/mms/index.ctp:36;44
+#: /views/msn_chats/index.ctp:41;49 /views/nntp_groups/view.ctp:40
+#: /views/paltalk_exps/index.ctp:35;42 /views/paltalk_rooms/index.ctp:42;50
+#: /views/pjls/index.ctp:29;36 /views/rtps/index.ctp:43;51
+#: /views/rtps/view.ctp:47 /views/sips/index.ctp:43;51 /views/sips/view.ctp:50
+#: /views/telnets/view.ctp:32 /views/tftps/view.ctp:26;49
+#: /views/unknows/index.ctp:45;59 /views/webmails/view.ctp:43
+#: /views/webs/index.ctp:76;97
+msgid "info.xml"
+msgstr "info.xml"
+
+#: /views/configurations/dissectors.ctp:19;21
+msgid "Dissector"
+msgstr "Диссектор"
+
+#: /views/configurations/dissectors.ctp:20;22 /views/sols/index.ctp:14
+#: /views/sols/view.ctp:51
+msgid "Status"
+msgstr "Статус"
+
+#: /views/configurations/dissectors.ctp:25
+msgid "Pcap"
+msgstr "Pcap"
+
+#: /views/configurations/dissectors.ctp:27
+msgid "Xplico Case"
+msgstr "Дело Xplico"
+
+#: /views/configurations/dissectors.ctp:31
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: /views/configurations/dissectors.ctp:33
+msgid "PPPoE"
+msgstr "PPPoE"
+
+#: /views/configurations/dissectors.ctp:37
+msgid "PPP"
+msgstr "ППС"
+
+#: /views/configurations/dissectors.ctp:39
+msgid "RADIOTAP"
+msgstr "RADIOTAP"
+
+#: /views/configurations/dissectors.ctp:45
+msgid "IPv6"
+msgstr "IPv6"
+
+#: /views/configurations/dissectors.ctp:49
+msgid "TCP"
+msgstr "TCP"
+
+#: /views/configurations/dissectors.ctp:51
+msgid "UDP"
+msgstr "UDP"
+
+#: /views/configurations/dissectors.ctp:55 /views/sols/view.ctp:126;177
+msgid "HTTP"
+msgstr "HTTP"
+
+#: /views/configurations/dissectors.ctp:57
+msgid "POP"
+msgstr "POP"
+
+#: /views/configurations/dissectors.ctp:61
+msgid "IMAP"
+msgstr "IMAP"
+
+#: /views/configurations/dissectors.ctp:63
+msgid "SMTP"
+msgstr "SMTP"
+
+#: /views/configurations/dissectors.ctp:67
+msgid "HTTP file transfer"
+msgstr "HTTP-передачу файлов"
+
+#: /views/configurations/dissectors.ctp:69 /views/sols/view.ctp:285
+msgid "SIP"
+msgstr "SIP"
+
+#: /views/configurations/dissectors.ctp:73
+msgid "RTP"
+msgstr "RTP"
+
+#: /views/configurations/dissectors.ctp:75
+msgid "RTCP"
+msgstr "RTCP"
+
+#: /views/configurations/dissectors.ctp:79
+msgid "SDP"
+msgstr "SDP"
+
+#: /views/configurations/dissectors.ctp:81
+msgid "L2TP"
+msgstr "L2TP"
+
+#: /views/configurations/dissectors.ctp:85
+msgid "VLAN"
+msgstr "VLAN"
+
+#: /views/configurations/dissectors.ctp:87
+msgid "FTP"
+msgstr "FTP"
+
+#: /views/configurations/dissectors.ctp:91
+msgid "DNS"
+msgstr "DNS"
+
+#: /views/configurations/dissectors.ctp:93
+msgid "ICMP"
+msgstr "ICMP"
+
+#: /views/configurations/dissectors.ctp:97 /views/sols/view.ctp:244
+msgid "NNTP"
+msgstr "NNTP"
+
+#: /views/configurations/dissectors.ctp:103
+msgid "IPP"
+msgstr "IPP"
+
+#: /views/configurations/dissectors.ctp:105
+msgid "PJL"
+msgstr "PJL"
+
+#: /views/configurations/dissectors.ctp:109 /views/sols/view.ctp:141
+msgid "MMS"
+msgstr "MMS"
+
+#: /views/configurations/dissectors.ctp:111
+msgid "SLL"
+msgstr "SLL"
+
+#: /views/configurations/dissectors.ctp:115
+msgid "TFTP"
+msgstr "TFTP"
+
+#: /views/configurations/dissectors.ctp:117
+msgid "IEEE80211"
+msgstr "Ieee80211"
+
+#: /views/configurations/dissectors.ctp:121
+msgid "LLC"
+msgstr "ООО"
+
+#: /views/configurations/dissectors.ctp:123
+msgid "Facebook Web chat"
+msgstr "Facebook Веб-чат"
+
+#: /views/configurations/dissectors.ctp:127
+msgid "TELNET"
+msgstr "TELNET"
+
+#: /views/configurations/dissectors.ctp:129
+msgid "Web mail"
+msgstr "Веб-почта"
+
+#: /views/configurations/dissectors.ctp:133
+msgid "ARP"
+msgstr "ARP"
+
+#: /views/configurations/dissectors.ctp:135
+msgid "Paltalk Express"
+msgstr "Paltalk Экспресс"
+
+#: /views/configurations/dissectors.ctp:144
+msgid "TCP L7p"
+msgstr "TCP L7p"
+
+#: /views/configurations/dissectors.ctp:146
+msgid "UDP L7p"
+msgstr "UDP L7p"
+
+#: /views/configurations/index.ctp:9
+msgid "Xplico Control pane"
+msgstr "Xplico управления панели"
+
+#: /views/configurations/index.ctp:14
+msgid "Checksum validation"
+msgstr "Проверка контрольной суммы"
+
+#: /views/configurations/index.ctp:15
+msgid ""
+"Option to enable/disable checksum analysis. Without checksum verification "
+"more information will be decoded, but it is not legally reliable, as those "
+"packets may have been sent by any other host."
+msgstr ""
+"Возможность включить / отключить контрольную анализа. Без проверку "
+"контрольной суммы дополнительной информации будут расшифрованы, но она не "
+"является юридически надежным, так как эти пакеты может быть отправлен любым "
+"другим хостом."
+
+#: /views/configurations/index.ctp:21
+msgid "Validating checksums:"
+msgstr "Проверка контрольных сумм:"
+
+#: /views/configurations/index.ctp:21
+msgid "OFF"
+msgstr "OFF"
+
+#: /views/configurations/index.ctp:26
+msgid "Validating checksum:"
+msgstr "Проверка контрольной суммы:"
+
+#: /views/configurations/index.ctp:26
+msgid "ON"
+msgstr "О"
+
+#: /views/configurations/index.ctp:34
+msgid "Activate validation"
+msgstr "Активировать проверку"
+
+#: /views/configurations/index.ctp:36
+msgid "Deactivate validation"
+msgstr "Отключение проверки"
+
+#: /views/configurations/index.ctp:43
+msgid "Geo position"
+msgstr "Geo позиции"
+
+#: /views/configurations/index.ctp:44
+msgid "Change the source GPS position of the generated connections"
+msgstr "Изменение позиции источника GPS созданного соединения"
+
+#: /views/configurations/index.ctp:49
+msgid "Long"
+msgstr "Долго"
+
+#: /views/configurations/index.ctp:50
+msgid "Lat"
+msgstr "Lat"
+
+#: /views/configurations/index.ctp:51 /views/dns_messages/graph.ctp:28
+msgid "Change"
+msgstr "Изменение"
+
+#: /views/configurations/index.ctp:58;64;69
+msgid "Data wrapper"
+msgstr "Данные обертку"
+
+#: /views/configurations/index.ctp:59
+msgid ""
+"Option for creating an index of decoded info at /opt/xplico/lastdata.txt to "
+"use it with thertiary applicacions."
+msgstr ""
+"Вариант для создания индекса декодированных информация на / опция / xplico / "
+"lastdata.txt использовать его с thertiary applicacions."
+
+#: /views/configurations/index.ctp:64
+msgid "not activated"
+msgstr "не активируется"
+
+#: /views/configurations/index.ctp:69
+msgid "activated"
+msgstr "активированный"
+
+#: /views/configurations/index.ctp:77
+msgid "Activate wrapper"
+msgstr "Активировать обертку"
+
+#: /views/configurations/index.ctp:79
+msgid "Deactivate wrapper"
+msgstr "Отключить оболочку"
+
+#: /views/configurations/index.ctp:89
+msgid "Enable and disable each dissector"
+msgstr "Включение и выключение каждой прозектором"
+
+#: /views/configurations/index.ctp:90
+msgid "Dissectors Manager"
+msgstr "Диссекторы менеджер"
+
+#: /views/configurations/index.ctp:98
+msgid "Xplico's status"
+msgstr "Xplico статус"
+
+#: /views/configurations/index.ctp:103
+msgid "Xplico system is not running"
+msgstr "Xplico система не работает"
+
+#: /views/configurations/index.ctp:108
+msgid "Xplico system is running"
+msgstr "Xplico система работает"
+
+#: /views/configurations/index.ctp:116
+msgid "Storage"
+msgstr "Хранение"
+
+#: /views/configurations/index.ctp:117
+msgid "Storage data base"
+msgstr "Хранение базы данных"
+
+#: /views/configurations/index.ctp:126
+msgid "Max PCAP size"
+msgstr "Макс PCAP размера"
+
+#: /views/configurations/index.ctp:127
+msgid "Current max accepted size of PCAPs: "
+msgstr "Текущая макс принимаются размер PCAPs:"
+
+#: /views/configurations/index.ctp:133
+msgid "To change this maximum size, check"
+msgstr "Чтобы изменить это максимальный размер, проверьте"
+
+#: /views/configurations/index.ctp:140
+msgid "Xplico update"
+msgstr "Xplico обновления"
+
+#: /views/configurations/index.ctp:141
+msgid "Xplico will check if there is a newer version"
+msgstr "Xplico будет проверять, если есть более новая версия"
+
+#: /views/configurations/index.ctp:146
+msgid "Check new versions"
+msgstr "Обратите внимание на новые версии"
+
+#: /views/configurations/index.ctp:153
+msgid "Software versions"
+msgstr "Программное обеспечение версии"
+
+#: /views/configurations/index.ctp:158
+msgid "Xplico version"
+msgstr "Xplico версии"
+
+#: /views/configurations/index.ctp:162
+msgid "Dema version"
+msgstr "Дема версия"
+
+#: /views/configurations/index.ctp:166
+msgid "Sqlite version"
+msgstr "Sqlite версии"
+
+#: /views/configurations/index.ctp:171
+msgid "Cakephp version"
+msgstr "CakePHP версии"
+
+#: /views/configurations/index.ctp:175
+msgid "Apache version"
+msgstr "Apache версии"
+
+#: /views/configurations/index.ctp:179
+msgid "PHP version"
+msgstr "PHP версии"
+
+#: /views/configurations/index.ctp:184
+msgid "Tshark version"
+msgstr "Tshark версии"
+
+#: /views/configurations/index.ctp:188
+msgid "tcpdump version"
+msgstr "ТСРйитр версии"
+
+#: /views/configurations/index.ctp:192
+msgid "Videosnarf version"
+msgstr "Videosnarf версии"
+
+#: /views/configurations/index.ctp:197
+msgid "Lame version"
+msgstr "Ламе версии"
+
+#: /views/configurations/index.ctp:201
+msgid "GNU/Linux version"
+msgstr "GNU / Linux версии"
+
+#: /views/configurations/index.ctp:205
+msgid "Kernel version"
+msgstr "Ядро версии"
+
+#: /views/configurations/index.ctp:210
+msgid "Libpcap version"
+msgstr "Libpcap версии"
+
+#: /views/configurations/index.ctp:214
+msgid "Xplico Alerts"
+msgstr "Xplico оповещения"
+
+#: /views/configurations/index.ctp:218
+msgid "Sox version"
+msgstr "Сокс версии"
+
+#: /views/configurations/index.ctp:223
+msgid "Recode version"
+msgstr "Recode версии"
+
+#: /views/configurations/index.ctp:227
+msgid "Python plugin"
+msgstr "Python плагин"
+
+#: /views/configurations/index.ctp:231
+msgid "GhostPDL version"
+msgstr "GhostPDL версии"
+
+#: /views/configurations/index.ctp:236
+msgid "GeoIP version"
+msgstr "GeoIP версии"
+
+#: /views/dns_messages/index.ctp:16
+msgid "DNS Statistics"
+msgstr "DNS Статистика"
+
+#: /views/dns_messages/index.ctp:32 /views/telnets/index.ctp:19
+msgid "Host"
+msgstr "Хозяин"
+
+#: /views/dns_messages/index.ctp:33
+msgid "CName"
+msgstr "CNAME"
+
+#: /views/emails/index.ctp:11 /views/telnets/index.ctp:11
+#: /views/unknows/index.ctp:17 /views/webmails/index.ctp:11
+msgid "Search"
+msgstr "Поиск"
+
+#: /views/emails/index.ctp:12 /views/emails/view.ctp:25
+msgid "Choose relevance"
+msgstr "Выберите актуальность"
+
+#: /views/emails/index.ctp:12 /views/emails/view.ctp:25
+msgid "None"
+msgstr "Ни один"
+
+#: /views/emails/index.ctp:25 /views/nntp_groups/alist.ctp:15
+#: /views/webmails/index.ctp:19
+msgid "Subject"
+msgstr "Тема"
+
+#: /views/emails/index.ctp:26 /views/nntp_groups/alist.ctp:16
+#: /views/webmails/index.ctp:20
+msgid "Sender"
+msgstr "Отправитель"
+
+#: /views/emails/index.ctp:27 /views/webmails/index.ctp:21
+msgid "Receivers"
+msgstr "Приемники"
+
+#: /views/emails/index.ctp:28 /views/fbuchats/chats.ctp:26
+#: /views/feeds/view.ctp:17 /views/ftps/view.ctp:42
+#: /views/httpfiles/index.ctp:26 /views/inputs/index.ctp:12
+#: /views/mms/view.ctp:41 /views/nntp_groups/alist.ctp:17
+#: /views/telnets/index.ctp:21 /views/tftps/view.ctp:39
+#: /views/webmails/index.ctp:23 /views/webs/index.ctp:54
+msgid "Size"
+msgstr "Размер"
+
+#: /views/emails/index.ctp:29
+msgid "Relevance"
+msgstr "Релевантность"
+
+#: /views/emails/view.ctp:13
+msgid "Email to"
+msgstr "Электронная почта"
+
+#: /views/emails/view.ctp:20 /views/nntp_groups/view.ctp:19
+#: /views/webmails/view.ctp:20
+msgid "Subject:"
+msgstr "Тема:"
+
+#: /views/emails/view.ctp:22
+msgid "Relevance:"
+msgstr "Актуальность:"
+
+#: /views/emails/view.ctp:29 /views/nntp_groups/view.ctp:23
+#: /views/webmails/view.ctp:24
+msgid "Sender:"
+msgstr "Отправитель:"
+
+#: /views/emails/view.ctp:31
+msgid "Comments"
+msgstr "Комментарии"
+
+#: /views/emails/view.ctp:34
+msgid "Save"
+msgstr "Экономить"
+
+#: /views/emails/view.ctp:38 /views/nntp_groups/view.ctp:27
+#: /views/webmails/view.ctp:28
+msgid "Recipient:"
+msgstr "Получатель:"
+
+#: /views/emails/view.ctp:42 /views/nntp_groups/view.ctp:31
+#: /views/rtps/view.ctp:23 /views/sips/view.ctp:23 /views/webmails/view.ctp:33
+msgid "Date:"
+msgstr "Дата:"
+
+#: /views/emails/view.ctp:46 /views/ftps/view.ctp:21
+#: /views/telnets/view.ctp:23
+msgid "Username:"
+msgstr "Имя пользователя:"
+
+#: /views/emails/view.ctp:50 /views/ftps/view.ctp:25
+#: /views/telnets/view.ctp:27
+msgid "Password:"
+msgstr "Пароль:"
+
+#: /views/emails/view.ctp:54 /views/nntp_groups/view.ctp:35
+#: /views/webmails/view.ctp:38
+msgid "EML file:"
+msgstr "EML файл:"
+
+#: /views/emails/view.ctp:58 /views/ftps/view.ctp:33 /views/ircs/view.ctp:26
+#: /views/mms/view.ctp:32 /views/nntp_groups/view.ctp:39
+#: /views/rtps/view.ctp:46 /views/sips/view.ctp:49 /views/telnets/view.ctp:31
+#: /views/tftps/view.ctp:25 /views/webmails/view.ctp:42
+msgid "Info:"
+msgstr "Информация:"
+
+#: /views/emails/view.ctp:82
+msgid "Attached"
+msgstr "Прикрепленный"
+
+#: /views/fbuchats/chats.ctp:24
+msgid "Friend"
+msgstr "Друг"
+
+#: /views/fbuchats/chats.ctp:25
+msgid "Duration [hh:mm:ss]"
+msgstr "Продолжительность [чч: мм: сс]"
+
+#: /views/feeds/index.ctp:24 /views/nntp_groups/index.ctp:23
+msgid "Title"
+msgstr "Название"
+
+#: /views/feeds/view.ctp:16 /views/ftps/index.ctp:20 /views/ircs/index.ctp:20
+#: /views/pjls/index.ctp:18 /views/tftps/index.ctp:17 /views/webs/index.ctp:52
+msgid "Url"
+msgstr "Url"
+
+#: /views/ftps/index.ctp:22 /views/tftps/index.ctp:18
+#: /views/webs/method.ctp:21;22;29;34
+msgid "Download"
+msgstr "Скачать"
+
+#: /views/ftps/index.ctp:23 /views/sols/view.ctp:84 /views/tftps/index.ctp:19
+msgid "Upload"
+msgstr "Загружать"
+
+#: /views/ftps/view.ctp:17 /views/ircs/view.ctp:18 /views/tftps/view.ctp:17
+msgid "Url:"
+msgstr "Url:"
+
+#: /views/ftps/view.ctp:29 /views/ircs/view.ctp:22 /views/sips/view.ctp:46
+#: /views/tftps/view.ctp:21
+msgid "Commands:"
+msgstr "Команды:"
+
+#: /views/ftps/view.ctp:43 /views/tftps/view.ctp:40
+msgid "Dir"
+msgstr "Dir"
+
+#: /views/httpfiles/index.ctp:25
+msgid "Filename"
+msgstr "Имя файла"
+
+#: /views/httpfiles/index.ctp:27
+msgid "Complete"
+msgstr "Полный"
+
+#: /views/inputs/geomap.ctp:13
+msgid "Geographical and temporal representation"
+msgstr "Географические и временные представления"
+
+#: /views/inputs/geomap.ctp:16
+msgid "Pcap file"
+msgstr "Pcap файл"
+
+#: /views/inputs/geomap.ctp:17
+msgid "GeoMap file"
+msgstr "GeoMap файл"
+
+#: /views/inputs/index.ctp:7
+msgid "Input files list"
+msgstr "Список входных файлов"
+
+#: /views/inputs/index.ctp:10 /views/mms/view.ctp:40
+msgid "File name"
+msgstr "Имя файла"
+
+#: /views/inputs/index.ctp:11
+msgid "MD5 & SHA1"
+msgstr "MD5 и SHA1"
+
+#: /views/ircs/index.ctp:21 /views/sols/view.ctp:214
+msgid "Channels"
+msgstr "Каналы"
+
+#: /views/ircs/view.ctp:34
+msgid "Channel"
+msgstr "Канал"
+
+#: /views/ircs/view.ctp:35 /views/msn_chats/index.ctp:24
+#: /views/paltalk_exps/index.ctp:24 /views/paltalk_rooms/index.ctp:24
+msgid "End"
+msgstr "Конец"
+
+#: /views/layouts/cookies.ctp:7
+msgid "Cookie hijacking"
+msgstr "Cookie угона"
+
+#: /views/layouts/default.ctp:36
+msgid "About"
+msgstr "О"
+
+#: /views/layouts/default.ctp:36;85
+msgid "Wiki"
+msgstr "Wiki"
+
+#: /views/layouts/default.ctp:36;84
+msgid "Forum"
+msgstr "Форум"
+
+#: /views/layouts/default.ctp:36;87;91 /views/layouts/licenses.ctp:7
+msgid "Licenses"
+msgstr "Лицензии"
+
+#: /views/layouts/default.ctp:63 /views/sols/view.ctp:111
+msgid "Interface"
+msgstr "Интерфейс"
+
+#: /views/layouts/default.ctp:65
+msgid "User:"
+msgstr "Пользователь:"
+
+#: /views/layouts/default.ctp:81
+msgid "Admin"
+msgstr "Администратор"
+
+#: /views/layouts/default.ctp:83
+msgid "Help"
+msgstr "Помощь"
+
+#: /views/layouts/default.ctp:86 /views/users/cpassword.ctp:6
+msgid "Change password"
+msgstr "Сменить пароль"
+
+#: /views/layouts/default.ctp:88
+msgid "Logout"
+msgstr "Выход"
+
+#: /views/layouts/default.ctp:90 /views/users/login.ctp:46
+msgid "Login"
+msgstr "Войти"
+
+#: /views/layouts/default.ctp:92
+msgid "Register"
+msgstr "Регистр"
+
+#: /views/layouts/rdf.ctp:15;19
+msgid "RDF reader"
+msgstr "RDF читателя"
+
+#: /views/layouts/rdf.ctp:20
+msgid "based on Common RSS Reader by"
+msgstr "основано на общем RSS Reader на"
+
+#: /views/layouts/voip.ctp:7
+msgid "VoIP"
+msgstr "VoIP"
+
+#: /views/mms/index.ctp:24 /views/rtps/index.ctp:24 /views/sips/index.ctp:24
+msgid "From"
+msgstr "От"
+
+#: /views/mms/index.ctp:25 /views/rtps/index.ctp:25 /views/sips/index.ctp:25
+msgid "To"
+msgstr "К"
+
+#: /views/mms/index.ctp:26 /views/sols/view.ctp:145
+msgid "Contents"
+msgstr "Содержание"
+
+#: /views/mms/view.ctp:16 /views/rtps/view.ctp:27 /views/sips/view.ctp:27
+msgid "From:"
+msgstr "От:"
+
+#: /views/mms/view.ctp:20 /views/rtps/view.ctp:31 /views/sips/view.ctp:31
+msgid "To:"
+msgstr "To:"
+
+#: /views/mms/view.ctp:24
+msgid "Cc:"
+msgstr "Копия:"
+
+#: /views/mms/view.ctp:28
+msgid "Bcc:"
+msgstr "СК:"
+
+#: /views/mms/view.ctp:39
+msgid "Content Type"
+msgstr "Тип содержимого"
+
+#: /views/msn_chats/index.ctp:26 /views/paltalk_rooms/index.ctp:26
+#: /views/rtps/index.ctp:26 /views/sips/index.ctp:26
+msgid "Duration"
+msgstr "Продолжительность"
+
+#: /views/nntp_groups/view.ctp:13
+msgid "Article from"
+msgstr "Статья из"
+
+#: /views/paltalk_exps/index.ctp:25
+msgid "User-Nick name"
+msgstr "User-ник"
+
+#: /views/paltalk_rooms/index.ctp:25
+msgid "Room name"
+msgstr "Название комнаты"
+
+#: /views/pjls/index.ctp:13
+msgid "List printed file"
+msgstr "Список печатных файла"
+
+#: /views/pjls/index.ctp:19
+msgid "Data Size"
+msgstr "Размер данных"
+
+#: /views/pols/add.ctp:11
+msgid "DATA ACQUISITION"
+msgstr "Сбор данных"
+
+#: /views/pols/add.ctp:12
+msgid "Uploading PCAP capture file/s"
+msgstr "Загрузка PCAP файл записи / с"
+
+#: /views/pols/add.ctp:12
+msgid "Live acquisition"
+msgstr "Живая приобретения"
+
+#: /views/pols/add.ctp:15
+msgid "Case name"
+msgstr "Название, наименование, обозначение дела"
+
+#: /views/pols/add.ctp:16
+msgid "External reference"
+msgstr "Внешняя ссылка"
+
+#: /views/pols/add.ctp:18 /views/sols/add.ctp:12
+msgid "Create"
+msgstr "Создавать"
+
+#: /views/pols/index.ctp:6
+msgid "Cases List"
+msgstr "Случаи Список"
+
+#: /views/pols/index.ctp:11 /views/pols/view.ctp:11
+msgid "External Reference"
+msgstr "Внешняя ссылка"
+
+#: /views/pols/index.ctp:12
+msgid "Type"
+msgstr "Тип"
+
+#: /views/pols/index.ctp:21 /views/sols/view.ctp:96
+msgid "Live"
+msgstr "Жить"
+
+#: /views/pols/index.ctp:23
+msgid "Files"
+msgstr "Файлы"
+
+#: /views/pols/view.ctp:6
+msgid "View Case"
+msgstr "Посмотреть Дело"
+
+#: /views/pols/view.ctp:17
+msgid "Related Sols"
+msgstr "Связанные Соле"
+
+#: /views/pols/view.ctp:32 /views/webs/method.ctp:21;22;29;34
+msgid "View"
+msgstr "Вид"
+
+#: /views/rtps/view.ctp:28;32 /views/sips/view.ctp:28;32
+msgid "play"
+msgstr "играть"
+
+#: /views/rtps/view.ctp:35 /views/sips/view.ctp:35
+msgid "Duration:"
+msgstr "Продолжительность:"
+
+#: /views/sols/add.ctp:6
+msgid "New listening session"
+msgstr "Новые прослушивания"
+
+#: /views/sols/add.ctp:10
+msgid "Session name"
+msgstr "Имя сеанса"
+
+#: /views/sols/index.ctp:7
+msgid "List of listening sessions of case:"
+msgstr "Список прослушивания сессий случае:"
+
+#: /views/sols/index.ctp:12
+msgid "Start Time"
+msgstr "Start Time"
+
+#: /views/sols/index.ctp:13
+msgid "End Time"
+msgstr "Время окончания"
+
+#: /views/sols/view.ctp:38
+msgid "Session Data"
+msgstr "Сессия данных"
+
+#: /views/sols/view.ctp:41
+msgid "E.T."
+msgstr "ET"
+
+#: /views/sols/view.ctp:45
+msgid "Case and Session name"
+msgstr "Дело и имя сессии"
+
+#: /views/sols/view.ctp:47
+msgid "Cap. Start Time"
+msgstr "Кап. Start Time"
+
+#: /views/sols/view.ctp:49
+msgid "Cap. End Time"
+msgstr "Кап. Время окончания"
+
+#: /views/sols/view.ctp:53
+msgid "Hosts"
+msgstr "Хосты"
+
+#: /views/sols/view.ctp:61
+msgid "View all hosts"
+msgstr "Просмотр всех хостов"
+
+#: /views/sols/view.ctp:63
+msgid "Filter"
+msgstr "Фильтр"
+
+#: /views/sols/view.ctp:74
+msgid "Pcap set"
+msgstr "Pcap набор"
+
+#: /views/sols/view.ctp:77
+msgid "SFTP uploading"
+msgstr "SFTP загрузки"
+
+#: /views/sols/view.ctp:77
+msgid "big pcap files"
+msgstr "большие файлы PCAP"
+
+#: /views/sols/view.ctp:79
+msgid "Add new pcap file"
+msgstr "Добавить новый файл PCAP"
+
+#: /views/sols/view.ctp:82
+msgid "Sols"
+msgstr "Соль"
+
+#: /views/sols/view.ctp:83
+msgid "File"
+msgstr "Файл"
+
+#: /views/sols/view.ctp:87
+msgid "Not possible to add new pcap files."
+msgstr "Не можно добавлять новые файлы PCAP."
+
+#: /views/sols/view.ctp:91;304 /views/users/about.ctp:23
+msgid "Rules"
+msgstr "Правила"
+
+#: /views/sols/view.ctp:93
+msgid "List"
+msgstr "Список"
+
+#: /views/sols/view.ctp:93
+msgid "of all pcap files"
+msgstr "всех PCAP файлы"
+
+#: /views/sols/view.ctp:101
+msgid "Listening at interface"
+msgstr "Прослушивание в интерфейсе"
+
+#: /views/sols/view.ctp:114
+msgid "Start"
+msgstr "Начало"
+
+#: /views/sols/view.ctp:128
+msgid "Post"
+msgstr "Пост"
+
+#: /views/sols/view.ctp:130
+msgid "Get"
+msgstr "Получать"
+
+#: /views/sols/view.ctp:132;147;235 /views/webs/index.ctp:44
+msgid "Video"
+msgstr "Видео"
+
+#: /views/sols/view.ctp:143;260
+msgid "Number"
+msgstr "Номер"
+
+#: /views/sols/view.ctp:156
+msgid "Emails"
+msgstr "Письма"
+
+#: /views/sols/view.ctp:158;188
+msgid "Received"
+msgstr "Получено"
+
+#: /views/sols/view.ctp:160;190
+msgid "Sent"
+msgstr "Посланный"
+
+#: /views/sols/view.ctp:162
+msgid "Unreaded"
+msgstr "Unreaded"
+
+#: /views/sols/view.ctp:169
+msgid "FTP - TFTP - HTTP file"
+msgstr "FTP - TFTP - HTTP-файл"
+
+#: /views/sols/view.ctp:171;278
+msgid "Connections"
+msgstr "Связи"
+
+#: /views/sols/view.ctp:173
+msgid "Downloaded"
+msgstr "Загруженный"
+
+#: /views/sols/view.ctp:175
+msgid "Uploaded"
+msgstr "Загружено"
+
+#: /views/sols/view.ctp:184
+msgid "Web Mail"
+msgstr "Веб-почта"
+
+#: /views/sols/view.ctp:186
+msgid "Total"
+msgstr "Общий"
+
+#: /views/sols/view.ctp:199
+msgid "Facebook Chat / Paltalk"
+msgstr "Facebook Чат / Paltalk"
+
+#: /views/sols/view.ctp:203
+msgid "Chats"
+msgstr "Чаты"
+
+#: /views/sols/view.ctp:210
+msgid "IRC/Paltalk Exp/Msn"
+msgstr "IRC / Paltalk опыта / MSN"
+
+#: /views/sols/view.ctp:212
+msgid "Server"
+msgstr "Сервер"
+
+#: /views/sols/view.ctp:222
+msgid "Dns - Arp - Icmpv6"
+msgstr "Dns - Arp - ICMPv6"
+
+#: /views/sols/view.ctp:224
+msgid "DNS res"
+msgstr "DNS-разрешения"
+
+#: /views/sols/view.ctp:226
+msgid "ARP/ICMPv6"
+msgstr "ARP/ICMPv6"
+
+#: /views/sols/view.ctp:233
+msgid "RTP/VoIP"
+msgstr "RTP / VoIP"
+
+#: /views/sols/view.ctp:237 /views/webs/index.ctp:44
+msgid "Audio"
+msgstr "Аудио"
+
+#: /views/sols/view.ctp:248
+msgid "Articles"
+msgstr "Статьи"
+
+#: /views/sols/view.ctp:258
+msgid "Feed (RSS & Atom)"
+msgstr "(RSS и Atom)"
+
+#: /views/sols/view.ctp:267
+msgid "Printed files"
+msgstr "Печатные файлы"
+
+#: /views/sols/view.ctp:269
+msgid "Pdf"
+msgstr "Pdf"
+
+#: /views/sols/view.ctp:287
+msgid "Calls"
+msgstr "Звонки"
+
+#: /views/sols/view.ctp:296
+msgid "Text flows"
+msgstr "Текст потоков"
+
+#: /views/sols/view.ctp:306 /views/users/about.ctp:25
+msgid "All data will be deleted at"
+msgstr "Все данные будут удалены"
+
+#: /views/sols/view.ctp:307 /views/users/about.ctp:26
+msgid "Max pcap file size"
+msgstr "Макс PCAP размер файла"
+
+#: /views/sols/view.ctp:307 /views/users/about.ctp:26
+msgid ""
+" Larger files will be rejected. There is no limit on how many packets the "
+"capture file contains."
+msgstr ""
+"Большие файлы будут отклонены. Существует никаких ограничений на сколько "
+"пакетов захватить файл содержит."
+
+#: /views/sols/view.ctp:308 /views/users/about.ctp:27
+msgid "Total pcap size limit"
+msgstr "Всего предельный размер PCAP"
+
+#: /views/sols/view.ctp:309 /views/users/about.ctp:28
+msgid ""
+"While the decoded data are not shared, we make no claims that your data is "
+"not viewable by other users. For now, if you want to protect sensitive data "
+"in your capture files, don't use the free XplicoDemo service."
+msgstr "Хотя декодированных данных не являются общими, мы не утверждает, что ваши данные не доступен для просмотра другими пользователями. Сейчас, если вы хотите защитить конфиденциальные данные в файлах захвата, не используйте бесплатный сервис XplicoDemo."
+
+#: /views/sols/view.ctp:310 /views/users/about.ctp:29
+msgid ""
+"We recommend using Firefox 3.x, Safari 4.x or greater, or Google Chrome."
+msgstr "Мы рекомендуем использовать Firefox 3.x, 4.x Safari или больше, или Google Chrome."
+
+#: /views/sols/view.ctp:312 /views/users/cpassword.ctp:16
+msgid "Ok"
+msgstr "Ok"
+
+#: /views/telnets/index.ctp:20 /views/users/login.ctp:44
+#: /views/users/register.ctp:10
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: /views/telnets/view.ctp:13
+msgid "Telnet to"
+msgstr "Telnet к"
+
+#: /views/telnets/view.ctp:20
+msgid "Host:"
+msgstr "Ведущий:"
+
+#: /views/tftps/view.ctp:22
+msgid "cmd.txt"
+msgstr "cmd.txt"
+
+#: /views/tftps/view.ctp:29
+msgid "PCAP:"
+msgstr "PCAP:"
+
+#: /views/unknows/index.ctp:25
+msgid "Destination"
+msgstr "Назначение"
+
+#: /views/unknows/index.ctp:26
+msgid "Port"
+msgstr "Порт"
+
+#: /views/unknows/index.ctp:27
+msgid "Protocol"
+msgstr "Протокол"
+
+#: /views/unknows/index.ctp:28
+msgid "Duration [s]"
+msgstr "Продолжительность [с]"
+
+#: /views/unknows/index.ctp:29
+msgid "Size [byte]"
+msgstr "Размер [байт]"
+
+#: /views/users/cpassword.ctp:10
+msgid "Old password"
+msgstr "Старый пароль"
+
+#: /views/users/cpassword.ctp:12
+msgid "New password"
+msgstr "Новый пароль"
+
+#: /views/users/cpassword.ctp:14
+msgid "Repeat new password"
+msgstr "Повторите новый пароль"
+
+#: /views/users/login.ctp:41
+msgid "Please login"
+msgstr "Пожалуйста, Войти"
+
+#: /views/users/login.ctp:50
+msgid "Last Change"
+msgstr "Последние изменения"
+
+#: /views/users/login.ctp:55
+msgid "Create an account"
+msgstr "Создать учетную запись"
+
+#: /views/users/register.ctp:6
+msgid "Please fill out the form below to register an account."
+msgstr "Пожалуйста, заполните форму ниже, чтобы зарегистрировать учетную запись."
+
+#: /views/users/register.ctp:15
+msgid "Last Name is required"
+msgstr "Фамилия требуется"
+
+#: /views/users/register.ctp:17
+msgid "Confirm"
+msgstr "Подтверждать"
+
+#: /views/users/resend_reg.ctp:5
+msgid "This is a demo!"
+msgstr "Это демо!"
+
+#: /views/users/resend_reg.ctp:6
+msgid "Please fill out the form below to resubmit email account."
+msgstr "Пожалуйста, заполните форму ниже, чтобы обновить учетную запись электронной почты."
+
+#: /views/users/resend_reg.ctp:12
+msgid "email is invalid"
+msgstr "электронная почта недействительными"
+
+#: /views/webmails/index.ctp:22
+msgid "Service"
+msgstr "Обслуживание"
+
+#: /views/webmails/view.ctp:13
+msgid "Webmail to"
+msgstr "Webmail к"
+
+#: /views/webmails/view.ctp:39
+msgid "email.eml"
+msgstr "email.eml"
+
+#: /views/webs/hijacking.ctp:5
+msgid "Cookie hijacking domain:"
+msgstr "Cookie угон домена:"
+
+#: /views/webs/hijacking.ctp:12
+msgid "Now you can disable proxy and go to the url:"
+msgstr "Теперь вы можете отключить прокси-сервер и перейдите к URL:"
+
+#: /views/webs/images.ctp:51;57;63;69 /views/webs/index.ctp:44
+msgid "Image"
+msgstr "Изображение"
+
+#: /views/webs/images.ctp:51;63 /views/webs/method.ctp:21;22;29;34
+msgid "or"
+msgstr "или"
+
+#: /views/webs/images.ctp:51;57;63;69
+msgid "Page"
+msgstr "Страница"
+
+#: /views/webs/images.ctp:57;69
+msgid " or"
+msgstr "или"
+
+#: /views/webs/index.ctp:43
+msgid "Web URLs:"
+msgstr "Веб URL:"
+
+#: /views/webs/index.ctp:44
+msgid "Html"
+msgstr "Html"
+
+#: /views/webs/index.ctp:44
+msgid "Flash"
+msgstr "Вспышка"
+
+#: /views/webs/index.ctp:44
+msgid "JSON"
+msgstr "JSON"
+
+#: /views/webs/index.ctp:44
+msgid "All"
+msgstr "Все"
+
+#: /views/webs/index.ctp:55
+msgid "Method"
+msgstr "Метод"
+
+#: /views/webs/method.ctp:6
+msgid "URL:"
+msgstr "URL:"
+
+#: /views/webs/method.ctp:11
+msgid "HTTP Request"
+msgstr "HTTP-запрос"
+
+#: /views/webs/method.ctp:12
+msgid "HTTP Responce"
+msgstr "HTTP-ответ"
+
+#: /views/webs/method.ctp:21;22
+msgid "Header: Click to"
+msgstr "Заголовок: Нажмите, чтобы"
+
+#: /views/webs/method.ctp:27;32
+msgid "Body: None"
+msgstr "Тело: Нет"
+
+#: /views/webs/method.ctp:29;34
+msgid "Body: Click to"
+msgstr "Тело: Нажмите для"
+
+#: /webroot/test.php:88
+msgid "Debug setting does not allow access to this url."
+msgstr "Debug настройка не разрешить доступ к этому URL."
+
+
+
+

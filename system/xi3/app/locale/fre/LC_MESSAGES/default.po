@@ -1,0 +1,1941 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright 2011 iSerm s.a.s <info@iserm.com>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2011-09-24 09:14+0200\n"
+"PO-Revision-Date: 2011-08-24 17:40+0200\n"
+"Last-Translator: iSerm <info@iserm.com>\n"
+"Language-Team:  iSerm <info@iserm.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: /controllers/admins_controller.php:80
+msgid "all groups"
+msgstr "tous les groupes"
+
+#: /controllers/admins_controller.php:95
+msgid "Username must be between 6 and 40 characters."
+msgstr "Nom d&#39;utilisateur doit être comprise entre 6 et 40 caractères."
+
+#: /controllers/admins_controller.php:111
+msgid "User already exists."
+msgstr "L&#39;utilisateur existe déjà."
+
+#: /controllers/admins_controller.php:123
+msgid "User added"
+msgstr "Utilisateur ajouté"
+
+#: /controllers/admins_controller.php:148
+msgid "Group already exists."
+msgstr "Le groupe existe déjà."
+
+#: /controllers/admins_controller.php:153
+msgid "New Group activated"
+msgstr "Nouveau groupe activé"
+
+#: /controllers/admins_controller.php:157
+msgid "There was a problem creating the new group"
+msgstr "Il y avait un problème de création du nouveau groupe"
+
+#: /controllers/admins_controller.php:176
+msgid "The user does not exist!"
+msgstr "L&#39;utilisateur n&#39;existe pas!"
+
+#: /controllers/admins_controller.php:181
+msgid "User deleted!"
+msgstr "Utilisateur supprimé!"
+
+#: /controllers/admins_controller.php:196
+msgid "The group does not exist!"
+msgstr "Le groupe n&#39;existe pas!"
+
+#: /controllers/admins_controller.php:205
+msgid "Group deleted!"
+msgstr "Groupe supprimé!"
+
+#: /controllers/admins_controller.php:208
+msgid "Before delete this group you must delete all Cases of the group"
+msgstr ""
+"Avant de supprimer ce groupe, vous devez supprimer toutes les affaires du "
+"groupe"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "min"
+msgstr "min"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "hours"
+msgstr "heures"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "days"
+msgstr "jours"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "weeks"
+msgstr "semaine"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "months"
+msgstr "mois"
+
+#: /controllers/dns_messages_controller.php:105
+msgid "years"
+msgstr "années"
+
+#: /controllers/dns_messages_controller.php:318
+msgid "DNS response"
+msgstr "Réponse DNS"
+
+#: /controllers/dns_messages_controller.php:352;388
+msgid "Host Popularity"
+msgstr "Popularité hôte"
+
+#: /controllers/dns_messages_controller.php:422
+msgid "DNS Response"
+msgstr "Réponse DNS"
+
+#: /controllers/emails_controller.php:126;222 /views/emails/index.ctp:53;77
+msgid "Unknown"
+msgstr "Inconnue"
+
+#: /controllers/emails_controller.php:132;207
+msgid "Invalid Email"
+msgstr "Invalid Email"
+
+#: /controllers/emails_controller.php:136
+msgid "The Email has been saved."
+msgstr "Le courriel a été sauvé."
+
+#: /controllers/pols_controller.php:75;86;122
+#: /controllers/sols_controller.php:92;105;416
+#: /controllers/users_controller.php:85;97
+#: /controllers/components/xplico.php:52
+msgid "Case"
+msgstr "Cas"
+
+#: /controllers/pols_controller.php:76;87;123
+#: /controllers/sols_controller.php:93;106;417
+#: /controllers/users_controller.php:86;98
+#: /controllers/components/xplico.php:53;120 /views/admins/groups.ctp:20
+msgid "Cases"
+msgstr "Cas"
+
+#: /controllers/pols_controller.php:88;124 /views/pols/add.ctp:5
+msgid "New Case"
+msgstr "Nouveau cas"
+
+#: /controllers/pols_controller.php:99
+msgid "Invalid id for Case."
+msgstr "Invalid ID pour le cas."
+
+#: /controllers/pols_controller.php:117 /controllers/sols_controller.php:411
+msgid "Administrators can not create new Cases or new Sessions!"
+msgstr ""
+"Les administrateurs ne peuvent pas créer de nouveaux cas ou de nouvelles "
+"sessions!"
+
+#: /controllers/pols_controller.php:140
+msgid "The Case has been created"
+msgstr "L&#39;affaire a été créé"
+
+#: /controllers/pols_controller.php:143 /controllers/sols_controller.php:444
+msgid "Please correct errors below."
+msgstr "S&#39;il vous plaît corriger les erreurs ci-dessous."
+
+#: /controllers/pols_controller.php:150
+msgid "Invalid id for Case"
+msgstr "Identifiant non valide pour le cas"
+
+#: /controllers/pols_controller.php:157
+msgid "Admin can not delete the cases"
+msgstr "Admin peut pas supprimer le cas"
+
+#: /controllers/pols_controller.php:160
+msgid "Invalid id for the Case"
+msgstr "Identifiant non valide pour le cas"
+
+#: /controllers/pols_controller.php:180
+msgid "Case deleted"
+msgstr "Cas supprimés"
+
+#: /controllers/sols_controller.php:94;107;418
+#: /controllers/users_controller.php:87 /controllers/components/xplico.php:54
+msgid "Sessions"
+msgstr "Séances"
+
+#: /controllers/sols_controller.php:108
+msgid "New Session"
+msgstr "Nouvelle session"
+
+#: /controllers/sols_controller.php:121
+msgid "Invalid id for Session."
+msgstr "Invalid ID pour la session."
+
+#: /controllers/sols_controller.php:428
+msgid "Before add a new session stop the live acquisition!"
+msgstr ""
+"Avant d&#39;ajouter un nouvelle session arrêter l&#39;acquisition en direct!"
+
+#: /controllers/sols_controller.php:440
+msgid "The Session has been created"
+msgstr "La session a été créée"
+
+#: /controllers/sols_controller.php:451;457
+msgid "Invalid id for Session"
+msgstr "Identifiant non valide pour la session"
+
+#: /controllers/sols_controller.php:470
+msgid "Session deleted"
+msgstr "Session supprimée"
+
+#: /controllers/sols_controller.php:482
+msgid "Size limit exceeded. See rules."
+msgstr "Limite de taille dépassée. Voir le règlement."
+
+#: /controllers/sols_controller.php:493
+msgid "File uploaded, wait start decoding..."
+msgstr "Fichier téléchargé, attendez commencer à décoder ..."
+
+#: /controllers/sols_controller.php:497
+msgid "Upload failed, please check"
+msgstr "Échec de l&#39;envoi, s&#39;il vous plaît vérifier"
+
+#: /controllers/sols_controller.php:497
+msgid "this"
+msgstr "cette"
+
+#: /controllers/sols_controller.php:524
+msgid "Live capture started."
+msgstr "Commencé à capture vivante."
+
+#: /controllers/sols_controller.php:527
+msgid "Select an Interface!"
+msgstr "Sélectionnez une interface!"
+
+#: /controllers/sols_controller.php:532
+msgid "Start Failed"
+msgstr "Démarrer Échec"
+
+#: /controllers/sols_controller.php:554
+msgid "Live capture stoped."
+msgstr "À capture vivante effondrés."
+
+#: /controllers/users_controller.php:128
+msgid "This user already exists."
+msgstr "Cet utilisateur existe déjà."
+
+#: /controllers/users_controller.php:132 /models/user.php:100
+msgid "Please, a valid email!"
+msgstr "S&#39;il vous plaît, un email valide!"
+
+#: /controllers/users_controller.php:150;202
+msgid "To complete registration wait the email"
+msgstr "Pour terminer l&#39;enregistrement d&#39;attendre l&#39;email"
+
+#: /controllers/users_controller.php:153
+msgid "Registration Completed"
+msgstr "Inscription Terminé"
+
+#: /controllers/users_controller.php:160
+msgid "There was a problem saving this information"
+msgstr "Il y avait un problème de sauvegarde de cette information"
+
+#: /controllers/users_controller.php:167
+msgid "Check the errors below."
+msgstr "Vérifiez les erreurs ci-dessous."
+
+#: /controllers/users_controller.php:181
+msgid "Registration Completed."
+msgstr "Inscription dûment complété."
+
+#: /controllers/users_controller.php:214
+msgid ""
+"Error, /opt/xplico/xi/app/tmp/cache path is not writable, please fix "
+"permissions and reload"
+msgstr ""
+"Erreur, / opt / xplico / xi / app / tmp / chemin de cache n&#39;est pas "
+"inscriptible, s&#39;il vous plaît corriger les droits et recharger"
+
+#: /controllers/users_controller.php:227
+msgid ""
+"Xplico is not running!<br/><br/>\n"
+"		For starting Xplico, please choose <u>one</u> of these options <u>as "
+"root</u>: <br /><br />\n"
+"		a) If you are using the Ubuntu/Debian package, run: \"/etc/init.d/xplico "
+"start\" <br />\n"
+"		b) Run: \"/opt/xplico/script/sqlite_demo.sh\" <br />"
+msgstr ""
+"Xplico ne tourne pas! <br/><br/> Pour commencer Xplico, s&#39;il vous plaît "
+"choisir <u>une</u> de ces options <u>en tant que root:</u> <br /><br /> a) "
+"Si vous utilisez le paquet Ubuntu / Debian, lancez: «/ etc / init.d / xplico "
+"commencer\" <br /> b) Exécuter: \"/ opt / xplico / script / sqlite_demo.sh\" "
+"<br />"
+
+#: /controllers/users_controller.php:261
+msgid "Invalid login!"
+msgstr "Invalid login!"
+
+#: /controllers/users_controller.php:291
+msgid "New password activated!"
+msgstr "Nouveau mot de passe activé!"
+
+#: /controllers/users_controller.php:295
+msgid "You can not change the password"
+msgstr "Vous ne pouvez pas changer le mot de passe"
+
+#: /controllers/users_controller.php:299
+msgid "New password error"
+msgstr "Nouveau mot de passe d&#39;erreur"
+
+#: /controllers/users_controller.php:303
+msgid "Password wrong"
+msgstr "Mauvais mot de passe"
+
+#: /controllers/webs_controller.php:65
+msgid ""
+"For a complete view of html page set your browser to use Proxy, and point it "
+"to Web server."
+msgstr ""
+"Pour une vue complète de la page html configurer votre navigateur pour "
+"utiliser le proxy, et le faire pointer vers le serveur Web."
+
+#: /controllers/webs_controller.php:68
+msgid "This version can be inaccurate in displaying Web pages."
+msgstr "Cette version peut être inexacte dans l&#39;affichage des pages Web."
+
+#: /controllers/components/xplico.php:55
+msgid "Session"
+msgstr "Session"
+
+#: /controllers/components/xplico.php:58
+msgid "Graphs"
+msgstr "Graphiques"
+
+#: /controllers/components/xplico.php:59
+msgid "Dns"
+msgstr "Dns"
+
+#: /controllers/components/xplico.php:60
+msgid "Arp"
+msgstr "Arp"
+
+#: /controllers/components/xplico.php:61
+msgid "Icmpv6"
+msgstr "ICMPv6"
+
+#: /controllers/components/xplico.php:62
+msgid "GeoMap"
+msgstr "GeoMap"
+
+#: /controllers/components/xplico.php:65
+msgid "Web"
+msgstr "Web"
+
+#: /controllers/components/xplico.php:66 /views/feeds/index.ctp:25
+msgid "Site"
+msgstr "Site"
+
+#: /controllers/components/xplico.php:67
+msgid "Feed"
+msgstr "RSS"
+
+#: /controllers/components/xplico.php:68 /views/sols/view.ctp:134;149
+msgid "Images"
+msgstr "Images"
+
+#: /controllers/components/xplico.php:71
+msgid "Mail"
+msgstr "Courrier"
+
+#: /controllers/components/xplico.php:72 /views/admins/uadd.ctp:12
+#: /views/admins/users.ctp:12 /views/users/register.ctp:9
+#: /views/users/resend_reg.ctp:12
+msgid "Email"
+msgstr "Email"
+
+#: /controllers/components/xplico.php:73
+msgid "Webmail"
+msgstr "Webmail"
+
+#: /controllers/components/xplico.php:76
+msgid "Voip"
+msgstr "Voip"
+
+#: /controllers/components/xplico.php:77
+msgid "Sip"
+msgstr "SIP"
+
+#: /controllers/components/xplico.php:78
+msgid "Rtp"
+msgstr "Rtp"
+
+#: /controllers/components/xplico.php:81
+msgid "Share"
+msgstr "Partager"
+
+#: /controllers/components/xplico.php:82
+msgid "HttpFile"
+msgstr "Httpfile"
+
+#: /controllers/components/xplico.php:83
+msgid "Ftp"
+msgstr "Ftp"
+
+#: /controllers/components/xplico.php:84
+msgid "Tftp"
+msgstr "Tftp"
+
+#: /controllers/components/xplico.php:85
+msgid "Printer"
+msgstr "Imprimante"
+
+#: /controllers/components/xplico.php:86
+msgid "Mms"
+msgstr "Mms"
+
+#: /controllers/components/xplico.php:89 /views/layouts/fbchat.ctp:7
+#: /views/msn_chats/index.ctp:25
+msgid "Chat"
+msgstr "Chat"
+
+#: /controllers/components/xplico.php:90
+msgid "Nntp"
+msgstr "Nntp"
+
+#: /controllers/components/xplico.php:91
+msgid "Facebook"
+msgstr "Facebook"
+
+#: /controllers/components/xplico.php:92
+#: /views/configurations/dissectors.ctp:139
+msgid "MSN"
+msgstr "MSN"
+
+#: /controllers/components/xplico.php:93
+#: /views/configurations/dissectors.ctp:99
+msgid "IRC"
+msgstr "IRC"
+
+#: /controllers/components/xplico.php:94
+#: /views/configurations/dissectors.ctp:141
+msgid "Paltalk"
+msgstr "Paltalk"
+
+#: /controllers/components/xplico.php:95
+msgid "Paltalk Exp"
+msgstr "Exp Paltalk"
+
+#: /controllers/components/xplico.php:98
+msgid "Shell"
+msgstr "Shell"
+
+#: /controllers/components/xplico.php:99 /views/sols/view.ctp:276
+msgid "Telnet"
+msgstr "Telnet"
+
+#: /controllers/components/xplico.php:102 /views/sols/view.ctp:294
+msgid "Undecoded"
+msgstr "Non décodé"
+
+#: /controllers/components/xplico.php:103
+msgid "TCP-UDP"
+msgstr "TCP-UDP"
+
+#: /controllers/components/xplico.php:113
+msgid "Menu"
+msgstr "Menu"
+
+#: /controllers/components/xplico.php:114
+msgid "Config"
+msgstr "Config"
+
+#: /controllers/components/xplico.php:115 /views/configurations/index.ctp:88
+msgid "Dissectors"
+msgstr "Dissecteurs"
+
+#: /controllers/components/xplico.php:116 /views/admins/groups.ctp:6
+#: /views/sols/view.ctp:246
+msgid "Groups"
+msgstr "Groupes"
+
+#: /controllers/components/xplico.php:117 /views/admins/groups.ctp:19
+#: /views/fbuchats/index.ctp:16 /views/sols/view.ctp:201
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: /controllers/components/xplico.php:118
+msgid "New group"
+msgstr "Nouveau groupe"
+
+#: /controllers/components/xplico.php:119
+msgid "New user"
+msgstr "Nouvel utilisateur"
+
+#: /controllers/components/xplico.php:229;280
+msgid "Not installed"
+msgstr "Non installé"
+
+#: /controllers/components/xplico.php:305
+msgid "Error connecting to Internet"
+msgstr "Erreur de connexion à l&#39;Internet"
+
+#: /controllers/components/xplico.php:313
+msgid "There is a new version of Xplico: "
+msgstr "Il ya une nouvelle version de Xplico:"
+
+#: /controllers/components/xplico.php:316
+msgid "There is not a new version of Xplico"
+msgstr "Il n&#39;est pas une nouvelle version de Xplico"
+
+#: /models/group.php:61
+msgid "Max name size is 16"
+msgstr "La taille est de 16 nom de Max"
+
+#: /models/group.php:65 /models/user.php:57;67;77;89
+msgid "Only Alpha Numeric chars!"
+msgstr "Seuls les caractères alpha numériques!"
+
+#: /models/group.php:69
+msgid "The name must be more that 4 chars"
+msgstr "Le nom doit être plus que 4 caractères"
+
+#: /models/user.php:53
+msgid "Max user name size is 16"
+msgstr "La taille maximale est de 16 le nom d&#39;utilisateur"
+
+#: /models/user.php:61
+msgid "The username must be more that 4 chars"
+msgstr "Le nom d&#39;utilisateur doit être plus que 4 caractères"
+
+#: /models/user.php:71
+msgid "The password must be more that 6 chars"
+msgstr "Le mot de passe doit être plus que 6 caractères"
+
+#: /models/user.php:82
+msgid "The First name must be more that 2 chars"
+msgstr "Le premier nom doit être plus que les 2 caractères"
+
+#: /models/user.php:94
+msgid "The Last name must be more that 2 chars"
+msgstr "Le dernier nom doit être plus que les 2 caractères"
+
+#: /plugins/datasources/models/datasources/array_source.php:83
+msgid "No records found in model."
+msgstr "Aucun documents trouvés dans le modèle."
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:129
+msgid "Transport error - could not open socket"
+msgstr "Erreur de transport - ne pouvait pas ouvrir le socket"
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:132
+msgid "Transport error - HTTP status code was not 200"
+msgstr "Transports erreur - code d&#39;état HTTP 200 n&#39;a pas été"
+
+#: /plugins/datasources/models/datasources/xmlrpc_source.php:175
+msgid "Parse error. Not well formed"
+msgstr "Parse error. Pas bien formé"
+
+#: /views/admins/gadd.ctp:7
+msgid "Please fill out the form below to add a new Group"
+msgstr ""
+"S&#39;il vous plaît remplir le formulaire ci-dessous pour ajouter un nouveau "
+"groupe"
+
+#: /views/admins/gadd.ctp:10 /views/ftps/view.ctp:41 /views/pols/index.ctp:10
+#: /views/pols/view.ctp:9 /views/sols/index.ctp:11 /views/tftps/view.ctp:38
+msgid "Name"
+msgstr "Nom"
+
+#: /views/admins/gadd.ctp:11 /views/admins/uadd.ctp:18
+msgid "Confim"
+msgstr "Confim"
+
+#: /views/admins/groups.ctp:9 /views/admins/uadd.ctp:16
+msgid "Group"
+msgstr "Groupe"
+
+#: /views/admins/groups.ctp:10 /views/admins/users.ctp:15
+#: /views/pols/index.ctp:13 /views/sols/index.ctp:15
+msgid "Actions"
+msgstr "Actions"
+
+#: /views/admins/groups.ctp:21 /views/admins/users.ctp:29
+#: /views/pols/index.ctp:27 /views/pols/view.ctp:33 /views/sols/index.ctp:28
+msgid "Delete"
+msgstr "Supprimer"
+
+#: /views/admins/groups.ctp:21
+msgid "Are you sure you want to delete group"
+msgstr "Etes-vous sûr de vouloir supprimer le groupe"
+
+#: /views/admins/uadd.ctp:7
+msgid "Please fill out the form below to add a new User"
+msgstr ""
+"S&#39;il vous plaît remplir le formulaire ci-dessous pour ajouter un nouvel "
+"utilisateur"
+
+#: /views/admins/uadd.ctp:10
+msgid "User name"
+msgstr "Nom d&#39;utilisateur"
+
+#: /views/admins/uadd.ctp:11 /views/admins/users.ctp:30
+#: /views/users/login.ctp:45 /views/users/register.ctp:11
+msgid "Password"
+msgstr "Mot de passe"
+
+#: /views/admins/uadd.ctp:13 /views/admins/users.ctp:10
+#: /views/users/register.ctp:14
+msgid "First Name"
+msgstr "Prénom"
+
+#: /views/admins/uadd.ctp:14 /views/admins/users.ctp:11
+#: /views/users/register.ctp:15
+msgid "Last Name"
+msgstr "Nom"
+
+#: /views/admins/users.ctp:6
+msgid "Users of"
+msgstr "Les utilisateurs de"
+
+#: /views/admins/users.ctp:9 /views/fbuchats/chats.ctp:23
+#: /views/ftps/index.ctp:21
+msgid "User"
+msgstr "Utilisateur"
+
+#: /views/admins/users.ctp:13
+msgid "Last Login"
+msgstr "Dernière connexion"
+
+#: /views/admins/users.ctp:14
+msgid "Count"
+msgstr "Comte"
+
+#: /views/admins/users.ctp:29
+msgid "Are you sure you want to delete the user"
+msgstr "Etes-vous sûr de vouloir supprimer l&#39;utilisateur"
+
+#: /views/admins/users.ctp:40 /views/arps/index.ctp:53
+#: /views/dns_messages/index.ctp:61 /views/emails/index.ctp:89
+#: /views/fbuchats/chats.ctp:58 /views/fbuchats/index.ctp:27
+#: /views/feeds/index.ctp:37 /views/feeds/view.ctp:42 /views/ftps/index.ctp:48
+#: /views/ftps/view.ctp:61 /views/httpfiles/index.ctp:53
+#: /views/icmpv6s/index.ctp:53 /views/ircs/index.ctp:43
+#: /views/ircs/view.ctp:50 /views/mms/index.ctp:52
+#: /views/msn_chats/index.ctp:57 /views/nntp_groups/alist.ctp:47
+#: /views/nntp_groups/index.ctp:34 /views/paltalk_exps/index.ctp:50
+#: /views/paltalk_rooms/index.ctp:58 /views/pjls/index.ctp:44
+#: /views/rtps/index.ctp:59 /views/sips/index.ctp:59
+#: /views/telnets/index.ctp:43 /views/tftps/index.ctp:43
+#: /views/tftps/view.ctp:56 /views/unknows/index.ctp:66
+#: /views/webmails/index.ctp:57 /views/webs/images.ctp:77
+#: /views/webs/index.ctp:106
+msgid "Previous"
+msgstr "Précédente"
+
+#: /views/admins/users.ctp:42 /views/arps/index.ctp:55
+#: /views/dns_messages/index.ctp:63 /views/emails/index.ctp:91
+#: /views/fbuchats/chats.ctp:60 /views/fbuchats/index.ctp:29
+#: /views/feeds/index.ctp:39 /views/feeds/view.ctp:44 /views/ftps/index.ctp:50
+#: /views/ftps/view.ctp:63 /views/httpfiles/index.ctp:55
+#: /views/icmpv6s/index.ctp:55 /views/ircs/index.ctp:45
+#: /views/ircs/view.ctp:52 /views/mms/index.ctp:54
+#: /views/msn_chats/index.ctp:59 /views/nntp_groups/alist.ctp:49
+#: /views/nntp_groups/index.ctp:36 /views/paltalk_exps/index.ctp:52
+#: /views/paltalk_rooms/index.ctp:60 /views/pjls/index.ctp:46
+#: /views/rtps/index.ctp:61 /views/sips/index.ctp:61
+#: /views/telnets/index.ctp:45 /views/tftps/index.ctp:45
+#: /views/tftps/view.ctp:58 /views/unknows/index.ctp:68
+#: /views/webmails/index.ctp:59 /views/webs/images.ctp:79
+#: /views/webs/index.ctp:108
+msgid "Next"
+msgstr "Suivant"
+
+#: /views/arps/index.ctp:17 /views/dns_messages/index.ctp:22
+#: /views/fbuchats/chats.ctp:15 /views/fbuchats/index.ctp:8
+#: /views/feeds/index.ctp:16 /views/ftps/index.ctp:12
+#: /views/httpfiles/index.ctp:17 /views/icmpv6s/index.ctp:17
+#: /views/ircs/index.ctp:12 /views/mms/index.ctp:16
+#: /views/msn_chats/index.ctp:16 /views/nntp_groups/alist.ctp:8
+#: /views/nntp_groups/index.ctp:16 /views/paltalk_exps/index.ctp:16
+#: /views/paltalk_rooms/index.ctp:16 /views/rtps/index.ctp:16
+#: /views/sips/index.ctp:16 /views/tftps/index.ctp:10
+#: /views/webs/images.ctp:17 /views/webs/index.ctp:45
+msgid "Search:"
+msgstr "Recherche:"
+
+#: /views/arps/index.ctp:18 /views/dns_messages/index.ctp:23
+#: /views/emails/index.ctp:14 /views/fbuchats/chats.ctp:16
+#: /views/fbuchats/index.ctp:9 /views/feeds/index.ctp:17
+#: /views/ftps/index.ctp:13 /views/httpfiles/index.ctp:18
+#: /views/icmpv6s/index.ctp:18 /views/ircs/index.ctp:13
+#: /views/mms/index.ctp:17 /views/msn_chats/index.ctp:17
+#: /views/nntp_groups/alist.ctp:9 /views/nntp_groups/index.ctp:17
+#: /views/paltalk_exps/index.ctp:17 /views/paltalk_rooms/index.ctp:17
+#: /views/rtps/index.ctp:17 /views/sips/index.ctp:17
+#: /views/telnets/index.ctp:12 /views/tftps/index.ctp:11
+#: /views/unknows/index.ctp:18 /views/users/resend_reg.ctp:13
+#: /views/webmails/index.ctp:12 /views/webs/images.ctp:18
+#: /views/webs/index.ctp:46
+msgid "Go"
+msgstr "Aller"
+
+#: /views/arps/index.ctp:26 /views/dns_messages/index.ctp:31
+#: /views/emails/index.ctp:24 /views/fbuchats/chats.ctp:22
+#: /views/feeds/view.ctp:15 /views/ftps/index.ctp:19 /views/ftps/view.ctp:40
+#: /views/httpfiles/index.ctp:24 /views/icmpv6s/index.ctp:26
+#: /views/ircs/index.ctp:19 /views/ircs/view.ctp:33 /views/mms/index.ctp:23
+#: /views/msn_chats/index.ctp:23 /views/nntp_groups/alist.ctp:14
+#: /views/paltalk_exps/index.ctp:23 /views/paltalk_rooms/index.ctp:23
+#: /views/pjls/index.ctp:17 /views/rtps/index.ctp:23 /views/sips/index.ctp:23
+#: /views/telnets/index.ctp:18 /views/tftps/index.ctp:16
+#: /views/tftps/view.ctp:37 /views/unknows/index.ctp:24
+#: /views/webmails/index.ctp:18 /views/webs/index.ctp:51
+msgid "Date"
+msgstr "Date de"
+
+#: /views/arps/index.ctp:27 /views/icmpv6s/index.ctp:27
+msgid "MAC"
+msgstr "MAC"
+
+#: /views/arps/index.ctp:28 /views/configurations/dissectors.ctp:43
+#: /views/dns_messages/index.ctp:34 /views/icmpv6s/index.ctp:28
+msgid "IP"
+msgstr "IP"
+
+#: /views/arps/index.ctp:29 /views/dns_messages/index.ctp:35
+#: /views/fbuchats/chats.ctp:27 /views/feeds/view.ctp:18
+#: /views/httpfiles/index.ctp:28 /views/icmpv6s/index.ctp:29
+#: /views/layouts/default.ctp:36 /views/msn_chats/index.ctp:27
+#: /views/paltalk_exps/index.ctp:26 /views/paltalk_rooms/index.ctp:27
+#: /views/pjls/index.ctp:20 /views/rtps/index.ctp:27 /views/sips/index.ctp:27
+#: /views/unknows/index.ctp:30 /views/webs/index.ctp:56
+msgid "Info"
+msgstr "Infos"
+
+#: /views/arps/index.ctp:37;45 /views/dns_messages/index.ctp:44;53
+#: /views/emails/view.ctp:59 /views/fbuchats/chats.ctp:42;51
+#: /views/feeds/view.ctp:27;34 /views/ftps/view.ctp:34;53
+#: /views/httpfiles/index.ctp:38;46 /views/icmpv6s/index.ctp:37;45
+#: /views/ircs/view.ctp:43 /views/mms/index.ctp:36;44
+#: /views/msn_chats/index.ctp:41;49 /views/nntp_groups/view.ctp:40
+#: /views/paltalk_exps/index.ctp:35;42 /views/paltalk_rooms/index.ctp:42;50
+#: /views/pjls/index.ctp:29;36 /views/rtps/index.ctp:43;51
+#: /views/rtps/view.ctp:47 /views/sips/index.ctp:43;51 /views/sips/view.ctp:50
+#: /views/telnets/view.ctp:32 /views/tftps/view.ctp:26;49
+#: /views/unknows/index.ctp:45;59 /views/webmails/view.ctp:43
+#: /views/webs/index.ctp:76;97
+msgid "info.xml"
+msgstr "info.xml"
+
+#: /views/configurations/dissectors.ctp:19;21
+msgid "Dissector"
+msgstr "Dissecteur"
+
+#: /views/configurations/dissectors.ctp:20;22 /views/sols/index.ctp:14
+#: /views/sols/view.ctp:51
+msgid "Status"
+msgstr "Statut"
+
+#: /views/configurations/dissectors.ctp:25
+msgid "Pcap"
+msgstr "Pcap"
+
+#: /views/configurations/dissectors.ctp:27
+msgid "Xplico Case"
+msgstr "Cas Xplico"
+
+#: /views/configurations/dissectors.ctp:31
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: /views/configurations/dissectors.ctp:33
+msgid "PPPoE"
+msgstr "PPPoE"
+
+#: /views/configurations/dissectors.ctp:37
+msgid "PPP"
+msgstr "PPP"
+
+#: /views/configurations/dissectors.ctp:39
+msgid "RADIOTAP"
+msgstr "RADIOTAP"
+
+#: /views/configurations/dissectors.ctp:45
+msgid "IPv6"
+msgstr "IPv6"
+
+#: /views/configurations/dissectors.ctp:49
+msgid "TCP"
+msgstr "TCP"
+
+#: /views/configurations/dissectors.ctp:51
+msgid "UDP"
+msgstr "UDP"
+
+#: /views/configurations/dissectors.ctp:55 /views/sols/view.ctp:126;177
+msgid "HTTP"
+msgstr "HTTP"
+
+#: /views/configurations/dissectors.ctp:57
+msgid "POP"
+msgstr "POP"
+
+#: /views/configurations/dissectors.ctp:61
+msgid "IMAP"
+msgstr "IMAP"
+
+#: /views/configurations/dissectors.ctp:63
+msgid "SMTP"
+msgstr "SMTP"
+
+#: /views/configurations/dissectors.ctp:67
+msgid "HTTP file transfer"
+msgstr "Transfert de fichiers HTTP"
+
+#: /views/configurations/dissectors.ctp:69 /views/sols/view.ctp:285
+msgid "SIP"
+msgstr "SIP"
+
+#: /views/configurations/dissectors.ctp:73
+msgid "RTP"
+msgstr "RTP"
+
+#: /views/configurations/dissectors.ctp:75
+msgid "RTCP"
+msgstr "RTCP"
+
+#: /views/configurations/dissectors.ctp:79
+msgid "SDP"
+msgstr "SDP"
+
+#: /views/configurations/dissectors.ctp:81
+msgid "L2TP"
+msgstr "L2TP"
+
+#: /views/configurations/dissectors.ctp:85
+msgid "VLAN"
+msgstr "VLAN"
+
+#: /views/configurations/dissectors.ctp:87
+msgid "FTP"
+msgstr "FTP"
+
+#: /views/configurations/dissectors.ctp:91
+msgid "DNS"
+msgstr "DNS"
+
+#: /views/configurations/dissectors.ctp:93
+msgid "ICMP"
+msgstr "ICMP"
+
+#: /views/configurations/dissectors.ctp:97 /views/sols/view.ctp:244
+msgid "NNTP"
+msgstr "NNTP"
+
+#: /views/configurations/dissectors.ctp:103
+msgid "IPP"
+msgstr "IPP"
+
+#: /views/configurations/dissectors.ctp:105
+msgid "PJL"
+msgstr "PJL"
+
+#: /views/configurations/dissectors.ctp:109 /views/sols/view.ctp:141
+msgid "MMS"
+msgstr "MMS"
+
+#: /views/configurations/dissectors.ctp:111
+msgid "SLL"
+msgstr "SLL"
+
+#: /views/configurations/dissectors.ctp:115
+msgid "TFTP"
+msgstr "TFTP"
+
+#: /views/configurations/dissectors.ctp:117
+msgid "IEEE80211"
+msgstr "IEEE80211"
+
+#: /views/configurations/dissectors.ctp:121
+msgid "LLC"
+msgstr "LLC"
+
+#: /views/configurations/dissectors.ctp:123
+msgid "Facebook Web chat"
+msgstr "Facebook clavardage"
+
+#: /views/configurations/dissectors.ctp:127
+msgid "TELNET"
+msgstr "TELNET"
+
+#: /views/configurations/dissectors.ctp:129
+msgid "Web mail"
+msgstr "La messagerie Web"
+
+#: /views/configurations/dissectors.ctp:133
+msgid "ARP"
+msgstr "ARP"
+
+#: /views/configurations/dissectors.ctp:135
+msgid "Paltalk Express"
+msgstr "Paltalk express"
+
+#: /views/configurations/dissectors.ctp:144
+msgid "TCP L7p"
+msgstr "TCP L7P"
+
+#: /views/configurations/dissectors.ctp:146
+msgid "UDP L7p"
+msgstr "UDP L7P"
+
+#: /views/configurations/index.ctp:9
+msgid "Xplico Control pane"
+msgstr "Volet contrôle Xplico"
+
+#: /views/configurations/index.ctp:14
+msgid "Checksum validation"
+msgstr "Checksum de validation"
+
+#: /views/configurations/index.ctp:15
+msgid ""
+"Option to enable/disable checksum analysis. Without checksum verification "
+"more information will be decoded, but it is not legally reliable, as those "
+"packets may have been sent by any other host."
+msgstr ""
+"Option pour activer / désactiver l&#39;analyse de contrôle. Sans "
+"vérification de checksum de plus amples informations seront décodées, mais "
+"il n&#39;est pas juridiquement fiable, que ces paquets peuvent avoir été "
+"envoyés par un autre hôte."
+
+#: /views/configurations/index.ctp:21
+msgid "Validating checksums:"
+msgstr "Validation des sommes de contrôle:"
+
+#: /views/configurations/index.ctp:21
+msgid "OFF"
+msgstr "OFF"
+
+#: /views/configurations/index.ctp:26
+msgid "Validating checksum:"
+msgstr "Validation de contrôle:"
+
+#: /views/configurations/index.ctp:26
+msgid "ON"
+msgstr "SUR"
+
+#: /views/configurations/index.ctp:34
+msgid "Activate validation"
+msgstr "Activer la validation"
+
+#: /views/configurations/index.ctp:36
+msgid "Deactivate validation"
+msgstr "Désactiver la validation"
+
+#: /views/configurations/index.ctp:43
+msgid "Geo position"
+msgstr "La position géo"
+
+#: /views/configurations/index.ctp:44
+msgid "Change the source GPS position of the generated connections"
+msgstr "Changez la position de la source GPS des connexions générées"
+
+#: /views/configurations/index.ctp:49
+msgid "Long"
+msgstr "Longue"
+
+#: /views/configurations/index.ctp:50
+msgid "Lat"
+msgstr "Lat"
+
+#: /views/configurations/index.ctp:51 /views/dns_messages/graph.ctp:28
+msgid "Change"
+msgstr "Changement"
+
+#: /views/configurations/index.ctp:58;64;69
+msgid "Data wrapper"
+msgstr "Wrapper de données"
+
+#: /views/configurations/index.ctp:59
+msgid ""
+"Option for creating an index of decoded info at /opt/xplico/lastdata.txt to "
+"use it with thertiary applicacions."
+msgstr ""
+"Option pour la création d&#39;un index des informations décodées dans / "
+"opt / xplico / lastdata.txt de l&#39;utiliser avec applicacions thertiary."
+
+#: /views/configurations/index.ctp:64
+msgid "not activated"
+msgstr "pas activé"
+
+#: /views/configurations/index.ctp:69
+msgid "activated"
+msgstr "activée"
+
+#: /views/configurations/index.ctp:77
+msgid "Activate wrapper"
+msgstr "Activer emballage"
+
+#: /views/configurations/index.ctp:79
+msgid "Deactivate wrapper"
+msgstr "Désactiver emballage"
+
+#: /views/configurations/index.ctp:89
+msgid "Enable and disable each dissector"
+msgstr "Activer et désactiver chaque dissecteur"
+
+#: /views/configurations/index.ctp:90
+msgid "Dissectors Manager"
+msgstr "Dissecteurs directeur"
+
+#: /views/configurations/index.ctp:98
+msgid "Xplico's status"
+msgstr "Xplico le statut"
+
+#: /views/configurations/index.ctp:103
+msgid "Xplico system is not running"
+msgstr "Le système ne fonctionne pas Xplico"
+
+#: /views/configurations/index.ctp:108
+msgid "Xplico system is running"
+msgstr "Xplico système est en marche"
+
+#: /views/configurations/index.ctp:116
+msgid "Storage"
+msgstr "Stockage"
+
+#: /views/configurations/index.ctp:117
+msgid "Storage data base"
+msgstr "Stockage des données de base"
+
+#: /views/configurations/index.ctp:126
+msgid "Max PCAP size"
+msgstr "Max PPCE taille"
+
+#: /views/configurations/index.ctp:127
+msgid "Current max accepted size of PCAPs: "
+msgstr "Courant max acceptée taille de PCAPs:"
+
+#: /views/configurations/index.ctp:133
+msgid "To change this maximum size, check"
+msgstr "Pour changer cette taille maximale, vérifiez"
+
+#: /views/configurations/index.ctp:140
+msgid "Xplico update"
+msgstr "Xplico mise à jour"
+
+#: /views/configurations/index.ctp:141
+msgid "Xplico will check if there is a newer version"
+msgstr "Xplico va vérifier s&#39;il ya une version plus récente"
+
+#: /views/configurations/index.ctp:146
+msgid "Check new versions"
+msgstr "Vérifiez les nouvelles versions"
+
+#: /views/configurations/index.ctp:153
+msgid "Software versions"
+msgstr "Versions des logiciels"
+
+#: /views/configurations/index.ctp:158
+msgid "Xplico version"
+msgstr "Version Xplico"
+
+#: /views/configurations/index.ctp:162
+msgid "Dema version"
+msgstr "Dema la version"
+
+#: /views/configurations/index.ctp:166
+msgid "Sqlite version"
+msgstr "SQLite version"
+
+#: /views/configurations/index.ctp:171
+msgid "Cakephp version"
+msgstr "CakePHP la version"
+
+#: /views/configurations/index.ctp:175
+msgid "Apache version"
+msgstr "Apache version"
+
+#: /views/configurations/index.ctp:179
+msgid "PHP version"
+msgstr "PHP version"
+
+#: /views/configurations/index.ctp:184
+msgid "Tshark version"
+msgstr "Version tshark"
+
+#: /views/configurations/index.ctp:188
+msgid "tcpdump version"
+msgstr "Version tcpdump"
+
+#: /views/configurations/index.ctp:192
+msgid "Videosnarf version"
+msgstr "Version Videosnarf"
+
+#: /views/configurations/index.ctp:197
+msgid "Lame version"
+msgstr "Version Boiteux"
+
+#: /views/configurations/index.ctp:201
+msgid "GNU/Linux version"
+msgstr "GNU / Linux version"
+
+#: /views/configurations/index.ctp:205
+msgid "Kernel version"
+msgstr "Kernel version"
+
+#: /views/configurations/index.ctp:210
+msgid "Libpcap version"
+msgstr "Version Libpcap"
+
+#: /views/configurations/index.ctp:214
+msgid "Xplico Alerts"
+msgstr "Alertes Xplico"
+
+#: /views/configurations/index.ctp:218
+msgid "Sox version"
+msgstr "Version Sox"
+
+#: /views/configurations/index.ctp:223
+msgid "Recode version"
+msgstr "Version Recode"
+
+#: /views/configurations/index.ctp:227
+msgid "Python plugin"
+msgstr "Python plugins"
+
+#: /views/configurations/index.ctp:231
+msgid "GhostPDL version"
+msgstr "Version GhostPDL"
+
+#: /views/configurations/index.ctp:236
+msgid "GeoIP version"
+msgstr "Version GeoIP"
+
+#: /views/dns_messages/index.ctp:16
+msgid "DNS Statistics"
+msgstr "Statistiques DNS"
+
+#: /views/dns_messages/index.ctp:32 /views/telnets/index.ctp:19
+msgid "Host"
+msgstr "Hôte"
+
+#: /views/dns_messages/index.ctp:33
+msgid "CName"
+msgstr "CName"
+
+#: /views/emails/index.ctp:11 /views/telnets/index.ctp:11
+#: /views/unknows/index.ctp:17 /views/webmails/index.ctp:11
+msgid "Search"
+msgstr "Rechercher"
+
+#: /views/emails/index.ctp:12 /views/emails/view.ctp:25
+msgid "Choose relevance"
+msgstr "Choisissez la pertinence"
+
+#: /views/emails/index.ctp:12 /views/emails/view.ctp:25
+msgid "None"
+msgstr "Aucun"
+
+#: /views/emails/index.ctp:25 /views/nntp_groups/alist.ctp:15
+#: /views/webmails/index.ctp:19
+msgid "Subject"
+msgstr "Sujet"
+
+#: /views/emails/index.ctp:26 /views/nntp_groups/alist.ctp:16
+#: /views/webmails/index.ctp:20
+msgid "Sender"
+msgstr "Expéditeur"
+
+#: /views/emails/index.ctp:27 /views/webmails/index.ctp:21
+msgid "Receivers"
+msgstr "Récepteurs"
+
+#: /views/emails/index.ctp:28 /views/fbuchats/chats.ctp:26
+#: /views/feeds/view.ctp:17 /views/ftps/view.ctp:42
+#: /views/httpfiles/index.ctp:26 /views/inputs/index.ctp:12
+#: /views/mms/view.ctp:41 /views/nntp_groups/alist.ctp:17
+#: /views/telnets/index.ctp:21 /views/tftps/view.ctp:39
+#: /views/webmails/index.ctp:23 /views/webs/index.ctp:54
+msgid "Size"
+msgstr "Taille"
+
+#: /views/emails/index.ctp:29
+msgid "Relevance"
+msgstr "Pertinence"
+
+#: /views/emails/view.ctp:13
+msgid "Email to"
+msgstr "Envoyer à"
+
+#: /views/emails/view.ctp:20 /views/nntp_groups/view.ctp:19
+#: /views/webmails/view.ctp:20
+msgid "Subject:"
+msgstr "Sujet:"
+
+#: /views/emails/view.ctp:22
+msgid "Relevance:"
+msgstr "Pertinence:"
+
+#: /views/emails/view.ctp:29 /views/nntp_groups/view.ctp:23
+#: /views/webmails/view.ctp:24
+msgid "Sender:"
+msgstr "Expéditeur:"
+
+#: /views/emails/view.ctp:31
+msgid "Comments"
+msgstr "Commentaires"
+
+#: /views/emails/view.ctp:34
+msgid "Save"
+msgstr "Enregistrer"
+
+#: /views/emails/view.ctp:38 /views/nntp_groups/view.ctp:27
+#: /views/webmails/view.ctp:28
+msgid "Recipient:"
+msgstr "Destinataire:"
+
+#: /views/emails/view.ctp:42 /views/nntp_groups/view.ctp:31
+#: /views/rtps/view.ctp:23 /views/sips/view.ctp:23 /views/webmails/view.ctp:33
+msgid "Date:"
+msgstr "Date:"
+
+#: /views/emails/view.ctp:46 /views/ftps/view.ctp:21
+#: /views/telnets/view.ctp:23
+msgid "Username:"
+msgstr "Nom d&#39;utilisateur:"
+
+#: /views/emails/view.ctp:50 /views/ftps/view.ctp:25
+#: /views/telnets/view.ctp:27
+msgid "Password:"
+msgstr "Mot de passe:"
+
+#: /views/emails/view.ctp:54 /views/nntp_groups/view.ctp:35
+#: /views/webmails/view.ctp:38
+msgid "EML file:"
+msgstr "EML:"
+
+#: /views/emails/view.ctp:58 /views/ftps/view.ctp:33 /views/ircs/view.ctp:26
+#: /views/mms/view.ctp:32 /views/nntp_groups/view.ctp:39
+#: /views/rtps/view.ctp:46 /views/sips/view.ctp:49 /views/telnets/view.ctp:31
+#: /views/tftps/view.ctp:25 /views/webmails/view.ctp:42
+msgid "Info:"
+msgstr "Info:"
+
+#: /views/emails/view.ctp:82
+msgid "Attached"
+msgstr "Attachés"
+
+#: /views/fbuchats/chats.ctp:24
+msgid "Friend"
+msgstr "Ami"
+
+#: /views/fbuchats/chats.ctp:25
+msgid "Duration [hh:mm:ss]"
+msgstr "Durée [hh: mm: ss]"
+
+#: /views/feeds/index.ctp:24 /views/nntp_groups/index.ctp:23
+msgid "Title"
+msgstr "Titre"
+
+#: /views/feeds/view.ctp:16 /views/ftps/index.ctp:20 /views/ircs/index.ctp:20
+#: /views/pjls/index.ctp:18 /views/tftps/index.ctp:17 /views/webs/index.ctp:52
+msgid "Url"
+msgstr "Url"
+
+#: /views/ftps/index.ctp:22 /views/tftps/index.ctp:18
+#: /views/webs/method.ctp:21;22;29;34
+msgid "Download"
+msgstr "Télécharger"
+
+#: /views/ftps/index.ctp:23 /views/sols/view.ctp:84 /views/tftps/index.ctp:19
+msgid "Upload"
+msgstr "Upload"
+
+#: /views/ftps/view.ctp:17 /views/ircs/view.ctp:18 /views/tftps/view.ctp:17
+msgid "Url:"
+msgstr "Url:"
+
+#: /views/ftps/view.ctp:29 /views/ircs/view.ctp:22 /views/sips/view.ctp:46
+#: /views/tftps/view.ctp:21
+msgid "Commands:"
+msgstr "Commandes:"
+
+#: /views/ftps/view.ctp:43 /views/tftps/view.ctp:40
+msgid "Dir"
+msgstr "Dir"
+
+#: /views/httpfiles/index.ctp:25
+msgid "Filename"
+msgstr "Nom"
+
+#: /views/httpfiles/index.ctp:27
+msgid "Complete"
+msgstr "Remplissez"
+
+#: /views/inputs/geomap.ctp:13
+msgid "Geographical and temporal representation"
+msgstr "La représentation géographique et temporelle"
+
+#: /views/inputs/geomap.ctp:16
+msgid "Pcap file"
+msgstr "Fichier pcap"
+
+#: /views/inputs/geomap.ctp:17
+msgid "GeoMap file"
+msgstr "Fichier GeoMap"
+
+#: /views/inputs/index.ctp:7
+msgid "Input files list"
+msgstr "Entrée liste des fichiers"
+
+#: /views/inputs/index.ctp:10 /views/mms/view.ctp:40
+msgid "File name"
+msgstr "Nom de fichier"
+
+#: /views/inputs/index.ctp:11
+msgid "MD5 & SHA1"
+msgstr "MD5 et SHA1"
+
+#: /views/ircs/index.ctp:21 /views/sols/view.ctp:214
+msgid "Channels"
+msgstr "Canaux"
+
+#: /views/ircs/view.ctp:34
+msgid "Channel"
+msgstr "Manche"
+
+#: /views/ircs/view.ctp:35 /views/msn_chats/index.ctp:24
+#: /views/paltalk_exps/index.ctp:24 /views/paltalk_rooms/index.ctp:24
+msgid "End"
+msgstr "Fin"
+
+#: /views/layouts/cookies.ctp:7
+msgid "Cookie hijacking"
+msgstr "Cookie détournement"
+
+#: /views/layouts/default.ctp:36
+msgid "About"
+msgstr "À propos"
+
+#: /views/layouts/default.ctp:36;85
+msgid "Wiki"
+msgstr "Wiki"
+
+#: /views/layouts/default.ctp:36;84
+msgid "Forum"
+msgstr "Forum"
+
+#: /views/layouts/default.ctp:36;87;91 /views/layouts/licenses.ctp:7
+msgid "Licenses"
+msgstr "Licences"
+
+#: /views/layouts/default.ctp:63 /views/sols/view.ctp:111
+msgid "Interface"
+msgstr "Interface"
+
+#: /views/layouts/default.ctp:65
+msgid "User:"
+msgstr "Utilisateur:"
+
+#: /views/layouts/default.ctp:81
+msgid "Admin"
+msgstr "Admin"
+
+#: /views/layouts/default.ctp:83
+msgid "Help"
+msgstr "Aide"
+
+#: /views/layouts/default.ctp:86 /views/users/cpassword.ctp:6
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+#: /views/layouts/default.ctp:88
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: /views/layouts/default.ctp:90 /views/users/login.ctp:46
+msgid "Login"
+msgstr "Connectez-vous"
+
+#: /views/layouts/default.ctp:92
+msgid "Register"
+msgstr "S&#39;enregistrer"
+
+#: /views/layouts/rdf.ctp:15;19
+msgid "RDF reader"
+msgstr "RDF lecteur"
+
+#: /views/layouts/rdf.ctp:20
+msgid "based on Common RSS Reader by"
+msgstr "commune basée sur RSS Reader"
+
+#: /views/layouts/voip.ctp:7
+msgid "VoIP"
+msgstr "VoIP"
+
+#: /views/mms/index.ctp:24 /views/rtps/index.ctp:24 /views/sips/index.ctp:24
+msgid "From"
+msgstr "De"
+
+#: /views/mms/index.ctp:25 /views/rtps/index.ctp:25 /views/sips/index.ctp:25
+msgid "To"
+msgstr "Pour"
+
+#: /views/mms/index.ctp:26 /views/sols/view.ctp:145
+msgid "Contents"
+msgstr "Contenu"
+
+#: /views/mms/view.ctp:16 /views/rtps/view.ctp:27 /views/sips/view.ctp:27
+msgid "From:"
+msgstr "De:"
+
+#: /views/mms/view.ctp:20 /views/rtps/view.ctp:31 /views/sips/view.ctp:31
+msgid "To:"
+msgstr "Pour:"
+
+#: /views/mms/view.ctp:24
+msgid "Cc:"
+msgstr "Cc:"
+
+#: /views/mms/view.ctp:28
+msgid "Bcc:"
+msgstr "Bcc:"
+
+#: /views/mms/view.ctp:39
+msgid "Content Type"
+msgstr "Type de contenu"
+
+#: /views/msn_chats/index.ctp:26 /views/paltalk_rooms/index.ctp:26
+#: /views/rtps/index.ctp:26 /views/sips/index.ctp:26
+msgid "Duration"
+msgstr "Durée"
+
+#: /views/nntp_groups/view.ctp:13
+msgid "Article from"
+msgstr "Article paru dans"
+
+#: /views/paltalk_exps/index.ctp:25
+msgid "User-Nick name"
+msgstr "L&#39;utilisateur le nom de Nick"
+
+#: /views/paltalk_rooms/index.ctp:25
+msgid "Room name"
+msgstr "Nom de la chambre"
+
+#: /views/pjls/index.ctp:13
+msgid "List printed file"
+msgstr "Fichier de la liste imprimée"
+
+#: /views/pjls/index.ctp:19
+msgid "Data Size"
+msgstr "Taille des données"
+
+#: /views/pols/add.ctp:11
+msgid "DATA ACQUISITION"
+msgstr "ACQUISITION DE DONNÉES"
+
+#: /views/pols/add.ctp:12
+msgid "Uploading PCAP capture file/s"
+msgstr "Téléchargement de fichiers de capture PCAP / s"
+
+#: /views/pols/add.ctp:12
+msgid "Live acquisition"
+msgstr "L&#39;acquisition en direct"
+
+#: /views/pols/add.ctp:15
+msgid "Case name"
+msgstr "Nom de cas"
+
+#: /views/pols/add.ctp:16
+msgid "External reference"
+msgstr "Référence externe"
+
+#: /views/pols/add.ctp:18 /views/sols/add.ctp:12
+msgid "Create"
+msgstr "Créer"
+
+#: /views/pols/index.ctp:6
+msgid "Cases List"
+msgstr "Liste des cas"
+
+#: /views/pols/index.ctp:11 /views/pols/view.ctp:11
+msgid "External Reference"
+msgstr "Référence externe"
+
+#: /views/pols/index.ctp:12
+msgid "Type"
+msgstr "Tapez"
+
+#: /views/pols/index.ctp:21 /views/sols/view.ctp:96
+msgid "Live"
+msgstr "En direct"
+
+#: /views/pols/index.ctp:23
+msgid "Files"
+msgstr "Fichiers"
+
+#: /views/pols/view.ctp:6
+msgid "View Case"
+msgstr "Case View"
+
+#: /views/pols/view.ctp:17
+msgid "Related Sols"
+msgstr "Sols associés"
+
+#: /views/pols/view.ctp:32 /views/webs/method.ctp:21;22;29;34
+msgid "View"
+msgstr "Voir"
+
+#: /views/rtps/view.ctp:28;32 /views/sips/view.ctp:28;32
+msgid "play"
+msgstr "jouer"
+
+#: /views/rtps/view.ctp:35 /views/sips/view.ctp:35
+msgid "Duration:"
+msgstr "Durée:"
+
+#: /views/sols/add.ctp:6
+msgid "New listening session"
+msgstr "Nouvelle session d&#39;écoute"
+
+#: /views/sols/add.ctp:10
+msgid "Session name"
+msgstr "Nom de la session"
+
+#: /views/sols/index.ctp:7
+msgid "List of listening sessions of case:"
+msgstr "Liste des séances d&#39;écoute de l&#39;affaire:"
+
+#: /views/sols/index.ctp:12
+msgid "Start Time"
+msgstr "Heure de début"
+
+#: /views/sols/index.ctp:13
+msgid "End Time"
+msgstr "Heure de fin"
+
+#: /views/sols/view.ctp:38
+msgid "Session Data"
+msgstr "Des données de session"
+
+#: /views/sols/view.ctp:41
+msgid "E.T."
+msgstr "HE"
+
+#: /views/sols/view.ctp:45
+msgid "Case and Session name"
+msgstr "Cas et Session nom"
+
+#: /views/sols/view.ctp:47
+msgid "Cap. Start Time"
+msgstr "Cap. Heure de début"
+
+#: /views/sols/view.ctp:49
+msgid "Cap. End Time"
+msgstr "Cap. Heure de fin"
+
+#: /views/sols/view.ctp:53
+msgid "Hosts"
+msgstr "Hôtes"
+
+#: /views/sols/view.ctp:61
+msgid "View all hosts"
+msgstr "Voir tous les hôtes"
+
+#: /views/sols/view.ctp:63
+msgid "Filter"
+msgstr "Filtre"
+
+#: /views/sols/view.ctp:74
+msgid "Pcap set"
+msgstr "Pcap jeu"
+
+#: /views/sols/view.ctp:77
+msgid "SFTP uploading"
+msgstr "SFTP téléchargement"
+
+#: /views/sols/view.ctp:77
+msgid "big pcap files"
+msgstr "gros fichiers pcap"
+
+#: /views/sols/view.ctp:79
+msgid "Add new pcap file"
+msgstr "Ajouter de nouveaux fichier pcap"
+
+#: /views/sols/view.ctp:82
+msgid "Sols"
+msgstr "Sols"
+
+#: /views/sols/view.ctp:83
+msgid "File"
+msgstr "Fichier"
+
+#: /views/sols/view.ctp:87
+msgid "Not possible to add new pcap files."
+msgstr "Il n&#39;est pas possible d&#39;ajouter des fichiers pcap nouvelle."
+
+#: /views/sols/view.ctp:91;304 /views/users/about.ctp:23
+msgid "Rules"
+msgstr "Règles"
+
+#: /views/sols/view.ctp:93
+msgid "List"
+msgstr "Liste"
+
+#: /views/sols/view.ctp:93
+msgid "of all pcap files"
+msgstr "de tous les fichiers pcap"
+
+#: /views/sols/view.ctp:101
+msgid "Listening at interface"
+msgstr "L&#39;écoute à l&#39;interface"
+
+#: /views/sols/view.ctp:114
+msgid "Start"
+msgstr "Démarrer"
+
+#: /views/sols/view.ctp:128
+msgid "Post"
+msgstr "Message"
+
+#: /views/sols/view.ctp:130
+msgid "Get"
+msgstr "Obtenir"
+
+#: /views/sols/view.ctp:132;147;235 /views/webs/index.ctp:44
+msgid "Video"
+msgstr "Vidéo"
+
+#: /views/sols/view.ctp:143;260
+msgid "Number"
+msgstr "Nombre"
+
+#: /views/sols/view.ctp:156
+msgid "Emails"
+msgstr "Les e-mails"
+
+#: /views/sols/view.ctp:158;188
+msgid "Received"
+msgstr "Reçus"
+
+#: /views/sols/view.ctp:160;190
+msgid "Sent"
+msgstr "Sent"
+
+#: /views/sols/view.ctp:162
+msgid "Unreaded"
+msgstr "Unreaded"
+
+#: /views/sols/view.ctp:169
+msgid "FTP - TFTP - HTTP file"
+msgstr "FTP - TFTP - HTTP de fichiers"
+
+#: /views/sols/view.ctp:171;278
+msgid "Connections"
+msgstr "Connexions"
+
+#: /views/sols/view.ctp:173
+msgid "Downloaded"
+msgstr "Téléchargé"
+
+#: /views/sols/view.ctp:175
+msgid "Uploaded"
+msgstr "Uploaded"
+
+#: /views/sols/view.ctp:184
+msgid "Web Mail"
+msgstr "Web Mail"
+
+#: /views/sols/view.ctp:186
+msgid "Total"
+msgstr "Total des"
+
+#: /views/sols/view.ctp:199
+msgid "Facebook Chat / Paltalk"
+msgstr "Facebook Chat / Paltalk"
+
+#: /views/sols/view.ctp:203
+msgid "Chats"
+msgstr "Chats"
+
+#: /views/sols/view.ctp:210
+msgid "IRC/Paltalk Exp/Msn"
+msgstr "IRC / Paltalk Exp / Msn"
+
+#: /views/sols/view.ctp:212
+msgid "Server"
+msgstr "Serveur"
+
+#: /views/sols/view.ctp:222
+msgid "Dns - Arp - Icmpv6"
+msgstr "Dns - Arp - ICMPv6"
+
+#: /views/sols/view.ctp:224
+msgid "DNS res"
+msgstr "Res DNS"
+
+#: /views/sols/view.ctp:226
+msgid "ARP/ICMPv6"
+msgstr "ARP/ICMPv6"
+
+#: /views/sols/view.ctp:233
+msgid "RTP/VoIP"
+msgstr "RTP / VoIP"
+
+#: /views/sols/view.ctp:237 /views/webs/index.ctp:44
+msgid "Audio"
+msgstr "Audio"
+
+#: /views/sols/view.ctp:248
+msgid "Articles"
+msgstr "Articles"
+
+#: /views/sols/view.ctp:258
+msgid "Feed (RSS & Atom)"
+msgstr "(RSS et Atom)"
+
+#: /views/sols/view.ctp:267
+msgid "Printed files"
+msgstr "Imprimé fichiers"
+
+#: /views/sols/view.ctp:269
+msgid "Pdf"
+msgstr "Pdf"
+
+#: /views/sols/view.ctp:287
+msgid "Calls"
+msgstr "Appels"
+
+#: /views/sols/view.ctp:296
+msgid "Text flows"
+msgstr "Flux de texte"
+
+#: /views/sols/view.ctp:306 /views/users/about.ctp:25
+msgid "All data will be deleted at"
+msgstr "Toutes les données seront effacées au"
+
+#: /views/sols/view.ctp:307 /views/users/about.ctp:26
+msgid "Max pcap file size"
+msgstr "La taille maximale du fichier pcap"
+
+#: /views/sols/view.ctp:307 /views/users/about.ctp:26
+msgid ""
+" Larger files will be rejected. There is no limit on how many packets the "
+"capture file contains."
+msgstr ""
+"Agrandir les fichiers seront rejetées. Il n&#39;ya aucune limite sur le "
+"nombre de paquets contient le fichier de capture."
+
+#: /views/sols/view.ctp:308 /views/users/about.ctp:27
+msgid "Total pcap size limit"
+msgstr "Limite de taille totale pcap"
+
+#: /views/sols/view.ctp:309 /views/users/about.ctp:28
+msgid ""
+"While the decoded data are not shared, we make no claims that your data is "
+"not viewable by other users. For now, if you want to protect sensitive data "
+"in your capture files, don't use the free XplicoDemo service."
+msgstr ""
+"Alors que les données décodées sont pas partagées, nous ne prétendons pas "
+"que vos données ne sont pas visibles par les autres utilisateurs. Pour l&#39;"
+"instant, si vous voulez protéger les données sensibles de votre fichiers de "
+"capture, ne pas utiliser le service gratuit XplicoDemo."
+
+#: /views/sols/view.ctp:310 /views/users/about.ctp:29
+msgid ""
+"We recommend using Firefox 3.x, Safari 4.x or greater, or Google Chrome."
+msgstr ""
+"Nous vous recommandons d&#39;utiliser Firefox 3.x, 4.x ou supérieure Safari "
+"ou Google Chrome."
+
+#: /views/sols/view.ctp:312 /views/users/cpassword.ctp:16
+msgid "Ok"
+msgstr "Ok"
+
+#: /views/telnets/index.ctp:20 /views/users/login.ctp:44
+#: /views/users/register.ctp:10
+msgid "Username"
+msgstr "Nom d&#39;utilisateur"
+
+#: /views/telnets/view.ctp:13
+msgid "Telnet to"
+msgstr "Telnet pour"
+
+#: /views/telnets/view.ctp:20
+msgid "Host:"
+msgstr "Hôte:"
+
+#: /views/tftps/view.ctp:22
+msgid "cmd.txt"
+msgstr "cmd.txt"
+
+#: /views/tftps/view.ctp:29
+msgid "PCAP:"
+msgstr "PPCE:"
+
+#: /views/unknows/index.ctp:25
+msgid "Destination"
+msgstr "Destination"
+
+#: /views/unknows/index.ctp:26
+msgid "Port"
+msgstr "Port"
+
+#: /views/unknows/index.ctp:27
+msgid "Protocol"
+msgstr "Protocole"
+
+#: /views/unknows/index.ctp:28
+msgid "Duration [s]"
+msgstr "Durée [s]"
+
+#: /views/unknows/index.ctp:29
+msgid "Size [byte]"
+msgstr "Taille [octet]"
+
+#: /views/users/cpassword.ctp:10
+msgid "Old password"
+msgstr "Ancien mot de passe"
+
+#: /views/users/cpassword.ctp:12
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: /views/users/cpassword.ctp:14
+msgid "Repeat new password"
+msgstr "Répéter nouveau mot de passe"
+
+#: /views/users/login.ctp:41
+msgid "Please login"
+msgstr "S&#39;il vous plaît Connexion"
+
+#: /views/users/login.ctp:50
+msgid "Last Change"
+msgstr "Last Change"
+
+#: /views/users/login.ctp:55
+msgid "Create an account"
+msgstr "Créer un compte"
+
+#: /views/users/register.ctp:6
+msgid "Please fill out the form below to register an account."
+msgstr ""
+"S&#39;il vous plaît remplir le formulaire ci-dessous pour enregistrer un "
+"compte."
+
+#: /views/users/register.ctp:15
+msgid "Last Name is required"
+msgstr "Nom de famille est requise"
+
+#: /views/users/register.ctp:17
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: /views/users/resend_reg.ctp:5
+msgid "This is a demo!"
+msgstr "Ceci est une démo!"
+
+#: /views/users/resend_reg.ctp:6
+msgid "Please fill out the form below to resubmit email account."
+msgstr ""
+"S&#39;il vous plaît remplir le formulaire ci-dessous pour soumettre à "
+"nouveau compte de messagerie."
+
+#: /views/users/resend_reg.ctp:12
+msgid "email is invalid"
+msgstr "courriel est invalide"
+
+#: /views/webmails/index.ctp:22
+msgid "Service"
+msgstr "Service"
+
+#: /views/webmails/view.ctp:13
+msgid "Webmail to"
+msgstr "Webmail à"
+
+#: /views/webmails/view.ctp:39
+msgid "email.eml"
+msgstr "email.eml"
+
+#: /views/webs/hijacking.ctp:5
+msgid "Cookie hijacking domain:"
+msgstr "Domaine de cookie détournement:"
+
+#: /views/webs/hijacking.ctp:12
+msgid "Now you can disable proxy and go to the url:"
+msgstr "Maintenant, vous pouvez désactiver proxy et aller à l&#39;url:"
+
+#: /views/webs/images.ctp:51;57;63;69 /views/webs/index.ctp:44
+msgid "Image"
+msgstr "Image"
+
+#: /views/webs/images.ctp:51;63 /views/webs/method.ctp:21;22;29;34
+msgid "or"
+msgstr "ou"
+
+#: /views/webs/images.ctp:51;57;63;69
+msgid "Page"
+msgstr "Page"
+
+#: /views/webs/images.ctp:57;69
+msgid " or"
+msgstr "ou"
+
+#: /views/webs/index.ctp:43
+msgid "Web URLs:"
+msgstr "URL Web:"
+
+#: /views/webs/index.ctp:44
+msgid "Html"
+msgstr "Html"
+
+#: /views/webs/index.ctp:44
+msgid "Flash"
+msgstr "Flash"
+
+#: /views/webs/index.ctp:44
+msgid "JSON"
+msgstr "JSON"
+
+#: /views/webs/index.ctp:44
+msgid "All"
+msgstr "Tous les"
+
+#: /views/webs/index.ctp:55
+msgid "Method"
+msgstr "Méthode"
+
+#: /views/webs/method.ctp:6
+msgid "URL:"
+msgstr "URL:"
+
+#: /views/webs/method.ctp:11
+msgid "HTTP Request"
+msgstr "HTTP Request"
+
+#: /views/webs/method.ctp:12
+msgid "HTTP Responce"
+msgstr "Réponse HTTP"
+
+#: /views/webs/method.ctp:21;22
+msgid "Header: Click to"
+msgstr "En-tête: Cliquez pour"
+
+#: /views/webs/method.ctp:27;32
+msgid "Body: None"
+msgstr "Corps: Aucun"
+
+#: /views/webs/method.ctp:29;34
+msgid "Body: Click to"
+msgstr "Corps: Cliquez pour"
+
+#: /webroot/test.php:88
+msgid "Debug setting does not allow access to this url."
+msgstr "Paramètre de débogage ne permet pas l&#39;accès à cette url."
