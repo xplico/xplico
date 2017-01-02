@@ -35,16 +35,11 @@ SUBDIRS =
 # src file
 SRC = dis_log.c tcp_garbage.c
 
-# C flags specific to the dissector
-ifdef LOCAL_NDPI
-CFLAGS += -I$(ROOT_DIR)/../nDPI/src/include -I$(ROOT_DIR)/../nDPI/src/lib
-else
 CFLAGS += $(shell pkg-config --cflags libndpi)
-endif
 
 # library specific to the dissector
 ifdef LOCAL_NDPI
-LDFLAGS = $(ROOT_DIR)/../nDPI/src/lib/.libs/libndpi.a
+LDFLAGS = /usr/lib/libndpi.a
 else
 LDFLAGS = $(shell pkg-config --libs libndpi)
 endif
