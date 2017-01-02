@@ -60,6 +60,7 @@
 #include "manipula.h"
 #include "dnsdb.h"
 
+#define MNP_BUFFER_SIZE       1024
 
 extern int LogDirName(char *file_cfg); /* log.c */
 extern int LogToScreen(bool enb);      /* log.c */
@@ -388,7 +389,7 @@ int main(int argc, char *argv[])
 {
     bool help, flag, log, info;
     int c, prot_id;
-    char config_file[512];
+    char config_file[MNP_BUFFER_SIZE];
     unsigned short port;
     struct timeval start_t, end_t;
     extern char *optarg;
@@ -407,7 +408,8 @@ int main(int argc, char *argv[])
     while ((c = getopt(argc, argv, "c:hsip:l")) != -1) {
         switch(c) {
         case 'c':
-            sprintf(config_file, "%s", optarg);
+            snprintf(config_file, MNP_BUFFER_SIZE, "%s", optarg);
+            config_file[MNP_BUFFER_SIZE-1] = '\0';
             break;
             
         case 's':
