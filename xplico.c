@@ -48,6 +48,8 @@
 #include "geoiploc.h"
 #include "configs.h"
 
+#define XPLICO_BUFFER_MAX_SIZE    1024
+
 bool cli_status_log;
 
 extern int LogDirName(char *file_cfg); /* log.c */
@@ -200,9 +202,9 @@ int main(int argc, char *argv[])
 {
     bool graph, capt, help, info, log, cfg_f, version;
     int c, i;
-    char config_file[512];
-    char module_name[128];
-    char info_prot[64];
+    char config_file[XPLICO_BUFFER_MAX_SIZE];
+    char module_name[XPLICO_BUFFER_MAX_SIZE];
+    char info_prot[XPLICO_BUFFER_MAX_SIZE];
     struct timeval start_t, end_t;
     time_t end_to;
     struct timespec to;
@@ -228,7 +230,8 @@ int main(int argc, char *argv[])
             break;
 
         case 'c':
-            sprintf(config_file, "%s", optarg);
+            snprintf(config_file, XPLICO_BUFFER_MAX_SIZE, "%s", optarg);
+            config_file[XPLICO_BUFFER_MAX_SIZE-1] = '\0';
             cfg_f = TRUE;
             break;
 
@@ -242,12 +245,14 @@ int main(int argc, char *argv[])
 
         case 'i':
             info = TRUE;
-            sprintf(info_prot, "%s", optarg);
+            snprintf(info_prot, XPLICO_BUFFER_MAX_SIZE, "%s", optarg);
+            info_prot[XPLICO_BUFFER_MAX_SIZE-1] = '\0';
             break;
 
         case 'm':
             capt = TRUE;
-            sprintf(module_name, "%s", optarg);
+            snprintf(module_name, XPLICO_BUFFER_MAX_SIZE, "%s", optarg);
+            module_name[XPLICO_BUFFER_MAX_SIZE-1] = '\0';
             break;
             
         case 'l':
@@ -298,7 +303,7 @@ int main(int argc, char *argv[])
             /* change configuration file */
             strcpy(config_file, "/opt/xplico/cfg/xplico_cli.cfg"); /* next default */
             if (LogDirName(config_file) == -1) {
-                printf("error: unable to open files %s and %s\n", XP_DEFAULT_CFG, config_file);
+                printf("error: unable to open files \"%s\" and \"%s\"\n", XP_DEFAULT_CFG, config_file);
                 printf("Configuration file execution error (see above).\n");
                 return -1;
             }
@@ -307,7 +312,7 @@ int main(int argc, char *argv[])
             }
         }
         else {
-             printf("error: unable to open configuraion file %s\n", config_file);
+             printf("error: unable to open configuraion file \"%s\"\n", config_file);
              return -1;
         }
     }
