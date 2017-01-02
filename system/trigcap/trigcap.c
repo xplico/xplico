@@ -32,10 +32,12 @@
 #include <pcap.h>
 
 
-#define TC_VER_MAG    1
-#define TC_VER_MIN    1
-#define TC_VER_REV    0
-#define TC_CR         "Part of Xplico Internet Traffic Decoder (NFAT).\nSee http://www.xplico.org for more information.\n\nCopyright 2007-2011 Gianluca Costa & Andrea de Franceschi and contributors.\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+#define TC_VER_MAG      1
+#define TC_VER_MIN      1
+#define TC_VER_REV      0
+#define TC_CR           "Part of Xplico Internet Traffic Decoder (NFAT).\nSee http://www.xplico.org for more information.\n\nCopyright 2007-2011 Gianluca Costa & Andrea de Franceschi and contributors.\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+
+#define TC_BUFFER_SIZE  1024
 
 struct pcappkt_hdr {
     unsigned int tv_sec;      /* timestamp seconds */
@@ -62,8 +64,8 @@ static void Usage(char *name)
 int main(int argc, char *argv[])
 {
     char c;
-    char in_file[1024];
-    char out_file[1024];
+    char in_file[TC_BUFFER_SIZE];
+    char out_file[TC_BUFFER_SIZE];
     char check;
     unsigned long tp;
     unsigned long bnp;
@@ -92,7 +94,8 @@ int main(int argc, char *argv[])
             break;
 
         case 'f':
-            sprintf(in_file, "%s", optarg);
+            snprintf(in_file, TC_BUFFER_SIZE, "%s", optarg);
+            in_file[TC_BUFFER_SIZE-1] = '\0';
             check |= 0x01;
             break;
 
