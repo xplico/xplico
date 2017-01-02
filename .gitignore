@@ -7,4 +7,4 @@ debian/files
 *.so
 .depend
 *.pyc
-
+dissectors/*/dis_log.c
