@@ -29,8 +29,8 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 <?php endif; ?>
 <td class="header-title"><?php __('Relevance:'); ?></td>
 <td class="date pinfo">
-	<?php echo $form->create('Email',    array ('action' => 'view'));?>
-        <?php   echo $form->select('relevance', $relevanceoptions, $email['Email']['relevance'] ,array('label' => __('Choose relevance', true), 'empty' => __('None', true)));     ?>
+	<?php echo $this->Form->create('Email', array('url' => array ('action' => 'view')));?>
+    <?php echo $this->Form->input('relevance', array('options' => $relevanceoptions, 'value' => $email['Email']['relevance'], 'label' => __('Choose relevance'), 'empty' => __('None')));     ?>
 </td>
 </tr>
 <tr>
@@ -38,8 +38,8 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 <td class="from"><?php echo str_replace('>', '&gt;', str_replace('<', '&lt;', $mailObj['from']))?></td>
 <td class="header-title" rowspan="7"><?php __('Comments'); ?></td>
 <td class="date pinfo" rowspan="7">
-        <?php echo $form->input ('comments', array ('label' => false, 'rows' => '5', 'cols' => '47', 'maxlength'=>'3000')       );        ?>
-	<?php echo $form->end(__('Save', true));?>
+    <?php echo $this->Form->input('comments', array ('label' => false, 'rows' => '5', 'cols' => '47', 'maxlength'=>'3000')       );        ?>
+	<?php echo $this->Form->end(__('Save', true));?>
 </td>
 </tr>
 <tr>
@@ -60,11 +60,11 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 </tr>
 <tr>
 <td class="header-title"><?php __('EML file:'); ?></td>
-<td class="date"><?php echo $html->link('email.eml', '/emails/eml') ?></td>
+<td class="date"><?php echo $this->Html->link('email.eml', '/emails/eml') ?></td>
 </tr>
 <tr>
 <td class="header-title"><?php __('Info:'); ?></td>
-<td class="date pinfo"><a href="#" onclick="popupVetrina('/emails/info','scrollbar=auto'); return false"><?php __('info.xml'); ?></a><div class="ipcap"><?php echo $html->link('pcap', 'pcap/'); ?></div></td>
+<td class="date pinfo"><a href="#" onclick="popupVetrina('/emails/info','scrollbar=auto'); return false"><?php __('info.xml'); ?></a><div class="ipcap"><?php echo $this->Html->link('pcap', 'pcap/'); ?></div></td>
 </tr>
 </tbody></table>
 <?php if ($mailObj['Type'] == 'html') : ?>
@@ -90,12 +90,12 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
     <td class="header-title"><?php __('Attached'); echo ' '.$attachment['Type'] ?></td>
     <?php if (isset($attachment['FileName'])) : ?>
     <?php if (strpos($attachment['FileName'], '=?') != 0): ?>
-    <td class="date"><?php echo $html->link(htmlentities($attachment['FileName']), '/emails/content'.strrchr($attachment['DataFile'], '/')) ?></td>
+    <td class="date"><?php echo $this->Html->link(htmlentities($attachment['FileName']), '/emails/content'.strrchr($attachment['DataFile'], '/')) ?></td>
     <?php else: ?>
-    <td class="date"><?php echo $html->link($attachment['FileName'], '/emails/content'.strrchr($attachment['DataFile'], '/')) ?></td>
+    <td class="date"><?php echo $this->Html->link($attachment['FileName'], '/emails/content'.strrchr($attachment['DataFile'], '/')) ?></td>
     <?php endif; ?>
     <?php elseif (isset($attachment['Description'])) : ?>
-    <td class="date"><?php echo $html->link($attachment['Description'], '/emails/content'.strrchr($attachment['DataFile'], '/')) ?></td>
+    <td class="date"><?php echo $this->Html->link($attachment['Description'], '/emails/content'.strrchr($attachment['DataFile'], '/')) ?></td>
     <?php endif; ?>
     </tr>
   <?php endforeach; ?>
