@@ -13,7 +13,7 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" summary="Message list" cellspacing="0">
 <tr>
-	<th><?php echo $this->Paginator->sort(__('Users'), 'username'); ?></th>
+	<th><?php echo $this->Paginator->sort('username', __('Users')); ?></th>
 </tr>
 <?php foreach ($fb_users as $user): ?>
   <tr>

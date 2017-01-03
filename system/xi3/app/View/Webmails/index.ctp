@@ -15,12 +15,12 @@ echo $this->Form->end(__('Go'));
 </div>
  <table id="messagelist" summary="Message list" cellspacing="0">
  <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="subject"><?php echo $this->Paginator->sort(__('Subject'), 'subject'); ?></th>
-	<th class="from"><?php echo $this->Paginator->sort(__('Sender'), 'sender'); ?></th>
-	<th class="to"><?php echo $this->Paginator->sort(__('Receivers'), 'receivers'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Service'), 'service'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Size'), 'data_size'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="subject"><?php echo $this->Paginator->sort('subject', __('Subject')); ?></th>
+	<th class="from"><?php echo $this->Paginator->sort('sender', __('Sender')); ?></th>
+	<th class="to"><?php echo $this->Paginator->sort('receivers', __('Receivers')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('service', __('Service')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('data_size', __('Size')); ?></th>
  </tr>
  <?php foreach ($emails as $email): ?>
  <?php if ($email['Webmail']['first_visualization_user_id']) : ?>

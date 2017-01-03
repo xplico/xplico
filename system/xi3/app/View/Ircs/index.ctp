@@ -16,10 +16,9 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" summary="Message list" cellspacing="0">
 <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="from"><?php echo $this->Paginator->sort(__('Url'), 'url'); ?></th>
-	<th class="number"><?php echo $this->Paginator->sort(__('Channels'), 'channel_num'); ?></th>
-
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="from"><?php echo $this->Paginator->sort('url', __('Url')); ?></th>
+	<th class="number"><?php echo $this->Paginator->sort('channel_num', __('Channels')); ?></th>
 </tr>
 <?php foreach ($ircs as $irc): ?>
 <?php if ($irc['Irc']['first_visualization_user_id']) : ?>

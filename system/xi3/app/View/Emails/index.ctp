@@ -18,13 +18,12 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 <br />
  <table id="messagelist" summary="Message list" cellspacing="0">
  <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="subject"><?php echo $this->Paginator->sort(__('Subject'), 'subject'); ?></th>
-	<th class="from"><?php echo $this->Paginator->sort(__('Sender'), 'sender'); ?></th>
-	<th class="to"><?php echo $this->Paginator->sort(__('Receivers'), 'receivers'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Size'), 'data_size'); ?></th>
-<!--	<th class="relevance"><?php echo $this->Paginator->sort(__('Relevance'), 'relevance'); ?> -->
-<th class="relevance"><?php echo $this->Paginator->sort('relevance'); ?>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="subject"><?php echo $this->Paginator->sort('subject', __('Subject')); ?></th>
+	<th class="from"><?php echo $this->Paginator->sort('sender', __('Sender')); ?></th>
+	<th class="to"><?php echo $this->Paginator->sort('receivers', __('Receivers')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('data_size', __('Size')); ?></th>
+    <th class="relevance"><?php echo $this->Paginator->sort('relevance', __('Relevance')); ?>
 		<a href="/relevance.html" 
 		onclick="window.open('/relevance.html','popup','width=500,height=500,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); 
 		return false">(?)</a>

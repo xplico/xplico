@@ -12,9 +12,9 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 <div class="generic">
 <table id="messagelist" cellpadding="2" cellspacing="0">
 <tr>
-<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-<th><?php echo $this->Paginator->sort(__('Url'), 'url'); ?></th>
-<th class="size"><?php echo $this->Paginator->sort(__('Size'), 'rs_bd_size'); ?></th>
+<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+<th><?php echo $this->Paginator->sort('url', __('Url')); ?></th>
+<th class="size"><?php echo $this->Paginator->sort('rs_bd_size', __('Size')); ?></th>
 <th class="info"><?php echo __('Info'); ?></th>
 </tr>
 <?php foreach ($feeds_xml as $feed):?>

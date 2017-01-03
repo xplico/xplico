@@ -19,12 +19,12 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
  <table id="messagelist" summary="Message list" cellspacing="0">
  <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="subject"><?php echo $this->Paginator->sort(__('User'), 'username'); ?></th>
-	<th class="subject"><?php echo $this->Paginator->sort(__('Friend'), 'friend'); ?></th>
-	<th class="subject"><?php echo $this->Paginator->sort(__('Duration [hh:mm:ss]'), 'duration'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Size'), 'data_size'); ?></th>
-        <th class="info"><?php echo __('Info'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="subject"><?php echo $this->Paginator->sort('username', __('User')); ?></th>
+	<th class="subject"><?php echo $this->Paginator->sort('friend', __('Friend')); ?></th>
+	<th class="subject"><?php echo $this->Paginator->sort('duration', __('Duration [hh:mm:ss]')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('data_size', __('Size')); ?></th>
+    <th class="info"><?php echo __('Info'); ?></th>
  </tr>
  <?php foreach ($chats as $chat): ?>
   <?php $h = (int)($chat['Fbchat']['duration']/3600);

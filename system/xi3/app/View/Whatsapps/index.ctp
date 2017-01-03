@@ -15,9 +15,9 @@ echo $this->Form->end(__('Go'));
 </div>
  <table id="messagelist" summary="Message list" cellspacing="0">
  <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="subject"><?php echo $this->Paginator->sort(__('Device'), 'device'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Phone'), 'phone'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="subject"><?php echo $this->Paginator->sort('device', __('Device')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('phone', __('Phone')); ?></th>
  </tr>
  <?php foreach ($whatsapps as $whatsapp): ?>
  <?php if ($whatsapp['Whatsapp']['first_visualization_user_id']) : ?>

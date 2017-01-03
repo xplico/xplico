@@ -21,13 +21,13 @@ echo $this->Form->end(__('Go'));
 </div>
  <table id="messagelist" summary="Message list" cellspacing="0">
  <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th><?php echo $this->Paginator->sort(__('Destination'), 'dst'); ?></th>
-        <th class="size"><?php echo $this->Paginator->sort(__('Port'), 'dst_port'); ?></th>
-        <th class="date"><?php echo $this->Paginator->sort(__('Protocol'), 'l7prot'); ?></th>
-        <th class="date"><?php echo $this->Paginator->sort(__('Duration [s]'), 'duration'); ?></th>
-	<th class="date"><?php echo $this->Paginator->sort(__('Size [byte]'), 'size'); ?></th>
-        <th class="info"><?php echo __('Info'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th><?php echo $this->Paginator->sort('dst', __('Destination')); ?></th>
+    <th class="size"><?php echo $this->Paginator->sort('dst_port', __('Port')); ?></th>
+    <th class="date"><?php echo $this->Paginator->sort('l7prot', __('Protocol')); ?></th>
+    <th class="date"><?php echo $this->Paginator->sort('duration', __('Duration [s]')); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('size', __('Size [byte]')); ?></th>
+    <th class="info"><?php echo __('Info'); ?></th>
  </tr>
  <?php foreach ($unknows as $unknow): ?>
  <?php if ($unknow['Unknow']['first_visualization_user_id']) : ?>

@@ -21,11 +21,11 @@ echo $this->Form->end(__('Go'));
 </div>
  <table id="messagelist" summary="Message list" cellspacing="0">
  <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th><?php echo $this->Paginator->sort(__('Filename'), 'file_name'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Size'), 'file_size'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Complete'), 'file_stat'); ?></th>
-        <th class="info"><?php echo __('Info'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th><?php echo $this->Paginator->sort('file_name', __('Filename')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('file_size', __('Size')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('file_stat', __('Complete')); ?></th>
+    <th class="info"><?php echo __('Info'); ?></th>
  </tr>
  <?php foreach ($httpfiles as $httpfile): ?>
  <?php if ($httpfile['Httpfile']['first_visualization_user_id']) : ?>
@@ -42,8 +42,8 @@ echo $this->Form->end(__('Go'));
 	<td><b><?php echo $httpfile['Httpfile']['capture_date']; ?></b></td>
 	<td><b><?php echo $this->Html->link($httpfile['Httpfile']['file_name'],'/httpfiles/file/' . $httpfile['Httpfile']['id']); ?></b></td>
 	<td><b><?php echo $httpfile['Httpfile']['file_size']; ?></b></td>
-        <td><b><?php echo $httpfile['Httpfile']['file_stat']; ?></b></td>
-        <td class="pinfo"><b><a href="#" onclick="popupVetrina('/httpfiles/info/<?php echo $httpfile['Httpfile']['id']; ?>','scrollbar=auto'); return false"><?php echo __('info.xml'); ?></a> <div class="ipcap"><?php echo $this->Html->link('pcap', 'pcap/' . $httpfile['Httpfile']['id']); ?></div></b></td>
+    <td><b><?php echo $httpfile['Httpfile']['file_stat']; ?></b></td>
+    <td class="pinfo"><b><a href="#" onclick="popupVetrina('/httpfiles/info/<?php echo $httpfile['Httpfile']['id']; ?>','scrollbar=auto'); return false"><?php echo __('info.xml'); ?></a> <div class="ipcap"><?php echo $this->Html->link('pcap', 'pcap/' . $httpfile['Httpfile']['id']); ?></div></b></td>
   </tr>
  <?php endif ?>
 <?php endforeach; ?>

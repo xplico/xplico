@@ -20,11 +20,10 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" summary="Message list" cellspacing="0">
 <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="date"><?php echo $this->Paginator->sort(__('End'), 'end_date'); ?></th>
-	<th class="from"><?php echo $this->Paginator->sort(__('User-Nick name'), 'user_nick'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('end_date', __('End')); ?></th>
+	<th class="from"><?php echo $this->Paginator->sort('user_nick', __('User-Nick name')); ?></th>
 	<th class="info"><?php echo __('Info'); ?></th>
-
 </tr>
 <?php foreach ($paltalk_exps as $paltalk): ?>
 <?php if ($paltalk['Paltalk_exp']['first_visualization_user_id']) : ?>

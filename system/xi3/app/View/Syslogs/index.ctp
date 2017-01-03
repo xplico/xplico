@@ -15,9 +15,9 @@ echo $this->Form->end(__('Go'));
 </div>
  <table id="messagelist" summary="Message list" cellspacing="0">
  <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="subject"><?php echo $this->Paginator->sort(__('Hosts'), 'hosts'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Size'), 'cmd_size'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="subject"><?php echo $this->Paginator->sort('hosts', __('Hosts')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('cmd_size', __('Size')); ?></th>
  </tr>
  <?php foreach ($syslogs as $syslog): ?>
  <?php if ($syslog['Syslog']['first_visualization_user_id']) : ?>

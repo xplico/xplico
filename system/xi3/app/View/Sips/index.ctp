@@ -20,11 +20,11 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" summary="Message list" cellspacing="0">
 <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="from"><?php echo $this->Paginator->sort(__('From'), 'from_addr'); ?></th>
-        <th class="to"><?php echo $this->Paginator->sort(__('To'), 'to_addr'); ?></th>
-	<th class="number"><?php echo $this->Paginator->sort(__('Duration'), 'duration'); ?></th>
-        <th class="date"><?php echo __('Info'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="from"><?php echo $this->Paginator->sort('from_addr', __('From')); ?></th>
+    <th class="to"><?php echo $this->Paginator->sort('to_addr', __('To')); ?></th>
+	<th class="number"><?php echo $this->Paginator->sort('duration', __('Duration')); ?></th>
+    <th class="date"><?php echo __('Info'); ?></th>
 </tr>
 <?php foreach ($sips as $sip): ?>
 <?php

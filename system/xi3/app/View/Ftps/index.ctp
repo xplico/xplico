@@ -16,11 +16,11 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" summary="Message list" cellspacing="0">
 <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="from"><?php echo $this->Paginator->sort(__('Url'), 'url'); ?></th>
-        <th class="username"><?php echo $this->Paginator->sort(__('User'), 'username'); ?></th>
-	<th class="number"><?php echo $this->Paginator->sort(__('Download'), 'download_num'); ?></th>
-	<th class="number"><?php echo $this->Paginator->sort(__('Upload'), 'upload_num'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="from"><?php echo $this->Paginator->sort('url', __('Url')); ?></th>
+    <th class="username"><?php echo $this->Paginator->sort('username', __('User')); ?></th>
+	<th class="number"><?php echo $this->Paginator->sort('download_num', __('Download')); ?></th>
+	<th class="number"><?php echo $this->Paginator->sort('upload_num', __('Upload')); ?></th>
 </tr>
 <?php foreach ($ftps as $ftp): ?>
 <?php if ($ftp['Ftp']['first_visualization_user_id']) : ?>

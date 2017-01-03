@@ -37,10 +37,10 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" cellpadding="2" cellspacing="0">
 <tr>
-<th><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-<th><?php echo $this->Paginator->sort(__('Name'), 'filename'); ?></th>
-<th><?php echo $this->Paginator->sort(__('Size'), 'file_size'); ?></th>
-<th><?php echo $this->Paginator->sort(__('Dir'), 'dowloaded'); ?></th>
+<th><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+<th><?php echo $this->Paginator->sort('filename', __('Name')); ?></th>
+<th><?php echo $this->Paginator->sort('file_size', __('Size')); ?></th>
+<th><?php echo $this->Paginator->sort('dowloaded', __('Dir')); ?></th>
 <th>Info</th>
 </tr>
 <?php foreach ($ftp_file as $data_file): ?>

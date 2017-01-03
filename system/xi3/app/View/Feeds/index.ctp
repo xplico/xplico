@@ -21,8 +21,8 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" summary="Message list" cellspacing="0">
 <tr>
-	<th><?php echo $this->Paginator->sort(__('Title'), 'name'); ?></th>
-	<th><?php echo $this->Paginator->sort(__('Site'), 'site'); ?></th>
+	<th><?php echo $this->Paginator->sort('name', __('Title')); ?></th>
+	<th><?php echo $this->Paginator->sort('site', __('Site')); ?></th>
 </tr>
 <?php foreach ($feeds as $feed): ?>
   <tr>

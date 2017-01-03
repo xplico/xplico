@@ -20,10 +20,10 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" summary="Message list" cellspacing="0">
 <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="date"><?php echo $this->Paginator->sort(__('End'), 'end_date'); ?></th>
-	<th class="from"><?php echo $this->Paginator->sort(__('Chat'), 'chat'); ?></th>
-        <th class="date"><?php echo $this->Paginator->sort(__('Duration'), 'duration'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('end_date', __('End')); ?></th>
+	<th class="from"><?php echo $this->Paginator->sort('chat', __('Chat')); ?></th>
+    <th class="date"><?php echo $this->Paginator->sort('duration', __('Duration')); ?></th>
 	<th class="info"><?php echo __('Info'); ?></th>
 </tr>
 <?php foreach ($msn_chats as $msn): 

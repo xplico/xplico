@@ -21,10 +21,10 @@ echo $this->Form->end(__('Go'));
 </div>
  <table id="messagelist" summary="Message list" cellspacing="0">
  <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="date"><?php echo $this->Paginator->sort(__('File'), 'file_name'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Type'), 'file_type'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Size'), 'fsize'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('file_name', __('File')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('file_type', __('Type')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('fsize', __('Size')); ?></th>
 	<th class="info"><?php echo __('Info'); ?></th>
  </tr>
  <?php foreach ($unkfiles as $unkfile): ?>
@@ -41,7 +41,7 @@ echo $this->Form->end(__('Go'));
 	<td><b><?php echo $this->Html->link($unkfile['Unkfile']['file_name'],'/unkfiles/bin/' . $unkfile['Unkfile']['id']); ?></b></td>
 	<td><b><?php echo $unkfile['Unkfile']['file_type']; ?></b></td>
 	<td><b><?php echo $unkfile['Unkfile']['fsize']; ?></b></td>
-        <td class="pinfo"><b><a href="#" onclick="popupVetrina('/unkfiles/info/<?php echo $unkfile['Unkfile']['id']; ?>','scrollbar=auto'); return false"><?php echo __('info.xml'); ?></a></b><div class="ipcap"><b><?php echo $this->Html->link('pcap', 'pcap/' . $unkfile['Unkfile']['id']); ?></b></div></td>
+    <td class="pinfo"><b><a href="#" onclick="popupVetrina('/unkfiles/info/<?php echo $unkfile['Unkfile']['id']; ?>','scrollbar=auto'); return false"><?php echo __('info.xml'); ?></a></b><div class="ipcap"><b><?php echo $this->Html->link('pcap', 'pcap/' . $unkfile['Unkfile']['id']); ?></b></div></td>
   </tr>
  <?php endif ?>
 <?php endforeach; ?>

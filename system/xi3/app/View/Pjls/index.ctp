@@ -14,9 +14,9 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" summary="Message list" cellspacing="0">
 <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="from"><?php echo $this->Paginator->sort(__('Url'), 'url'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Data Size'), 'pdf_size'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="from"><?php echo $this->Paginator->sort('url', __('Url')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('pdf_size', __('Data Size')); ?></th>
 	<th class="info"><?php echo __('Info'); ?></th>
 </tr>
 <?php foreach ($pjls as $pjl): ?>

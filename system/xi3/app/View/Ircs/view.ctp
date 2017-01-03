@@ -30,9 +30,9 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 
 <table id="messagelist" cellpadding="2" cellspacing="0">
 <tr>
-<th><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-<th><?php echo $this->Paginator->sort(__('Channel'), 'channel'); ?></th>
-<th><?php echo $this->Paginator->sort(__('End'), 'end_date'); ?></th>
+<th><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+<th><?php echo $this->Paginator->sort('channel', __('Channel')); ?></th>
+<th><?php echo $this->Paginator->sort('end_date', __('End')); ?></th>
 <th>Info</th>
 </tr>
 <?php foreach ($irc_channel as $data_file): ?>

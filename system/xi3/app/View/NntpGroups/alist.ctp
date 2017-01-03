@@ -11,10 +11,10 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2010, http://www.xplico.or
 </div>
  <table id="messagelist" summary="Message list" cellspacing="0">
  <tr>
-	<th class="date"><?php echo $this->Paginator->sort(__('Date'), 'capture_date'); ?></th>
-	<th class="subject"><?php echo $this->Paginator->sort(__('Subject'), 'subject'); ?></th>
-	<th class="from"><?php echo $this->Paginator->sort(__('Sender'), 'sender'); ?></th>
-	<th class="size"><?php echo $this->Paginator->sort(__('Size'), 'data_size'); ?></th>
+	<th class="date"><?php echo $this->Paginator->sort('capture_date', __('Date')); ?></th>
+	<th class="subject"><?php echo $this->Paginator->sort('subject', __('Subject')); ?></th>
+	<th class="from"><?php echo $this->Paginator->sort('sender', __('Sender')); ?></th>
+	<th class="size"><?php echo $this->Paginator->sort('data_size', __('Size')); ?></th>
  </tr>
  <?php foreach ($nntp_articles as $article): ?>
  <?php if ($article['Nntp_article']['first_visualization_user_id']) : ?>
