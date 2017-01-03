@@ -114,7 +114,8 @@ int main(int argc, char *argv[])
             break;
 
         case 'o':
-            sprintf(out_file, "%s", optarg);
+            snprintf(out_file, TC_BUFFER_SIZE, "%s", optarg);
+            out_file[TC_BUFFER_SIZE-1] = '\0';
             check |= 0x08;
             break;
 
