@@ -15,7 +15,10 @@ function RSS_Tags($item, $type)
 
 	$y = array();
 	$y["title"] = $item->getElementsByTagName("title")->item(0)->firstChild->textContent;
-	$y["link"] = $item->getElementsByTagName("link")->item(0)->firstChild->textContent;
+	$y["link"] = $item->getElementsByTagName("link")->item(0)->firstChild;//->textContent;
+    if ($y["link"] != null) {
+        $y["link"] = $y["link"]->textContent;
+    }
 	$y["description"] = $item->getElementsByTagName("description")->item(0)->firstChild->textContent;
 
 	$tnl = $item->getElementsByTagName("pubDate");
