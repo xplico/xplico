@@ -23,12 +23,12 @@ Listen 9876
             </Directory>
 
 
-    ErrorLog /var/log/apache2/xplico_error.log
+    ErrorLog /var/log/httpd/xplico_error.log
 
     # Possible values include: debug, info, notice, warn, error, crit,
     # alert, emerg.
     LogLevel debug
 
-    CustomLog /var/log/apache2/xplico_access.log combined
+    CustomLog /var/log/httpd/xplico_access.log combined
 
 </VirtualHost>
