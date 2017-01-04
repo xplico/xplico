@@ -104,7 +104,7 @@ endif
 
 # nDPI local version (from source code)
 ifdef LOCAL_NDPI
-$(shell ln -s $(ROOT_DIR)/../nDPI/src/include $(ROOT_DIR)/../nDPI/src/include/libndpi)
+$(shell ln -sf $(ROOT_DIR)/../nDPI/src/include $(ROOT_DIR)/../nDPI/src/include/libndpi)
 endif
 
 # main cflags
@@ -228,15 +228,15 @@ install: installcp
 	chmod 777 $(INSTALL_DIR)/cfg
 	chmod a+w $(INSTALL_DIR)/cfg/*
 	chmod -R 777 $(INSTALL_DIR)/xi/app/tmp
-	mkdir -p $(DESTDIR)/etc/httpd/conf/extra
 	mkdir -p $(DESTDIR)/etc/apache2/sites-available/
 	mkdir -p $(DESTDIR)/etc/apache2/sites-enabled/
-	cp $(INSTALL_DIR)/cfg/apache_xi $(DESTDIR)/etc/httpd/conf/extra/httpd-xplico.conf
 	cp $(INSTALL_DIR)/cfg/apache_xi $(DESTDIR)/etc/apache2/sites-available/httpd-xplico.conf
-	mkdir -p $(DESTDIR)/opt/xplico/xi/app/tmp/cache
-	chmod -R 777 $(DESTDIR)/opt/xplico/xi/app/tmp/cache
+	mkdir -p $(DESTDIR)/etc/httpd/conf/extra
+	cp $(INSTALL_DIR)/cfg/httpd_xi $(DESTDIR)/etc/httpd/conf/extra/httpd-xplico.conf
 	mkdir -p $(DESTDIR)/usr/lib/systemd/system
 	cp xplico.service $(DESTDIR)/usr/lib/systemd/system/
+	mkdir -p $(DESTDIR)/opt/xplico/xi/app/tmp/cache
+	chmod -R 777 $(DESTDIR)/opt/xplico/xi/app/tmp/cache
 endif
 
 

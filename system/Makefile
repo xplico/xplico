@@ -67,8 +67,9 @@ install:
 	cp db/mysql/*.sql $(INSTALL_DIR)/script/db/mysql
 	@for dir in $(SUBDIRS) ; do $(MAKE) -C $$dir install || exit 1; done
 	cd $(INSTALL_DIR)/script/db/sqlite; ./create_xplico_db.sh $(INSTALL_DIR)
-	cp -a xi2 $(INSTALL_DIR)/xi
+	cp -a xi3 $(INSTALL_DIR)/xi
 	cp web_cfg/apache_xi $(INSTALL_DIR)/cfg
+	cp web_cfg/httpd_xi $(INSTALL_DIR)/cfg
 
 
 .depend: $(SRC)

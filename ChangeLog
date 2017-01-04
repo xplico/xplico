@@ -1,3 +1,9 @@
+xplico 1.2.0
+  * Migration from PHP5 to PHP7
+  * CakePHP 2.8
+  * IMAP bug fix
+  * Bugfix: reported on Security Onion
+
 xplico 1.1.2
   * IPv4 defragmentation
   * CapAnalysis dissectors and dispatcher
