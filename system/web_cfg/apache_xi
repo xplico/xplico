@@ -6,7 +6,7 @@ Listen 9876
         Options All
         AllowOverride All
         DirectoryIndex index.html index.php
-        php_admin_value open_basedir /opt/xplico/xi:/opt/xplico:/run:/tmp
+        php_admin_value open_basedir /opt/xplico/xi:/opt/xplico:/run:/tmp:/usr/bin:/etc/php/:/etc/php5/
         php_admin_value post_max_size 500M
         php_admin_value upload_max_filesize 500M
         php_admin_value short_open_tag  On
