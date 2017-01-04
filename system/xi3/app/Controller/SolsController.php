@@ -47,6 +47,7 @@ class SolsController extends AppController {
                       'Paltalk_exp', 'Paltalk_room', 'Msn_chat', 'Icmpv6', 'Syslog', 'Unkfile', 'Webymsg', 'Mgcp',
                       'Whatsapp');
     var $pcap_limit = 10485760;
+    var $true_db = 1;
     
     function beforeFilter() {
         $groupid = $this->Session->read('group');
@@ -56,6 +57,9 @@ class SolsController extends AppController {
             $this->Session->delete('host_id');
             $this->redirect('/users/login');
         }
+        if ($this->Xplico->dbissqlite() == FALSE) {
+			$this->true_db = 'TRUE';
+		}
     }
 
     private function get_dir_size($dir_name){
@@ -200,9 +204,9 @@ class SolsController extends AppController {
 
             // email number
             $this->Email->recursive = -1;
-            $eml_received = $this->Email->find('count', array('conditions' => ("sol_id = $id AND receive = TRUE".$host_srch)));
+            $eml_received = $this->Email->find('count', array('conditions' => ("sol_id = $id AND receive = ".$this->true_db.$host_srch)));
             if ($eml_received == '') {
-                $eml_received = $this->Email->find('count', array('conditions' => ("sol_id = $id AND receive = 1".$host_srch)));
+                $eml_received = $this->Email->find('count', array('conditions' => ("sol_id = $id AND receive = ".$this->true_db.$host_srch)));
             }
             $eml_total = $this->Email->find('count', array('conditions' => ("sol_id = $id".$host_srch)));
             $eml_sended = $eml_total - $eml_received;
@@ -216,7 +220,7 @@ class SolsController extends AppController {
             $this->Ftp->recursive = -1;
             $this->Ftp_file->recursive = -1;
             $ftp_num  = $this->Ftp->find('count', array('conditions' => ("sol_id = $id".$host_srch)));
-            $ftp_down = $this->Ftp_file->find('count', array('conditions' => ("sol_id = $id AND dowloaded = 1".$host_srch)));
+            $ftp_down = $this->Ftp_file->find('count', array('conditions' => ("sol_id = $id AND dowloaded = ".$this->true_db.$host_srch)));
             $ftp_up   = $this->Ftp_file->find('count', array('conditions' => ("sol_id = $id".$host_srch))) - $ftp_down;
             $this->set('ftp_num',  $ftp_num);
             $this->set('ftp_down', $ftp_down);
@@ -244,7 +248,7 @@ class SolsController extends AppController {
             $this->Tftp->recursive = -1;
             $this->Tftp_file->recursive = -1;
             $tftp_num = $this->Tftp->find('count', array('conditions' => ("sol_id = $id".$host_srch)));
-            $tftp_down = $this->Tftp_file->find('count', array('conditions' => ("sol_id = $id AND dowloaded = 1".$host_srch)));
+            $tftp_down = $this->Tftp_file->find('count', array('conditions' => ("sol_id = $id AND dowloaded = ".$this->true_db.$host_srch)));
             $tftp_up = $this->Tftp_file->find('count', array('conditions' => ("sol_id = $id".$host_srch))) - $tftp_down;
             $this->set('tftp_num', $tftp_num);
             $this->set('tftp_down', $tftp_down);
@@ -283,9 +287,9 @@ class SolsController extends AppController {
             // webmail
             $this->Webmail->recursive = -1;
             $webmail_num = $this->Webmail->find('count', array('conditions' => ("sol_id = $id".$host_srch)));
-            $webmail_received =  $this->Webmail->find('count', array('conditions' => ("sol_id = $id AND Webmail.receive = TRUE".$host_srch)));
+            $webmail_received =  $this->Webmail->find('count', array('conditions' => ("sol_id = $id AND Webmail.receive = ".$this->true_db.$host_srch)));
             if ($webmail_received == '') {
-                $webmail_received =  $this->Webmail->find('count', array('conditions' => ("sol_id = $id AND Webmail.receive = 1".$host_srch)));
+                $webmail_received =  $this->Webmail->find('count', array('conditions' => ("sol_id = $id AND Webmail.receive = ".$this->true_db.$host_srch)));
             }
             $this->set('webmail_num', $webmail_num);
             $this->set('webmail_receiv', $webmail_received);

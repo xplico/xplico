@@ -35,6 +35,8 @@
    *
    * ***** END LICENSE BLOCK ***** */
 
+include_once APP . 'Config' . DS . 'database.php';
+
 class XplicoComponent extends Component
 {
     var $Session;
@@ -155,13 +157,13 @@ class XplicoComponent extends Component
 
 
     function startStopXplico($futureStatus){
-	system("sudo killall -9 /opt/xplico/bin/dema > /dev/null 2>&1 &"); 
-	if ($futureStatus == 1) {
+        system("sudo killall -9 /opt/xplico/bin/dema > /dev/null 2>&1 &");
+        if ($futureStatus == 1) {
             system ("sudo /opt/xplico/script/sqlite_demo.sh > /dev/null 2>&1 &");
         }
-        sleep (1);      //Necessary, calling the OS needs some time...	
-	return $this->checkXplicoStatus();
-    }	
+        sleep (1);      //Necessary, calling the OS needs some time...
+        return $this->checkXplicoStatus();
+    }
 
     //Yes, i know, this execs on php will send me to Hell.
     function getDemaVersion() {
@@ -180,14 +182,14 @@ class XplicoComponent extends Component
         return Configure::version();
     }
     function getApacheVersion() {
-		return apache_get_version();
+        return apache_get_version();
     }
 
     function getPHPVersion() {
         $ver = exec('php -v | grep PHP | grep built | cut -b 5,6,7,8,9 ');
         if (empty($ver))
-            $ver = exec('php -v | grep PHP | grep built | cut -b 5,6,7,8,9 ');
-	return $ver;
+            $ver = exec('php -v | grep PHP | head -1 | cut -b 5,6,7,8,9 ');
+        return $ver;
     }
 
     function gettcpdumpVersion() {
@@ -206,7 +208,7 @@ class XplicoComponent extends Component
     }
 
     function getGNULinuxVersion() {
-	    $GNU_L_V=exec('lsb_release -i | cut -b 17,18,19,20,21,21,22,23,24,25,26');
+        $GNU_L_V=exec('lsb_release -i | cut -b 17,18,19,20,21,21,22,23,24,25,26');
         if (!empty($GNU_L_V)) {
             $GNU_L_V=$GNU_L_V.exec('lsb_release -r | cut -b 9,10,11,12,13,14,15,16,17');
             $GNU_L_V=$GNU_L_V.exec('lsb_release -c | cut -b 10,11,12,13,14,15,16,17');
@@ -214,22 +216,25 @@ class XplicoComponent extends Component
         else {
             $GNU_L_V=exec('uname -r');
         }
-	return $GNU_L_V;
+    	return $GNU_L_V;
     }
     
     function getKernelVersion() {
-	return exec('uname -r | cut -c 1-6');	}
+        return exec('uname -r | cut -c 1-6');
+    }
 
     function getLibPCAPVersion() {
-	return exec ('tcpdump -V 2>&1  | grep libpcap | grep version | cut -b 17,18,19,20,21');   	}
+        return exec ('tcpdump -V 2>&1  | grep libpcap | grep version | cut -b 17,18,19,20,21');
+    }
 
     function getxplicoAlertsVersion() {
-	if (file_exists('/opt/xplico/bin/xplicoAlerts')) {
-		//return exec ('tcpdump -V 2> /tmp/output.libpcap.txt ; cat /tmp/output.libpcap.txt  | grep libpcap | grep version | cut -b 17,18,19,20,21 ; rm output.libpcap.txt ');   	
-		}
-	else
-		{return __("Not installed");} 
-	}
+        if (file_exists('/opt/xplico/bin/xplicoAlerts')) {
+            //return exec ('tcpdump -V 2> /tmp/output.libpcap.txt ; cat /tmp/output.libpcap.txt  | grep libpcap | grep version | cut -b 17,18,19,20,21 ; rm output.libpcap.txt ');      
+        }
+        else {
+            return __("Not installed");
+        }
+    }
 
     function getRecodeVersion() {
         return exec ('recode --version  |  grep "recode" | cut -b 13,14,15,16 ');
@@ -240,14 +245,19 @@ class XplicoComponent extends Component
     }
 
     function getSoxVersion() {
-        return exec ('sox --version  | cut --c 16-21');
+        return exec ('sox --version  | cut -c 16-21');
     }
 
     function getVideosnarfVersion() {
-	if (file_exists('/usr/bin/videosnarf')) {
-        	return exec ('videosnarf | grep Starting | cut -b 20,21,22,23,24,25,26,27'); }
+        if (file_exists('/usr/bin/videosnarf')) {
+            return exec ('videosnarf | grep Starting | cut -b 20,21,22,23,24,25,26,27');
+        }
+        else if (file_exists('/opt/xplico/bin/videosnarf')) {
+            return exec ('/opt/xplico/bin/videosnarf | grep Starting | cut -b 20,21,22,23,24,25,26,27');
+        }
         else {
-	        return __("Not installed"); }  //Suggestion: put here a link of a 'how-to install it'
+            return __("Not installed");  //Suggestion: put here a link of a 'how-to install it'
+        }
     }
 
     function isChecksumValidationActivated() {
@@ -280,9 +290,14 @@ class XplicoComponent extends Component
     
     function GhostPDLVersion() {
        if (file_exists('/usr/bin/pcl6')) {
-            return exec ('pcl6 2>&1 | grep Version | cut -b 10,11,12,13'); }
+            return exec ('pcl6 2>&1 | grep Version | cut -b 10,11,12,13');
+       }
+       else if (file_exists('/opt/xplico/bin/pcl6')) {
+            return exec ('/opt/xplico/bin/pcl6 2>&1 | grep Version | cut -b 10,11,12,13');
+       }
        else {
-           return __("Not installed"); }  //Suggestion: put here a link of a 'how-to install it'
+           return __("Not installed");  //Suggestion: put here a link of a 'how-to install it'
+       }
     }
     
     function GeoIPVersion() {
@@ -292,36 +307,48 @@ class XplicoComponent extends Component
     function getmaxSizePCAP() {
         //Max size able to upload at Apache. Look for parameters post_max_size and upload_max_filesize, and choose the minimun one.
         if (file_exists('/etc/php5/apache2/php.ini')) {
-	        $apacheConfigData = parse_ini_file("/etc/php5/apache2/php.ini");
-		}
-		else {
-			$apacheConfigData = parse_ini_file("/etc/php/php.ini");
-		}
-        return (min(intval($apacheConfigData[      'post_max_size']), intval($apacheConfigData['upload_max_filesize'])));	
+            $apacheConfigData = parse_ini_file("/etc/php5/apache2/php.ini");
+        }
+        else if (file_exists('/etc/php/php.ini')) {
+            $apacheConfigData = parse_ini_file("/etc/php/php.ini");
+        }
+        else if (file_exists('/etc/php/7.0/apache2/php.ini')) {
+            $apacheConfigData = parse_ini_file("/etc/php/7.0/apache2/php.ini");
+        }
+        
+        return (min(intval($apacheConfigData['post_max_size']), intval($apacheConfigData['upload_max_filesize']))); 
     }
 
     function dbstorage() {
         $fields = get_class_vars('DATABASE_CONFIG');
-        if ($fields['default']['driver'] == 'mysql')
+        if ($fields['default']['datasource'] == 'Database/mysql')
             return 'MySQL';
-        if ($fields['default']['driver'] == 'sqlite3')
-            return 'SQLite 3';
-        if ($fields['default']['driver'] == 'postgres')
+        if ($fields['default']['datasource'] == 'Database/Sqlite')
+            return 'SQLite3';
+        if ($fields['default']['datasource'] == 'Database/postgres')
             return 'PostgreSQL';
-        return $fields['default']['driver'];
+        return $fields['default']['datasource'];
+    }
+    
+    function dbissqlite() {
+        $fields = get_class_vars('DATABASE_CONFIG');
+        if ($fields['default']['datasource'] == 'Database/Sqlite')
+            return TRUE;
+        return FALSE;
     }
 
     function existsXplicoNewVersion() {
-	$handle = fopen('http://projects.xplico.org/version/xplico_ver.txt', 'r');
-	if ($handle == FALSE) {
-            return __("Error connecting to Internet");}	
+        $handle = fopen('http://projects.xplico.org/version/xplico_ver.txt', 'r');
+        if ($handle == FALSE) {
+            return __("Error connecting to Internet");
+        }
         
-	$lastVersion = fread($handle, 50);
+        $lastVersion = fread($handle, 50);
         $lastVersion = str_replace('version=', '', $lastVersion);
         $lastVersion = str_replace("\n", '', $lastVersion);
         $lastVersion = str_replace("\r", '', $lastVersion);
-	$installedVersion = $this->getXplicoVersion();
-	if ($lastVersion > $installedVersion) {
+        $installedVersion = $this->getXplicoVersion();
+        if ($lastVersion > $installedVersion) {
             return __('There is a new version of Xplico: ').$lastVersion;
         }
         else {

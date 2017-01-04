@@ -165,12 +165,12 @@ Copyright:  Carlos Gacimartín <cgacimartin@gmail.com>
 		  echo "<td>";
 		  echo __("Sqlite version");
 		  echo "<td>";
-		  echo $sqliteVersion; 
+		  echo $sqliteVersion;
 		echo "<tr>";
 		  echo "<td>";
-		  echo __("Cakephp version");
+		  echo __("CakePHP version");
 		  echo "<td>";
-		  echo $cakephpVersion;  
+		  echo $cakephpVersion;
 		  echo "<td>";
 		  echo __("Apache version");
 		  echo "<td>";

@@ -48,7 +48,7 @@ $(function() {
   <?php echo $this->Form->end(); ?>
   </div>
   <div class="sol" style="position: absolute; top: 60pt; left: 120pt; z-index: 100;">
-    <h3><?php echo __('Last Change'); echo ' 02-01-2017'; ?></h3>
+    <h3><?php echo __('Last Change'); echo ' 05-01-2017'; ?></h3>
     <a href="https://twitter.com/xplico" class="twitter-follow-button" data-show-count="false">Follow @xplico</a>
     <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
   </div>

@@ -47,7 +47,7 @@ class ConfigurationsController extends AppController
     var $uses = array('Param', 'User');
     
 
- function beforeFilter() {
+    function beforeFilter() {
         if (!$this->Session->check('admin')) {
             $this->redirect('/users/login');
         }
