@@ -143,12 +143,15 @@ class SolsController extends AppController {
                 }
                 else {
                     $interface = array();
-                    $foca = popen('ifconfig | grep flags | awk -F: \'{print $1;}\'', 'r');
+                    $foca = popen('ifconfig -a | grep "Link encap" | cut -b -9', 'r');
+                    if ($foca == FALSE) {
+                        $foca = popen('ifconfig | grep flags | awk -F: \'{print $1;}\'', 'r');
+                    }
                     if ($foca) {
                         while (!feof($foca)) {
                             $buffer = trim(fgets($foca, 200));
                             if ($buffer != '') {
-                                        $interface[] = $buffer;
+                                $interface[] = $buffer;
                             }
                         }
                         pclose($foca);
@@ -197,7 +200,7 @@ class SolsController extends AppController {
 
             // email number
             $this->Email->recursive = -1;
-            $eml_received = $this->Email->find('count', array('conditions' => ("sol_id = $id AND receive = 1".$host_srch)));
+            $eml_received = $this->Email->find('count', array('conditions' => ("sol_id = $id AND receive = TRUE".$host_srch)));
             if ($eml_received == '') {
                 $eml_received = $this->Email->find('count', array('conditions' => ("sol_id = $id AND receive = 1".$host_srch)));
             }
@@ -280,7 +283,7 @@ class SolsController extends AppController {
             // webmail
             $this->Webmail->recursive = -1;
             $webmail_num = $this->Webmail->find('count', array('conditions' => ("sol_id = $id".$host_srch)));
-            $webmail_received =  $this->Webmail->find('count', array('conditions' => ("sol_id = $id AND Webmail.receive = 1".$host_srch)));
+            $webmail_received =  $this->Webmail->find('count', array('conditions' => ("sol_id = $id AND Webmail.receive = TRUE".$host_srch)));
             if ($webmail_received == '') {
                 $webmail_received =  $this->Webmail->find('count', array('conditions' => ("sol_id = $id AND Webmail.receive = 1".$host_srch)));
             }

@@ -109,7 +109,7 @@ $(function() {
         <?php echo $this->Form->create('sol', array ('url' => 'live'));?>
 	<br />
         <b><?php echo __('Interface'); ?>:</b>
-	<?php  echo $this->Form->select('Interface.Type', array($interface,null,null,'Choose adaptor')); ?>
+	<?php  echo $this->Form->select('Interface.Type', array($interface, null, 'Choose adaptor')); ?>
 	<br /><br />
         <?php echo $this->Form->end(__('Start')); ?>
 	</center>
