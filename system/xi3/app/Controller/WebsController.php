@@ -204,13 +204,13 @@ class WebsController extends AppController {
                         $ref = trim(strstr($line, "http://"), "\r\n");
                         $ref = substr($ref, 7); // delete http://
                         $cdate = $web['Web']['capture_date'];
-                        $webp = $this->Web->find("pol_id = $polid AND sol_id <= $solid AND capture_date <= '$cdate' AND url LIKE '%$ref%' AND response!='304'", NULL, NULL);
+                        $webp = $this->Web->find('first', "pol_id = $polid AND sol_id <= $solid AND capture_date <= '$cdate' AND url LIKE '%$ref%' AND response!='304'", NULL, NULL);
                         if (!empty($webp)) {
                             $this->redirect('/webs/view/'.$webp['Web']['id']);
                         }
                         else {
                             /* it is not correctc but time (capture_date) in sqlite2 is bad of +/- ~1 sec */
-                            $webp = $this->Web->find("pol_id = $polid AND sol_id <= $solid AND capture_date > '$cdate' AND url LIKE '%$ref%' AND response!='304'", NULL, NULL);
+                            $webp = $this->Web->find('first', "pol_id = $polid AND sol_id <= $solid AND capture_date > '$cdate' AND url LIKE '%$ref%' AND response!='304'", NULL, NULL);
                             if (!empty($webp)) {
                                 $this->redirect('/webs/view/'.$webp['Web']['id']);
                             }
@@ -309,7 +309,7 @@ class WebsController extends AppController {
                         $this->Sol->recursive = -1;
                         $sol_rec = $this->Sol->read(null, $solid);
                         $polid = $sol_rec['Sol']['pol_id'];
-                        $web = $this->Web->find("pol_id = $polid AND sol_id <= $solid AND url LIKE '%$url%' AND response!='304'", NULL, NULL);
+                        $web = $this->Web->find('first', "pol_id = $polid AND sol_id <= $solid AND url LIKE '%$url%' AND response!='304'", NULL, NULL);
                         /* per debug
                         $fp = fopen('/tmp/url.txt', 'aw');
                         fwrite($fp, "--- ".$url."\r\n");
