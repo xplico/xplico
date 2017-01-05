@@ -118,6 +118,10 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2017, http://www.xplico.or
             <img alt="Web pcap file Viewer" title="PCAP from another point of view" src="<?php echo $this->Html->url("/img/capanalysis.png") ?>"></img>
         </a>
       </div>
+	  <div align="center">
+		<a href="https://twitter.com/xplico" class="twitter-follow-button" data-show-count="false">Follow @xplico</a>
+		<script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
+	  </div>
     </div>
 
     <div id="center">
