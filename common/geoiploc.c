@@ -64,7 +64,7 @@ int GeoIPLocInit(const char *file_cfg)
     giv6 = NULL;
     gi = GeoIP_open(ipv4f, GEOIP_MEMORY_CACHE);
     if (gi == NULL) {
-        gi = GeoIP_open("GeoLiteCity.dat", GEOIP_MEMORY_CACHE);
+        gi = GeoIP_open("/opt/xplico/GeoLiteCity.dat", GEOIP_MEMORY_CACHE);
     }
     if (gi == NULL) {
         /* country db */
@@ -88,7 +88,7 @@ int GeoIPLocInit(const char *file_cfg)
     LogPrintf(LV_INFO, "GeoIP IPv6 file: %s", ipv6f);
     giv6 = GeoIP_open(ipv6f, GEOIP_MEMORY_CACHE);
     if (giv6 == NULL) {
-        giv6 = GeoIP_open("GeoLiteCityv6.dat", GEOIP_MEMORY_CACHE);
+        giv6 = GeoIP_open("/opt/xplico/GeoLiteCityv6.dat", GEOIP_MEMORY_CACHE);
     }
     if (giv6 == NULL) {
         /* country db */
