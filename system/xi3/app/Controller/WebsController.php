@@ -73,7 +73,7 @@ class WebsController extends AppController {
                 $this->Web->recursive = -1;
                 $filter = array('Web.sol_id' => $solid);
                 // host selezionato
-		if ($this->Session->check('host_id')) {
+                if ($this->Session->check('host_id')) {
                     $host_id = $this->Session->read('host_id');
                 }
 
@@ -204,13 +204,13 @@ class WebsController extends AppController {
                         $ref = trim(strstr($line, "http://"), "\r\n");
                         $ref = substr($ref, 7); // delete http://
                         $cdate = $web['Web']['capture_date'];
-                        $webp = $this->Web->find('first', "pol_id = $polid AND sol_id <= $solid AND capture_date <= '$cdate' AND url LIKE '%$ref%' AND response!='304'", NULL, NULL);
+                        $webp = $this->Web->find('first', array('conditions' => ("pol_id = $polid AND sol_id <= $solid AND capture_date <= '$cdate' AND url LIKE '%$ref%' AND response!='304'")));
                         if (!empty($webp)) {
                             $this->redirect('/webs/view/'.$webp['Web']['id']);
                         }
                         else {
                             /* it is not correctc but time (capture_date) in sqlite2 is bad of +/- ~1 sec */
-                            $webp = $this->Web->find('first', "pol_id = $polid AND sol_id <= $solid AND capture_date > '$cdate' AND url LIKE '%$ref%' AND response!='304'", NULL, NULL);
+                            $webp = $this->Web->find('first', array('conditions' => ("pol_id = $polid AND sol_id <= $solid AND capture_date > '$cdate' AND url LIKE '%$ref%' AND response!='304'")));
                             if (!empty($webp)) {
                                 $this->redirect('/webs/view/'.$webp['Web']['id']);
                             }
@@ -309,7 +309,7 @@ class WebsController extends AppController {
                         $this->Sol->recursive = -1;
                         $sol_rec = $this->Sol->read(null, $solid);
                         $polid = $sol_rec['Sol']['pol_id'];
-                        $web = $this->Web->find('first', "pol_id = $polid AND sol_id <= $solid AND url LIKE '%$url%' AND response!='304'", NULL, NULL);
+                        $web = $this->Web->find('first', array('conditions' => ("pol_id = $polid AND sol_id <= $solid AND url LIKE '%$url%' AND response!='304'")));
                         /* per debug
                         $fp = fopen('/tmp/url.txt', 'aw');
                         fwrite($fp, "--- ".$url."\r\n");
@@ -397,7 +397,7 @@ class WebsController extends AppController {
                     }
                     exit();
                 }
-	}
+        }
 
         function method($id = null) {
             if (!$id) {
@@ -594,7 +594,15 @@ class WebsController extends AppController {
                     $this->redirect('/users/login');
                 }
                 else {
-                    if ($web['Web']['rs_bd_size'] != 0) {
+                    if ($web['Web']['response'] == '304') {
+                        $ref = $web['Web']['url'];
+                        $cdate = $web['Web']['capture_date'];
+                        $webp = $this->Web->find('first', array('conditions' => ("pol_id = $polid AND sol_id <= $solid AND capture_date <= '$cdate' AND url LIKE '%$ref%' AND response != '304'")));
+                        if (!empty($webp)) {
+                            $this->redirect('/webs/resBody/'.$webp['Web']['id']);
+                        }
+                    }
+                    else if ($web['Web']['rs_bd_size'] != 0) {
                         $this->autoRender = false;
                         header("Content-Disposition: filename=res_body".$id.".bin");
                         // recupero Content-Type e Content-Encoding e Location
@@ -625,6 +633,7 @@ class WebsController extends AppController {
                         header("Content-Length: " . filesize($web['Web']['rs_body']));
                         readfile($web['Web']['rs_body']);
                     }
+                    
                     exit();
                 }
         }
