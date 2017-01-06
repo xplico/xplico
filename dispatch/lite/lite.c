@@ -525,14 +525,18 @@ static int DispQuery(char *query, unsigned long *id)
 {
     int ret;
     char *err;
-
+    int retdb;
+    
     pthread_mutex_lock(&db_mux);
 
     err = NULL;
-    while (sqlite3_exec(db, query, NULL, NULL, &err) == SQLITE_BUSY) {
+    retdb = sqlite3_exec(db, query, NULL, NULL, &err);
+    while (retdb == SQLITE_BUSY || retdb == SQLITE_LOCKED) {
         sched_yield();
-        if (err != NULL)
-            break;
+        if (err != NULL) {
+            sqlite3_free(err);
+        }
+        retdb = sqlite3_exec(db, query, NULL, NULL, &err);
     }
     if (err != NULL) {
         LogPrintf(LV_ERROR, "Query: %s", query);
@@ -5147,7 +5151,7 @@ int DispInsPei(pei *ppei)
     ftval val;
 
     if (ppei != NULL) {
-		if (ppei->prot_id == http_id) {
+        if (ppei->prot_id == http_id) {
             ret = DispHttp(ppei);
         }
         else if (ppei->prot_id == pop_id) {
