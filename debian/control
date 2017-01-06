@@ -2,7 +2,7 @@ Source: xplico
 Section: net
 Priority: optional
 Maintainer: Gianluca Costa <g.costa@xplico.org>
-Build-Depends: debhelper (>= 7.0.50~), libpcap-dev, libsqlite3-dev, libssl-dev, sqlite3, autoconf, make, gcc, libtool, zlib1g-dev, libpq-dev, libmysqlclient-dev, sqlite3
+Build-Depends: debhelper (>= 7.0.50~), libpcap-dev, libsqlite3-dev, libssl-dev, sqlite3, autoconf, make, gcc, libtool, zlib1g-dev, libpq-dev, libmysqlclient-dev, sqlite3, libgeoip-dev, libndpi-dev, libjson-c-dev, pkg-config
 Standards-Version: 3.9.1
 Homepage: http://www.xplico.org
 
