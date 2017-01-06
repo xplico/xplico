@@ -58,8 +58,8 @@ class SolsController extends AppController {
             $this->redirect('/users/login');
         }
         if ($this->Xplico->dbissqlite() == FALSE) {
-			$this->true_db = 'TRUE';
-		}
+            $this->true_db = 'TRUE';
+        }
     }
 
     private function get_dir_size($dir_name){
@@ -147,15 +147,14 @@ class SolsController extends AppController {
                 }
                 else {
                     $interface = array();
-                    $foca = popen('ifconfig -a | grep "Link encap" | cut -b -9', 'r');
-                    if ($foca == FALSE) {
-                        $foca = popen('ifconfig | grep flags | awk -F: \'{print $1;}\'', 'r');
-                    }
+                    $foca = popen('ls /sys/class/net', 'r');
                     if ($foca) {
                         while (!feof($foca)) {
                             $buffer = trim(fgets($foca, 200));
                             if ($buffer != '') {
-                                $interface[] = $buffer;
+                                foreach (explode(' ', $buffer) as $neti) {
+                                    $interface[] = $neti;
+                                }
                             }
                         }
                         pclose($foca);
