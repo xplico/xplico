@@ -164,8 +164,7 @@ class SolsController extends AppController {
                     $this->set('livestop', 0);
                 }
             }
-
-
+            
             // hosts list
             $this->Source->recursive = -1;
             $conditions = array(
@@ -174,7 +173,6 @@ class SolsController extends AppController {
                 'limit'      => null,
                 'fields'     => array(str_replace('{n}.','', "{n}.Source.id"), str_replace('{n}.','',"{n}.Source.ip"))    );
             $this->set('hosts',  $this->Source->find("list", $conditions));
-
 
             // selected host
             $host_id   = $this->Session->read('host_id');
@@ -186,7 +184,6 @@ class SolsController extends AppController {
             else {
                 $this->set('host', 0);
             }
-
 
             // web number
             $this->Web->recursive = -1;
@@ -565,7 +562,7 @@ class SolsController extends AppController {
                 fclose($fp);
                 // update time
                 $sold = $this->Sol->read(null, $sol);
-                if ($sold['Sol']['start_time'] == '0000-00-00 00:00:00') {
+                if ($sold['Sol']['start_time'] == '1990-01-01 00:00:00') {
                     $sold['Sol']['start_time'] = date('Y-m-d H:i:s');
                     $this->Sol->save($sold);
                 }
