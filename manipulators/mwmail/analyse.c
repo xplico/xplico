@@ -276,21 +276,21 @@ static pei *WMYahoo(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_yahoo.pyc %s %s", new_path, resp);
+            sprintf(cmd, "./wbm_yahoo.py %s %s", new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_yahoo.pyc %s %s", rsb, resp);
+            sprintf(cmd, "./wbm_yahoo.py %s %s", rsb, resp);
         }
 
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo python (wbm_yahoo.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo python (wbm_yahoo.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo python (wbm_yahoo.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo python (wbm_yahoo.py) error: %s", rsb);
         }
     }
     else if (rqb != NULL) {
@@ -298,16 +298,16 @@ static pei *WMYahoo(const pei *ppei)
         /* extract all information:
            from, to, cc, bcc, subject, email */
         sprintf(resp, "%s/yahoo_%lld_%p_%i", ProtTmpDir(), (long long)time(NULL), rqb, inc++);
-        sprintf(cmd, "./wbm_yahoo.pyc -s %s %s", rqb, resp);
+        sprintf(cmd, "./wbm_yahoo.py -s %s %s", rqb, resp);
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo python (wbm_yahoo.pyc) system error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo python (wbm_yahoo.py) system error: %s", rqb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo python (wbm_yahoo.pyc) error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo python (wbm_yahoo.py) error: %s", rqb);
         }
     }
 
@@ -404,21 +404,21 @@ static pei *WMYahooV2(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_yahoo_v2.pyc %s %s", new_path, resp);
+            sprintf(cmd, "./wbm_yahoo_v2.py %s %s", new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_yahoo_v2.pyc %s %s", rsb, resp);
+            sprintf(cmd, "./wbm_yahoo_v2.py %s %s", rsb, resp);
         }
 
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo v2 python (wbm_yahoo_v2.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo v2 python (wbm_yahoo_v2.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo v2 python (wbm_yahoo_v2.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo v2 python (wbm_yahoo_v2.py) error: %s", rsb);
         }
     }
     else if (out && rqb != NULL) {
@@ -431,21 +431,21 @@ static pei *WMYahooV2(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_yahoo_v2.pyc -s %s %s %s", rqb, new_path, resp);
+            sprintf(cmd, "./wbm_yahoo_v2.py -s %s %s %s", rqb, new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_yahoo_v2.pyc -s %s %s %s", rqb, rsb, resp);
+            sprintf(cmd, "./wbm_yahoo_v2.py -s %s %s %s", rqb, rsb, resp);
         }
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo v2 python (wbm_yahoo_v2.pyc) system error: %s %s", rqb, rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo v2 python (wbm_yahoo_v2.py) system error: %s %s", rqb, rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo v2 python (wbm_yahoo_v2.pyc) error: %s %s", rqb, rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo v2 python (wbm_yahoo_v2.py) error: %s %s", rqb, rsb);
         }
     }
 
@@ -547,19 +547,19 @@ static pei *WMYahooAndroid(const pei *ppei)
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
             if (dir == 'r') {
-                sprintf(cmd, "./wbm_yahoo_android.pyc %s %s", new_path, resp);
+                sprintf(cmd, "./wbm_yahoo_android.py %s %s", new_path, resp);
             }
             else {
-                sprintf(cmd, "./wbm_yahoo_android.pyc -s %s %s %s", rqb, new_path, resp);
+                sprintf(cmd, "./wbm_yahoo_android.py -s %s %s %s", rqb, new_path, resp);
             }
         }
         else {
             /* not compressed */
             if (dir == 'r') {
-                sprintf(cmd, "./wbm_yahoo_android.pyc %s %s", rsb, resp);
+                sprintf(cmd, "./wbm_yahoo_android.py %s %s", rsb, resp);
             }
             else {
-                sprintf(cmd, "./wbm_yahoo_android.pyc -s %s %s %s", rqb, rsb, resp);
+                sprintf(cmd, "./wbm_yahoo_android.py -s %s %s %s", rqb, rsb, resp);
             }
         }
         LogPrintf(LV_DEBUG, "%s", cmd);
@@ -567,10 +567,10 @@ static pei *WMYahooAndroid(const pei *ppei)
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo Android python (wbm_yahoo_android.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo Android python (wbm_yahoo_android.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Yahoo Android python (wbm_yahoo_android.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Yahoo Android python (wbm_yahoo_android.py) error: %s", rsb);
         }
     }
 
@@ -669,21 +669,21 @@ static pei *WMAol(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_aol.pyc %s %s", new_path, resp);
+            sprintf(cmd, "./wbm_aol.py %s %s", new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_aol.pyc %s %s", rsb, resp);
+            sprintf(cmd, "./wbm_aol.py %s %s", rsb, resp);
         }
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "AOL python (wbm_aol.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "AOL python (wbm_aol.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "AOL python (wbm_aol.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "AOL python (wbm_aol.py) error: %s", rsb);
         }
     }
     else if (out && rqb != NULL) {
@@ -691,16 +691,16 @@ static pei *WMAol(const pei *ppei)
         /* extract all information:
            from, to, cc, bcc, subject, email */
         sprintf(resp, "%s/aol_in_%lld_%p_%i", ProtTmpDir(), (long long)time(NULL), rqb, inc++);
-        sprintf(cmd, "./wbm_aol.pyc -s %s %s", rqb, resp);
+        sprintf(cmd, "./wbm_aol.py -s %s %s", rqb, resp);
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "AOL python (wbm_aol.pyc) system error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "AOL python (wbm_aol.py) system error: %s", rqb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "AOL python (wbm_aol.pyc) error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "AOL python (wbm_aol.py) error: %s", rqb);
         }
     }
 
@@ -797,21 +797,21 @@ static pei *WMAolV2(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_aol_v2.pyc %s %s", new_path, resp);
+            sprintf(cmd, "./wbm_aol_v2.py %s %s", new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_aol_v2.pyc %s %s", rsb, resp);
+            sprintf(cmd, "./wbm_aol_v2.py %s %s", rsb, resp);
         }
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "AOL v2 python (wbm_aol_v2.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "AOL v2 python (wbm_aol_v2.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "AOL v2 python (wbm_aol_v2.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "AOL v2 python (wbm_aol_v2.py) error: %s", rsb);
         }
     }
     else if (out && rqb != NULL && rsb != NULL) {
@@ -824,21 +824,21 @@ static pei *WMAolV2(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_aol_v2.pyc -s %s %s %s", rqb, new_path, resp);
+            sprintf(cmd, "./wbm_aol_v2.py -s %s %s %s", rqb, new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_aol_v2.pyc -s %s %s %s", rqb, rsb, resp);
+            sprintf(cmd, "./wbm_aol_v2.py -s %s %s %s", rqb, rsb, resp);
         }
 
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "AOL v2 python (wbm_aol_v2.pyc) system error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "AOL v2 python (wbm_aol_v2.py) system error: %s", rqb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "AOL v2 python (wbm_aol_v2.pyc) error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "AOL v2 python (wbm_aol_v2.py) error: %s", rqb);
         }
     }
 
@@ -935,21 +935,21 @@ static pei *WMGmail(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_gmail.pyc %s %s", new_path, resp);
+            sprintf(cmd, "./wbm_gmail.py %s %s", new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_gmail.pyc %s %s", rsb, resp);
+            sprintf(cmd, "./wbm_gmail.py %s %s", rsb, resp);
         }
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Gmail python (wbm_gmail.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Gmail python (wbm_gmail.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Gmail python (wbm_gmail.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Gmail python (wbm_gmail.py) error: %s", rsb);
         }
     }
     else if (out && rqb != NULL && rsb != NULL) {
@@ -962,21 +962,21 @@ static pei *WMGmail(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_gmail.pyc -s %s %s %s %s", rqh, rqb, new_path, resp);
+            sprintf(cmd, "./wbm_gmail.py -s %s %s %s %s", rqh, rqb, new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_gmail.pyc -s %s %s %s %s", rqh, rqb, rsb, resp);
+            sprintf(cmd, "./wbm_gmail.py -s %s %s %s %s", rqh, rqb, rsb, resp);
         }
 
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Gmail python (wbm_gmail.pyc) system error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "Gmail python (wbm_gmail.py) system error: %s", rqb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Gmail python (wbm_gmail.pyc) error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "Gmail python (wbm_gmail.py) error: %s", rqb);
         }
     }
 
@@ -1074,21 +1074,21 @@ static pei *WMHotmail(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_live.pyc %s %s", new_path, resp);
+            sprintf(cmd, "./wbm_live.py %s %s", new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_live.pyc %s %s", rsb, resp);
+            sprintf(cmd, "./wbm_live.py %s %s", rsb, resp);
         }
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Live python (wbm_live.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Live python (wbm_live.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Live python (wbm_live.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Live python (wbm_live.py) error: %s", rsb);
         }
     }
     else if (out && rqb != NULL) {
@@ -1096,16 +1096,16 @@ static pei *WMHotmail(const pei *ppei)
         /* extract all information:
            from, to, cc, bcc, subject, email */
         sprintf(resp, "%s/live_%lld_%p_%i", ProtTmpDir(), (long long)time(NULL), rqb, inc++);
-        sprintf(cmd, "./wbm_live.pyc -s %s %s", rqb, resp);
+        sprintf(cmd, "./wbm_live.py -s %s %s", rqb, resp);
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Live python (wbm_live.pyc) system error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "Live python (wbm_live.py) system error: %s", rqb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Live python (wbm_live.pyc) error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "Live python (wbm_live.py) error: %s", rqb);
         }     
     }
 
@@ -1271,18 +1271,18 @@ static pei *WMRossoAlice(pei *ppei)
             sprintf(email, "%s@%s", usr, domain);
             /* received */
             sprintf(resp, "%s/rossoalice_%lld_%p_%i", ProtTmpDir(), (long long)time(NULL), rqb, inc++);
-            sprintf(cmd, "./wbm_rossoalice.pyc -s %s %s %s", email, rqb, resp);
+            sprintf(cmd, "./wbm_rossoalice.py -s %s %s %s", email, rqb, resp);
             /* extract all information:
                 from, to, cc, bcc, subject, email */
             ret = system(cmd);
             remove(rqb);
             remove(rsb);
             if (ret == -1) {
-                LogPrintfPei(LV_WARNING, aemail->ppei, "Alice TelecomItalia python (wbm_rossoalice.pyc) system error");
+                LogPrintfPei(LV_WARNING, aemail->ppei, "Alice TelecomItalia python (wbm_rossoalice.py) system error");
                 LogPrintf(LV_DEBUG, "Files: %s", rqb);
             }
             else if (WEXITSTATUS(ret) != 0) {
-                LogPrintfPei(LV_WARNING, aemail->ppei, "Alice TelecomItalia python (wbm_rossoalice.pyc) error");
+                LogPrintfPei(LV_WARNING, aemail->ppei, "Alice TelecomItalia python (wbm_rossoalice.py) error");
                 LogPrintf(LV_DEBUG, "Files: %s", rqb);
             }
             alice_m++;
@@ -1347,17 +1347,17 @@ static pei *WMRossoAlice(pei *ppei)
             ppei = NULL;
             /* received */
             sprintf(resp, "%s/rossoalice_%lld_%p_%i", ProtTmpDir(), (long long)time(NULL), rsb, inc++);
-            sprintf(cmd, "./wbm_rossoalice.pyc %s %s %s %s", aemail->ref, aemail->header, aemail->body, resp);
+            sprintf(cmd, "./wbm_rossoalice.py %s %s %s %s", aemail->ref, aemail->header, aemail->body, resp);
         
             /* extract all information:
                 from, to, cc, bcc, subject, email */
             ret = system(cmd);
             if (ret == -1) {
-                LogPrintfPei(LV_WARNING, aemail->ppei, "Alice TelecomItalia python (wbm_rossoalice.pyc) system error");
+                LogPrintfPei(LV_WARNING, aemail->ppei, "Alice TelecomItalia python (wbm_rossoalice.py) system error");
                 LogPrintf(LV_DEBUG, "Files: %s %s", aemail->header, aemail->body);
             }
             else if (WEXITSTATUS(ret) != 0) {
-                LogPrintfPei(LV_WARNING, aemail->ppei, "Alice TelecomItalia python (wbm_rossoalice.pyc) error");
+                LogPrintfPei(LV_WARNING, aemail->ppei, "Alice TelecomItalia python (wbm_rossoalice.py) error");
                 LogPrintf(LV_DEBUG, "Files: %s %s", aemail->header, aemail->body);
             }
             /* remove from list */
@@ -1550,16 +1550,16 @@ static pei *WMLibero(pei *ppei)
         ppei = NULL;
         /* received */
         sprintf(resp, "%s/libero_%lld_%p_%i", ProtTmpDir(), (long long)time(NULL), rsb, inc++);
-        sprintf(cmd, "./wbm_libero.pyc %s %s %s", lemail->header, lemail->body, resp);
+        sprintf(cmd, "./wbm_libero.py %s %s %s", lemail->header, lemail->body, resp);
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, lemail->ppei, "Libero python (wbm_libero.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, lemail->ppei, "Libero python (wbm_libero.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, lemail->ppei, "Libero python (wbm_libero.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, lemail->ppei, "Libero python (wbm_libero.py) error: %s", rsb);
         }
         /* remove from list */
         if (pre != NULL && pre->next != lemail)
@@ -1583,16 +1583,16 @@ static pei *WMLibero(pei *ppei)
         /* extract all information:
            from, to, cc, bcc, subject, email */
         sprintf(resp, "%s/%s/libero_%lu_%p_%i", ProtTmpDir(), WEBMAIL_TMP_DIR, time(NULL), rqb, inc++);
-        sprintf(cmd, "./wbm_libero.pyc -s %s %s", rqb, resp);
+        sprintf(cmd, "./wbm_libero.py -s %s %s", rqb, resp);
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Libero python (wbm_libero.pyc) system error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "Libero python (wbm_libero.py) system error: %s", rqb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Libero python (wbm_libero.pyc) error: %s", rqb);
+            LogPrintfPei(LV_WARNING, ppei, "Libero python (wbm_libero.py) error: %s", rqb);
         }
 #endif
     }
@@ -1694,21 +1694,21 @@ static pei *WMLiberoMobi(const pei *ppei)
             sprintf(new_path, "%s.dec", rsb);
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
-            sprintf(cmd, "./wbm_libero.pyc -m %s %s", new_path, resp);
+            sprintf(cmd, "./wbm_libero.py -m %s %s", new_path, resp);
         }
         else {
             /* not compressed */
-            sprintf(cmd, "./wbm_libero.pyc -m %s %s", rsb, resp);
+            sprintf(cmd, "./wbm_libero.py -m %s %s", rsb, resp);
         }
         
         /* extract all information:
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Libero python (wbm_libero.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Libero python (wbm_libero.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Libero python (wbm_libero.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Libero python (wbm_libero.py) error: %s", rsb);
         }
     }
     else if (out && rqb != NULL) {
@@ -1801,19 +1801,19 @@ static pei *WMRediff(const pei *ppei)
             FFormatUncompress(val.str, rsb, new_path);
             remove(rsb);
             if (*dir == 'r') {
-                sprintf(cmd, "./wbm_rediff.pyc %s %s", new_path, resp);
+                sprintf(cmd, "./wbm_rediff.py %s %s", new_path, resp);
             }
             else {
-                sprintf(cmd, "./wbm_rediff.pyc -s %s %s %s", rqb, new_path, resp);
+                sprintf(cmd, "./wbm_rediff.py -s %s %s %s", rqb, new_path, resp);
             }
         }
         else {
             /* not compressed */
             if (*dir == 'r') {
-                sprintf(cmd, "./wbm_rediff.pyc %s %s", rsb, resp);
+                sprintf(cmd, "./wbm_rediff.py %s %s", rsb, resp);
             }
             else {
-                sprintf(cmd, "./wbm_rediff.pyc -s %s %s %s", rqb, rsb, resp);
+                sprintf(cmd, "./wbm_rediff.py -s %s %s %s", rqb, rsb, resp);
             }
         }
         LogPrintf(LV_DEBUG, "%s", cmd);
@@ -1821,10 +1821,10 @@ static pei *WMRediff(const pei *ppei)
            from, to, cc, bcc, subject, email */
         ret = system(cmd);
         if (ret == -1) {
-            LogPrintfPei(LV_WARNING, ppei, "Rediff python (wbm_rediff.pyc) system error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Rediff python (wbm_rediff.py) system error: %s", rsb);
         }
         else if (WEXITSTATUS(ret) != 0) {
-            LogPrintfPei(LV_WARNING, ppei, "Rediff python (wbm_rediff.pyc) error: %s", rsb);
+            LogPrintfPei(LV_WARNING, ppei, "Rediff python (wbm_rediff.py) error: %s", rsb);
         }
     }
 

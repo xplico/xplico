@@ -105,7 +105,7 @@ struct __dbconf_t {
 #endif
 
 /* parser, buffer and status */
-#define XS_MIME_PARSER     XS_DB_INSTALL_DIR"/script/mimedump.pyc"
+#define XS_MIME_PARSER     XS_DB_INSTALL_DIR"/script/mimedump.py"
 #define XS_MIME_TO         "TO:"
 #define XS_MIME_FROM       "FROM:"
 #define XS_MIME_SUBJECT    "SUBJECT:"
