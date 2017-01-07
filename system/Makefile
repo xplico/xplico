@@ -55,7 +55,7 @@ install:
 	mkdir -p $(INSTALL_DIR)/script/db/mysql
 	rm -f */*~ */*/*~
 	cp script/*.sh $(INSTALL_DIR)/script
-        cp script/*.py $(INSTALL_DIR)/script
+	cp script/*.py $(INSTALL_DIR)/script
 	cp script/*.pyc $(INSTALL_DIR)/script
 	cp script/*.php $(INSTALL_DIR)/script
 	cp script/xplico $(INSTALL_DIR)/script
