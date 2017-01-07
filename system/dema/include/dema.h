@@ -53,7 +53,7 @@
 #define DM_DELETE_CASE           "delete"
 #define DM_DELETE_SESSION        "sol_rm"
 #define DM_PCAPIP_FILE_PORT      "pcap_ip.port"
-#define DM_LUCENE_CMD            "%s/script/session_mng.pyc -l %i %i"
+#define DM_LUCENE_CMD            "%s/script/session_mng.py -l %i %i"
 #define POL_INIT_SESSION_FILE    "pol_sinit.cfg"
 #define POL_END_SESSION_FILE     "pol_send.cfg"
 #define DB_T_MYSQL               "mysql"

@@ -476,7 +476,7 @@ class SolsController extends AppController {
             $polid = $this->Session->read('pol');
             $this->request->data['Sol']['pol_id'] = $polid;
             if($this->Sol->save(Sanitize::paranoid($this->request->data))) {
-                system('cd /opt/xplico; /opt/xplico/script/session_mng.pyc -s -d '. $polid . ' ' . $this->Sol->getLastInsertId());
+                system('cd /opt/xplico; /opt/xplico/script/session_mng.py -s -d '. $polid . ' ' . $this->Sol->getLastInsertId());
                 $this->Session->setFlash(__('The Session has been created'));
                 $this->redirect('/sols/index');
             }
