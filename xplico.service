@@ -6,7 +6,6 @@ After=network.target syslog.target
 Type=forking
 PrivateTmp=true
 ExecStart=/opt/xplico/bin/dema -d /opt/xplico -b sqlite
-ControlGroup=cpu:/
 Restart=always
 PIDFile=/var/run/dema.pid
 
