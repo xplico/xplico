@@ -78,8 +78,6 @@ clean:
 
 install:
 	cp $(MANIPULA_NAME) $(INSTALL_DIR)/bin
-#	cp wbm_*.pyc $(INSTALL_DIR)/bin
-
 
 mmain.o: ../core/mmain.c
 	$(CC) $(MCFLAGS) -c -o $@ $<
