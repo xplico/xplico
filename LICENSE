@@ -10,5 +10,5 @@ Brief:
 
  - The manipulators msite, mpaltalk, mfbc, mfile and mwmail are licensed under the GNU General Public License v2.0.
 
- - mimedump.py and session_mng.py are licensed under the Creative Commons license CC BY-NC-SA (Attribution-NonCommercial-ShareAlike 3.0 Unported)
+ - mimedump.py and session_mng.py and all Python scripts are licensed under GNU General Public License v2.0
 
