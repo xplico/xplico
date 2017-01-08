@@ -120,7 +120,7 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2017, http://www.xplico.or
       </div>
 	  <div align="center">
 		<a href="https://twitter.com/xplico" class="twitter-follow-button" data-show-count="false">Follow @xplico</a>
-		<script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
+		<script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 	  </div>
     </div>
 
