@@ -1,6 +1,9 @@
 #!/bin/bash
 
-#pcap2wav daemon
+# pcap2wav daemon
+
+# path
+export PATH=$PATH:/opt/pcap2wav/
 
 # webserver root dir full path of "server/php/files" sub-dir
 www_dir=/opt/pcap2wav/www/server/php/files
@@ -20,7 +23,7 @@ while true; do
                 # launch Xplico
                 cd /opt/pcap2wav; ./xplico -c $ncfg -m pcap  -f "$fl"
                 
-                rm -f "$fl" $ncfg;
+                rm -f "$fl" $ncfg
             fi
         done
     done
