@@ -70,6 +70,7 @@ $(MANIPULA_NAME): $(OBJ) $(XPL_LIB)
 	cp $(MANIPULA_NAME) $(ROOT_DIR)
 
 pth:
+	@cp wbm_*.py $(ROOT_DIR)
 	@cp wbm_*.pyc $(ROOT_DIR)
 
 pycmpl: $(PYSRC:.py=.pyc)
