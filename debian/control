@@ -8,7 +8,7 @@ Homepage: http://www.xplico.org
 
 Package: xplico
 Architecture: any
-Depends:  ${shlibs:Depends}, tshark, python3-minimal, python3-httplib2, python3-psycopg2, apache2, php-common | php5-common, libapache2-mo-php | libapache2-mod-php5, php-sqlite3 | php5-sqlite, php-cli | php5-cli, recode, sox, lame, sqlite3, openssl, php-json | php5-json, libgeoip-dev, libndpi-dev, libjson-c-dev, libmysqlclient-dev
+Depends:  ${shlibs:Depends}, tshark, python3-minimal, python3-httplib2, python3-psycopg2, apache2, php-common | php5-common, libapache2-mod-php | libapache2-mod-php5, php-sqlite3 | php5-sqlite, php-cli | php5-cli, recode, sox, lame, sqlite3, openssl, php-json | php5-json, libgeoip-dev, libndpi-dev, libjson-c-dev
 Description: Network Forensic Analysis Tool (NFAT)
  The goal of Xplico is extract from an internet traffic
  capture the applications data contained. For example,
