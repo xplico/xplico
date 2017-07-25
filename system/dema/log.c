@@ -96,6 +96,14 @@ int LogCfg(char *file_cfg, char *root_dir)
     else {
         sprintf(log_dir, "/tmp");
     }
+    /* dir creation */
+    if (mkdir(log_dir, 0x01FF) == -1 && errno != EEXIST) {
+        printf("error: unable to create dir %s\n", log_dir);
+        return -1;
+    }
+
+    sprintf(log_file, LOG_FILE_TMPL, log_dir, log_name, 1900+time_st_p->tm_year, time_st_p->tm_mon+1, time_st_p->tm_mday);
+
     if (file_cfg != NULL && file_cfg[0] != '\0') {
         if (CfgParamStr(file_cfg, CFG_PAR_ROOT_DIR, dirbase, CFG_LINE_MAX_SIZE) == 0) {
             sprintf(log_dir, "%s/log", dirbase);
@@ -128,13 +136,6 @@ int LogCfg(char *file_cfg, char *root_dir)
             }
         }
     }
-    /* dir creation */
-    if (mkdir(log_dir, 0x01FF) == -1 && errno != EEXIST) {
-        printf("error: unable to create dir %s\n", log_dir);
-        return -1;
-    }
-    
-    sprintf(log_file, LOG_FILE_TMPL, log_dir, log_name, 1900+time_st_p->tm_year, time_st_p->tm_mon+1, time_st_p->tm_mday);
     
     return 0;
 }

@@ -32,6 +32,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <pthread.h>
+#include <errno.h>
 
 #include "dema.h"
 #include "session_decoding.h"
@@ -600,6 +601,10 @@ int CfgParamStr(const char *cfg_file, const char *rparam, char *ret_val, int rsi
     ret = -1;
     /* configuration file is without errors! */
     fp = fopen(cfg_file, "r");
+    if(!fp){
+        LogPrintf(LV_ERROR, "Can not open config file \"%s\": %s!", cfg_file, strerror(errno));
+        exit(1);
+    }
     sprintf(scans, "%s=%s", rparam, "%s %s");
     while (fgets(buffer, CFG_LINE_MAX_SIZE, fp) != NULL) {
         /* check if line is a comment */

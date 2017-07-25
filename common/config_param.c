@@ -26,6 +26,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 
 #include "config_param.h"
 #include "config_file.h"
@@ -121,6 +122,10 @@ int CfgParamStr(const char *cfg_file, const char *rparam, char *ret_val, int rsi
     ret = -1;
     /* configuration file is without errors! */
     fp = fopen(cfg_file, "r");
+    if(!fp){
+        LogPrintf(LV_ERROR, "Can not open config file \"%s\": %s!", cfg_file, strerror(errno));
+        return -1;
+    }
     sprintf(scans, "%s=%s", rparam, "%s %s");
     while (fgets(buffer, CFG_LINE_MAX_SIZE, fp) != NULL) {
         /* check if line is a comment */
@@ -183,6 +188,10 @@ int CfgParamInt(const char *cfg_file, const char *rparam, long *rval)
     ret = -1;
     /* configuration file is without errors! */
     fp = fopen(cfg_file, "r");
+    if(!fp){
+        LogPrintf(LV_ERROR, "Can not open config file \"%s\": %s!", cfg_file, strerror(errno));
+        return -1;
+    }
     sprintf(scans, "%s=%s", rparam, "%li %s");
     while (fgets(buffer, CFG_LINE_MAX_SIZE, fp) != NULL) {
         /* check if line is a comment */
