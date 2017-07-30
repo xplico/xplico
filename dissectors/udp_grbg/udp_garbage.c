@@ -373,7 +373,7 @@ packet* UdpGrbDissector(int flow_id)
             else {
                 l7prot_id = nDPIPacket(pkt, l7flow, l7dst, l7src, ipv4);
             }
-            if (l7prot_id.protocol != NDPI_PROTOCOL_UNKNOWN) {
+            if (l7prot_id.master_protocol != NDPI_PROTOCOL_UNKNOWN) {
                 l7prot_type = ndpi_protocol2name(ndpi, l7prot_id, buff, UDP_CFG_LINE_MAX_SIZE);
             }
         }

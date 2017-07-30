@@ -524,7 +524,7 @@ static int TcpCaDisFlow(tca_flow *ifw, packet *pkt)
             else {
                 ifw->l7prot_id = nDPIPacket(pkt, ifw->l7flow, ifw->l7dst, ifw->l7src, ifw->priv.ipv6);
             }
-            if (ifw->l7prot_id.protocol != NDPI_PROTOCOL_UNKNOWN) {
+            if (ifw->l7prot_id.app_protocol != NDPI_PROTOCOL_UNKNOWN) {
                 ifw->stage++;
                 ifw->l7prot_type = ndpi_protocol2name(ndpi, ifw->l7prot_id, ifw->buff, TCP_CA_LINE_MAX_SIZE);
             }
@@ -618,7 +618,7 @@ static packet *TcpCaDisFlowEnd(tca_flow *ifw)
         else
             ifw->l7prot_id = ndpi_guess_undetected_protocol(ndpi, IPPROTO_TCP, ifw->priv.ip_s.uint32, ifw->priv.ip_d.uint32, ifw->priv.port_s, ifw->priv.port_d);
         
-        if (ifw->l7prot_id.protocol != NDPI_PROTOCOL_UNKNOWN) {
+        if (ifw->l7prot_id.master_protocol != NDPI_PROTOCOL_UNKNOWN) {
             ifw->l7prot_type = ndpi_protocol2name(ndpi, ifw->l7prot_id, ifw->buff, TCP_CA_LINE_MAX_SIZE);
         }
         else {

@@ -431,7 +431,7 @@ static packet *UdpCaDissector(int flow_id)
             else {
                 l7prot_id = nDPIPacket(pkt, l7flow, l7dst, l7src, ipv4);
             }
-            if (l7prot_id.protocol != NDPI_PROTOCOL_UNKNOWN) {
+            if (l7prot_id.master_protocol != NDPI_PROTOCOL_UNKNOWN) {
                 l7prot_type = ndpi_protocol2name(ndpi, l7prot_id, buff, UDP_CA_LINE_MAX_SIZE);
             }
         }
@@ -451,7 +451,7 @@ static packet *UdpCaDissector(int flow_id)
         else
             l7prot_id = ndpi_guess_undetected_protocol(ndpi, IPPROTO_UDP, priv.ip_s.uint32, priv.ip_d.uint32, priv.port_s, priv.port_d);
         
-        if (l7prot_id.protocol != NDPI_PROTOCOL_UNKNOWN) {
+        if (l7prot_id.master_protocol != NDPI_PROTOCOL_UNKNOWN) {
             l7prot_type = ndpi_protocol2name(ndpi, l7prot_id, buff, UDP_CA_LINE_MAX_SIZE);
         }
         else {

@@ -675,7 +675,7 @@ packet *TcpGrbDissector(int flow_id)
                 else {
                     l7prot_id = nDPIPacket(pkt, l7flow, l7dst, l7src, ipv4);
                 }
-                if (l7prot_id.protocol != NDPI_PROTOCOL_UNKNOWN) {
+                if (l7prot_id.app_protocol != NDPI_PROTOCOL_UNKNOWN) {
                     stage++;
                     l7prot_type = ndpi_protocol2name(ndpi, l7prot_id, buff, TCP_CFG_LINE_MAX_SIZE);
                 }
