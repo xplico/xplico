@@ -105,6 +105,7 @@ mmain.o: ../core/mmain.c
 
 %.pyc: %.py
 	rm -f $@
+	if [ -d "__pycache__" ]; then rm -f __pycache__/*; fi
 	$(PYCMPL) $< 
 	if [ -d "__pycache__" ]; then mv __pycache__/*.pyc $@; fi
 
