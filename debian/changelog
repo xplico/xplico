@@ -1,3 +1,7 @@
+xplico (1.2.1) stable; urgency=low
+  * Bugfix: WUI: added check in the registration page; added the file name check on the pcap upload page
+ -- Gianluca Costa <g.costa@xplico.org>  Sun, 12 Dec 2017 09:10:00 +0200
+
 xplico (1.2.0) stable; urgency=low
   * Migration from PHP5 to PHP7
   * CakePHP 2.8

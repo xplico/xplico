@@ -514,6 +514,11 @@ class SolsController extends AppController {
     function pcap() {
         if (!empty($this->request->data) &&
             is_uploaded_file($this->request->data['Sols']['File']['tmp_name'])) {
+            if (preg_match("/[^A-Za-z0-9.-_]/", $this->request->data['Sols']['File']['name'])) {
+                $this->Session->setFlash(__('Filename must be contain only a-zA-Z0-9 or dot. Do NOT use quotes and other characters'));
+                $this->redirect($this->referer());
+                return;
+            }
             $userid = $this->Session->read('userid');
             if ($this->Session->read('register')) {
                 $this->User->recursive = -1;

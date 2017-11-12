@@ -77,6 +77,28 @@ static void DemaDecInit(podec *dec)
 }
 
 
+int CheckFileName(char *filename)
+{
+    int len, i, ret;
+    char *pr = filename, *pw = filename;
+
+    ret = 1;
+    len = strlen(filename);
+    for (i=0; i!=len; i++) {
+        *pw = *pr++;
+        if ((*pw >= '0' && *pw <= '9') || (*pw >= 'a' && *pw <= 'z') || (*pw >= 'A' && *pw <= 'Z') || *pw == '_' || *pw == '.' || *pw == ' ') {
+            pw++;
+        }
+        else {
+            ret = 0;
+        }
+    }
+    *pw = '\0';
+
+    return ret;
+}
+
+
 int DemaHash(const char *path_src, char *md5, char *sha1)
 {
     char cmd[2*DM_FILENAME_PATH];
@@ -240,6 +262,14 @@ static int DemaLoop(dbconf *db_c, char *root, time_t twpcap)
                 
                 if (time_now && stat(path_src, &info) == 0) {
                     if (pd_tbl[i].size == info.st_size && SeDeFileActive(path_src) == FALSE) {
+                        /* check filename */
+                        if (CheckFileName(filename) == 0) {
+                            sprintf(path_dst, "%s/%s", dir, filename);
+                            rename(path_src, path_dst);
+                            sprintf(path_src, "%s/%s", dir, filename);
+                            strcpy(pd_tbl[i].name, filename);
+                        }
+                        
                         /* capture time update */
                         ctime = CapTime(path_src);
                         if (ctime != NULL) {
