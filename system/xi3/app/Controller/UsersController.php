@@ -108,6 +108,11 @@ class UsersController extends AppController
     }
 
     function register() {
+        $register = $this->Param->findByName('register');
+        if (!isset($register['Param']['nvalue']) || $register['Param']['nvalue'] != 1) {
+            $this->redirect('/users/login');
+            return;
+        }
         if (!empty($this->request->data)) {
             $san = new Sanitize();
             $this->request->data['User']['username'] = $san->paranoid($this->request->data['User']['username']);
@@ -138,7 +143,7 @@ class UsersController extends AppController
                         $this->Group->create();
                         if ($this->Group->save($this->request->data)) {
                             $this->request->data['User']['password'] = md5($this->request->data['User']['password']);
-                            $this->request->data['User']['em_key'] = md5($this->request->data['User']['email'].$this->request->data['User']['password'].time());
+                            $this->request->data['User']['em_key'] = md5($this->request->data['User']['email'].$this->request->data['User']['password'].Security::randomBytes(16));
                             $gid = $this->Group->getID();
                             $this->request->data['User']['group_id'] = $gid;
                             $this->User->create();
@@ -224,13 +229,13 @@ class UsersController extends AppController
         
         $isXplicoRunning = $this->Xplico->checkXplicoStatus();
 
-	if ($isXplicoRunning == 0) {
-            $this->Session->setFlash(__('Xplico is not running!<br/><br/>
-		For starting Xplico, please choose <u>one</u> of these options <u>as root</u>: <br /><br />
-		a) If you are using the Ubuntu/Debian package, run: "/etc/init.d/xplico start" <br />
-		b) Run: "/opt/xplico/script/sqlite_demo.sh" <br />', true));      
-        }
-	else {
+        if ($isXplicoRunning == 0) {
+                $this->Session->setFlash(__('Xplico is not running!<br/><br/>
+            For starting Xplico, please choose <u>one</u> of these options <u>as root</u>: <br /><br />
+            a) If you are using the Ubuntu/Debian package, run: "/etc/init.d/xplico start" <br />
+            b) Run: "/opt/xplico/script/sqlite_demo.sh" <br />', true));      
+            }
+        else {
             if ($this->Session->check('user')) {
                 $this->redirect('/pols/index');
             }
@@ -267,7 +272,7 @@ class UsersController extends AppController
     
         $register = $this->Param->findByName('register');
         $this->Session->write('register', $register['Param']['nvalue']);
-	$this->set('ParamStartXplico', 'no');
+        $this->set('ParamStartXplico', 'no');
         $this->set('isXplicoRunning', $isXplicoRunning);
         $this->set('register', $register['Param']['nvalue']);
     }
