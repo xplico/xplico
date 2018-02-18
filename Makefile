@@ -252,7 +252,7 @@ reset:
 
 
 tgz: clean
-	cd ..; tar cvzf xplico-$(VER).tgz --exclude cscope.files --exclude cscope.out --exclude CVS --exclude .svn --exclude release --exclude .svn xplico*/
+	cd ..; tar cvzf xplico-$(VER).tgz --exclude cscope.files --exclude cscope.out --exclude CVS --exclude .git --exclude release --exclude .svn xplico*/
 	mkdir -p release
 	mv ../xplico-$(VER).tgz release
 	rm -f release/*.gpg
