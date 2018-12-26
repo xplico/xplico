@@ -606,17 +606,11 @@ static int TcpCaDisFlowSetUp(tca_flow *ifw, packet *pkt)
 
 static packet *TcpCaDisFlowEnd(tca_flow *ifw)
 {
-    /* ndpi free */
-    if (ifw->l7flow != NULL) {
-        xfree(ifw->l7flow);
-        xfree(ifw->l7src);
-        xfree(ifw->l7dst);
-    }
     if (ifw->l7prot_type == NULL) {
         if (ifw->priv.ipv6)
-            ifw->l7prot_id = ndpi_guess_undetected_protocol(ndpi, IPPROTO_TCP, 0, 0, ifw->priv.port_s, ifw->priv.port_d);
+            ifw->l7prot_id = ndpi_guess_undetected_protocol(ndpi, ifw->l7flow, IPPROTO_TCP, 0, 0, ifw->priv.port_s, ifw->priv.port_d);
         else
-            ifw->l7prot_id = ndpi_guess_undetected_protocol(ndpi, IPPROTO_TCP, ifw->priv.ip_s.uint32, ifw->priv.ip_d.uint32, ifw->priv.port_s, ifw->priv.port_d);
+            ifw->l7prot_id = ndpi_guess_undetected_protocol(ndpi, ifw->l7flow, IPPROTO_TCP, ifw->priv.ip_s.uint32, ifw->priv.ip_d.uint32, ifw->priv.port_s, ifw->priv.port_d);
         
         if (ifw->l7prot_id.master_protocol != NDPI_PROTOCOL_UNKNOWN) {
             ifw->l7prot_type = ndpi_protocol2name(ndpi, ifw->l7prot_id, ifw->buff, TCP_CA_LINE_MAX_SIZE);
@@ -624,6 +618,12 @@ static packet *TcpCaDisFlowEnd(tca_flow *ifw)
         else {
             ifw->l7prot_type = "Unknown";
         }
+    }
+    /* ndpi free */
+    if (ifw->l7flow != NULL) {
+        xfree(ifw->l7flow);
+        xfree(ifw->l7src);
+        xfree(ifw->l7dst);
     }
     
     /* tcp reset */

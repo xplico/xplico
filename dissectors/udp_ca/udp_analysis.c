@@ -438,18 +438,11 @@ static packet *UdpCaDissector(int flow_id)
         PktFree(pkt);
         pkt = FlowGetPkt(flow_id);
     }
-    /* ndpi free */
-    if (l7flow != NULL) {
-        xfree(l7flow);
-        xfree(l7src);
-        xfree(l7dst);
-        l7flow = NULL;
-    }
     if (l7prot_type == NULL) {
         if (priv.ipv6)
-            l7prot_id = ndpi_guess_undetected_protocol(ndpi, IPPROTO_UDP, 0, 0, priv.port_s, priv.port_d);
+            l7prot_id = ndpi_guess_undetected_protocol(ndpi, l7flow, IPPROTO_UDP, 0, 0, priv.port_s, priv.port_d);
         else
-            l7prot_id = ndpi_guess_undetected_protocol(ndpi, IPPROTO_UDP, priv.ip_s.uint32, priv.ip_d.uint32, priv.port_s, priv.port_d);
+            l7prot_id = ndpi_guess_undetected_protocol(ndpi, l7flow, IPPROTO_UDP, priv.ip_s.uint32, priv.ip_d.uint32, priv.port_s, priv.port_d);
         
         if (l7prot_id.master_protocol != NDPI_PROTOCOL_UNKNOWN) {
             l7prot_type = ndpi_protocol2name(ndpi, l7prot_id, buff, UDP_CA_LINE_MAX_SIZE);
@@ -457,6 +450,13 @@ static packet *UdpCaDissector(int flow_id)
         else {
             l7prot_type = "Unknown";
         }
+    }
+    /* ndpi free */
+    if (l7flow != NULL) {
+        xfree(l7flow);
+        xfree(l7src);
+        xfree(l7dst);
+        l7flow = NULL;
     }
 
     /* insert data */
