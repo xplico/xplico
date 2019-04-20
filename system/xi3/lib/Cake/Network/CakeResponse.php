@@ -2,18 +2,18 @@
 /**
  * CakeResponse
  *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @package       Cake.Network
  * @since         CakePHP(tm) v 2.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('File', 'Utility');
@@ -122,6 +122,7 @@ class CakeResponse {
 		'ips' => 'application/x-ipscript',
 		'ipx' => 'application/x-ipix',
 		'js' => 'application/javascript',
+		'jsonapi' => 'application/vnd.api+json',
 		'latex' => 'application/x-latex',
 		'lha' => 'application/octet-stream',
 		'lsp' => 'application/x-lisp',
@@ -264,6 +265,14 @@ class CakeResponse {
 		'xbm' => 'image/x-xbitmap',
 		'xpm' => 'image/x-xpixmap',
 		'xwd' => 'image/x-xwindowdump',
+		'psd' => array(
+			'application/photoshop',
+			'application/psd',
+			'image/psd',
+			'image/x-photoshop',
+			'image/photoshop',
+			'zz-application/zz-winassoc-psd'
+		),
 		'ice' => 'x-conference/x-cooltalk',
 		'iges' => 'model/iges',
 		'igs' => 'model/iges',
@@ -300,7 +309,8 @@ class CakeResponse {
 		'vcf' => 'text/x-vcard',
 		'vtt' => 'text/vtt',
 		'mkv' => 'video/x-matroska',
-		'pkpass' => 'application/vnd.apple.pkpass'
+		'pkpass' => 'application/vnd.apple.pkpass',
+		'ajax' => 'text/html'
 	);
 
 /**
@@ -321,7 +331,7 @@ class CakeResponse {
  * Content type to send. This can be an 'extension' that will be transformed using the $_mimetypes array
  * or a complete mime-type
  *
- * @var int
+ * @var string
  */
 	protected $_contentType = 'text/html';
 
@@ -364,7 +374,7 @@ class CakeResponse {
  * Holds all the cache directives that will be converted
  * into headers when sending the request
  *
- * @var string
+ * @var array
  */
 	protected $_cacheDirectives = array();
 
@@ -662,8 +672,9 @@ class CakeResponse {
  *
  *        For more on HTTP status codes see: http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1
  *
- * @return mixed associative array of the HTTP codes as keys, and the message
- *    strings as values, or null of the given $code does not exist.
+ * @return array|null|true associative array of the HTTP codes as keys, and the message
+ *    strings as values, or null of the given $code does not exist. `true` if `$code` is
+ *    an array of valid codes.
  * @throws CakeException If an attempt is made to add an invalid status code
  */
 	public function httpCodes($code = null) {
@@ -707,8 +718,8 @@ class CakeResponse {
  *
  * e.g `type(array('jpg' => 'text/plain'));`
  *
- * @param string $contentType Content type key.
- * @return mixed current content type or false if supplied an invalid content type
+ * @param array|string|null $contentType Content type key.
+ * @return string|false current content type or false if supplied an invalid content type
  */
 	public function type($contentType = null) {
 		if ($contentType === null) {
@@ -796,8 +807,8 @@ class CakeResponse {
 /**
  * Sets the correct headers to instruct the client to cache the response.
  *
- * @param string $since a valid time since the response text has not been modified
- * @param string $time a valid time for cache expiry
+ * @param string|int $since a valid time since the response text has not been modified
+ * @param string|int $time a valid time for cache expiry
  * @return void
  */
 	public function cache($since, $time = '+1 day') {
@@ -844,7 +855,7 @@ class CakeResponse {
 		}
 
 		$this->maxAge($time);
-		if (!$time) {
+		if ((int)$time === 0) {
 			$this->_setCacheControl();
 		}
 		return (bool)$public;
@@ -1057,7 +1068,7 @@ class CakeResponse {
  * Returns a DateTime object initialized at the $time param and using UTC
  * as timezone
  *
- * @param string|DateTime $time Valid time string or unix timestamp or DateTime object.
+ * @param DateTime|int|string $time Valid time string or unix timestamp or DateTime object.
  * @return DateTime
  */
 	protected function _getUTCDate($time = null) {
@@ -1150,15 +1161,19 @@ class CakeResponse {
  * @return bool whether the response was marked as not modified or not.
  */
 	public function checkNotModified(CakeRequest $request) {
-		$etags = preg_split('/\s*,\s*/', $request->header('If-None-Match'), null, PREG_SPLIT_NO_EMPTY);
+		$ifNoneMatchHeader = $request->header('If-None-Match');
+		$etags = array();
+		if (is_string($ifNoneMatchHeader)) {
+			$etags = preg_split('/\s*,\s*/', $ifNoneMatchHeader, null, PREG_SPLIT_NO_EMPTY);
+		}
 		$modifiedSince = $request->header('If-Modified-Since');
+		$checks = array();
 		if ($responseTag = $this->etag()) {
-			$etagMatches = in_array('*', $etags) || in_array($responseTag, $etags);
+			$checks[] = in_array('*', $etags) || in_array($responseTag, $etags);
 		}
 		if ($modifiedSince) {
-			$timeMatches = strtotime($this->modified()) === strtotime($modifiedSince);
+			$checks[] = strtotime($this->modified()) === strtotime($modifiedSince);
 		}
-		$checks = compact('etagMatches', 'timeMatches');
 		if (empty($checks)) {
 			return false;
 		}
@@ -1214,7 +1229,7 @@ class CakeResponse {
  *
  * `$this->cookie((array) $options)`
  *
- * @param array $options Either null to get all cookies, string for a specific cookie
+ * @param array|string $options Either null to get all cookies, string for a specific cookie
  *  or array to set cookie.
  * @return mixed
  */
@@ -1250,7 +1265,7 @@ class CakeResponse {
  * This method allow multiple ways to setup the domains, see the examples
  *
  * ### Full URI
- * e.g `cors($request, 'http://www.cakephp.org');`
+ * e.g `cors($request, 'https://www.cakephp.org');`
  *
  * ### URI with wildcard
  * e.g `cors($request, 'http://*.cakephp.org');`
@@ -1262,7 +1277,7 @@ class CakeResponse {
  * e.g `cors($request, '*');`
  *
  * ### Whitelist of URIs
- * e.g `cors($request, array('http://www.cakephp.org', '*.google.com', 'https://myproject.github.io'));`
+ * e.g `cors($request, array('https://www.cakephp.org', '*.google.com', 'https://myproject.github.io'));`
  *
  * @param CakeRequest $request Request object
  * @param string|array $allowedDomains List of allowed domains, see method description for more details
@@ -1302,11 +1317,7 @@ class CakeResponse {
 				$result[] = array('preg' => '@.@', 'original' => '*');
 				continue;
 			}
-
-			$original = $preg = $domain;
-			if (strpos($domain, '://') === false) {
-				$preg = ($requestIsSSL ? 'https://' : 'http://') . $domain;
-			}
+			$original = $domain;
 			$preg = '@' . str_replace('*', '.*', $domain) . '@';
 			$result[] = compact('original', 'preg');
 		}
@@ -1454,7 +1465,7 @@ class CakeResponse {
 		$file->open('rb');
 
 		$end = $start = false;
-		if ($range) {
+		if ($range && is_array($range)) {
 			list($start, $end) = $range;
 		}
 		if ($start !== false) {

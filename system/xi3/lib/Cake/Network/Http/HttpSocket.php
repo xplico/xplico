@@ -2,18 +2,18 @@
 /**
  * HTTP Socket connection class.
  *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @package       Cake.Network.Http
  * @since         CakePHP(tm) v 1.2.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('CakeSocket', 'Network');
@@ -135,7 +135,7 @@ class HttpSocket extends CakeSocket {
  * You can use a URL string to set the URL and use default configurations for
  * all other options:
  *
- * `$http = new HttpSocket('http://cakephp.org/');`
+ * `$http = new HttpSocket('https://cakephp.org/');`
  *
  * Or use an array to configure multiple options:
  *
@@ -251,7 +251,7 @@ class HttpSocket extends CakeSocket {
  * method and provide a more granular interface.
  *
  * @param string|array $request Either an URI string, or an array defining host/uri
- * @return mixed false on error, HttpSocketResponse on success
+ * @return false|HttpSocketResponse false on error, HttpSocketResponse on success
  * @throws SocketException
  */
 	public function request($request = array()) {
@@ -449,18 +449,16 @@ class HttpSocket extends CakeSocket {
  * @param string|array $uri URI to request. Either a string uri, or a uri array, see HttpSocket::_parseUri()
  * @param array $query Querystring parameters to append to URI
  * @param array $request An indexed array with indexes such as 'method' or uri
- * @return mixed Result of request, either false on failure or the response to the request.
+ * @return false|HttpSocketResponse Result of request, either false on failure or the response to the request.
  */
 	public function get($uri = null, $query = array(), $request = array()) {
-		if (!empty($query)) {
-			$uri = $this->_parseUri($uri, $this->config['request']['uri']);
-			if (isset($uri['query'])) {
-				$uri['query'] = array_merge($uri['query'], $query);
-			} else {
-				$uri['query'] = $query;
-			}
-			$uri = $this->_buildUri($uri);
+		$uri = $this->_parseUri($uri, $this->config['request']['uri']);
+		if (isset($uri['query'])) {
+			$uri['query'] = array_merge($uri['query'], $query);
+		} else {
+			$uri['query'] = $query;
 		}
+		$uri = $this->_buildUri($uri);
 
 		$request = Hash::merge(array('method' => 'GET', 'uri' => $uri), $request);
 		return $this->request($request);
@@ -475,18 +473,16 @@ class HttpSocket extends CakeSocket {
  * @param string|array $uri URI to request. Either a string URI, or a URI array, see HttpSocket::_parseUri()
  * @param array $query Querystring parameters to append to URI
  * @param array $request An indexed array with indexes such as 'method' or uri
- * @return mixed Result of request, either false on failure or the response to the request.
+ * @return false|HttpSocketResponse Result of request, either false on failure or the response to the request.
  */
 	public function head($uri = null, $query = array(), $request = array()) {
-		if (!empty($query)) {
-			$uri = $this->_parseUri($uri, $this->config['request']['uri']);
-			if (isset($uri['query'])) {
-				$uri['query'] = array_merge($uri['query'], $query);
-			} else {
-				$uri['query'] = $query;
-			}
-			$uri = $this->_buildUri($uri);
+		$uri = $this->_parseUri($uri, $this->config['request']['uri']);
+		if (isset($uri['query'])) {
+			$uri['query'] = array_merge($uri['query'], $query);
+		} else {
+			$uri['query'] = $query;
 		}
+		$uri = $this->_buildUri($uri);
 
 		$request = Hash::merge(array('method' => 'HEAD', 'uri' => $uri), $request);
 		return $this->request($request);
@@ -507,7 +503,7 @@ class HttpSocket extends CakeSocket {
  * @param string|array $uri URI to request. See HttpSocket::_parseUri()
  * @param array $data Array of request body data keys and values.
  * @param array $request An indexed array with indexes such as 'method' or uri
- * @return mixed Result of request, either false on failure or the response to the request.
+ * @return false|HttpSocketResponse Result of request, either false on failure or the response to the request.
  */
 	public function post($uri = null, $data = array(), $request = array()) {
 		$request = Hash::merge(array('method' => 'POST', 'uri' => $uri, 'body' => $data), $request);
@@ -520,7 +516,7 @@ class HttpSocket extends CakeSocket {
  * @param string|array $uri URI to request, See HttpSocket::_parseUri()
  * @param array $data Array of request body data keys and values.
  * @param array $request An indexed array with indexes such as 'method' or uri
- * @return mixed Result of request
+ * @return false|HttpSocketResponse Result of request
  */
 	public function put($uri = null, $data = array(), $request = array()) {
 		$request = Hash::merge(array('method' => 'PUT', 'uri' => $uri, 'body' => $data), $request);
@@ -533,7 +529,7 @@ class HttpSocket extends CakeSocket {
  * @param string|array $uri URI to request, See HttpSocket::_parseUri()
  * @param array $data Array of request body data keys and values.
  * @param array $request An indexed array with indexes such as 'method' or uri
- * @return mixed Result of request
+ * @return false|HttpSocketResponse Result of request
  */
 	public function patch($uri = null, $data = array(), $request = array()) {
 		$request = Hash::merge(array('method' => 'PATCH', 'uri' => $uri, 'body' => $data), $request);
@@ -546,7 +542,7 @@ class HttpSocket extends CakeSocket {
  * @param string|array $uri URI to request (see {@link _parseUri()})
  * @param array $data Array of request body data keys and values.
  * @param array $request An indexed array with indexes such as 'method' or uri
- * @return mixed Result of request
+ * @return false|HttpSocketResponse Result of request
  */
 	public function delete($uri = null, $data = array(), $request = array()) {
 		$request = Hash::merge(array('method' => 'DELETE', 'uri' => $uri, 'body' => $data), $request);
@@ -564,11 +560,11 @@ class HttpSocket extends CakeSocket {
  * URLs.
  *
  * ```
- * $http = new HttpSocket('http://www.cakephp.org');
+ * $http = new HttpSocket('https://www.cakephp.org');
  * $url = $http->url('/search?q=bar');
  * ```
  *
- * Would return `http://www.cakephp.org/search?q=bar`
+ * Would return `https://cakephp.org/search?q=bar`
  *
  * url() can also be used with custom templates:
  *
@@ -760,7 +756,7 @@ class HttpSocket extends CakeSocket {
  *
  * @param string|array $uri URI to parse
  * @param bool|array $base If true use default URI config, otherwise indexed array to set 'scheme', 'host', 'port', etc.
- * @return array Parsed URI
+ * @return array|bool Parsed URI
  */
 	protected function _parseUri($uri = null, $base = array()) {
 		$uriBase = array(
@@ -1023,7 +1019,7 @@ class HttpSocket extends CakeSocket {
 	}
 
 /**
- * Resets the state of this HttpSocket instance to it's initial state (before Object::__construct got executed) or does
+ * Resets the state of this HttpSocket instance to it's initial state (before CakeObject::__construct got executed) or does
  * the same thing partially for the request and the response property only.
  *
  * @param bool $full If set to false only HttpSocket::response and HttpSocket::request are reset

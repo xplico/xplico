@@ -1,17 +1,17 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @package       Cake.Network.Email
  * @since         CakePHP(tm) v 2.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('Multibyte', 'I18n');
@@ -70,7 +70,7 @@ class CakeEmail {
  *
  * @var string
  */
-	const EMAIL_PATTERN = '/^((?:[\p{L}0-9.!#$%&\'*+\/=?^_`{|}~-]+)*@[\p{L}0-9-.]+)$/ui';
+	const EMAIL_PATTERN = '/^((?:[\p{L}0-9.!#$%&\'*+\/=?^_`{|}~-]+)*@[\p{L}0-9-_.]+)$/ui';
 
 /**
  * Recipient of the email
@@ -589,7 +589,7 @@ class CakeEmail {
  */
 	protected function _setEmail($varName, $email, $name) {
 		if (!is_array($email)) {
-			$this->_validateEmail($email);
+			$this->_validateEmail($email, $varName);
 			if ($name === null) {
 				$name = $email;
 			}
@@ -601,7 +601,7 @@ class CakeEmail {
 			if (is_int($key)) {
 				$key = $value;
 			}
-			$this->_validateEmail($key);
+			$this->_validateEmail($key, $varName);
 			$list[$key] = $value;
 		}
 		$this->{$varName} = $list;
@@ -611,11 +611,12 @@ class CakeEmail {
 /**
  * Validate email address
  *
- * @param string $email Email
+ * @param string $email Email address to validate
+ * @param string $context Which property was set
  * @return void
  * @throws SocketException If email address does not validate
  */
-	protected function _validateEmail($email) {
+	protected function _validateEmail($email, $context) {
 		if ($this->_emailPattern === null) {
 			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				return;
@@ -623,7 +624,10 @@ class CakeEmail {
 		} elseif (preg_match($this->_emailPattern, $email)) {
 			return;
 		}
-		throw new SocketException(__d('cake_dev', 'Invalid email: "%s"', $email));
+		if ($email == '') {
+			throw new SocketException(__d('cake_dev', 'The email set for "%s" is empty.', $context));
+		}
+		throw new SocketException(__d('cake_dev', 'Invalid email set for "%s". You passed "%s".', $context, $email));
 	}
 
 /**
@@ -659,7 +663,7 @@ class CakeEmail {
  */
 	protected function _addEmail($varName, $email, $name) {
 		if (!is_array($email)) {
-			$this->_validateEmail($email);
+			$this->_validateEmail($email, $varName);
 			if ($name === null) {
 				$name = $email;
 			}
@@ -671,7 +675,7 @@ class CakeEmail {
 			if (is_int($key)) {
 				$key = $value;
 			}
-			$this->_validateEmail($key);
+			$this->_validateEmail($key, $varName);
 			$list[$key] = $value;
 		}
 		$this->{$varName} = array_merge($this->{$varName}, $list);
@@ -788,7 +792,7 @@ class CakeEmail {
 		}
 		if ($this->_messageId !== false) {
 			if ($this->_messageId === true) {
-				$headers['Message-ID'] = '<' . str_replace('-', '', CakeText::UUID()) . '@' . $this->_domain . '>';
+				$headers['Message-ID'] = '<' . str_replace('-', '', CakeText::uuid()) . '@' . $this->_domain . '>';
 			} else {
 				$headers['Message-ID'] = $this->_messageId;
 			}
@@ -830,7 +834,10 @@ class CakeEmail {
 				$return[] = $email;
 			} else {
 				$encoded = $this->_encode($alias);
-				if ($encoded === $alias && preg_match('/[^a-z0-9 ]/i', $encoded)) {
+				if (
+					$encoded === $alias && preg_match('/[^a-z0-9 ]/i', $encoded) ||
+					strpos($encoded, ',') !== false
+				) {
 					$encoded = '"' . str_replace('"', '\"', $encoded) . '"';
 				}
 				$return[] = sprintf('%s <%s>', $encoded, $email);
@@ -1081,6 +1088,9 @@ class CakeEmail {
 					$name = basename($fileInfo['file']);
 				}
 			}
+			if (!isset($fileInfo['mimetype']) && isset($fileInfo['file']) && function_exists('mime_content_type')) {
+				$fileInfo['mimetype'] = mime_content_type($fileInfo['file']);
+			}
 			if (!isset($fileInfo['mimetype'])) {
 				$fileInfo['mimetype'] = 'application/octet-stream';
 			}
@@ -1238,7 +1248,7 @@ class CakeEmail {
 		if (is_string($config)) {
 			if (!$this->_configInstance) {
 				if (!class_exists($this->_configClass) && !config('email')) {
-					throw new ConfigureException(__d('cake_dev', '%s not found.', APP . 'Config' . DS . 'email.php'));
+					throw new ConfigureException(__d('cake_dev', '%s not found.', CONFIG . 'email.php'));
 				}
 				$this->_configInstance = new $this->_configClass();
 			}

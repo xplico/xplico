@@ -2,18 +2,18 @@
 /**
  * Dbo Source
  *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
  * @package       Cake.Model.Datasource
  * @since         CakePHP(tm) v 0.10.0.1076
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('DataSource', 'Model/Datasource');
@@ -51,17 +51,19 @@ class DboSource extends DataSource {
 	public $alias = 'AS ';
 
 /**
- * Caches result from query parsing operations. Cached results for both DboSource::name() and
- * DboSource::conditions() will be stored here. Method caching uses `md5()`. If you have
- * problems with collisions, set DboSource::$cacheMethods to false.
+ * Caches result from query parsing operations. Cached results for both DboSource::name() and DboSource::fields()
+ * will be stored here.
+ *
+ * Method caching uses `md5` (by default) to construct cache keys. If you have problems with collisions,
+ * try a different hashing algorithm by overriding DboSource::cacheMethodHasher or set DboSource::$cacheMethods to false.
  *
  * @var array
  */
 	public static $methodCache = array();
 
 /**
- * Whether or not to cache the results of DboSource::name() and DboSource::conditions()
- * into the memory cache. Set to false to disable the use of the memory cache.
+ * Whether or not to cache the results of DboSource::name() and DboSource::fields() into the memory cache.
+ * Set to false to disable the use of the memory cache.
  *
  * @var bool
  */
@@ -107,7 +109,7 @@ class DboSource extends DataSource {
 /**
  * Result
  *
- * @var array
+ * @var array|PDOStatement
  */
 	protected $_result = null;
 
@@ -211,7 +213,9 @@ class DboSource extends DataSource {
 		'limit' => null,
 		'joins' => array(),
 		'group' => null,
-		'offset' => null
+		'offset' => null,
+		'having' => null,
+		'lock' => null,
 	);
 
 /**
@@ -244,6 +248,13 @@ class DboSource extends DataSource {
 	protected $_methodCacheChange = false;
 
 /**
+ * Map of the columns contained in a result.
+ *
+ * @var array
+ */
+	public $map = array();
+
+/**
  * Constructor
  *
  * @param array $config Array of configuration information for the Datasource.
@@ -266,6 +277,16 @@ class DboSource extends DataSource {
 		if ($autoConnect) {
 			$this->connect();
 		}
+	}
+
+/**
+ * Connects to the database.
+ *
+ * @return bool
+ */
+	public function connect() {
+		// This method is implemented in subclasses
+		return $this->connected;
 	}
 
 /**
@@ -346,6 +367,18 @@ class DboSource extends DataSource {
 			$column = $this->introspectType($data);
 		}
 
+		$isStringEnum = false;
+		if (strpos($column, "enum") === 0) {
+			$firstValue = null;
+			if (preg_match("/(enum\()(.*)(\))/i", $column, $acceptingValues)) {
+				$values = explode(",", $acceptingValues[2]);
+				$firstValue = $values[0];
+			}
+			if (is_string($firstValue)) {
+				$isStringEnum = true;
+			}
+		}
+
 		switch ($column) {
 			case 'binary':
 				return $this->_connection->quote($data, PDO::PARAM_LOB);
@@ -361,11 +394,12 @@ class DboSource extends DataSource {
 				if (is_float($data)) {
 					return str_replace(',', '.', strval($data));
 				}
-				if ((is_int($data) || $data === '0') || (
+				if (((is_int($data) || $data === '0') || (
 					is_numeric($data) &&
 					strpos($data, ',') === false &&
 					$data[0] != '0' &&
 					strpos($data, 'e') === false)
+					) && !$isStringEnum
 				) {
 					return $data;
 				}
@@ -466,7 +500,7 @@ class DboSource extends DataSource {
 			$query = $this->_connection->prepare($sql, $prepareOptions);
 			$query->setFetchMode(PDO::FETCH_LAZY);
 			if (!$query->execute($params)) {
-				$this->_results = $query;
+				$this->_result = $query;
 				$query->closeCursor();
 				return false;
 			}
@@ -613,6 +647,16 @@ class DboSource extends DataSource {
 			}
 			return $this->fetchAll($args[0], $args[1], array('cache' => $cache));
 		}
+	}
+
+/**
+ * Builds a map of the columns contained in a result
+ *
+ * @param PDOStatement $results The results to format.
+ * @return void
+ */
+	public function resultSet($results) {
+		// This method is implemented in subclasses
 	}
 
 /**
@@ -786,8 +830,70 @@ class DboSource extends DataSource {
 		if ($value === null) {
 			return (isset(static::$methodCache[$method][$key])) ? static::$methodCache[$method][$key] : null;
 		}
+		if (!$this->cacheMethodFilter($method, $key, $value)) {
+			return $value;
+		}
 		$this->_methodCacheChange = true;
 		return static::$methodCache[$method][$key] = $value;
+	}
+
+/**
+ * Filters to apply to the results of `name` and `fields`. When the filter for a given method does not return `true`
+ * then the result is not added to the memory cache.
+ *
+ * Some examples:
+ *
+ * ```
+ * // For method fields, do not cache values that contain floats
+ * if ($method === 'fields') {
+ * 	$hasFloat = preg_grep('/(\d+)?\.\d+/', $value);
+ *
+ * 	return count($hasFloat) === 0;
+ * }
+ *
+ * return true;
+ * ```
+ *
+ * ```
+ * // For method name, do not cache values that have the name created
+ * if ($method === 'name') {
+ * 	return preg_match('/^`created`$/', $value) !== 1;
+ * }
+ *
+ * return true;
+ * ```
+ *
+ * ```
+ * // For method name, do not cache values that have the key 472551d38e1f8bbc78d7dfd28106166f
+ * if ($key === '472551d38e1f8bbc78d7dfd28106166f') {
+ * 	return false;
+ * }
+ *
+ * return true;
+ * ```
+ *
+ * @param string $method Name of the method being cached.
+ * @param string $key The key name for the cache operation.
+ * @param mixed $value The value to cache into memory.
+ * @return bool Whether or not to cache
+ */
+	public function cacheMethodFilter($method, $key, $value) {
+		return true;
+	}
+
+/**
+ * Hashes a given value.
+ *
+ * Method caching uses `md5` (by default) to construct cache keys. If you have problems with collisions,
+ * try a different hashing algorithm or set DboSource::$cacheMethods to false.
+ *
+ * @param string $value Value to hash
+ * @return string Hashed value
+ * @see http://php.net/manual/en/function.hash-algos.php
+ * @see http://softwareengineering.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed
+ */
+	public function cacheMethodHasher($value) {
+		return md5($value);
 	}
 
 /**
@@ -815,7 +921,7 @@ class DboSource extends DataSource {
 			}
 			return $data;
 		}
-		$cacheKey = md5($this->startQuote . $data . $this->endQuote);
+		$cacheKey = $this->cacheMethodHasher($this->startQuote . $data . $this->endQuote);
 		if ($return = $this->cacheMethod(__FUNCTION__, $cacheKey)) {
 			return $return;
 		}
@@ -847,7 +953,7 @@ class DboSource extends DataSource {
 				)
 			);
 		}
-		if (preg_match('/^[\w-_\s]*[\w-_]+/', $data)) {
+		if (preg_match('/^[\w\-_\s]*[\w\-_]+/', $data)) {
 			return $this->cacheMethod(__FUNCTION__, $cacheKey, $this->startQuote . $data . $this->endQuote);
 		}
 		return $this->cacheMethod(__FUNCTION__, $cacheKey, $data);
@@ -1010,7 +1116,7 @@ class DboSource extends DataSource {
 
 		for ($i = 0; $i < $count; $i++) {
 			$schema = $Model->schema();
-			$valueInsert[] = $this->value($values[$i], $Model->getColumnType($fields[$i]), isset($schema[$fields[$i]]) ? $schema[$fields[$i]]['null'] : true);
+			$valueInsert[] = $this->value($values[$i], $Model->getColumnType($fields[$i]), isset($schema[$fields[$i]]['null']) ? $schema[$fields[$i]]['null'] : true);
 			$fieldInsert[] = $this->name($fields[$i]);
 			if ($fields[$i] === $Model->primaryKey) {
 				$id = $values[$i];
@@ -1500,23 +1606,25 @@ class DboSource extends DataSource {
 		// Make one pass through children and collect by parent key
 		// Make second pass through parents and associate children
 		$mergedByFK = array();
-		foreach ($assocResultSet as $data) {
-			$fk = $data[$association][$foreignKey];
-			if (! array_key_exists($fk, $mergedByFK)) {
-				$mergedByFK[$fk] = array();
-			}
-			if (count($data) > 1) {
-				$data = array_merge($data[$association], $data);
-				unset($data[$association]);
-				foreach ($data as $key => $name) {
-					if (is_numeric($key)) {
-						$data[$association][] = $name;
-						unset($data[$key]);
-					}
+		if (is_array($assocResultSet)) {
+			foreach ($assocResultSet as $data) {
+				$fk = $data[$association][$foreignKey];
+				if (! array_key_exists($fk, $mergedByFK)) {
+					$mergedByFK[$fk] = array();
 				}
-				$mergedByFK[$fk][] = $data;
-			} else {
-				$mergedByFK[$fk][] = $data[$association];
+				if (count($data) > 1) {
+					$data = array_merge($data[$association], $data);
+					unset($data[$association]);
+					foreach ($data as $key => $name) {
+						if (is_numeric($key)) {
+							$data[$association][] = $name;
+							unset($data[$key]);
+						}
+					}
+					$mergedByFK[$fk][] = $data;
+				} else {
+					$mergedByFK[$fk][] = $data[$association];
+				}
 			}
 		}
 
@@ -1668,7 +1776,9 @@ class DboSource extends DataSource {
 				'joins' => $queryData['joins'],
 				'conditions' => $queryData['conditions'],
 				'order' => $queryData['order'],
-				'group' => $queryData['group']
+				'group' => $queryData['group'],
+				'having' => $queryData['having'],
+				'lock' => $queryData['lock'],
 			),
 			$Model
 		);
@@ -1947,7 +2057,9 @@ class DboSource extends DataSource {
 			'order' => $this->order($query['order'], 'ASC', $Model),
 			'limit' => $this->limit($query['limit'], $query['offset']),
 			'joins' => implode(' ', $query['joins']),
-			'group' => $this->group($query['group'], $Model)
+			'group' => $this->group($query['group'], $Model),
+			'having' => $this->having($query['having'], true, $Model),
+			'lock' => $this->getLockingHint($query['lock']),
 		));
 	}
 
@@ -1977,7 +2089,9 @@ class DboSource extends DataSource {
 
 		switch (strtolower($type)) {
 			case 'select':
-				return trim("SELECT {$fields} FROM {$table} {$alias} {$joins} {$conditions} {$group} {$order} {$limit}");
+				$having = !empty($having) ? " $having" : '';
+				$lock = !empty($lock) ? " $lock" : '';
+				return trim("SELECT {$fields} FROM {$table} {$alias} {$joins} {$conditions} {$group}{$having} {$order} {$limit}{$lock}");
 			case 'create':
 				return "INSERT INTO {$table} ({$fields}) VALUES ({$values})";
 			case 'update':
@@ -2103,7 +2217,7 @@ class DboSource extends DataSource {
 			$update = $quoted . ' = ';
 
 			if ($quoteValues) {
-				$update .= $this->value($value, $Model->getColumnType($field), isset($schema[$field]) ? $schema[$field]['null'] : true);
+				$update .= $this->value($value, $Model->getColumnType($field), isset($schema[$field]['null']) ? $schema[$field]['null'] : true);
 			} elseif ($Model->getColumnType($field) === 'boolean' && (is_int($value) || is_bool($value))) {
 				$update .= $this->boolean($value, true);
 			} elseif (!$alias) {
@@ -2446,7 +2560,7 @@ class DboSource extends DataSource {
 		if (!empty($conditions)) {
 			return $conditions;
 		}
-		$exists = $Model->exists();
+		$exists = $Model->exists($Model->getID());
 		if (!$exists && ($conditions !== null || !empty($Model->__safeUpdateMode))) {
 			return false;
 		} elseif (!$exists) {
@@ -2485,6 +2599,8 @@ class DboSource extends DataSource {
 		static $base = null;
 		if ($base === null) {
 			$base = array_fill_keys(array('conditions', 'fields', 'joins', 'order', 'limit', 'offset', 'group'), array());
+			$base['having'] = null;
+			$base['lock'] = null;
 			$base['callbacks'] = null;
 		}
 		return (array)$data + $base;
@@ -2502,7 +2618,12 @@ class DboSource extends DataSource {
 		$virtual = array();
 		foreach ($fields as $field) {
 			$virtualField = $this->name($alias . $this->virtualFieldSeparator . $field);
-			$expression = $this->_quoteFields($Model->getVirtualField($field));
+			$virtualFieldExpression = $Model->getVirtualField($field);
+			if (is_object($virtualFieldExpression) && $virtualFieldExpression->type == 'expression') {
+				$expression = $virtualFieldExpression->value;
+			} else {
+				$expression = $this->_quoteFields($virtualFieldExpression);
+			}
 			$virtual[] = '(' . $expression . ") {$this->alias} {$virtualField}";
 		}
 		return $virtual;
@@ -2533,7 +2654,7 @@ class DboSource extends DataSource {
 			$Model->schemaName,
 			$Model->table
 		);
-		$cacheKey = md5(serialize($cacheKey));
+		$cacheKey = $this->cacheMethodHasher(serialize($cacheKey));
 		if ($return = $this->cacheMethod(__FUNCTION__, $cacheKey)) {
 			return $return;
 		}
@@ -2811,7 +2932,12 @@ class DboSource extends DataSource {
 
 		if ($Model !== null) {
 			if ($Model->isVirtualField($key)) {
-				$key = $this->_quoteFields($Model->getVirtualField($key));
+				$virtualField = $Model->getVirtualField($key);
+				if (is_object($virtualField) && $virtualField->type == 'expression') {
+					$key = $virtualField->value;
+				} else {
+					$key = $this->_quoteFields($virtualField);
+				}
 				$virtual = true;
 			}
 
@@ -2833,7 +2959,8 @@ class DboSource extends DataSource {
 			$isKey = (
 				strpos($key, '(') !== false ||
 				strpos($key, ')') !== false ||
-				strpos($key, '|') !== false
+				strpos($key, '|') !== false ||
+				strpos($key, '->') !== false
 			);
 			$key = $isKey ? $this->_quoteFields($key) : $this->name($key);
 		}
@@ -2893,10 +3020,11 @@ class DboSource extends DataSource {
 		if (!empty($this->endQuote)) {
 			$end = preg_quote($this->endQuote);
 		}
+
 		// Remove quotes and requote all the Model.field names.
 		$conditions = str_replace(array($start, $end), '', $conditions);
 		$conditions = preg_replace_callback(
-			'/(?:[\'\"][^\'\"\\\]*(?:\\\.[^\'\"\\\]*)*[\'\"])|([a-z0-9_][a-z0-9\\-_]*\\.[a-z0-9_][a-z0-9_\\-]*)/i',
+			'/(?:[\'\"][^\'\"\\\]*(?:\\\.[^\'\"\\\]*)*[\'\"])|([a-z0-9_][a-z0-9\\-_]*\\.[a-z0-9_][a-z0-9_\\-]*[a-z0-9_])|([a-z0-9_][a-z0-9_\\-]*)(?=->)/i',
 			array(&$this, '_quoteMatchedField'),
 			$conditions
 		);
@@ -2958,12 +3086,12 @@ class DboSource extends DataSource {
 		if (!is_array($keys)) {
 			$keys = array($keys);
 		}
-
 		$keys = array_filter($keys);
 
 		$result = array();
 		while (!empty($keys)) {
-			list($key, $dir) = each($keys);
+			$key = key($keys);
+			$dir = current($keys);
 			array_shift($keys);
 
 			if (is_numeric($key)) {
@@ -3060,6 +3188,36 @@ class DboSource extends DataSource {
 	}
 
 /**
+ * Create a HAVING SQL clause.
+ *
+ * @param mixed $fields Array or string of conditions
+ * @param bool $quoteValues If true, values should be quoted
+ * @param Model $Model A reference to the Model instance making the query
+ * @return string|null HAVING clause or null
+ */
+	public function having($fields, $quoteValues = true, Model $Model = null) {
+		if (!$fields) {
+			return null;
+		}
+		return ' HAVING ' . $this->conditions($fields, $quoteValues, false, $Model);
+	}
+
+/**
+ * Returns a locking hint for the given mode.
+ *
+ * Currently, this method only returns FOR UPDATE when the mode is set to true.
+ *
+ * @param mixed $mode Lock mode
+ * @return string|null FOR UPDATE clause or null
+ */
+	public function getLockingHint($mode) {
+		if ($mode !== true) {
+			return null;
+		}
+		return ' FOR UPDATE';
+	}
+
+/**
  * Disconnects database, kills the connection and says the connection is closed.
  *
  * @return void
@@ -3097,54 +3255,34 @@ class DboSource extends DataSource {
  * @return mixed An integer or string representing the length of the column, or null for unknown length.
  */
 	public function length($real) {
-		if (!preg_match_all('/([\w\s]+)(?:\((\d+)(?:,(\d+))?\))?(\sunsigned)?(\szerofill)?/', $real, $result)) {
-			$col = str_replace(array(')', 'unsigned'), '', $real);
-			$limit = null;
-
-			if (strpos($col, '(') !== false) {
-				list($col, $limit) = explode('(', $col);
-			}
-			if ($limit !== null) {
-				return (int)$limit;
-			}
-			return null;
-		}
-
+		preg_match('/([\w\s]+)(?:\((.+?)\))?(\sunsigned)?/i', $real, $result);
 		$types = array(
 			'int' => 1, 'tinyint' => 1, 'smallint' => 1, 'mediumint' => 1, 'integer' => 1, 'bigint' => 1
 		);
 
-		list($real, $type, $length, $offset, $sign) = $result;
-		$typeArr = $type;
-		$type = $type[0];
-		$length = $length[0];
-		$offset = $offset[0];
+		$type = $length = null;
+		if (isset($result[1])) {
+			$type = $result[1];
+		}
+		if (isset($result[2])) {
+			$length = $result[2];
+		}
+		$sign = isset($result[3]);
 
 		$isFloat = in_array($type, array('dec', 'decimal', 'float', 'numeric', 'double'));
-		if ($isFloat && $offset) {
-			return $length . ',' . $offset;
+		if ($isFloat && strpos($length, ',') !== false) {
+			return $length;
 		}
 
-		if (($real[0] == $type) && (count($real) === 1)) {
+		if ($length === null) {
 			return null;
 		}
 
 		if (isset($types[$type])) {
-			$length += $types[$type];
-			if (!empty($sign)) {
-				$length--;
-			}
-		} elseif (in_array($type, array('enum', 'set'))) {
-			$length = 0;
-			foreach ($typeArr as $key => $enumValue) {
-				if ($key === 0) {
-					continue;
-				}
-				$tmpLength = strlen($enumValue);
-				if ($tmpLength > $length) {
-					$length = $tmpLength;
-				}
-			}
+			return (int)$length;
+		}
+		if (in_array($type, array('enum', 'set'))) {
+			return null;
 		}
 		return (int)$length;
 	}
@@ -3362,25 +3500,28 @@ class DboSource extends DataSource {
 			return null;
 		}
 
-		if (!isset($this->columns[$type])) {
+		if (!isset($this->columns[$type]) && substr($type, 0, 4) !== 'enum') {
 			trigger_error(__d('cake_dev', 'Column type %s does not exist', $type), E_USER_WARNING);
 			return null;
 		}
 
-		$real = $this->columns[$type];
-		$out = $this->name($name) . ' ' . $real['name'];
-
-		if (isset($column['length'])) {
-			$length = $column['length'];
-		} elseif (isset($column['limit'])) {
-			$length = $column['limit'];
-		} elseif (isset($real['length'])) {
-			$length = $real['length'];
-		} elseif (isset($real['limit'])) {
-			$length = $real['limit'];
-		}
-		if (isset($length)) {
-			$out .= '(' . $length . ')';
+		if (substr($type, 0, 4) === 'enum') {
+			$out = $this->name($name) . ' ' . $type;
+		} else {
+			$real = $this->columns[$type];
+			$out = $this->name($name) . ' ' . $real['name'];
+			if (isset($column['length'])) {
+				$length = $column['length'];
+			} elseif (isset($column['limit'])) {
+				$length = $column['limit'];
+			} elseif (isset($real['length'])) {
+				$length = $real['length'];
+			} elseif (isset($real['limit'])) {
+				$length = $real['limit'];
+			}
+			if (isset($length)) {
+				$out .= '(' . $length . ')';
+			}
 		}
 
 		if (($column['type'] === 'integer' || $column['type'] === 'float') && isset($column['default']) && $column['default'] === '') {
@@ -3403,7 +3544,7 @@ class DboSource extends DataSource {
 		} elseif (isset($column['null']) && $column['null'] === false) {
 			$out .= ' NOT NULL';
 		}
-		if ($type === 'timestamp' && isset($column['default']) && strtolower($column['default']) === 'current_timestamp') {
+		if (in_array($type, array('timestamp', 'datetime')) && isset($column['default']) && strtolower($column['default']) === 'current_timestamp') {
 			$out = str_replace(array("'CURRENT_TIMESTAMP'", "'current_timestamp'"), 'CURRENT_TIMESTAMP', $out);
 		}
 		return $this->_buildFieldParameters($out, $column, 'afterDefault');
@@ -3557,6 +3698,15 @@ class DboSource extends DataSource {
 			return 'integer';
 		}
 		return 'string';
+	}
+
+/**
+ * Empties the query caches.
+ *
+ * @return void
+ */
+	public function flushQueryCache() {
+		$this->_queryCache = array();
 	}
 
 /**
