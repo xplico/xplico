@@ -441,10 +441,11 @@ static void *SeDePcapThread(void *data)
     while (1) {
         if (sock == -1) {
             sock = accept(sd, (struct sockaddr *)&their_addr, &sin_size);
-            if (sock == -1)
+            if (sock == -1) {
                 if (errno != EAGAIN)
                     return NULL;
                 continue;
+            }
         }
         if (ctx != NULL) {
             /* get new SSL state with context */
