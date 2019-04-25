@@ -1,3 +1,8 @@
+xplico 1.2.2
+  * CakePHP 2.10.17
+  * Migration from GeoIP to GeoIP2
+  * nDPI updated
+  
 xplico 1.2.1
   * Bugfix: WUI: added check in the registration page; added the file name check on the pcap upload page
 
