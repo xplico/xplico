@@ -27,6 +27,20 @@ case "$1" in
             a2dismod mpm_event
             a2enmod mpm_prefork
         fi
+        if [ -f /etc/php/7.1/apache2/php.ini ]; then
+            sed -i 's/post_max_size.*/post_max_size = 500M/g' /etc/php/7.1/apache2/php.ini
+            sed -i 's/upload_max_filesize.*/upload_max_filesize = 500M/g' /etc/php/7.1/apache2/php.ini
+            a2enmod php7.1
+            a2dismod mpm_event
+            a2enmod mpm_prefork
+        fi
+        if [ -f /etc/php/7.2/apache2/php.ini ]; then
+            sed -i 's/post_max_size.*/post_max_size = 500M/g' /etc/php/7.2/apache2/php.ini
+            sed -i 's/upload_max_filesize.*/upload_max_filesize = 500M/g' /etc/php/7.2/apache2/php.ini
+            a2enmod php7.2
+            a2dismod mpm_event
+            a2enmod mpm_prefork
+        fi
 
         if [ -f /etc/apache2/sites-available/httpd-xplico.conf ]; then
             rm -f /etc/apache2/sites-enabled/098-xplico.conf

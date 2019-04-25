@@ -27,7 +27,7 @@ Listen 9876
 
     # Possible values include: debug, info, notice, warn, error, crit,
     # alert, emerg.
-    LogLevel debug
+    LogLevel warn
 
     CustomLog /var/log/httpd/xplico_access.log combined
 
