@@ -44,6 +44,6 @@
                      (unsigned int)*((const unsigned char *)(p)+0)<<0)
 
 #define getu16(p, b) (*(unsigned short *)(((unsigned char*)p) + b))
-
+#define getu32(p, b) (*(unsigned int *)(((unsigned char*)p) + b))
 
 #endif /* __NTOH_H__ */
