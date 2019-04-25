@@ -30,7 +30,6 @@
 
 int GeoIPLocInit(const char *file_cfg);
 int GeoIPLocIP(ftval *ip, enum ftype itype, float *latitude, float *longitude, char **country_code);
-int GeoIPLocAddr(char *addr, float *latitude, float *longitude);
 
 #endif
 

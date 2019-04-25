@@ -23,90 +23,70 @@
  */
 
 #include <pthread.h>
+#include <string.h>
 
 #include "geoiploc.h"
 #include "configs.h"
 #include "log.h"
+#include "dmemory.h"
 #include "config_file.h"
 
 #if (XPL_GEO_IP && GEOIP_LIBRARY)
-#include "GeoIP.h"
-#include "GeoIPCity.h"
+#include <maxminddb.h>
 
-#define  GEOIP_FILE_PATH_SIZE   500
-#define  GEOIP_CFG_PARAM_IPV4_FILE      "GEOIP_IPV4_DB_FILE"
-#define  GEOIP_CFG_PARAM_IPV6_FILE      "GEOIP_IPV6_DB_FILE"
-
-
-static GeoIP *gi;
-static GeoIP *giv6;
 static pthread_mutex_t atom; /* atomic action */
-static pthread_mutex_t atom6; /* atomic action */
 static bool city = FALSE;
-static bool cityv6 = FALSE;
 
+
+#define  GEOIP_FILE_PATH_SIZE           500
+#define  GEOIP_CFG_PARAM_GEOIP2_FILE    "GEOIP2_DB_FILE"
+
+static MMDB_s mmdb;
+static bool geodb;
 
 int GeoIPLocInit(const char *file_cfg)
 {
-    char ipv4f[GEOIP_FILE_PATH_SIZE];
-    char ipv6f[GEOIP_FILE_PATH_SIZE];
+    int status;
+    char ipf[GEOIP_FILE_PATH_SIZE];
     
+    geodb = FALSE;
     pthread_mutex_init(&atom, NULL);
-    pthread_mutex_init(&atom6, NULL);
+
+    status = MMDB_FILE_OPEN_ERROR;
     
-    ipv4f[0] = '\0';
-    ipv6f[0] = '\0';
-    CfgParamStr(file_cfg, GEOIP_CFG_PARAM_IPV4_FILE, ipv4f, GEOIP_FILE_PATH_SIZE);
-    CfgParamStr(file_cfg, GEOIP_CFG_PARAM_IPV6_FILE, ipv6f, GEOIP_FILE_PATH_SIZE);
-    
-    LogPrintf(LV_INFO, "GeoIP IPv4 file: %s", ipv4f);
-    /* try to open an db */
-    giv6 = NULL;
-    gi = GeoIP_open(ipv4f, GEOIP_MEMORY_CACHE);
-    if (gi == NULL) {
-        gi = GeoIP_open("/opt/xplico/GeoLiteCity.dat", GEOIP_MEMORY_CACHE);
+    ipf[0] = '\0';
+    CfgParamStr(file_cfg, GEOIP_CFG_PARAM_GEOIP2_FILE, ipf, GEOIP_FILE_PATH_SIZE);
+    if (ipf[0] != '\0') {
+        LogPrintf(LV_INFO, "GeoIP2: %s", ipf);
+        status = MMDB_open(ipf, MMDB_MODE_MMAP, &mmdb);
     }
-    if (gi == NULL) {
-        /* country db */
-        gi = GeoIP_open("GeoIP.dat", GEOIP_MEMORY_CACHE);
-        if (gi == NULL) {
-            LogPrintf(LV_ERROR, "GeoIP without GeoLiteCity/GeoIP database");
-            return -1;
+    
+    if (MMDB_SUCCESS != status) {
+        status = MMDB_open("/opt/xplico/GeoLite2-City.mmdb", MMDB_MODE_MMAP, &mmdb);
+        if (MMDB_SUCCESS != status) {
+            status = MMDB_open("GeoLite2-City.mmdb", MMDB_MODE_MMAP, &mmdb);
+            if (MMDB_SUCCESS != status) {
+                status = MMDB_open("GeoLite2-Country.mmdb", MMDB_MODE_MMAP, &mmdb);
+            
+                LogPrintf(LV_ERROR, "GeoIP2 without GeoLiteCity/GeoIP database");
+        
+                return -1;
+            }
         }
+    }
+    else {
+        LogPrintf(LV_INFO, "GeoIP2: %s", ipf);
     }
 
-    if (gi != NULL) {
-        if (gi->databaseType == GEOIP_CITY_EDITION_REV1) {
-            city = TRUE;
-            LogPrintf(LV_INFO, "GeoIP IPv4 DB City");
-        }
-        else {
-            LogPrintf(LV_INFO, "GeoIP IPv4 DB Country");
-        }
+    LogPrintf(LV_INFO, "GeoIP2 %s: OK", mmdb.metadata.database_type);
+    if (strstr(mmdb.metadata.database_type, "City") != NULL) {
+        city = TRUE;
+    }
+    else {
+        city = FALSE;
     }
     
-    LogPrintf(LV_INFO, "GeoIP IPv6 file: %s", ipv6f);
-    giv6 = GeoIP_open(ipv6f, GEOIP_MEMORY_CACHE);
-    if (giv6 == NULL) {
-        giv6 = GeoIP_open("/opt/xplico/GeoLiteCityv6.dat", GEOIP_MEMORY_CACHE);
-    }
-    if (giv6 == NULL) {
-        /* country db */
-        giv6 = GeoIP_open("GeoIPv6.dat", GEOIP_MEMORY_CACHE);
-        if (giv6 == NULL) {
-            LogPrintf(LV_ERROR, "GeoIP without GeoLiteCity/GeoIP V6 database");
-        }
-        return -1;
-    }
-    if (giv6 != NULL) {
-        if (giv6->databaseType == GEOIP_CITY_EDITION_REV1_V6) {
-            cityv6 = TRUE;
-            LogPrintf(LV_INFO, "GeoIP IPv6 DB City");
-        }
-        else {
-            LogPrintf(LV_INFO, "GeoIP IPv6 DB Country");
-        }
-    }
+    geodb = TRUE;
     
     return 0;
 }
@@ -114,84 +94,95 @@ int GeoIPLocInit(const char *file_cfg)
 
 int GeoIPLocIP(ftval *ip, enum ftype itype, float *latitude, float *longitude, char **country_code)
 {
-    GeoIPRecord *gir;
-    geoipv6_t gv6;
-    const char *ccode;
+    int mmdb_error;
+    int status;
+    MMDB_lookup_result_s result;
+    MMDB_entry_data_s entry_data;
+    struct sockaddr *psa;
+    struct sockaddr_in sa;
+    struct sockaddr_in6 sa6;
+    
+    if (itype != FT_IPv4 && itype != FT_IPv6) {
+        LogPrintf(LV_ERROR, "GeoIP IP type error");
 
-    gir = NULL;
-    ccode = NULL;
-    switch (itype) {
-    case FT_IPv4:
-        if (gi == NULL)
-            return -1;
-        pthread_mutex_lock(&atom);
-        if (city) {
-            gir = GeoIP_record_by_ipnum(gi, ntohl(ip->uint32));
-            if (gir != NULL) {
-                ccode = gir->country_code;
+        return -1;
+    }
+
+    if (geodb == FALSE)
+        return -1;
+
+    if (itype == FT_IPv4) {
+        sa.sin_family = AF_INET;
+        sa.sin_port = 0;
+        sa.sin_addr.s_addr = ip->uint32;
+        psa = (struct sockaddr *)&sa;
+    }
+    else {
+        sa6.sin6_family = AF_INET6;
+        sa6.sin6_port = 0;
+        sa6.sin6_flowinfo = 0;
+        sa6.sin6_scope_id = 0;
+        memcpy(sa6.sin6_addr.s6_addr, ip->ipv6, 16);
+        psa = (struct sockaddr *)&sa6;
+    }
+        
+    pthread_mutex_lock(&atom);
+    
+    result = MMDB_lookup_sockaddr(&mmdb, psa, &mmdb_error);
+    
+    pthread_mutex_unlock(&atom);
+    
+    if (!result.found_entry)
+        return -1;
+
+    if (country_code != NULL) {
+        status = MMDB_get_value(&result.entry, &entry_data, "country", "iso_code", NULL);
+        if (status == MMDB_SUCCESS) {
+            if(entry_data.has_data && entry_data.type == MMDB_DATA_TYPE_UTF8_STRING) {
+                *country_code = DMemMalloc(entry_data.data_size+1);
+                if (*country_code == NULL) {
+                    return -1;
+                }
+                strncpy(*country_code, (char *)entry_data.utf8_string, entry_data.data_size);
+                (*country_code)[entry_data.data_size] = '\0';
+            }
+            else {
+                return -1;
             }
         }
         else {
-            ccode = GeoIP_country_code_by_ipnum(gi, ntohl(ip->uint32));
-        }
-        pthread_mutex_unlock(&atom);
-        break;
-        
-    case FT_IPv6:
-        if (giv6 == NULL)
             return -1;
-        memcpy(gv6.s6_addr, ip->ipv6, 16);
-        pthread_mutex_lock(&atom6);
-        if (cityv6) {
-            gir = GeoIP_record_by_ipnum_v6(giv6, gv6);
-            if (gir != NULL)
-                ccode = gir->country_code;
-        }
-        else {
-            ccode = GeoIP_country_code_by_ipnum_v6(giv6, gv6);
-        }
-        pthread_mutex_unlock(&atom6);
-        break;
-
-    default:
-        LogPrintf(LV_ERROR, "GeoIP IP type error");
-    }
-
-    if (gir != NULL) {
-        *latitude = gir->latitude;
-        *longitude = gir->longitude;
-        if (country_code != NULL)
-            *country_code = (char *)ccode;
-        GeoIPRecord_delete(gir);
-        return 0;
-    }
-    if (country_code != NULL && ccode != NULL) {
-        *country_code = (char *)ccode;
-        return 0;
-    }
-
-    return -1;
-}
-
-
-int GeoIPLocAddr(char *addr, float *latitude, float *longitude)
-{
-    GeoIPRecord *gir;
-
-    if (gi == NULL)
-       return -1;
-
-    if (city) {
-        gir = GeoIP_record_by_addr(gi, (const char *)addr);
-        if (gir != NULL) {
-            *latitude = gir->latitude;
-            *longitude = gir->longitude;
-            GeoIPRecord_delete(gir);
-            return 0;
         }
     }
     
-    return -1;
+    if (city) {
+        status = MMDB_get_value(&result.entry, &entry_data, "location", "latitude", NULL);
+        if (status == MMDB_SUCCESS) {
+            if(entry_data.has_data && entry_data.type == MMDB_DATA_TYPE_DOUBLE) {
+                *longitude = entry_data.double_value;
+            }
+            else {
+                return -1;
+            }
+        }
+        else {
+            return -1;
+        }
+        status = MMDB_get_value(&result.entry, &entry_data, "location", "longitude", NULL);
+        if (status == MMDB_SUCCESS) {
+            if(entry_data.has_data && entry_data.type == MMDB_DATA_TYPE_DOUBLE) {
+                *latitude = entry_data.double_value;
+            }
+            else {
+                return -1;
+            }
+        }
+        else {
+            return -1;
+        }
+    }
+    
+    return 0;
 }
 
 #else /* GeoIPLoc disabled */
@@ -208,10 +199,5 @@ int GeoIPLocIP(ftval *ip, enum ftype itype, float *latitude, float *longitude, c
     return -1;
 }
 
-
-int GeoIPLocAddr(char *addr, float *latitude, float *longitude)
-{
-    return -1;
-}
 
 #endif

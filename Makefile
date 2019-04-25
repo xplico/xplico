@@ -46,7 +46,7 @@ SRC = xplico.c report.c
 # compilation
 INCLUDE_DIR = -I$(ROOT_DIR)/include -I$(ROOT_DIR)/common/include -I$(ROOT_DIR)/dissectors/include -I$(ROOT_DIR)/capt_dissectors/include -I$(ROOT_DIR)/dispatch/include
 LDFLAGS = -L$(ROOT_DIR) -ldl -lpthread -lz -lssl -lcrypto
-CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -fPIC -D_FILE_OFFSET_BITS=64 -O2 -U_FORTIFY_SOURCE
+CFLAGS = -rdynamic $(INCLUDE_DIR) -Wall -fPIC -D_FILE_OFFSET_BITS=64 -U_FORTIFY_SOURCE
 MODULE_PATH = modules
 
 # pedantic statistics
@@ -96,10 +96,10 @@ endif
 ifdef DISABLE_GEOIP
 CFLAGS += -DGEOIP_LIBRARY=0
 else
-GEOIP_LIB = $(shell pkg-config --libs geoip)
+GEOIP_LIB = $(shell pkg-config --libs libmaxminddb)
 LDFLAGS += $(GEOIP_LIB)
 CFLAGS += -DGEOIP_LIBRARY=1
-INCLUDE_DIR += $(shell pkg-config --cflags geoip)
+INCLUDE_DIR += $(shell pkg-config --cflags libmaxminddb)
 endif
 
 # nDPI local version (from source code)
@@ -198,11 +198,9 @@ installcp: all
 	cp -a config/mwebymsg_install_*.cfg $(INSTALL_DIR)/cfg
 	cp -a config/mwebymsg_cli_fix.cfg $(INSTALL_DIR)/cfg/webymsg_cli.cfg
 	cp -a config/tcp_grb_dig.cfg $(INSTALL_DIR)/cfg/tcp_grb_dig.cfg
-ifeq ($(wildcard GeoLiteCity.dat), GeoLiteCity.dat)
-	cp -a GeoLiteCity.dat $(INSTALL_DIR)/GeoLiteCity.dat
-endif
-ifeq ($(wildcard GeoLiteCityv6.dat), GeoLiteCityv6.dat)
-	cp -a GeoLiteCityv6.dat $(INSTALL_DIR)/GeoLiteCityv6.dat
+	
+ifeq ($(wildcard GeoLite2-City.mmdb), GeoLite2-City.mmdb)
+	cp -a GeoLite2-City.mmdb $(INSTALL_DIR)/GeoLite2-City.mmdb
 endif
 ifeq ($(wildcard pcl6), pcl6)
 	cp -a pcl6 $(INSTALL_DIR)/bin
@@ -236,6 +234,9 @@ install: installcp
 	mkdir -p $(DESTDIR)/usr/lib/systemd/system
 	cp xplico.service $(DESTDIR)/usr/lib/systemd/system/
 	mkdir -p $(DESTDIR)/opt/xplico/xi/app/tmp/cache
+	mkdir -p $(DESTDIR)/opt/xplico/xi/app/tmp/cache/models
+	mkdir -p $(DESTDIR)/opt/xplico/xi/app/tmp/cache/persistent
+	mkdir -p $(DESTDIR)/opt/xplico/xi/app/tmp/cache/views
 	chmod -R 777 $(DESTDIR)/opt/xplico/xi/app/tmp/cache
 endif
 

@@ -297,7 +297,7 @@ static void CaPei(pei *ppei, const char *prot_name,  tca_priv *priv, time_t *cap
         PeiNewComponent(&cmpn, pei_country_code_id);
         PeiCompCapTime(cmpn, *cap_sec);
         PeiCompCapEndTime(cmpn, *end_cap);
-        PeiCompAddStingBuff(cmpn, cc);
+        cmpn->strbuf = cc;
         PeiAddComponent(ppei, cmpn);
     }
 
