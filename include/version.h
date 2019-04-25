@@ -29,7 +29,7 @@
 #define XPLICO_VER_MAG 1
 #define XPLICO_VER_MIN 2
 #define XPLICO_VER_REV 2
-#define XPLICO_CR         "Internet Traffic Decoder (NFAT).\nSee http://www.xplico.org for more information.\n\nCopyright 2007-2017 Gianluca Costa & Andrea de Franceschi and contributors.\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+#define XPLICO_CR         "Internet Traffic Decoder (NFAT).\nSee http://www.xplico.org for more information.\n\nCopyright 2007-2019 Gianluca Costa & Andrea de Franceschi and contributors.\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
 #define XPLICO_GEOP_LICENSE "This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com/."
 
 #endif /* __VERSION_H__ */

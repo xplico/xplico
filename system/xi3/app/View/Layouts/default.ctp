@@ -138,7 +138,7 @@ Copyright: Gianluca Costa & Andrea de Franceschi 2007-2017, http://www.xplico.or
   <!-- #footer: holds the site footer (logo and links) -->
   <div id="footer">
     <p id="autor">
-    &copy; 2007-2017 Gianluca Costa & Andrea de Franceschi. All Rights Reserved.<br/>
+    &copy; 2007-2019 Gianluca Costa & Andrea de Franceschi. All Rights Reserved.<br/>
     </p>
     <p id="link_icon">
     <a href="http://www.xplico.org">
