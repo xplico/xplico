@@ -113,7 +113,7 @@ class Xml2PcapComponent extends Component
             unset($src_udp_port);
         }
         
-        $cmd = "tshark -r ".$pcap_file." -R \"".$filtr."\" -w ".$out_pcap;
+        $cmd = "tshark -2 -r ".$pcap_file." -R \"".$filtr."\" -w ".$out_pcap;
         system($cmd);
     }
 }
