@@ -28,13 +28,15 @@ Installation
 5. Install nDPI library.
     git clone https://github.com/ntop/nDPI.git
     cd nDPI
+    ./autogen.sh
     ./configure
     make
     make install
 
 6. Install GeoIP library.
-    download source code: https://github.com/maxmind/geoip-api-c/releases/download/v1.6.9/GeoIP-1.6.9.tar.gz
-    cd GeoIP-1.6.9
+    wget https://github.com/maxmind/geoip-api-c/releases/download/v1.6.12/GeoIP-1.6.12.tar.gz
+    tar -xvzf GeoIP-1.6.12.tar.gz
+    cd GeoIP-1.6.12
     ./configure
     make
     make install
@@ -45,6 +47,9 @@ Installation
     ./configure
     make
     make install
+    
+7.5. Install missing libraries
+   sudo apt install libmaxminddb-dev
 
 8. Run 'make' in the Xplico distribution directory. Hopefully, you won't run into any problems.
 
