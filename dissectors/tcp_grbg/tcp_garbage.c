@@ -1261,6 +1261,6 @@ int DissectInit(void)
     ndpi_set_protocol_detection_bitmask2(ndpi, &all);
     ndpi_proto_size = ndpi_detection_get_sizeof_ndpi_id_struct();
     ndpi_flow_struct_size = ndpi_detection_get_sizeof_ndpi_flow_struct();
-
+    ndpi_finalize_initalization(ndpi);
     return 0;
 }
