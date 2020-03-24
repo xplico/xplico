@@ -1250,7 +1250,7 @@ int DissectInit(void)
 
     /* ndpi */
     pthread_mutex_init(&ndpi_mux, NULL);
-    ndpi = ndpi_init_detection_module();
+    ndpi = ndpi_init_detection_module(ndpi_no_prefs);
     if (ndpi == NULL) {
         LogPrintf(LV_ERROR, "nDPi initializzation failed");
 

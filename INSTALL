@@ -47,9 +47,10 @@ Installation
     ./configure
     make
     make install
-    
+    wget https://raw.githubusercontent.com/json-c/json-c/master/json_object_private.h -O /usr/local/include/json-c/json_object_private.h
+
 7.5. Install missing libraries
-   sudo apt install libmaxminddb-dev
+   sudo apt install -y libmaxminddb-dev libpq-dev libmysqlclient-dev
 
 8. Run 'make' in the Xplico distribution directory. Hopefully, you won't run into any problems.
 
