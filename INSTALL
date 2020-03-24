@@ -33,7 +33,7 @@ Installation
 
 5. Install nDPI library.
 
-    sudo apt install gcc autogen automake autoconf libtool
+    sudo apt install -y gcc autogen automake autoconf libtool
     git clone https://github.com/ntop/nDPI.git
     cd nDPI
     ./autogen.sh
