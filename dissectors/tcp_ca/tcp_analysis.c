@@ -48,7 +48,7 @@
 #include "png.h"
 
 /* nDPI library */
-#include <libndpi/ndpi_main.h>
+#include <ndpi/ndpi_main.h>
 
 
 #define CA_CHECK_LOST     0           /* check lost data */
@@ -1081,7 +1081,7 @@ int DissectInit(void)
     mkdir(tmp_dir, 0x01FF);
 
     /* ndpi */
-    ndpi = ndpi_init_detection_module();
+    ndpi = ndpi_init_detection_module(ndpi_no_prefs);
     if (ndpi == NULL) {
         LogPrintf(LV_ERROR, "nDPi initializzation failed");
 
