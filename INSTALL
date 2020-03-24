@@ -7,13 +7,19 @@ Installation
 
 0. This is software. Beware.
 
+0.5. Update machine and install dependencies.
+
+      sudo apt update
+      sudo apt upgrade -y
+      sudo apt install -y libmaxminddb-dev libpq-dev libmysqlclient-dev m4 automake libpcap-dev
+
 1. Install recode application
 
 2. If you wish to build Xplico, make sure you have libpcap
    installed.  The latest "official" version can be found at
 
         http://www.tcpdump.org .
-
+        
 3. If you wish to build Xplico, make sure you have libsqlite version 2
    installed.  The latest "official" version can be found at
 
@@ -26,6 +32,8 @@ Installation
         http://lame.sourceforge.net/
 
 5. Install nDPI library.
+
+    sudo apt install gcc autogen automake autoconf libtool
     git clone https://github.com/ntop/nDPI.git
     cd nDPI
     ./autogen.sh
@@ -34,6 +42,7 @@ Installation
     make install
 
 6. Install GeoIP library.
+
     wget https://github.com/maxmind/geoip-api-c/releases/download/v1.6.12/GeoIP-1.6.12.tar.gz
     tar -xvzf GeoIP-1.6.12.tar.gz
     cd GeoIP-1.6.12
@@ -42,15 +51,13 @@ Installation
     make install
 
 7. Install json-c.
+
     git clone https://github.com/json-c/json-c.git
     ./autogen.sh
     ./configure
     make
     make install
     wget https://raw.githubusercontent.com/json-c/json-c/master/json_object_private.h -O /usr/local/include/json-c/json_object_private.h
-
-7.5. Install missing libraries
-   sudo apt install -y libmaxminddb-dev libpq-dev libmysqlclient-dev
 
 8. Run 'make' in the Xplico distribution directory. Hopefully, you won't run into any problems.
 
