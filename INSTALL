@@ -12,7 +12,7 @@ Installation
       cd
       sudo apt update
       sudo apt upgrade -y
-      sudo apt install -y libmaxminddb-dev libpq-dev libmysqlclient-dev m4 automake libpcap-dev
+      sudo apt install -y libmaxminddb-dev libpq-dev libmysqlclient-dev m4 automake libpcap-dev git pkg-config g++ cmake libsqlite3-dev
 
 2. Install nDPI library.
 
@@ -41,13 +41,12 @@ Installation
 4. Install json-c.
 
       git clone https://github.com/json-c/json-c.git
-      cd json-c
-      ./autogen.sh
-      ./configure
+      mkdir json-c-build
+      cmake ../json-c
       make
       sudo make install
       cd
-      rm -rf json-c
+      rm -rf json-c json-c-build
       sudo wget https://raw.githubusercontent.com/json-c/json-c/master/json_object_private.h -O /usr/local/include/json-c/json_object_private.h
 
 5. Run 'make' in the Xplico distribution directory. Hopefully, you won't run into any problems.
@@ -56,6 +55,13 @@ Installation
       make
 
 6. After running 'make', you will see xplico binary and modules directory.
+      At this point you should have xplico binary in your working (~/xplico/xplico) and be able to run it.
+
+      ./xplico -m rltm -i eth0 # eth0 is network interface on which you are sniffing.
+
+6.5 To check captured data:
+
+      cd ~/xplico/xdecode
 
 7. If you wish to decode network printer job, make sure you have Ghostpcl. The latest "official" 
    version can be found at
@@ -73,7 +79,7 @@ Installation
 10. At this point you have Xplico in console mode, see README for use it.
 
 11. If you use Xplico GUI it requires Apache, PHP and Perl. If you use Xplico in console mode
-   it isn't necesary this software, and you can skeep this point and others.
+   it isn't necesary this software, and you can skip this point and others.
 
 12. Run 'make install'. Change the permisions of /opt/xplico, /opt/xplico/cfg and /opt/xplico/xi directories to permit that Apache user (PHP program) can create a subdirectory inside /opt/xplico
     Also change the permisions of all files in /opt/xplico/cfg to read and write by Apache.
