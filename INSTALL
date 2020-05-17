@@ -57,7 +57,7 @@ Installation
 6. After running 'make', you will see xplico binary and modules directory.
       At this point you should have xplico binary in your working (~/xplico/xplico) and be able to run it.
 
-      ./xplico -m rltm -i eth0 # eth0 is network interface on which you are sniffing.
+      sudo ./xplico -m rltm -i eth0 # eth0 is network interface on which you are sniffing.
 
 6.5 To check captured data:
 
