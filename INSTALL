@@ -53,6 +53,7 @@ Installation
 
       cd xplico
       make
+      sudo ldconfig
 
 6. After running 'make', you will see xplico binary and modules directory.
       At this point you should have xplico binary in your working (~/xplico/xplico) and be able to run it.
