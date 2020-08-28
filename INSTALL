@@ -7,80 +7,94 @@ Installation
 
 0. This is software. Beware.
 
-1. Install recode application
+1. Update machine and install dependencies.
 
-2. If you wish to build Xplico, make sure you have libpcap
-   installed.  The latest "official" version can be found at
+      cd
+      sudo apt update
+      sudo apt upgrade -y
+      sudo apt install -y libmaxminddb-dev libpq-dev libmysqlclient-dev m4 automake libpcap-dev git pkg-config g++ cmake libsqlite3-dev
 
-        http://www.tcpdump.org .
+2. Install nDPI library.
 
-3. If you wish to build Xplico, make sure you have libsqlite version 2
-   installed.  The latest "official" version can be found at
+      sudo apt install -y gcc autogen automake autoconf libtool
+      git clone https://github.com/ntop/nDPI.git
+      cd nDPI
+      ./autogen.sh
+      ./configure
+      make
+      sudo make install
+      cd
+      rm -rf nDPI
 
-        http://www.sqlite.org .
+3. Install GeoIP library.
 
-4. If you wish to decode VoIP with Xplico, make sure you have sox ans lame installed. 
-   The latest "official" versions can be found at
+      wget https://github.com/maxmind/geoip-api-c/releases/download/v1.6.12/GeoIP-1.6.12.tar.gz
+      tar -xvzf GeoIP-1.6.12.tar.gz
+      rm GeoIP-1.6.12.tar.gz
+      cd GeoIP-1.6.12
+      ./configure
+      make
+      sudo make install
+      cd
+      rm -rf GeoIP-1.6.12
 
-        http://sox.sourceforge.net/
-        http://lame.sourceforge.net/
+4. Install json-c.
 
-5. Install nDPI library.
-    git clone https://github.com/ntop/nDPI.git
-    cd nDPI
-    ./configure
-    make
-    make install
+      git clone https://github.com/json-c/json-c.git
+      mkdir json-c-build
+      cmake ../json-c
+      make
+      sudo make install
+      cd
+      rm -rf json-c json-c-build
+      sudo wget https://raw.githubusercontent.com/json-c/json-c/master/json_object_private.h -O /usr/local/include/json-c/json_object_private.h
 
-6. Install GeoIP library.
-    download source code: https://github.com/maxmind/geoip-api-c/releases/download/v1.6.9/GeoIP-1.6.9.tar.gz
-    cd GeoIP-1.6.9
-    ./configure
-    make
-    make install
+5. Run 'make' in the Xplico distribution directory. Hopefully, you won't run into any problems.
 
-7. Install json-c.
-    git clone https://github.com/json-c/json-c.git
-    ./autogen.sh
-    ./configure
-    make
-    make install
+      cd xplico
+      make
+      sudo ldconfig
 
-8. Run 'make' in the Xplico distribution directory. Hopefully, you won't run into any problems.
+6. After running 'make', you will see xplico binary and modules directory.
+      At this point you should have xplico binary in your working (~/xplico/xplico) and be able to run it.
 
-9. After running 'make', you will see xplico binary and modules directory.
+      sudo ./xplico -m rltm -i eth0 # eth0 is network interface on which you are sniffing.
 
-10. If you wish to decode network printer job, make sure you have Ghostpcl. The latest "official" 
+6.5 To check captured data:
+
+      cd ~/xplico/xdecode
+
+7. If you wish to decode network printer job, make sure you have Ghostpcl. The latest "official" 
    version can be found at
 
         http://www.ghostscript.com/awki/Ghostpcl .
 
    Copy "pcl6" in Xplico home directory (in the same directory of xplico binary).
 
-11. If you wish to decode RTP, SIP, MEGACO, H323, MGCP... VoIP audio codec, make sure you have videosnarf-0.62 compiled and patched with videosnarf_xplico.patch ( http://projects.xplico.org/patch/videosnarf_xplico.patch.gz ).
+8. If you wish to decode RTP, SIP, MEGACO, H323, MGCP... VoIP audio codec, make sure you have videosnarf-0.62 compiled and patched with videosnarf_xplico.patch ( http://projects.xplico.org/patch/videosnarf_xplico.patch.gz ).
 
    Copy "videosnarf" in Xplico home directory (in the same directory of xplico binary).
    
-12. Run './xplico' and make sure that everything are working. You must have root privileges in order to capture live data.
+9. Run './xplico' and make sure that everything are working. You must have root privileges in order to capture live data.
 
-13. At this point you have Xplico in console mode, see README for use it.
+10. At this point you have Xplico in console mode, see README for use it.
 
-14. If you use Xplico GUI it requires Apache, PHP and Perl. If you use Xplico in console mode
-   it isn't necesary this software, and you can skeep this point and others.
+11. If you use Xplico GUI it requires Apache, PHP and Perl. If you use Xplico in console mode
+   it isn't necesary this software, and you can skip this point and others.
 
-15. Run 'make install'. Change the permisions of /opt/xplico, /opt/xplico/cfg and /opt/xplico/xi directories to permit that Apache user (PHP program) can create a subdirectory inside /opt/xplico
+12. Run 'make install'. Change the permisions of /opt/xplico, /opt/xplico/cfg and /opt/xplico/xi directories to permit that Apache user (PHP program) can create a subdirectory inside /opt/xplico
     Also change the permisions of all files in /opt/xplico/cfg to read and write by Apache.
 
-16. With root permission run:
+13. With root permission run:
     /opt/xplico/script/sqlite_demo.sh
 
-17. To configure Apache you can use the (example) configuration file: /opt/xplico/cfg/apache_xi
+14. To configure Apache you can use the (example) configuration file: /opt/xplico/cfg/apache_xi
 
-18. Enable proxy in Firefox. The proxy IP is the IP of machine where you have installed Xplico and port is 80 (Apache port).
+15. Enable proxy in Firefox. The proxy IP is the IP of machine where you have installed Xplico and port is 80 (Apache port).
 
-19. The url to view Xplico Interface is: http://IP
+16. The url to view Xplico Interface is: http://IP
     If you use the machine name and not IP it is possible that you don't enter in Web Interface
 
-20. And now: Enjoy.
+17. And now: Enjoy.
 
 If you have trouble with the build or installation process, you can contact us.

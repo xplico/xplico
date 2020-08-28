@@ -46,8 +46,8 @@
 #include "geoiploc.h"
 
 /* nDPI library */
-#include <libndpi/ndpi_main.h>
-#include <libndpi/ndpi_api.h>
+#include <ndpi/ndpi_main.h>
+#include <ndpi/ndpi_api.h>
 
 #define UDP_CA_TMP_DIR    "udp_ca"
 #define NDPI_TICK_RES      1000        /* Hz */
@@ -631,7 +631,7 @@ int DissectInit(void)
 
     /* ndpi */
     pthread_mutex_init(&ndpi_mux, NULL);
-    ndpi = ndpi_init_detection_module();
+    ndpi = ndpi_init_detection_module(ndpi_no_prefs);
     if (ndpi == NULL) {
         LogPrintf(LV_ERROR, "nDPi initializzation failed");
 

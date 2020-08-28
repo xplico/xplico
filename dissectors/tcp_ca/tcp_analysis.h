@@ -29,7 +29,7 @@
 #define __TCP_ANALYSIS_H__
 
 #include "pei.h"
-#include <libndpi/ndpi_api.h>
+#include <ndpi/ndpi_api.h>
 
 /* path & buffer size */
 #define TCP_CA_FILENAME_PATH_SIZE      512

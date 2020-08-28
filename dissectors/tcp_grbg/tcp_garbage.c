@@ -48,9 +48,9 @@
 #include "pcap_gfile.h"
 
 /* nDPI library */
-#include <libndpi/ndpi_main.h>
-#include <libndpi/ndpi_api.h>
-#include <libndpi/ndpi_typedefs.h>
+#include <ndpi/ndpi_main.h>
+#include <ndpi/ndpi_api.h>
+#include <ndpi/ndpi_typedefs.h>
 
 
 #define GRB_FILE           0           /* to put (or not) data in to a pcap file */
@@ -1250,7 +1250,7 @@ int DissectInit(void)
 
     /* ndpi */
     pthread_mutex_init(&ndpi_mux, NULL);
-    ndpi = ndpi_init_detection_module();
+    ndpi = ndpi_init_detection_module(ndpi_no_prefs);
     if (ndpi == NULL) {
         LogPrintf(LV_ERROR, "nDPi initializzation failed");
 
@@ -1261,6 +1261,6 @@ int DissectInit(void)
     ndpi_set_protocol_detection_bitmask2(ndpi, &all);
     ndpi_proto_size = ndpi_detection_get_sizeof_ndpi_id_struct();
     ndpi_flow_struct_size = ndpi_detection_get_sizeof_ndpi_flow_struct();
-
+    ndpi_finalize_initalization(ndpi);
     return 0;
 }
